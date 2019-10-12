@@ -1,14 +1,153 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style-dark.css?v=2.0.4"><link rel="stylesheet" type="text/css" href="/css/highlight-dark.css?v=2.0.4"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><title>HYSBZ-2005-莫比乌斯反演 | 一方通行</title></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">HYSBZ-2005-莫比乌斯反演</h1><a id="logo" href="/.">一方通行</a><p class="description">你最愿意做的哪件事，才是你的天赋所在</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 档案</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">HYSBZ-2005-莫比乌斯反演</h1><div class="post-meta"><a href="/2019/09/19/HYSBZ-2005-莫比乌斯反演/#comments" class="comment-count"></a><p><span class="date">Sep 19, 2019</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HYSBZ-2005" target="_blank" rel="noopener">HYSBZ2005</a></p>
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>HYSBZ-2005-莫比乌斯反演 | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2019-09-19</span>
+    <h2>HYSBZ-2005-莫比乌斯反演</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/数论/">数论</a> <i class="fa fa-tag"></i><a class="tag-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a></div>
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HYSBZ-2005" target="_blank" rel="noopener">HYSBZ2005</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>根据题目意思，很明显跟gcd有关，因为路径上若有经过的点则点的个数为gcd(a,b)-1的个数<br>然后这题的答案就是求</p>
 <script type="math/tex; mode=display">Ans=\sum_{i=1}^{N}\sum_{j=1}^{M}2*gcd(i,j)-1</script><p>按照套路来<br>设f(n)为gcd(a,b)=n的个数<br>则F(n)为gcd(a,b)=n及n的倍数的个数<br>答案就变为</p>
 <script type="math/tex; mode=display">Ans=\sum_{i=1}^{min(N,M)}f(i)*2-1</script><p>然后我们只要能在<script type="math/tex">n^{\frac{1}{2}}</script>下算出f(i)就可以解这道题<br>然后根据莫比乌斯倍数反演公式得出</p>
 <script type="math/tex; mode=display">f(n)=\sum_{n\mid d}\mu(\frac{d}{n})*F(d)</script><p>我们枚举<script type="math/tex">T=\frac{d}{n}</script>得到</p>
 <script type="math/tex; mode=display">f(n)=\sum_{T=1}^{min(\frac{N}{n},\frac{M}{n})}\mu(T)*F(dn)</script><p>到这里我们可以用分块除法加速，这样就能<script type="math/tex">O(n^{\frac{1}{2}})</script>求出f(n)了</p>
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> mu[maxn];</span><br><span class="line"><span class="keyword">int</span> prime[maxn],cnt;</span><br><span class="line"><span class="keyword">bool</span> vis[maxn];</span><br><span class="line"><span class="keyword">int</span> sum[maxn];</span><br><span class="line">ll F[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_mu</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	mu[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;maxn;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i])</span><br><span class="line">		&#123;</span><br><span class="line">			prime[cnt++]=i;</span><br><span class="line">			mu[i]=<span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt&amp;&amp;i*prime[j]&lt;maxn;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			vis[i*prime[j]]=<span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">if</span>(i%prime[j])</span><br><span class="line">			&#123;</span><br><span class="line">				mu[i*prime[j]]=-mu[i];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				mu[i*prime[j]]=<span class="number">0</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;maxn;i++)sum[i]=sum[i<span class="number">-1</span>]+mu[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	get_mu();</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">		<span class="keyword">int</span> minn=min(n,m);</span><br><span class="line">		ll ans = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=minn;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> N = n/i;</span><br><span class="line">			<span class="keyword">int</span> M = m/i;</span><br><span class="line">			ll temp = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>,last;i*j&lt;=minn;j=last+<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				last=min(n/(n/j),m/(m/j));</span><br><span class="line">				temp+=<span class="number">1l</span>l*(sum[last]-sum[j<span class="number">-1</span>])*(N/j)*(M/j);</span><br><span class="line">			&#125;</span><br><span class="line">			ans=ans+temp*(<span class="number">2</span>*(i<span class="number">-1</span>)+<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<font face="仿宋" color="cyan">你最愿意做的哪件事，才是你的天赋所在</font></div><div class="post-copyright"><blockquote><p>原文作者: gerayking</p><p>原文链接: <a href="https://gerayking.github.io/2019/09/19/HYSBZ-2005-莫比乌斯反演/">https://gerayking.github.io/2019/09/19/HYSBZ-2005-莫比乌斯反演/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"><a href="/tags/数论/">数论</a><a href="/tags/莫比乌斯反演/">莫比乌斯反演</a></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2019/09/19/HDU-4675/" class="pre">HDU-4675</a><a href="/2019/09/19/HYSBZ-2818-莫比乌斯反演/" class="next">HYSBZ-2818-莫比乌斯反演</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目链接"><span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/10/06/OS-三种系统调度方式/">OS-三种系统调度方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/05/10-5训练/">10-5训练</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/03/10-3训练总结/">10-3训练总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/29/ABC-142-D/">ABC-142-D</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/29/HDU-6053-莫比乌斯反演/">HDU-6053-莫比乌斯反演</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/25/区间素数个数-min-25筛/">区间素数个数-min_25筛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/24/Coderforces-588-div2-D/">Coderforces #588-div2-D</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/21/第二次周训练/">第二次周训练</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/20/HDU4746-莫比乌斯反演/">HDU4746-莫比乌斯反演</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/19/HDU-4675/">HDU-4675</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/线段树/" style="font-size: 15px;">线段树</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/递归/" style="font-size: 15px;">递归</a> <a href="/tags/思维/" style="font-size: 15px;">思维</a> <a href="/tags/二维偏序/" style="font-size: 15px;">二维偏序</a> <a href="/tags/树状数组/" style="font-size: 15px;">树状数组</a> <a href="/tags/Atcoder/" style="font-size: 15px;">Atcoder</a> <a href="/tags/Codeforces/" style="font-size: 15px;">Codeforces</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/贪心/" style="font-size: 15px;">贪心</a> <a href="/tags/莫比乌斯反演/" style="font-size: 15px;">莫比乌斯反演</a> <a href="/tags/高斯消元/" style="font-size: 15px;">高斯消元</a> <a href="/tags/Floyd/" style="font-size: 15px;">Floyd</a> <a href="/tags/数位DP/" style="font-size: 15px;">数位DP</a> <a href="/tags/模拟/" style="font-size: 15px;">模拟</a> <a href="/tags/二分/" style="font-size: 15px;">二分</a> <a href="/tags/Operatoring-System/" style="font-size: 15px;">-Operatoring System</a> <a href="/tags/扫描线/" style="font-size: 15px;">扫描线</a> <a href="/tags/堆/" style="font-size: 15px;">堆</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/min25筛/" style="font-size: 15px;">-min25筛</a> <a href="/tags/分治/" style="font-size: 15px;">分治</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://www.cnblogs.com/LORDXX/" title="LORDXX" target="_blank">LORDXX</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">gerayking.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.4"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-  }
-});</script><script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML" async></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.4" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>
+<font face="仿宋" color="cyan">你最愿意做的哪件事，才是你的天赋所在</font>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/09/19/HDU-4675/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>HDU-4675</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/09/19/HYSBZ-2818-莫比乌斯反演/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>HYSBZ-2818-莫比乌斯反演</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
