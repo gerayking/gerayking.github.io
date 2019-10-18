@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="一方通行">
 <meta property="og:description" content="二次剩余x^2≡n(mod\ p)对于这个方程，求出满足的x。引理1首先来看一个符号 (\frac{n}{p})这个符号叫做勒让德符号，这个符号里有两个值，一个是n,一个是p。假设p为奇素数，且n无法整除p时，他有以下定义 (\frac{n}{p})=n^{\frac{p-1}{2}}当$(\frac{n}{p})=1$时，存在一个x使得n是p的二次剩余当$(\frac{n}{p})=-1$时，不">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-17T09:49:17.194Z">
+<meta property="og:updated_time" content="2019-10-18T14:14:23.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二次剩余定理详解">
 <meta name="twitter:description" content="二次剩余x^2≡n(mod\ p)对于这个方程，求出满足的x。引理1首先来看一个符号 (\frac{n}{p})这个符号叫做勒让德符号，这个符号里有两个值，一个是n,一个是p。假设p为奇素数，且n无法整除p时，他有以下定义 (\frac{n}{p})=n^{\frac{p-1}{2}}当$(\frac{n}{p})=1$时，存在一个x使得n是p的二次剩余当$(\frac{n}{p})=-1$时，不">
@@ -268,7 +268,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-17 17:49:17" itemprop="dateModified" datetime="2019-10-17T17:49:17+08:00">2019-10-17</time>
+                <time title="修改时间：2019-10-18 22:14:23" itemprop="dateModified" datetime="2019-10-18T22:14:23+08:00">2019-10-18</time>
               </span>
             
           
@@ -430,7 +430,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -443,7 +443,7 @@
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -551,6 +551,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   

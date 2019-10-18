@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="一方通行">
 <meta property="og:description" content="题目链接HDU1695思路题目要求的是下面这个式子\sum_{i=1}^N\sum_{j=1}^M[gcd(i,j)]=k]转化一下变成\sum_{i=1}^{\frac{N}{k}}/sum_{j=1}^{\frac{M}{k}}[gcd(i,j)]=1]然后就可以用莫比乌斯反演来求了设f(n)为gcd(a,b)=n的个数则F(n)为gcd(a,b)=n及n的倍数的个数则有">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-18T12:34:51.579Z">
+<meta property="og:updated_time" content="2019-10-18T14:17:19.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDU1695-莫比乌斯反演">
 <meta name="twitter:description" content="题目链接HDU1695思路题目要求的是下面这个式子\sum_{i=1}^N\sum_{j=1}^M[gcd(i,j)]=k]转化一下变成\sum_{i=1}^{\frac{N}{k}}/sum_{j=1}^{\frac{M}{k}}[gcd(i,j)]=1]然后就可以用莫比乌斯反演来求了设f(n)为gcd(a,b)=n的个数则F(n)为gcd(a,b)=n及n的倍数的个数则有">
@@ -257,11 +257,19 @@
                 
               
 
-              <time title="创建时间：2019-09-18 20:25:02 / 修改时间：20:34:51" itemprop="dateCreated datePublished" datetime="2019-09-18T20:25:02+08:00">2019-09-18</time>
+              <time title="创建时间：2019-09-18 20:25:02" itemprop="dateCreated datePublished" datetime="2019-09-18T20:25:02+08:00">2019-09-18</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-18 22:17:19" itemprop="dateModified" datetime="2019-10-18T22:17:19+08:00">2019-10-18</time>
+              </span>
             
           
 
@@ -387,7 +395,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -400,7 +408,7 @@
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -508,6 +516,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
