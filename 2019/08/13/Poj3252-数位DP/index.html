@@ -1,9 +1,508 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style-dark.css?v=2.0.4"><link rel="stylesheet" type="text/css" href="/css/highlight-dark.css?v=2.0.4"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><title>Poj3252(数位DP) | 一方通行</title></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Poj3252(数位DP)</h1><a id="logo" href="/.">一方通行</a><p class="description">你最愿意做的哪件事，才是你的天赋所在</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 档案</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">Poj3252(数位DP)</h1><div class="post-meta"><a href="/2019/08/13/Poj3252-数位DP/#comments" class="comment-count"></a><p><span class="date">Aug 13, 2019</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://cn.vjudge.net/problem/POJ-3252" target="_blank" rel="noopener">Round Numbers</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目要求l~r种满足二进制0的个数大于等于1的数，那么可以对二进制数做数位DP。<br>dp[pos][num0][num1]表示在pos位置时已确定的0和1的个数。那么到最后一位时我们只需要比较num0和num1就可以确定答案了。<br>坑点：前导0的判断，这道题可能会出现前导0，因为我们是从高位向低位推，所以前导零的状态也可以一起转移。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line">ll dp[<span class="number">50</span>][<span class="number">50</span>][<span class="number">50</span>];</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">50</span>];</span><br><span class="line"><span class="function">ll <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> pos,<span class="keyword">int</span> num0,<span class="keyword">int</span> num1,<span class="keyword">bool</span> limit,<span class="keyword">bool</span> zero)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(pos==<span class="number">-1</span>)<span class="keyword">return</span> num0&gt;=num1;</span><br><span class="line">	<span class="keyword">if</span>(!limit&amp;&amp;dp[pos][num0][num1]!=<span class="number">-1</span>)<span class="keyword">return</span> dp[pos][num0][num1];</span><br><span class="line">	<span class="keyword">int</span> up = limit?a[pos]:<span class="number">1</span>;</span><br><span class="line">	ll temp = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=up;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(zero)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i)temp+=dfs(pos<span class="number">-1</span>,num0,num1+<span class="number">1</span>,limit&amp;&amp;i==up,<span class="number">0</span>);</span><br><span class="line">			<span class="keyword">else</span> temp+=dfs(pos<span class="number">-1</span>,num0,num1,limit&amp;&amp;i==up,<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i)temp+=dfs(pos<span class="number">-1</span>,num0,num1+<span class="number">1</span>,limit&amp;&amp;i==up,<span class="number">0</span>);</span><br><span class="line">			<span class="keyword">else</span> temp+=dfs(pos<span class="number">-1</span>,num0+<span class="number">1</span>,num1,limit&amp;&amp;i==up,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> limit?temp:dp[pos][num0][num1]=temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> pos = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(x)</span><br><span class="line">	&#123;</span><br><span class="line">		a[pos++]=x%<span class="number">2</span>;</span><br><span class="line">		x/=<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dfs(pos<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   <span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	ll l,r;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;l&gt;&gt;r)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;solve(r)-solve(l<span class="number">-1</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><div class="post-copyright"><blockquote><p>原文作者: gerayking</p><p>原文链接: <a href="https://gerayking.github.io/2019/08/13/Poj3252-数位DP/">https://gerayking.github.io/2019/08/13/Poj3252-数位DP/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"><a href="/tags/数位DP/">数位DP</a></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2019/08/14/HDU3709-数位DP/" class="pre">HDU3709-数位DP</a><a href="/2019/08/13/DP-方格取数/" class="next">DP-方格取数</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目链接"><span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/10/16/SPOJ-APS2-min-25筛/">SPOJ-APS2-min_25筛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/12/美味果冻-数论/">美味果冻-数论</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/06/OS-三种系统调度方式/">OS-三种系统调度方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/05/10-5训练/">10-5训练</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/03/10-3训练总结/">10-3训练总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/29/ABC-142-D/">ABC-142-D</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/29/HDU-6053-莫比乌斯反演/">HDU-6053-莫比乌斯反演</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/25/区间素数个数-min-25筛/">区间素数个数-min_25筛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/24/Coderforces-588-div2-D/">Coderforces #588-div2-D</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/21/第二次周训练/">第二次周训练</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/数位DP/" style="font-size: 15px;">数位DP</a> <a href="/tags/递归/" style="font-size: 15px;">递归</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/高斯消元/" style="font-size: 15px;">高斯消元</a> <a href="/tags/Codeforces/" style="font-size: 15px;">Codeforces</a> <a href="/tags/Atcoder/" style="font-size: 15px;">Atcoder</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/贪心/" style="font-size: 15px;">贪心</a> <a href="/tags/二维偏序/" style="font-size: 15px;">二维偏序</a> <a href="/tags/树状数组/" style="font-size: 15px;">树状数组</a> <a href="/tags/线段树/" style="font-size: 15px;">线段树</a> <a href="/tags/思维/" style="font-size: 15px;">思维</a> <a href="/tags/莫比乌斯反演/" style="font-size: 15px;">莫比乌斯反演</a> <a href="/tags/Floyd/" style="font-size: 15px;">Floyd</a> <a href="/tags/模拟/" style="font-size: 15px;">模拟</a> <a href="/tags/Operatoring-System/" style="font-size: 15px;">-Operatoring System</a> <a href="/tags/二分/" style="font-size: 15px;">二分</a> <a href="/tags/min-25/" style="font-size: 15px;">min_25</a> <a href="/tags/堆/" style="font-size: 15px;">堆</a> <a href="/tags/扫描线/" style="font-size: 15px;">扫描线</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/min25筛/" style="font-size: 15px;">-min25筛</a> <a href="/tags/分治/" style="font-size: 15px;">分治</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://www.cnblogs.com/LORDXX/" title="LORDXX" target="_blank">LORDXX</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">gerayking.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.4"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="题目链接Round Numbers思路题目要求l~r种满足二进制0的个数大于等于1的数，那么可以对二进制数做数位DP。dp[pos][num0][num1]表示在pos位置时已确定的0和1的个数。那么到最后一位时我们只需要比较num0和num1就可以确定答案了。坑点：前导0的判断，这道题可能会出现前导0，因为我们是从高位向低位推，所以前导零的状态也可以一起转移。">
+<meta name="keywords" content="数位DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Poj3252(数位DP)">
+<meta property="og:url" content="https://gerayking.github.io/2019/08/13/Poj3252-数位DP/index.html">
+<meta property="og:site_name" content="一方通行">
+<meta property="og:description" content="题目链接Round Numbers思路题目要求l~r种满足二进制0的个数大于等于1的数，那么可以对二进制数做数位DP。dp[pos][num0][num1]表示在pos位置时已确定的0和1的个数。那么到最后一位时我们只需要比较num0和num1就可以确定答案了。坑点：前导0的判断，这道题可能会出现前导0，因为我们是从高位向低位推，所以前导零的状态也可以一起转移。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-13T14:08:47.974Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Poj3252(数位DP)">
+<meta name="twitter:description" content="题目链接Round Numbers思路题目要求l~r种满足二进制0的个数大于等于1的数，那么可以对二进制数做数位DP。dp[pos][num0][num1]表示在pos位置时已确定的0和1的个数。那么到最后一位时我们只需要比较num0和num1就可以确定答案了。坑点：前导0的判断，这道题可能会出现前导0，因为我们是从高位向低位推，所以前导零的状态也可以一起转移。">
+  <link rel="canonical" href="https://gerayking.github.io/2019/08/13/Poj3252-数位DP/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Poj3252(数位DP) | 一方通行</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
   }
-});</script><script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML" async></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.4" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一方通行</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">你最愿意做的哪件事，才是你的天赋所在</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+        
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      
+    
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/13/Poj3252-数位DP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            Poj3252(数位DP)
+            
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-13 22:05:20 / 修改时间：22:08:47" itemprop="dateCreated datePublished" datetime="2019-08-13T22:05:20+08:00">2019-08-13</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://cn.vjudge.net/problem/POJ-3252" target="_blank" rel="noopener">Round Numbers</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目要求l~r种满足二进制0的个数大于等于1的数，那么可以对二进制数做数位DP。<br>dp[pos][num0][num1]表示在pos位置时已确定的0和1的个数。那么到最后一位时我们只需要比较num0和num1就可以确定答案了。<br>坑点：前导0的判断，这道题可能会出现前导0，因为我们是从高位向低位推，所以前导零的状态也可以一起转移。</p><a id="more"></a>
+
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line">ll dp[<span class="number">50</span>][<span class="number">50</span>][<span class="number">50</span>];</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">50</span>];</span><br><span class="line"><span class="function">ll <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> pos,<span class="keyword">int</span> num0,<span class="keyword">int</span> num1,<span class="keyword">bool</span> limit,<span class="keyword">bool</span> zero)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(pos==<span class="number">-1</span>)<span class="keyword">return</span> num0&gt;=num1;</span><br><span class="line">	<span class="keyword">if</span>(!limit&amp;&amp;dp[pos][num0][num1]!=<span class="number">-1</span>)<span class="keyword">return</span> dp[pos][num0][num1];</span><br><span class="line">	<span class="keyword">int</span> up = limit?a[pos]:<span class="number">1</span>;</span><br><span class="line">	ll temp = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=up;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(zero)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i)temp+=dfs(pos<span class="number">-1</span>,num0,num1+<span class="number">1</span>,limit&amp;&amp;i==up,<span class="number">0</span>);</span><br><span class="line">			<span class="keyword">else</span> temp+=dfs(pos<span class="number">-1</span>,num0,num1,limit&amp;&amp;i==up,<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i)temp+=dfs(pos<span class="number">-1</span>,num0,num1+<span class="number">1</span>,limit&amp;&amp;i==up,<span class="number">0</span>);</span><br><span class="line">			<span class="keyword">else</span> temp+=dfs(pos<span class="number">-1</span>,num0+<span class="number">1</span>,num1,limit&amp;&amp;i==up,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> limit?temp:dp[pos][num0][num1]=temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> pos = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(x)</span><br><span class="line">	&#123;</span><br><span class="line">		a[pos++]=x%<span class="number">2</span>;</span><br><span class="line">		x/=<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dfs(pos<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   <span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	ll l,r;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;l&gt;&gt;r)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;solve(r)-solve(l<span class="number">-1</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/数位DP/" rel="tag"># 数位DP</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/08/13/DP-方格取数/" rel="next" title="DP-方格取数">
+                  <i class="fa fa-chevron-left"></i> DP-方格取数
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/08/14/HDU3709-数位DP/" rel="prev" title="HDU3709-数位DP">
+                  HDU3709-数位DP <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">gerayking</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gerayking</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">
+      
+    主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+    
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
