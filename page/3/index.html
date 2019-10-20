@@ -221,6 +221,85 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/15/Digit-sum-from-1-to-n-计数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/09/15/Digit-sum-from-1-to-n-计数/" class="post-title-link" itemprop="url">Digit sum from 1 to n(计数)</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-15 20:54:42 / 修改时间：21:19:23" itemprop="dateCreated datePublished" datetime="2019-09-15T20:54:42+08:00">2019-09-15</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://nanti.jisuanke.com/t/41422" target="_blank" rel="noopener">Digit sum</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题就是计算1-n的各个位数之和，那么我们可以对每个位置进行统计。<br>例如，328，<br>先看百位<br>3<em>(28+1)<br>2</em>100<br>1<em>100<br>再看十位<br>2</em>(8+1)<br>1<em>10<br>这时候需要计算111 112 中的十位<br>也就是1+2+3+4+5+6+7+8+9=45,计算有多少个45.注意，这时候先不看个位。我们有110 120 130 140 150 160 ~290 ，也就是有3组，就是3</em>45<em>10.<br>然后再看个位8+7+6+5+4+3+2+1，然后45</em>32*1；<br>就好了</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/09/15/Digit-sum-from-1-to-n-计数/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/15/Honk-s-pool-思维/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -942,95 +1021,6 @@
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/02/欧拉降幂证明及应用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/09/02/欧拉降幂证明及应用/" class="post-title-link" itemprop="url">欧拉降幂证明及应用</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-02 00:55:27" itemprop="dateCreated datePublished" datetime="2019-09-02T00:55:27+08:00">2019-09-02</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-18 22:18:05" itemprop="dateModified" datetime="2019-10-18T22:18:05+08:00">2019-10-18</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>内容</p><blockquote>
-<p>若<strong>正整数</strong> $a,n$互质，则$a^{\phi(n)}≡1(mod n)$其中$\phi(n)$是1-n中与n互质的数的个数</p>
-</blockquote><h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>不妨设$X_1,X_2,{\cdots},X_n$为1~n中与n两两互质的数<br>那么对一些数进行讨论$aX_1,aX_2,{\cdots},aX_n$</p><h4 id="引理1"><a href="#引理1" class="headerlink" title="引理1"></a>引理1</h4><p>$aX_1,aX_2,{\cdots},aX_n$中，任意两个数模n的余数一定不同。</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/09/02/欧拉降幂证明及应用/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1080,7 +1070,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">62</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1206,9 +1196,9 @@
       
     
       
-        
-      
     
+      
+        
       
     
       

@@ -221,6 +221,85 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/14/HDU3709-数位DP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/08/14/HDU3709-数位DP/" class="post-title-link" itemprop="url">HDU3709-数位DP</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-14 19:25:25 / 修改时间：19:34:17" itemprop="dateCreated datePublished" datetime="2019-08-14T19:25:25+08:00">2019-08-14</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://cn.vjudge.net/problem/HDU-3709" target="_blank" rel="noopener">Balanced Number</a></p><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>定义一种数叫做Balanced number，这样子的数满足，选取一个位置后，分成左右两边然后向左向右分别乘上1，2，3，4后相加相等。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>能够枚举的位置最多18位，所以可以考虑暴力枚举位置，并且，每一个数至多有一个位置能够满足该定义。<br>所以我们可以设dp[len][pos][sum],代表第len个位置，pos是我们枚举的中点位置，sum表示该数当前的和，如果len==-1，判断sum是否==0就好。<br>其中可以剪枝，也就是当sum&lt;0的时候就可以返回0了，因为sum&lt;0后sum后面一定会更小不会更大了。</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/08/14/HDU3709-数位DP/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/13/Poj3252-数位DP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -933,94 +1012,6 @@
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/08/2019-8-8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/08/08/2019-8-8/" class="post-title-link" itemprop="url">牛客多校7签到题</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-08 23:38:08" itemprop="dateCreated datePublished" datetime="2019-08-08T23:38:08+08:00">2019-08-08</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-10 19:18:54" itemprop="dateModified" datetime="2019-08-10T19:18:54+08:00">2019-08-10</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="J-A-B-problem"><a href="#J-A-B-problem" class="headerlink" title="J A+B problem"></a>J A+B problem</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote><p><img src="https://i.loli.net/2019/08/08/w7QdtL6z483OZBa.png" alt></p>
-</blockquote>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/08/08/2019-8-8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1070,7 +1061,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">62</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1210,9 +1201,9 @@
       
     
       
-        
-      
     
+      
+        
       
     
   
