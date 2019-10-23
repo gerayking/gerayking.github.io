@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="题目链接HDU-6265 思路因为$\phi$函数是积性函数，所以他的和函数也是积性函数，所以我们分别算出每一个质数对它的贡献然后相乘即可。  f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{n}{d} =\sum_{i=0}^{q}\phi(p^i)\frac{p^q}{p^i} =\sum_{i=0}^{q}(p-1)*p^{i-1}*p^{q-i} =\sum_{i">
+  <meta name="description" content="题目链接HDU-6265 思路因为$\phi$函数是积性函数，所以他的和函数也是积性函数，所以我们分别算出每一个质数对它的贡献然后相乘即可。  f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{p^q}{d} =\sum_{i=0}^{q}\phi(p^i)\frac{p^q}{p^i} =\sum_{i=0}^{q}(p-1)*p^{i-1}*p^{q-i} =\sum_">
 <meta name="keywords" content="数论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HDU-6265">
 <meta property="og:url" content="https://gerayking.github.io/2019/10/20/HDU-6265/index.html">
 <meta property="og:site_name" content="一方通行">
-<meta property="og:description" content="题目链接HDU-6265 思路因为$\phi$函数是积性函数，所以他的和函数也是积性函数，所以我们分别算出每一个质数对它的贡献然后相乘即可。  f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{n}{d} =\sum_{i=0}^{q}\phi(p^i)\frac{p^q}{p^i} =\sum_{i=0}^{q}(p-1)*p^{i-1}*p^{q-i} =\sum_{i">
+<meta property="og:description" content="题目链接HDU-6265 思路因为$\phi$函数是积性函数，所以他的和函数也是积性函数，所以我们分别算出每一个质数对它的贡献然后相乘即可。  f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{p^q}{d} =\sum_{i=0}^{q}\phi(p^i)\frac{p^q}{p^i} =\sum_{i=0}^{q}(p-1)*p^{i-1}*p^{q-i} =\sum_">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-20T04:51:51.266Z">
+<meta property="og:updated_time" content="2019-10-20T04:56:18.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDU-6265">
-<meta name="twitter:description" content="题目链接HDU-6265 思路因为$\phi$函数是积性函数，所以他的和函数也是积性函数，所以我们分别算出每一个质数对它的贡献然后相乘即可。  f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{n}{d} =\sum_{i=0}^{q}\phi(p^i)\frac{p^q}{p^i} =\sum_{i=0}^{q}(p-1)*p^{i-1}*p^{q-i} =\sum_{i">
+<meta name="twitter:description" content="题目链接HDU-6265 思路因为$\phi$函数是积性函数，所以他的和函数也是积性函数，所以我们分别算出每一个质数对它的贡献然后相乘即可。  f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{p^q}{d} =\sum_{i=0}^{q}\phi(p^i)\frac{p^q}{p^i} =\sum_{i=0}^{q}(p-1)*p^{i-1}*p^{q-i} =\sum_">
   <link rel="canonical" href="https://gerayking.github.io/2019/10/20/HDU-6265/">
 
 
@@ -257,7 +257,7 @@
                 
               
 
-              <time title="创建时间：2019-10-20 12:37:00 / 修改时间：12:51:51" itemprop="dateCreated datePublished" datetime="2019-10-20T12:37:00+08:00">2019-10-20</time>
+              <time title="创建时间：2019-10-20 12:37:00 / 修改时间：12:56:18" itemprop="dateCreated datePublished" datetime="2019-10-20T12:37:00+08:00">2019-10-20</time>
             </span>
           
             
@@ -279,7 +279,7 @@
         <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/contest/336234" target="_blank" rel="noopener">HDU-6265</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>因为$\phi$函数是积性函数，所以他的和函数也是积性函数，所以我们分别算出每一个质数对它的贡献然后相乘即可。</p>
 <script type="math/tex; mode=display">
-f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{n}{d}
+f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{p^q}{d}
 =\sum_{i=0}^{q}\phi(p^i)\frac{p^q}{p^i}
 =\sum_{i=0}^{q}(p-1)*p^{i-1}*p^{q-i}
 =\sum_{i=0}^{q}(p-1)*p^{q-1}</script><p>这样就能对每一个进行计算答案了，注意当i=0的时候的答案需要另外算。<br><a id="more"></a></p>
@@ -317,6 +317,10 @@ f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{n}{d}
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/10/21/SSH-Studyline/" rel="prev" title="SSH-Studyline">
+                  SSH-Studyline <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -378,7 +382,7 @@ f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{n}{d}
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">63</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -404,7 +408,7 @@ f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{n}{d}
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>

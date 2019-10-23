@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="题目连接美味果冻 思路交换枚举项j，就是把分母作为枚举项，然后利用等差数列求和公式以及维护次方数组来完成对第二块的计算，如果用快速幂的话复杂度回事nlognlogn，所以这题不能用快速幂，必须维护次方数组。">
-<meta name="keywords" content="数论">
+  <meta name="description" content="学习步骤java分成J2ME（移动应用开发），J2SE（桌面应用开发），J2EE(Web企业级应用)，所以java并不是单机版的，只是面向对象语言。建议如果学习java体系的话可以这样去学习：第一阶段Java基础，包括java语法，面向对象特征，常见API，集合框架；第二阶段java界面编程，包括AWT，事件机制，SWING，这个部分也可以跳过，用的时候再看都能来及；">
+<meta name="keywords" content="SSH">
 <meta property="og:type" content="article">
-<meta property="og:title" content="美味果冻-数论">
-<meta property="og:url" content="https://gerayking.github.io/2019/10/12/美味果冻-数论/index.html">
+<meta property="og:title" content="SSH-Studyline">
+<meta property="og:url" content="https://gerayking.github.io/2019/10/21/SSH-Studyline/index.html">
 <meta property="og:site_name" content="一方通行">
-<meta property="og:description" content="题目连接美味果冻 思路交换枚举项j，就是把分母作为枚举项，然后利用等差数列求和公式以及维护次方数组来完成对第二块的计算，如果用快速幂的话复杂度回事nlognlogn，所以这题不能用快速幂，必须维护次方数组。">
+<meta property="og:description" content="学习步骤java分成J2ME（移动应用开发），J2SE（桌面应用开发），J2EE(Web企业级应用)，所以java并不是单机版的，只是面向对象语言。建议如果学习java体系的话可以这样去学习：第一阶段Java基础，包括java语法，面向对象特征，常见API，集合框架；第二阶段java界面编程，包括AWT，事件机制，SWING，这个部分也可以跳过，用的时候再看都能来及；">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-17T12:59:17.606Z">
+<meta property="og:updated_time" content="2019-10-21T01:44:44.954Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="美味果冻-数论">
-<meta name="twitter:description" content="题目连接美味果冻 思路交换枚举项j，就是把分母作为枚举项，然后利用等差数列求和公式以及维护次方数组来完成对第二块的计算，如果用快速幂的话复杂度回事nlognlogn，所以这题不能用快速幂，必须维护次方数组。">
-  <link rel="canonical" href="https://gerayking.github.io/2019/10/12/美味果冻-数论/">
+<meta name="twitter:title" content="SSH-Studyline">
+<meta name="twitter:description" content="学习步骤java分成J2ME（移动应用开发），J2SE（桌面应用开发），J2EE(Web企业级应用)，所以java并不是单机版的，只是面向对象语言。建议如果学习java体系的话可以这样去学习：第一阶段Java基础，包括java语法，面向对象特征，常见API，集合框架；第二阶段java界面编程，包括AWT，事件机制，SWING，这个部分也可以跳过，用的时候再看都能来及；">
+  <link rel="canonical" href="https://gerayking.github.io/2019/10/21/SSH-Studyline/">
 
 
 <script id="page-configurations">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>美味果冻-数论 | 一方通行</title>
+  <title>SSH-Studyline | 一方通行</title>
   
 
 
@@ -226,7 +226,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/10/12/美味果冻-数论/">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/10/21/SSH-Studyline/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gerayking">
@@ -240,7 +240,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            美味果冻-数论
+            SSH-Studyline
             
 
           
@@ -257,19 +257,11 @@
                 
               
 
-              <time title="创建时间：2019-10-12 10:51:23" itemprop="dateCreated datePublished" datetime="2019-10-12T10:51:23+08:00">2019-10-12</time>
+              <time title="创建时间：2019-10-21 09:41:22 / 修改时间：09:44:44" itemprop="dateCreated datePublished" datetime="2019-10-21T09:41:22+08:00">2019-10-21</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-17 20:59:17" itemprop="dateModified" datetime="2019-10-17T20:59:17+08:00">2019-10-17</time>
-              </span>
             
           
 
@@ -284,9 +276,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h3><p><a href="https://ac.nowcoder.com/acm/contest/1114/B" target="_blank" rel="noopener">美味果冻</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>交换枚举项j，就是把分母作为枚举项，然后利用等差数列求和公式以及维护次方数组来完成对第二块的计算，如果用快速幂的话复杂度回事n<em>logn</em>logn，所以这题不能用快速幂，必须维护次方数组。<br> <a id="more"></a></p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> md = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">3e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> mul[maxn];</span><br><span class="line"><span class="function">ll <span class="title">sum</span><span class="params">(ll l,ll r)</span></span>&#123;<span class="keyword">return</span> ((l+r)*(r-l+<span class="number">1</span>)/<span class="number">2</span>)%md;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)mul[i]=<span class="number">1</span>;</span><br><span class="line">	ll ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=n;j+=i)</span><br><span class="line">		&#123;</span><br><span class="line">			mul[j/i]=(<span class="number">1l</span>l*mul[j/i]*(j/i))%md;</span><br><span class="line">			ans=(ans+sum(j,min(j+i<span class="number">-1</span>,n))*mul[j/i])%md;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="学习步骤"><a href="#学习步骤" class="headerlink" title="学习步骤"></a>学习步骤</h2><p>java分成J2ME（移动应用开发），J2SE（桌面应用开发），J2EE(Web企业级应用)，所以java并不是单机版的，只是面向对象语言。建议如果学习java体系的话可以这样去学习：</p><h3 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h3><p>Java基础，包括java语法，面向对象特征，常见API，集合框架；</p><h3 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h3><p>java界面编程，包括AWT，事件机制，SWING，这个部分也可以跳过，用的时候再看都能来及；</p><a id="more"></a>
+
+
+<h3 id="第三阶段"><a href="#第三阶段" class="headerlink" title="第三阶段"></a>第三阶段</h3><p>java API：输入输出，多线程，网络编程，反射注解等，java的精华部分；   </p>
+<h3 id="第四阶段"><a href="#第四阶段" class="headerlink" title="第四阶段"></a>第四阶段</h3><p>数据库SQL基础，包括增删改查操作以及多表查询； </p>
+<h3 id="第五阶段"><a href="#第五阶段" class="headerlink" title="第五阶段"></a>第五阶段</h3><p>JDBC编程：包括JDBC原理，JDBC连接库，JDBC API，虽然现在Hibernate比JDBC要方便许多，但是JDBC技术仍然在使用，JDBC思想尤为重要； </p>
+<h3 id="第六阶段"><a href="#第六阶段" class="headerlink" title="第六阶段"></a>第六阶段</h3><p>JDBC深入理解高级特性：包括数据库连接池，存储过程，触发器，CRM思想； </p>
+<h3 id="第七阶段"><a href="#第七阶段" class="headerlink" title="第七阶段"></a>第七阶段</h3><p>HTML语言学习，包括HTML标签，表单标签以及CSS，这是Web应用开发的基础； </p>
+<h3 id="第八阶段"><a href="#第八阶段" class="headerlink" title="第八阶段"></a>第八阶段</h3><p>JavaScript脚本语言，包括javaScript语法和对象，就这两个方面的内容；</p>
+<h3 id="第九阶段"><a href="#第九阶段" class="headerlink" title="第九阶段"></a>第九阶段</h3><p>DOM编程，包括DOM原理，常用的DOM元素以及比较重要的DOM编程思想； </p>
+<h3 id="第十阶段"><a href="#第十阶段" class="headerlink" title="第十阶段"></a>第十阶段</h3><p>Servlet开发，从此开始踏入java开发的重要一步，包括XML，Tomcat服务器的安装使用操作，HTTP协议简单理解，Servlet API等，这个是java web开发的基础。；</p>
+<h3 id="第十一阶段"><a href="#第十一阶段" class="headerlink" title="第十一阶段"></a>第十一阶段</h3><p>JSP开发：JSP语法和标签，自定义标签，EL,JSTL库了解以及MVC三层架构的设计模式理念； </p>
+<h3 id="第十二阶段"><a href="#第十二阶段" class="headerlink" title="第十二阶段"></a>第十二阶段</h3><p>AJAX开发：AJAX原理，请求响应处理，AJAX开发库； </p>
+<h3 id="第十三阶段"><a href="#第十三阶段" class="headerlink" title="第十三阶段"></a>第十三阶段</h3><p>轻量级框架，三大框架之一Struts框架的学习，自此踏入java web开发的精华部分，包括Struts体系架构，各种组件，标签库和扩展性的学习； </p>
+<h3 id="第十四阶段"><a href="#第十四阶段" class="headerlink" title="第十四阶段"></a>第十四阶段</h3><p>Hibernate框架学习，三大框架之一，包括检索映射技术，多表查询技术，缓存技术以及性能方面的优化； </p>
+<h3 id="第十五阶段"><a href="#第十五阶段" class="headerlink" title="第十五阶段"></a>第十五阶段</h3><p>Spring框架的学习，三大框架之一，包括了IOC,AOP,DataSource，事务，SSH集成以及JPA集成； </p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>还有些java的技术，包括EJB3.0等，可以选择学习，与三大轻量级框架相比，EJB就是当之无愧的重量级了（不过EJB3.0减肥许多了较EJB2.X来说）。 </p>
+<p>补充：JSP部分主要包括了：<br>1、JSP指令和动作指令；<br>2、JSP内置对象（request,response,session,out,application等）；<br>3、JSTL(JSP标准标签库)；<br>4、JSP数据库操作（jdbc）；  </p>
 
     </div>
 
@@ -302,7 +309,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/数论/" rel="tag"># 数论</a>
+              <a href="/tags/SSH/" rel="tag"># SSH</a>
             
           </div>
         
@@ -312,8 +319,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/10/06/OS-三种系统调度方式/" rel="next" title="OS-三种系统调度方式">
-                  <i class="fa fa-chevron-left"></i> OS-三种系统调度方式
+                <a href="/2019/10/20/HDU-6265/" rel="next" title="HDU-6265">
+                  <i class="fa fa-chevron-left"></i> HDU-6265
                 </a>
               
             </div>
@@ -321,10 +328,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/16/SPOJ-APS2-min-25筛/" rel="prev" title="SPOJ-APS2-min_25筛">
-                  SPOJ-APS2-min_25筛 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -370,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目连接"><span class="nav-number">1.</span> <span class="nav-text">题目连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习步骤"><span class="nav-number">1.</span> <span class="nav-text">学习步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一阶段"><span class="nav-number">1.1.</span> <span class="nav-text">第一阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二阶段"><span class="nav-number">1.2.</span> <span class="nav-text">第二阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三阶段"><span class="nav-number">1.3.</span> <span class="nav-text">第三阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四阶段"><span class="nav-number">1.4.</span> <span class="nav-text">第四阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五阶段"><span class="nav-number">1.5.</span> <span class="nav-text">第五阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六阶段"><span class="nav-number">1.6.</span> <span class="nav-text">第六阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七阶段"><span class="nav-number">1.7.</span> <span class="nav-text">第七阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八阶段"><span class="nav-number">1.8.</span> <span class="nav-text">第八阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九阶段"><span class="nav-number">1.9.</span> <span class="nav-text">第九阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十阶段"><span class="nav-number">1.10.</span> <span class="nav-text">第十阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十一阶段"><span class="nav-number">1.11.</span> <span class="nav-text">第十一阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十二阶段"><span class="nav-number">1.12.</span> <span class="nav-text">第十二阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十三阶段"><span class="nav-number">1.13.</span> <span class="nav-text">第十三阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十四阶段"><span class="nav-number">1.14.</span> <span class="nav-text">第十四阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十五阶段"><span class="nav-number">1.15.</span> <span class="nav-text">第十五阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">1.16.</span> <span class="nav-text">最后</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
