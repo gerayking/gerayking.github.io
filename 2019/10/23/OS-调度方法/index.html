@@ -55,19 +55,15 @@
   };
 </script>
 
-  <meta name="description" content="题目链接Treasure Cave 题目描述实际上就是求二叉树的最短遍历，输出路径 思路采用递归的方式，先不停的深入下去，找到点后就输出，在递归的过程中输出即可。 代码实现123456789101112131415161718192021222324252627#include&amp;lt;iostream&amp;gt;using namespace std;int pre[5010];int solve(i">
-<meta name="keywords" content="递归">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Treasure Cave">
-<meta property="og:url" content="https://gerayking.github.io/2019/08/14/Treasure-Cave-二叉树/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="OS-调度方法">
+<meta property="og:url" content="https://gerayking.github.io/2019/10/23/OS-调度方法/index.html">
 <meta property="og:site_name" content="一方通行">
-<meta property="og:description" content="题目链接Treasure Cave 题目描述实际上就是求二叉树的最短遍历，输出路径 思路采用递归的方式，先不停的深入下去，找到点后就输出，在递归的过程中输出即可。 代码实现123456789101112131415161718192021222324252627#include&amp;lt;iostream&amp;gt;using namespace std;int pre[5010];int solve(i">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-14T15:56:03.212Z">
+<meta property="og:updated_time" content="2019-10-23T00:29:41.516Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Treasure Cave">
-<meta name="twitter:description" content="题目链接Treasure Cave 题目描述实际上就是求二叉树的最短遍历，输出路径 思路采用递归的方式，先不停的深入下去，找到点后就输出，在递归的过程中输出即可。 代码实现123456789101112131415161718192021222324252627#include&amp;lt;iostream&amp;gt;using namespace std;int pre[5010];int solve(i">
-  <link rel="canonical" href="https://gerayking.github.io/2019/08/14/Treasure-Cave-二叉树/">
+<meta name="twitter:title" content="OS-调度方法">
+  <link rel="canonical" href="https://gerayking.github.io/2019/10/23/OS-调度方法/">
 
 
 <script id="page-configurations">
@@ -81,7 +77,7 @@
   };
 </script>
 
-  <title>Treasure Cave | 一方通行</title>
+  <title>OS-调度方法 | 一方通行</title>
   
 
 
@@ -226,7 +222,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/14/Treasure-Cave-二叉树/">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/10/23/OS-调度方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gerayking">
@@ -240,7 +236,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            Treasure Cave
+            OS-调度方法
             
 
           
@@ -257,12 +253,8 @@
                 
               
 
-              <time title="创建时间：2019-08-14 19:40:48 / 修改时间：23:56:03" itemprop="dateCreated datePublished" datetime="2019-08-14T19:40:48+08:00">2019-08-14</time>
+              <time title="创建时间：2019-10-23 08:29:41" itemprop="dateCreated datePublished" datetime="2019-10-23T08:29:41+08:00">2019-10-23</time>
             </span>
-          
-            
-
-            
           
 
           
@@ -276,10 +268,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://ac.nowcoder.com/acm/contest/1072/I" target="_blank" rel="noopener">Treasure Cave</a></p>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>实际上就是求二叉树的最短遍历，输出路径</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>采用递归的方式，先不停的深入下去，找到点后就输出，在递归的过程中输出即可。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> pre[<span class="number">5010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(m==<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(solve(x+<span class="number">1</span>,pre[m]))<span class="built_in">cout</span>&lt;&lt;pre[m]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,s,t;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;s&gt;&gt;t)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> mm,u,p;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)pre[i]=i;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=s;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;mm&gt;&gt;u&gt;&gt;p;</span><br><span class="line">			pre[u]=pre[p]=mm;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(solve(<span class="number">1</span>,t))<span class="built_in">cout</span>&lt;&lt;t&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
     </div>
 
     
@@ -289,23 +278,14 @@
       
 
       <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/递归/" rel="tag"># 递归</a>
-            
-          </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/08/14/HDU4734-数位DP/" rel="next" title="HDU4734-数位DP">
-                  <i class="fa fa-chevron-left"></i> HDU4734-数位DP
+                <a href="/2019/10/21/SSH-Studyline/" rel="next" title="SSH-Studyline">
+                  <i class="fa fa-chevron-left"></i> SSH-Studyline
                 </a>
               
             </div>
@@ -314,8 +294,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/08/14/Pair-数位DP/" rel="prev" title="Pair-数位DP">
-                  Pair-数位DP <i class="fa fa-chevron-right"></i>
+                <a href="/2019/10/27/java学习之路4-Socket/" rel="prev" title="java学习之路4-Socket">
+                  java学习之路4-Socket <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -362,8 +342,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">4.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
-        
       </div>
       <!--/noindex-->
 
