@@ -221,6 +221,89 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/22/java学习之路2-数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/08/22/java学习之路2-数组/" class="post-title-link" itemprop="url">java学习之路2-数组</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-22 14:12:54 / 修改时间：15:37:45" itemprop="dateCreated datePublished" datetime="2019-08-22T14:12:54+08:00">2019-08-22</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>java的数组与c++的不同<br>java的数组需要在堆中申请内存</p><blockquote>
+<p>int[] a = new int[10];</p>
+</blockquote><h1 id="一维数组与Arrays"><a href="#一维数组与Arrays" class="headerlink" title="一维数组与Arrays"></a>一维数组与Arrays</h1><p>Arrays是java的一个类，里面的函数能够对数组进行处理，一共有以下几个函数</p><h2 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h2><blockquote>
+<p>String toString (type[] a)<br>作用:把a数组中的全部元素转换成为字符串，中间用“，”隔开</p>
+</blockquote>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/08/22/java学习之路2-数组/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/21/Codeforces-Round-581-Div-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -976,85 +1059,6 @@ x≡a_{n}(mod\ b_n)
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/14/HDU4734-数位DP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/08/14/HDU4734-数位DP/" class="post-title-link" itemprop="url">HDU4734-数位DP</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-14 19:26:02 / 修改时间：19:39:48" itemprop="dateCreated datePublished" datetime="2019-08-14T19:26:02+08:00">2019-08-14</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://cn.vjudge.net/problem/HDU-4734" target="_blank" rel="noopener">F(x)</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一开始我是用前缀和分开，然后最后判断sum与f(a)的关系的，但是<br><img src="https://i.loli.net/2019/08/14/gFWj24N7LoQJkxy.png" alt><br>后来我发现，如果我这样写，对于不同的f(a),需要不停的对dp数组重置为-1.<br>于是，我们必须要找到一个状态，与f(a)无关。所以我们可以把f(a)移项。<br>这样我们维护的就是sum-f(a)的值，并且对于每次搜索，我们只需要先把f(a)放进去。<br>然后出来的时候判断是否大于等于零即可<br>这样做的好处就是至于要对dp数组初始化一次即可，记忆化搜索可加速。</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/08/14/HDU4734-数位DP/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1104,7 +1108,7 @@ x≡a_{n}(mod\ b_n)
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1130,7 +1134,7 @@ x≡a_{n}(mod\ b_n)
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1238,9 +1242,9 @@ x≡a_{n}(mod\ b_n)
       
     
       
-        
-      
     
+      
+        
       
     
       
