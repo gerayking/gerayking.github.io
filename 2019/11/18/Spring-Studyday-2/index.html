@@ -63,10 +63,12 @@
 <meta property="og:site_name" content="一方通行">
 <meta property="og:description" content="Spring Bean 定义Bean定义bean是一个被实例化，组装并通过Spring IoC容器管理的对象bean定义包含成为配置元数据的信息。需要明白以下问题 如何创建一个bean bean的声明周期详细信息 bean的依赖关系     属性 描述     class 这个属性强制性，并且指定用来创建bean类   name 这个属性是bean的标识符，就是这个bean的名字，可以使用ID或者">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-18T13:56:18.749Z">
+<meta property="og:image" content="https://i.loli.net/2019/11/18/aMOWBzo4XkqIst9.png">
+<meta property="og:updated_time" content="2019-11-19T16:58:15.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring-Studyday-2">
 <meta name="twitter:description" content="Spring Bean 定义Bean定义bean是一个被实例化，组装并通过Spring IoC容器管理的对象bean定义包含成为配置元数据的信息。需要明白以下问题 如何创建一个bean bean的声明周期详细信息 bean的依赖关系     属性 描述     class 这个属性强制性，并且指定用来创建bean类   name 这个属性是bean的标识符，就是这个bean的名字，可以使用ID或者">
+<meta name="twitter:image" content="https://i.loli.net/2019/11/18/aMOWBzo4XkqIst9.png">
   <link rel="canonical" href="https://gerayking.github.io/2019/11/18/Spring-Studyday-2/">
 
 
@@ -257,11 +259,19 @@
                 
               
 
-              <time title="创建时间：2019-11-18 21:43:18 / 修改时间：21:56:18" itemprop="dateCreated datePublished" datetime="2019-11-18T21:43:18+08:00">2019-11-18</time>
+              <time title="创建时间：2019-11-18 21:43:18" itemprop="dateCreated datePublished" datetime="2019-11-18T21:43:18+08:00">2019-11-18</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-20 00:58:15" itemprop="dateModified" datetime="2019-11-20T00:58:15+08:00">2019-11-20</time>
+              </span>
             
           
 
@@ -326,7 +336,16 @@
 </div><a id="more"></a>
 
 
-<h3 id="Bean与Spring容器的关系"><a href="#Bean与Spring容器的关系" class="headerlink" title="Bean与Spring容器的关系"></a>Bean与Spring容器的关系</h3>
+<h3 id="Bean与Spring容器的关系"><a href="#Bean与Spring容器的关系" class="headerlink" title="Bean与Spring容器的关系"></a>Bean与Spring容器的关系</h3><p><img src="https://i.loli.net/2019/11/18/aMOWBzo4XkqIst9.png" alt="image.png"></p>
+<blockquote>
+<p>Bean配置信息定义了Bean的实现及依赖关系，Spring容器根据各种形式的Bean配置信息在容器内部建立Bean定义注册表，然后根据注册表加载、实例化Bean，并建立Bean和Bean的依赖关系，最后将这些准备就绪的Bean放到Bean缓存池中，以供外层的应用程序进行调用。</p>
+</blockquote>
+<h3 id="Bean配置"><a href="#Bean配置" class="headerlink" title="Bean配置"></a>Bean配置</h3><ol>
+<li>基于下xml配置Bean</li>
+<li>使用注解定义Bean</li>
+<li>基于java类提供Bean定义信息</li>
+</ol>
+
     </div>
 
     
@@ -360,6 +379,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/11/23/HDU-6242-基础计算几何/" rel="prev" title="HDU-6242(基础计算几何)">
+                  HDU-6242(基础计算几何) <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -405,7 +428,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Bean-定义"><span class="nav-number">1.</span> <span class="nav-text">Spring Bean 定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean定义"><span class="nav-number">1.1.</span> <span class="nav-text">Bean定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean与Spring容器的关系"><span class="nav-number">1.2.</span> <span class="nav-text">Bean与Spring容器的关系</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Bean-定义"><span class="nav-number">1.</span> <span class="nav-text">Spring Bean 定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean定义"><span class="nav-number">1.1.</span> <span class="nav-text">Bean定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean与Spring容器的关系"><span class="nav-number">1.2.</span> <span class="nav-text">Bean与Spring容器的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean配置"><span class="nav-number">1.3.</span> <span class="nav-text">Bean配置</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -421,7 +444,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -447,7 +470,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>

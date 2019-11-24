@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="两直线交点首先我们知道两点能够确定一条直线，能够得到直线的方程F(x)=ax+by+c假设现在有两条直线F(x)_1=a_1x+b_1y+c_1F(x)_2=a_2x+b_2y+c_2联立两个方程就可以得到一个简答的答案y_0=\frac{a_2c_1-a_1c_2}{D}x_0=\frac{b_1c_2-b_2c_1}{D}">
+<meta name="keywords" content="基础计算几何">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础计算机和-基础部分">
+<meta property="og:url" content="https://gerayking.github.io/2019/11/24/基础计算机和-求直线交点/index.html">
+<meta property="og:site_name" content="一方通行">
+<meta property="og:description" content="两直线交点首先我们知道两点能够确定一条直线，能够得到直线的方程F(x)=ax+by+c假设现在有两条直线F(x)_1=a_1x+b_1y+c_1F(x)_2=a_2x+b_2y+c_2联立两个方程就可以得到一个简答的答案y_0=\frac{a_2c_1-a_1c_2}{D}x_0=\frac{b_1c_2-b_2c_1}{D}">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-24T11:24:13.321Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基础计算机和-基础部分">
+<meta name="twitter:description" content="两直线交点首先我们知道两点能够确定一条直线，能够得到直线的方程F(x)=ax+by+c假设现在有两条直线F(x)_1=a_1x+b_1y+c_1F(x)_2=a_2x+b_2y+c_2联立两个方程就可以得到一个简答的答案y_0=\frac{a_2c_1-a_1c_2}{D}x_0=\frac{b_1c_2-b_2c_1}{D}">
+  <link rel="canonical" href="https://gerayking.github.io/2019/11/24/基础计算机和-求直线交点/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>基础计算机和-基础部分 | 一方通行</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一方通行</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">你最愿意做的哪件事，才是你的天赋所在</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+        
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      
+    
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/11/24/基础计算机和-求直线交点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            基础计算机和-基础部分
+            
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-24 15:46:44 / 修改时间：19:24:13" itemprop="dateCreated datePublished" datetime="2019-11-24T15:46:44+08:00">2019-11-24</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="两直线交点"><a href="#两直线交点" class="headerlink" title="两直线交点"></a>两直线交点</h3><p>首先我们知道两点能够确定一条直线，能够得到直线的方程</p><script type="math/tex; mode=display">F(x)=ax+by+c</script><p>假设现在有两条直线</p><script type="math/tex; mode=display">F(x)_1=a_1x+b_1y+c_1</script><script type="math/tex; mode=display">F(x)_2=a_2x+b_2y+c_2</script><p>联立两个方程就可以得到一个简答的答案</p><script type="math/tex; mode=display">y_0=\frac{a_2c_1-a_1c_2}{D}</script><script type="math/tex; mode=display">x_0=\frac{b_1c_2-b_2c_1}{D}</script><a id="more"></a>
+
+
+<script type="math/tex; mode=display">D=a_1b_2-a_2b_1</script><p>实际上就是联立了方程组</p>
+<script type="math/tex; mode=display">\begin{cases}
+F(x)_1=a_1x+b_1y+c_1\\
+F(x)_2=a_2x+b_2y+c_2
+\end{cases}</script><p>利用线性代数的解法转换为行列式就是</p>
+<script type="math/tex; mode=display">\begin{vmatrix}
+  i&j&k\\
+  a_1&b_1&c_1\\
+  a_2&b_2&c_2\\
+\end{vmatrix}</script><p>解出的i,j,k对应x,y,d;</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">	<span class="keyword">double</span> x,y;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">line</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">double</span> a,b,c;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">line <span class="title">getline</span><span class="params">(Point p1,Point p2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> line&#123;<span class="number">1</span>/(p2.x-p1.x),<span class="number">-1</span>/(p2.y-p1.y),(p1.y/(p2.y-p1.y)-p1.x/(p2.x-p1.x))&#125;;<span class="comment">//取得方程</span></span><br><span class="line"> &#125; </span><br><span class="line"><span class="function">Point <span class="title">solve</span><span class="params">(line l1,line l2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> D = l1.a*l2.b-l2.a*l1.b;</span><br><span class="line">	<span class="keyword">if</span>(D==<span class="number">0</span>)<span class="keyword">return</span> Point&#123;<span class="number">1e18</span>,<span class="number">1e18</span>&#125;;<span class="comment">//平行或者重合</span></span><br><span class="line">	<span class="keyword">return</span> Point&#123;l1.b*l2.c-l2.b*l1.c/D,l2.a*l1.c-l1.a*l2.c/D&#125;;<span class="comment">//返回点的坐标 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	solve(l1,l2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="求任意多边形的面积"><a href="#求任意多边形的面积" class="headerlink" title="求任意多边形的面积"></a>求任意多边形的面积</h3><h4 id="叉乘"><a href="#叉乘" class="headerlink" title="叉乘"></a>叉乘</h4><p>假设向量$\vec{a}=(x_1,y_1),\vec{b}=(x_2,y_2)$<br>那么向量的叉乘定义为</p>
+<script type="math/tex; mode=display">a×b=\begin{vmatrix}
+    x_1&y_1\\
+    x_2&y_2\\
+\end{vmatrix}=x_1y_2-y_1x_2= \vert a\vert \vert b \vert \sin(\Theta)</script><p>结果也就是两个向量构成三角形面积的两倍，使用这个方法开求多边形的面积<br>,假设多边形的点为$p_1,p_2\cdots,p_n;v_i为辅助点O与p_i的向量$。</p>
+<script type="math/tex; mode=display">S=\frac{1}{2}\sum_{i=1}^n\vert v_i×v_{i\%(n+1)}\vert</script><h3 id="圆与直线的关系"><a href="#圆与直线的关系" class="headerlink" title="圆与直线的关系"></a>圆与直线的关系</h3><h4 id="直线与圆的交点"><a href="#直线与圆的交点" class="headerlink" title="直线与圆的交点"></a>直线与圆的交点</h4><p>相离，相交，相切，可以通过圆心与直线的距离和半径的大小比较来判断</p>
+<h4 id="圆与圆的交点"><a href="#圆与圆的交点" class="headerlink" title="圆与圆的交点"></a>圆与圆的交点</h4><p>通过圆心得距离与两个圆得半径和来判断圆与圆之间的关系，有外离，内含，相交，相切</p>
+<h5 id="外离"><a href="#外离" class="headerlink" title="外离"></a>外离</h5><p>当$r1+r2&lt;d$时，两个圆无交点，为外离</p>
+<h5 id="内含"><a href="#内含" class="headerlink" title="内含"></a>内含</h5><p>当$r1&gt;d||r2&gt;d$时为内含</p>
+<h5 id="相切"><a href="#相切" class="headerlink" title="相切"></a>相切</h5><p>当$r1+r2==d$时，为相切，相切的情况下，就可以转化为直线与圆的关系求出切点。</p>
+<h5 id="相交"><a href="#相交" class="headerlink" title="相交"></a>相交</h5><p>当$r1+r2&lt;d$时，相交，相交求交点的做法联立两个方程带入即可</p>
+<h3 id="极角排序"><a href="#极角排序" class="headerlink" title="极角排序"></a>极角排序</h3><p>叉积排序，atan2排序与象限排序<br>叉积排序速度慢，精度高，但是可能会炸范围，atan2精度低，单是速度块。</p>
+<h4 id="叉积排序"><a href="#叉积排序" class="headerlink" title="叉积排序"></a>叉积排序</h4><p>选定基准点$O(x，y)$<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Cross</span><span class="params">(Point p1,Cross p2)</span><span class="comment">//叉积</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> p1.x*p2.y-p2.x-p1.y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Point p1,Point p2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Cross(p1,p2)==<span class="number">0</span>)<span class="keyword">return</span> p1.x&lt;p2.x;若极角相同返回x小的</span><br><span class="line">    reutrn Cross(p1,p2)&gt;0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="atan2排序"><a href="#atan2排序" class="headerlink" title="atan2排序"></a>atan2排序</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">atan2</span>(<span class="keyword">double</span> y,<span class="keyword">double</span> x);<span class="comment">//返回(x,y)与(0,0)与x正轴之间的夹角弧度</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">com</span><span class="params">(Point p1,Point p2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">atan2</span>(p1.y,p1.x)-<span class="built_in">atan2</span>(p2.y,p2.x)!=<span class="number">0</span>)<span class="keyword">return</span> <span class="built_in">atan2</span>(p1.y,p1.x)&lt;<span class="built_in">atan2</span>(p2.y,p2.x);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> p1.x&lt;p2.x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="象限排序"><a href="#象限排序" class="headerlink" title="象限排序"></a>象限排序</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Quadrant</span><span class="params">(Point A)</span></span>&#123;<span class="comment">//返回所在象限</span></span><br><span class="line">   <span class="keyword">if</span>(A.x&gt;<span class="number">0</span>&amp;&amp;A.y&gt;=<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">if</span>(A.x&lt;=<span class="number">0</span>&amp;&amp;A.y&gt;<span class="number">0</span>)<span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">   <span class="keyword">if</span>(A.x&lt;<span class="number">0</span>&amp;&amp;A.y&lt;=<span class="number">0</span>)<span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">   <span class="keyword">if</span>(A.x&gt;=<span class="number">0</span>&amp;&amp;A.y&lt;<span class="number">0</span>)<span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp2</span><span class="params">(Point A,Point B)</span></span>&#123;<span class="comment">//以原点为极点，先按照象限排序</span></span><br><span class="line">   <span class="keyword">if</span>(Quadrant(A)==Quadrant(B))</span><br><span class="line">        <span class="keyword">return</span> cmp1(A,B);<span class="comment">//象限相同时，按照极角排序</span></span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">return</span> Quadrant(A)&lt;Quadrant(B);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><a href="http://poj.org/problem?id=1696" target="_blank" rel="noopener">Poj1696</a></p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> eps </span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">	<span class="keyword">double</span> x,y;</span><br><span class="line">	<span class="keyword">int</span> id;</span><br><span class="line">&#125;Pole,p[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Vector</span>&#123;</span></span><br><span class="line">	<span class="keyword">double</span> x,y;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">syn</span><span class="params">(<span class="keyword">double</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">fabs</span>(x)&lt;<span class="number">1e-8</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(x&gt;<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Cross</span><span class="params">(Vector a,Vector b)</span></span>&#123;<span class="keyword">return</span> a.x*b.y-a.y*b.x;&#125;</span><br><span class="line">Vector <span class="keyword">operator</span> - (Point a,Point b)&#123;<span class="keyword">return</span> &#123;a.x-b.x,a.y-b.y&#125;;&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Point a,Point b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(syn(Cross(a-Pole,b-Pole))==<span class="number">0</span>)<span class="keyword">return</span> a.x&lt;b.x;</span><br><span class="line">	<span class="keyword">return</span> Cross(a-Pole,b-Pole)&gt;<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">int</span> index = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%lf%lf"</span>,&amp;p[i].id,&amp;p[i].x,&amp;p[i].y);</span><br><span class="line">		<span class="keyword">if</span>(i!=<span class="number">1</span>&amp;&amp;p[index].y&gt;p[i].y)index=i;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(i!=<span class="number">1</span>&amp;&amp;p[index].y==p[i].y&amp;&amp;p[i].x&lt;p[index].x)index=i;</span><br><span class="line">	&#125;</span><br><span class="line">	swap(p[<span class="number">1</span>],p[index]);</span><br><span class="line">	Pole = p[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		sort(p+i,p+<span class="number">1</span>+n,cmp);</span><br><span class="line">		Pole=p[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">" %d"</span>,p[i].id);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)solve();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/基础计算几何/" rel="tag"># 基础计算几何</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/11/23/HDU-6242-基础计算几何/" rel="next" title="HDU-6242(基础计算几何)">
+                  <i class="fa fa-chevron-left"></i> HDU-6242(基础计算几何)
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#两直线交点"><span class="nav-number">1.</span> <span class="nav-text">两直线交点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求任意多边形的面积"><span class="nav-number">3.</span> <span class="nav-text">求任意多边形的面积</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#叉乘"><span class="nav-number">3.1.</span> <span class="nav-text">叉乘</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#圆与直线的关系"><span class="nav-number">4.</span> <span class="nav-text">圆与直线的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直线与圆的交点"><span class="nav-number">4.1.</span> <span class="nav-text">直线与圆的交点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#圆与圆的交点"><span class="nav-number">4.2.</span> <span class="nav-text">圆与圆的交点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#外离"><span class="nav-number">4.2.1.</span> <span class="nav-text">外离</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内含"><span class="nav-number">4.2.2.</span> <span class="nav-text">内含</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相切"><span class="nav-number">4.2.3.</span> <span class="nav-text">相切</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相交"><span class="nav-number">4.2.4.</span> <span class="nav-text">相交</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极角排序"><span class="nav-number">5.</span> <span class="nav-text">极角排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#叉积排序"><span class="nav-number">5.1.</span> <span class="nav-text">叉积排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#atan2排序"><span class="nav-number">5.2.</span> <span class="nav-text">atan2排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#象限排序"><span class="nav-number">5.3.</span> <span class="nav-text">象限排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题"><span class="nav-number">6.</span> <span class="nav-text">例题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现-1"><span class="nav-number">7.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">gerayking</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gerayking</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">
+      
+    主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+    
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
