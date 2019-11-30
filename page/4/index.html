@@ -221,6 +221,267 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/20/HDU4746-莫比乌斯反演/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/09/20/HDU4746-莫比乌斯反演/" class="post-title-link" itemprop="url">HDU4746-莫比乌斯反演</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-20 23:36:31" itemprop="dateCreated datePublished" datetime="2019-09-20T23:36:31+08:00">2019-09-20</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-18 22:16:10" itemprop="dateModified" datetime="2019-10-18T22:16:10+08:00">2019-10-18</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HDU-4746" target="_blank" rel="noopener">HDU4746</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这套题可以用前缀和的思想优化确实挺好，不过其实就是一个提取公因式的问题<br>首先根据套路莫比乌斯反演我们显然可以O(qnlogn)求出来，但是很明显会超时所以我们需要优化。<br>把答案的式子写出来之后我们可以枚举$\mu(i)$也就是枚举莫比乌斯函数值，然后通过分块优化，可以在O(nq)内求出答案</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/09/20/HDU4746-莫比乌斯反演/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/19/HDU-4675/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/09/19/HDU-4675/" class="post-title-link" itemprop="url">HDU-4675</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-19 21:47:41" itemprop="dateCreated datePublished" datetime="2019-09-19T21:47:41+08:00">2019-09-19</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-20 00:58:15" itemprop="dateModified" datetime="2019-11-20T00:58:15+08:00">2019-11-20</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HDU-4675" target="_blank" rel="noopener">HDU4675</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先这道题难的地方就是组合数学的地方，另一部分可以用很简单的莫比乌斯反演来写。<br>我们来分析k个a[i]≠b[i]，这个条件<br>假设gcd(b[])=d,那么b中肯定全都是d的倍数，所以我们需要把a[]中所有非d的倍数变成d的倍数，然后如果超过k个，那么肯定无法只有k个不同，所以答案是0<br>如果不超过k个，那么我们还需要从d的倍数中挑选出k-(n-num[d])个。<br>所以最后</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/09/19/HDU-4675/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/19/HYSBZ-2005-莫比乌斯反演/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/09/19/HYSBZ-2005-莫比乌斯反演/" class="post-title-link" itemprop="url">HYSBZ-2005-莫比乌斯反演</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-19 17:58:49" itemprop="dateCreated datePublished" datetime="2019-09-19T17:58:49+08:00">2019-09-19</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-18 22:16:51" itemprop="dateModified" datetime="2019-10-18T22:16:51+08:00">2019-10-18</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HYSBZ-2005" target="_blank" rel="noopener">HYSBZ2005</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>根据题目意思，很明显跟gcd有关，因为路径上若有经过的点则点的个数为gcd(a,b)-1的个数<br>然后这题的答案就是求</p><script type="math/tex; mode=display">Ans=\sum_{i=1}^{N}\sum_{j=1}^{M}2*gcd(i,j)-1</script><p>按照套路来<br>设f(n)为gcd(a,b)=n的个数<br>则F(n)为gcd(a,b)=n及n的倍数的个数<br>答案就变为</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/09/19/HYSBZ-2005-莫比乌斯反演/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/19/HYSBZ-2818-莫比乌斯反演/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -810,269 +1071,6 @@
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/10/二次剩余定理详解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/09/10/二次剩余定理详解/" class="post-title-link" itemprop="url">二次剩余定理详解</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-10 13:09:36" itemprop="dateCreated datePublished" datetime="2019-09-10T13:09:36+08:00">2019-09-10</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-18 22:14:23" itemprop="dateModified" datetime="2019-10-18T22:14:23+08:00">2019-10-18</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="二次剩余"><a href="#二次剩余" class="headerlink" title="二次剩余"></a>二次剩余</h2><script type="math/tex; mode=display">x^2≡n(mod\ p)</script><p>对于这个方程，求出满足的x。</p><h3 id="引理1"><a href="#引理1" class="headerlink" title="引理1"></a>引理1</h3><p>首先来看一个符号</p><script type="math/tex; mode=display">
-(\frac{n}{p})</script><p>这个符号叫做勒让德符号，这个符号里有两个值，一个是n,一个是p。<font color="#FF0000">假设p为奇素数，且n无法整除p时</font>，他有以下定义</p><script type="math/tex; mode=display">
-(\frac{n}{p})=n^{\frac{p-1}{2}}</script><p>当$(\frac{n}{p})=1$时，存在一个x使得n是p的二次剩余<br>当$(\frac{n}{p})=-1$时，不存在一个x使得n是p的二次剩余<br>例如，当p=11时。$(\frac{1}{11})=1^{\frac{11-1}{2}}=1(mod 11)$所以1是11的二次剩余<br>而，$(\frac{3}{11})=3^{\frac{11-1}{2}}=-1(mod 11)$所以3是11的二次非剩余<br>现在来证明</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/09/10/二次剩余定理详解/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/08/The-2019-Asia-Nanchang-First-Round-Online-Programming-Contest/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/09/08/The-2019-Asia-Nanchang-First-Round-Online-Programming-Contest/" class="post-title-link" itemprop="url">The 2019 Asia Nanchang First Round Online Programming Contest</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-08 22:03:31" itemprop="dateCreated datePublished" datetime="2019-09-08T22:03:31+08:00">2019-09-08</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-11 21:45:30" itemprop="dateModified" datetime="2019-09-11T21:45:30+08:00">2019-09-11</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h3><p><a href="https://www.jisuanke.com/contest/3870?view=challenges" target="_blank" rel="noopener">The 2019 Asia Nanchang First Round Online Programming Contest</a></p><h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><p>坑点在于，如果用前向星存图的话是会有重边的，所以再dijkstra里面不要用vis标记，用SPFA应该可以轻松跑过<br>初始化dis数组一定要初始化到尽量大的值，不然ui影响结果的</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/09/08/The-2019-Asia-Nanchang-First-Round-Online-Programming-Contest/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/08/2019Xuzhou-pretest-I-二维偏序树状数组/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/09/08/2019Xuzhou-pretest-I-二维偏序树状数组/" class="post-title-link" itemprop="url">2019Xuzhou-pretest-I(二维偏序树状数组)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-08 02:14:08" itemprop="dateCreated datePublished" datetime="2019-09-08T02:14:08+08:00">2019-09-08</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-16 20:40:50" itemprop="dateModified" datetime="2019-09-16T20:40:50+08:00">2019-09-16</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h3><p><a href="https://nanti.jisuanke.com/t/41391" target="_blank" rel="noopener">2019Xuzhou-pretest-I(二维偏序树状数组)</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>先预处理处第1-第i个满足的集合<br>这个过程中，考虑从后往前删除的过程中何时需要减去，世界上对删除的每个数，判断因子是否已经被删除，<br>若没有，则贡献-1，若已被删除就不用管。<br>然后处理查询，使用二维偏序，对查询从左端点排序，由于删除右边的答案我们已经有了，所以我们考虑删除左边的。<br>这里要用树状数组维护一个前缀和。</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/09/08/2019Xuzhou-pretest-I-二维偏序树状数组/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1122,7 +1120,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
