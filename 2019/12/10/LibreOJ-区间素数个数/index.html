@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="题目链接HDU-1024思路动态规划，d[i][j]表示在选取第j个数字的情况下，将前j个数字分成i组的最大和， 考虑第j个数字加入，得到状态转移方程 dp[i][j]=max(dp[i][j-1],dp[i-1][i-1~j-1])+num[i];前面部分就是把当前这个数与前面一个子序列连续起来，后面一个则是另起一个序列">
-<meta name="keywords" content="DP">
+  <meta name="description" content="题目链接LibreOj#6235区间素数个数思路用min_25筛的前半部分解决，有点类似DP融合埃筛的解法 g(a,b)= \begin{cases} g(a,b-1), &amp; a">
+<meta name="keywords" content="min_25筛">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HDU-1024(DP)">
-<meta property="og:url" content="https://gerayking.github.io/2019/11/07/HDU-1024-DP/index.html">
+<meta property="og:title" content="LibreOJ#6235-区间素数个数">
+<meta property="og:url" content="https://gerayking.github.io/2019/12/10/LibreOJ-区间素数个数/index.html">
 <meta property="og:site_name" content="一方通行">
-<meta property="og:description" content="题目链接HDU-1024思路动态规划，d[i][j]表示在选取第j个数字的情况下，将前j个数字分成i组的最大和， 考虑第j个数字加入，得到状态转移方程 dp[i][j]=max(dp[i][j-1],dp[i-1][i-1~j-1])+num[i];前面部分就是把当前这个数与前面一个子序列连续起来，后面一个则是另起一个序列">
+<meta property="og:description" content="题目链接LibreOj#6235区间素数个数思路用min_25筛的前半部分解决，有点类似DP融合埃筛的解法 g(a,b)= \begin{cases} g(a,b-1), &amp; a">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-07T04:46:26.493Z">
+<meta property="og:updated_time" content="2019-12-10T12:30:27.207Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HDU-1024(DP)">
-<meta name="twitter:description" content="题目链接HDU-1024思路动态规划，d[i][j]表示在选取第j个数字的情况下，将前j个数字分成i组的最大和， 考虑第j个数字加入，得到状态转移方程 dp[i][j]=max(dp[i][j-1],dp[i-1][i-1~j-1])+num[i];前面部分就是把当前这个数与前面一个子序列连续起来，后面一个则是另起一个序列">
-  <link rel="canonical" href="https://gerayking.github.io/2019/11/07/HDU-1024-DP/">
+<meta name="twitter:title" content="LibreOJ#6235-区间素数个数">
+<meta name="twitter:description" content="题目链接LibreOj#6235区间素数个数思路用min_25筛的前半部分解决，有点类似DP融合埃筛的解法 g(a,b)= \begin{cases} g(a,b-1), &amp; a">
+  <link rel="canonical" href="https://gerayking.github.io/2019/12/10/LibreOJ-区间素数个数/">
 
 
 <script id="page-configurations">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>HDU-1024(DP) | 一方通行</title>
+  <title>LibreOJ#6235-区间素数个数 | 一方通行</title>
   
 
 
@@ -226,7 +226,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/11/07/HDU-1024-DP/">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/12/10/LibreOJ-区间素数个数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gerayking">
@@ -240,7 +240,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            HDU-1024(DP)
+            LibreOJ#6235-区间素数个数
             
 
           
@@ -257,7 +257,7 @@
                 
               
 
-              <time title="创建时间：2019-11-07 11:37:46 / 修改时间：12:46:26" itemprop="dateCreated datePublished" datetime="2019-11-07T11:37:46+08:00">2019-11-07</time>
+              <time title="创建时间：2019-12-10 20:15:34 / 修改时间：20:30:27" itemprop="dateCreated datePublished" datetime="2019-12-10T20:15:34+08:00">2019-12-10</time>
             </span>
           
             
@@ -276,17 +276,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/16215/origin" target="_blank" rel="noopener">HDU-1024</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>动态规划，d[i][j]表示在选取第j个数字的情况下，将前j个数字分成i组的最大和， 考虑第j个数字加入，得到状态转移方程</p><blockquote>
-<p>dp[i][j]=max(dp[i][j-1],dp[i-1][i-1~j-1])+num[i];<br>前面部分就是把当前这个数与前面一个子序列连续起来，后面一个则是另起一个序列</p>
-</blockquote><a id="more"></a>
+        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://loj.ac/problem/6235" target="_blank" rel="noopener">LibreOj#6235区间素数个数</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>用min_25筛的前半部分解决，有点类似DP融合埃筛的解法</p><script type="math/tex; mode=display">
+g(a,b)=
+\begin{cases}
+g(a,b-1), & a<prime_b^2\\
+g(a,b-1)-prime_b^k\left(g(\lfloor \frac{a}{prime_b} \rfloor,b-1)-g(prime_{b-1},b-1)\right), & a\ge prime_b^2
+\end{cases}</script><a id="more"></a>
 
-
-<p>但是这样会造成超内存，所以需要优化，很显然，观察上面的式子</p>
-<blockquote>
-<p>dp[i]只与dp[i-1]相关，所以前面的dp[i][j-1]-&gt;dp[j-1],用循环滚掉了，然后后面的一部分我们发现我们只需要维护最大值一起参加循环滚动就好了，所以维护一个最大值就可以省掉一维的空间最后状态转移方程变为</p>
-</blockquote>
-<p>dp[j]=max(dp[j-1],pre[j-1])+num[i];</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">1e9</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> num[N];</span><br><span class="line"><span class="keyword">int</span> dp[N];</span><br><span class="line"><span class="keyword">int</span> pre[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m,tem;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;m,&amp;n)!=EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;num[i]);</span><br><span class="line">		<span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">		<span class="built_in">memset</span>(pre,<span class="number">0</span>,<span class="keyword">sizeof</span>(pre));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			tem = -inf;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=n;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				dp[j]=max(dp[j<span class="number">-1</span>],pre[j<span class="number">-1</span>])+num[j];</span><br><span class="line">				pre[j<span class="number">-1</span>]=tem;</span><br><span class="line">				tem=max(tem,dp[j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;tem&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>根据这个式子，举一个例子让我们更好理解这个式子<br>g(10,0)=9;<br>因为还没有筛选过依次，所以等于9<br>g(10,1)=g(10,0)-g(5,0)-g(1,0)=9-4-0=5;<br>筛选过依次之后把以2为最小质因子的数(4,6,8,10)给筛掉了剩下5.这里要注意，我们要用到g(5,0)与g(1,0)所以我们每次处理的时候不能只处理g(10)的。<br>g(10,2)=g(10,1)-g(3,1)-g(2,0)=5-0-1=4;<br>这里用到了g(3,1)与g(2,0)需要在上面处理好<br>g(10,3)=g(10,2)-g(5,2)-g(3,1)=4-0-0=4;<br>最后一步就不需要了，因为后面两个式子一定等于0,这是因为$prime_3^2=5^2&gt;10$了，所以25之内的合数都已经被排除掉了，就不需要再考虑了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">4e5</span>+<span class="number">10</span>;</span><br><span class="line">ll n,g[N&lt;&lt;<span class="number">1</span>],a[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> id,cnt,sn,prime[N];</span><br><span class="line"><span class="function">ll <span class="title">Id</span><span class="params">(ll x)</span></span>&#123;<span class="keyword">return</span> x&lt;=sn?x:id-n/x+<span class="number">1</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;n);</span><br><span class="line">	sn=<span class="built_in">sqrt</span>(n);</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;i=a[id]+<span class="number">1</span>)a[++id]=n/(n/i),g[id]=a[id]<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">2</span>;i&lt;=sn;i++)<span class="keyword">if</span>(g[i]!=g[i<span class="number">-1</span>])</span><br><span class="line">	&#123;</span><br><span class="line">		prime[++cnt]=i;</span><br><span class="line">		ll sum =<span class="number">1l</span>l*i*i;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=id;a[j]&gt;=sum;j--)g[j]-=g[Id(a[j]/i)]-(cnt<span class="number">-1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,g[id]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -302,7 +300,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/DP/" rel="tag"># DP</a>
+              <a href="/tags/min-25筛/" rel="tag"># min_25筛</a>
             
           </div>
         
@@ -312,8 +310,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/11/04/Codeforces-Round-598-div3/" rel="next" title="Codeforces Round #598(div3)">
-                  <i class="fa fa-chevron-left"></i> Codeforces Round #598(div3)
+                <a href="/2019/12/08/2019南昌区域赛/" rel="next" title="2019南昌区域赛">
+                  <i class="fa fa-chevron-left"></i> 2019南昌区域赛
                 </a>
               
             </div>
@@ -321,10 +319,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/11/09/11-9训练赛/" rel="prev" title="11-9训练赛">
-                  11-9训练赛 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -370,7 +364,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -507,6 +501,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
