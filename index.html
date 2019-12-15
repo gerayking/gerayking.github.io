@@ -236,7 +236,7 @@
         <h1 class="post-title" itemprop="name headline">
           
             
-            <a href="/2019/12/15/LOJ-6053-min25/" class="post-title-link" itemprop="url">LOJ#6053</a>
+            <a href="/2019/12/15/LOJ-6053-min25/" class="post-title-link" itemprop="url">LOJ-6053-min25</a>
           
         </h1>
 
@@ -251,8 +251,12 @@
                 
               
 
-              <time title="创建时间：2019-12-15 16:22:39" itemprop="dateCreated datePublished" datetime="2019-12-15T16:22:39+08:00">2019-12-15</time>
+              <time title="创建时间：2019-12-15 16:22:39 / 修改时间：16:36:55" itemprop="dateCreated datePublished" datetime="2019-12-15T16:22:39+08:00">2019-12-15</time>
             </span>
+          
+            
+
+            
           
 
           
@@ -266,7 +270,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://cmxrynp.github.io/2018/12/03/Min-25%E7%AD%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">LOJ6053</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>分析出来得到这个函数</p>
+<script type="math/tex; mode=display">
+f(p)=
+\begin{cases}
+p+1, & p=2 \\
+p-1, & p\ne 2
+\end{cases}</script><p>然后可以使用质数前缀和与质数个数前缀和来维护这个函数的前缀和，然后再套上min25板子就可以了</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> md = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line">ll g[N&lt;&lt;<span class="number">1</span>],id,n,sn,sq,a[N&lt;&lt;<span class="number">1</span>],h[N&lt;&lt;<span class="number">1</span>],sum[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> prime[N],cnt;</span><br><span class="line"><span class="function">ll <span class="title">Id</span><span class="params">(ll x)</span></span>&#123;<span class="keyword">return</span> x&lt;=sn?x:id-n/x+<span class="number">1</span>;&#125;</span><br><span class="line"><span class="function">ll <span class="title">Solve</span><span class="params">(ll a,ll b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a&lt;prime[b])<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	ll ans = (g[Id(a)]-g[prime[b<span class="number">-1</span>]]+md)%md;</span><br><span class="line">	<span class="keyword">for</span>(ll i=b;i&lt;=cnt&amp;&amp;<span class="number">1l</span>l*prime[i]*prime[i]&lt;=a;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ans+=<span class="number">1l</span>l*(prime[i]^<span class="number">1</span>)*Solve(a/prime[i],i+<span class="number">1</span>)+(prime[i]^<span class="number">2</span>);</span><br><span class="line">		ans%=md;</span><br><span class="line">		<span class="keyword">for</span>(ll x=<span class="number">1l</span>l*prime[i]*prime[i],j=<span class="number">2</span>;x*prime[i]&lt;=a;x*=prime[i],j++)</span><br><span class="line">		&#123;</span><br><span class="line">			ans+=<span class="number">1l</span>l*(prime[i]^j)*Solve(a/x,i+<span class="number">1</span>)+(prime[i]^(j+<span class="number">1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans%md;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;n);</span><br><span class="line">	sn =<span class="built_in">sqrt</span>(n);</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;i=a[id]+<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		a[++id]=n/(n/i);</span><br><span class="line">		ll tmp = a[id]%md;</span><br><span class="line">		g[id]=tmp*(tmp+<span class="number">1</span>)/<span class="number">2</span>%md<span class="number">-1</span>;</span><br><span class="line">		h[id]=a[id]<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">2</span>;i&lt;=sn;i++)<span class="keyword">if</span>(h[i]!=h[i<span class="number">-1</span>])</span><br><span class="line">	&#123;</span><br><span class="line">		prime[++cnt]=i;</span><br><span class="line">		sq = <span class="number">1l</span>l*i*i;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=id;a[j]&gt;=sq;j--)</span><br><span class="line">		&#123;</span><br><span class="line">			ll t = Id(a[j]/i);</span><br><span class="line">			(g[j]-=i*(g[t]-g[i<span class="number">-1</span>]))%=md;</span><br><span class="line">			h[j]-=h[t]-(cnt<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=id;i++)(g[i]+=(i&gt;<span class="number">1</span>)*<span class="number">2</span>-h[i]+md)%=md;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld"</span>,(Solve(n,<span class="number">1</span>)+<span class="number">1</span>)%md);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
         
       
     </div>
@@ -396,11 +409,19 @@
                 
               
 
-              <time title="创建时间：2019-12-10 20:15:34 / 修改时间：20:30:27" itemprop="dateCreated datePublished" datetime="2019-12-10T20:15:34+08:00">2019-12-10</time>
+              <time title="创建时间：2019-12-10 20:15:34" itemprop="dateCreated datePublished" datetime="2019-12-10T20:15:34+08:00">2019-12-10</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-15 16:36:54" itemprop="dateModified" datetime="2019-12-15T16:36:54+08:00">2019-12-15</time>
+              </span>
             
           
 
