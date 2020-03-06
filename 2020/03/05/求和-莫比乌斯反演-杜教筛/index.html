@@ -381,6 +381,10 @@ f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
 
             <div class="post-nav-prev post-nav-item">
               
+                <a href="/2020/03/06/HYSBZ4916-杜教筛/" rel="prev" title="HYSBZ4916(杜教筛)">
+                  HYSBZ4916(杜教筛) <i class="fa fa-chevron-right"></i>
+                </a>
+              
             </div>
           </div>
         
@@ -444,7 +448,7 @@ f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-count">95</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -470,7 +474,7 @@ f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -625,14 +629,14 @@ f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
 <script>
 NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
+  var guest = 'nick,mail';
   guest = guest.split(',').filter(item => {
     return GUEST.includes(item);
   });
   new Valine({
     el: '#comments',
     verify: false,
-    notify: false,
+    notify: true,
     appId: 'qNly5FleMfdepiDiaVXsturv-gzGzoHsz',
     appKey: '5wPliBaYqnLM6iGrQKEnCvRJ',
     placeholder: "Just go go",
