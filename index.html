@@ -221,6 +221,306 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/12/HDU1695-莫比乌斯反演-容斥/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/03/12/HDU1695-莫比乌斯反演-容斥/" class="post-title-link" itemprop="url">HDU1695(莫比乌斯反演+容斥)</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-12 01:35:51 / 修改时间：01:44:24" itemprop="dateCreated datePublished" datetime="2020-03-12T01:35:51+08:00">2020-03-12</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/12/HDU1695-莫比乌斯反演-容斥/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/12/HDU1695-莫比乌斯反演-容斥/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1695" target="_blank" rel="noopener">HDU1695</a><br>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/03/12/HDU1695-莫比乌斯反演-容斥/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/12/HDU6175-莫比乌斯反演/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/03/12/HDU6175-莫比乌斯反演/" class="post-title-link" itemprop="url">HDU6175(莫比乌斯反演)</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-12 00:45:26 / 修改时间：01:44:25" itemprop="dateCreated datePublished" datetime="2020-03-12T00:45:26+08:00">2020-03-12</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/12/HDU6175-莫比乌斯反演/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/12/HDU6175-莫比乌斯反演/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><script type="math/tex; mode=display">\begin{aligned}
+Ans&=\sum_{i=1}^n\sum_{j=1}^m\mu(lcm(i,j))\\
+&=\sum_{i=1}^n\sum_{j=1}^m\mu(\frac{ij}{gcd(i,j)})\\
+&=\sum_{i=1}^n\sum_{j=1}^m\mu(\frac{ij}{k})[gcd(i,j)==k]\\
+乘上\mu(d^2)\\
+&=\sum_{i=1}^n\sum_{j=1}^m\mu(i)\mu(j)\mu(k)[gcd(i,j)==k]\\
+枚举k\\
+&=\sum_k^n\mu(k)\sum_{i=1}^n\sum_{j=1}^m\mu(i)\mu(j)[gcd(i,j)==k]\\
+&=\sum_k^n\mu(k)\sum_{i=1}^\frac{k}{n}\sum_{j=1}^\frac{k}{m}\mu(ik)\mu(jk)[gcd(i,j)==1]\\
+反演\\
+&=\sum_k^n\mu(k)\sum_{i=1}^\frac{n}{k}\sum_{j=1}^\frac{m}{k}\mu(ik)\mu(jk)\sum_{d|gcd(i,j)}\mu(d)\\
+把d提取出来，即先枚举d\\
+&=\sum_k^n\mu(k)\sum_{d=1}^{\frac{n}{k}}\mu(d)\sum_{i=1}^\frac{n}{kd}\sum_{j=1}^\frac{m}{kd}\mu(ikd)\mu(jkd)\\
+令T=kd\\
+&=\sum_{T=1}^n(\sum_{i=1}^{\frac{n}{T}}\mu(iT))(\sum_{j=1}^{\frac{m}{T}}\mu(jT))(\sum_{k|d}\mu(k)\mu(\frac{T}{k})))
+\end{aligned}</script>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/03/12/HDU6175-莫比乌斯反演/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/07/C语言连接mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/03/07/C语言连接mysql/" class="post-title-link" itemprop="url">C语言连接mysql</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-07 17:45:27 / 修改时间：17:50:32" itemprop="dateCreated datePublished" datetime="2020-03-07T17:45:27+08:00">2020-03-07</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/07/C语言连接mysql/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/07/C语言连接mysql/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>mysql8.7 vs2019<br>首先我们需要在vs中导入mysql的包lib和include，点击解决方案-&gt;属性然后在VC++目录和包目录中导入mysql目录下的lib和include，然后再把lib.dll放到项目文件下。<br>然后就可以进行连接了，需要注意的坑点就是在向数据库写入中文的时候需要设置字符集为gbk<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!mysql_set_character_set(&amp;mysqlConnect, <span class="string">"gbk"</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"New client character set: %s\n"</span>, mysql_character_set_name(&amp;mysqlConnect));</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/03/07/C语言连接mysql/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/06/A-B-FFT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -908,299 +1208,6 @@ f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/12/17/Codeforces-Round-608-Div-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/12/17/Codeforces-Round-608-Div-2/" class="post-title-link" itemprop="url">Codeforces Round #608 (Div. 2)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-12-17 09:38:07" itemprop="dateCreated datePublished" datetime="2019-12-17T09:38:07+08:00">2019-12-17</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-05 23:53:05" itemprop="dateModified" datetime="2020-03-05T23:53:05+08:00">2020-03-05</time>
-              </span>
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/12/17/Codeforces-Round-608-Div-2/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/17/Codeforces-Round-608-Div-2/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>贪心，因为只有一个共享的，所以钱多的先使用</p><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> a,b,c,d,e,f;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;d&gt;&gt;e&gt;&gt;f;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(e&gt;f)&#123;</span><br><span class="line">		ans+=min(a,d)*e;</span><br><span class="line">		d-=min(a,d);</span><br><span class="line">		ans+=min(d,min(b,c))*f;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		ans+=min(d,min(b,c))*f;</span><br><span class="line">		d-=min(d,min(b,c));</span><br><span class="line">		ans+=min(a,d)*e;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/12/17/Codeforces-Round-608-Div-2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/12/15/LOJ-6053-min25/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/12/15/LOJ-6053-min25/" class="post-title-link" itemprop="url">LOJ-6053-min25</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-12-15 16:22:39 / 修改时间：16:36:55" itemprop="dateCreated datePublished" datetime="2019-12-15T16:22:39+08:00">2019-12-15</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/12/15/LOJ-6053-min25/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/15/LOJ-6053-min25/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://cmxrynp.github.io/2018/12/03/Min-25%E7%AD%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">LOJ6053</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>分析出来得到这个函数</p>
-<script type="math/tex; mode=display">
-f(p)=
-\begin{cases}
-p+1, & p=2 \\
-p-1, & p\ne 2
-\end{cases}</script><p>然后可以使用质数前缀和与质数个数前缀和来维护这个函数的前缀和，然后再套上min25板子就可以了</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> md = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line">ll g[N&lt;&lt;<span class="number">1</span>],id,n,sn,sq,a[N&lt;&lt;<span class="number">1</span>],h[N&lt;&lt;<span class="number">1</span>],sum[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> prime[N],cnt;</span><br><span class="line"><span class="function">ll <span class="title">Id</span><span class="params">(ll x)</span></span>&#123;<span class="keyword">return</span> x&lt;=sn?x:id-n/x+<span class="number">1</span>;&#125;</span><br><span class="line"><span class="function">ll <span class="title">Solve</span><span class="params">(ll a,ll b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a&lt;prime[b])<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	ll ans = (g[Id(a)]-g[prime[b<span class="number">-1</span>]]+md)%md;</span><br><span class="line">	<span class="keyword">for</span>(ll i=b;i&lt;=cnt&amp;&amp;<span class="number">1l</span>l*prime[i]*prime[i]&lt;=a;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ans+=<span class="number">1l</span>l*(prime[i]^<span class="number">1</span>)*Solve(a/prime[i],i+<span class="number">1</span>)+(prime[i]^<span class="number">2</span>);</span><br><span class="line">		ans%=md;</span><br><span class="line">		<span class="keyword">for</span>(ll x=<span class="number">1l</span>l*prime[i]*prime[i],j=<span class="number">2</span>;x*prime[i]&lt;=a;x*=prime[i],j++)</span><br><span class="line">		&#123;</span><br><span class="line">			ans+=<span class="number">1l</span>l*(prime[i]^j)*Solve(a/x,i+<span class="number">1</span>)+(prime[i]^(j+<span class="number">1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans%md;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;n);</span><br><span class="line">	sn =<span class="built_in">sqrt</span>(n);</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;i=a[id]+<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		a[++id]=n/(n/i);</span><br><span class="line">		ll tmp = a[id]%md;</span><br><span class="line">		g[id]=tmp*(tmp+<span class="number">1</span>)/<span class="number">2</span>%md<span class="number">-1</span>;</span><br><span class="line">		h[id]=a[id]<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">2</span>;i&lt;=sn;i++)<span class="keyword">if</span>(h[i]!=h[i<span class="number">-1</span>])</span><br><span class="line">	&#123;</span><br><span class="line">		prime[++cnt]=i;</span><br><span class="line">		sq = <span class="number">1l</span>l*i*i;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=id;a[j]&gt;=sq;j--)</span><br><span class="line">		&#123;</span><br><span class="line">			ll t = Id(a[j]/i);</span><br><span class="line">			(g[j]-=i*(g[t]-g[i<span class="number">-1</span>]))%=md;</span><br><span class="line">			h[j]-=h[t]-(cnt<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=id;i++)(g[i]+=(i&gt;<span class="number">1</span>)*<span class="number">2</span>-h[i]+md)%=md;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld"</span>,(Solve(n,<span class="number">1</span>)+<span class="number">1</span>)%md);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/12/15/Luogu-4213-min25/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/12/15/Luogu-4213-min25/" class="post-title-link" itemprop="url">Luogu-4213-min25</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-12-15 15:12:32 / 修改时间：15:22:32" itemprop="dateCreated datePublished" datetime="2019-12-15T15:12:32+08:00">2019-12-15</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/12/15/Luogu-4213-min25/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/15/Luogu-4213-min25/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://www.luogu.com.cn/problem/P4213" target="_blank" rel="noopener">Luogu4213</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>min25筛是用来处理积性函数的前缀和的一个方法，形如</p><script type="math/tex; mode=display">\sum_{i=1}^n f(i)</script><p><a href="https://cmxrynp.github.io/2018/12/03/Min-25%E7%AD%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">cmxrynp</a>这篇博客讲的很好。<br>这道题目我们需要处理出$\phi(i)与\mu(i)$的质数的前缀和权值即可，我们选择两个函数$g(i)表示质数前缀和,h(i)表示质数的个数前缀和$，然后我们就可以通过这两个函数找到</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/12/15/Luogu-4213-min25/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1250,7 +1257,7 @@ p-1, & p\ne 2
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1276,7 +1283,7 @@ p-1, & p\ne 2
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1374,9 +1381,9 @@ p-1, & p\ne 2
   
     
       
-    
-      
         
+      
+    
       
     
       
