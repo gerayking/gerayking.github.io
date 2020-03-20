@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="题目链接HDU-6265 思路因为$\phi$函数是积性函数，所以他的和函数也是积性函数，所以我们分别算出每一个质数对它的贡献然后相乘即可。  f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{p^q}{d} =\sum_{i=0}^{q}\phi(p^i)\frac{p^q}{p^i} =\sum_{i=0}^{q}(p-1)*p^{i-1}*p^{q-i} =\sum_">
-<meta name="keywords" content="数论">
+  <meta name="description" content="题目链接622f思路 Ans=\sum_{i=1}^n i^k直接求肯定会超时，然后自然数幂和可以表达为k+1项的多项式。自然数幂和展开多项式 (n+1)^k-(n^k)=\sum_{i=0}^{k-1}C_k^in^i\\ n^k-(n-1)^k=\sum_{i=0}^{k-1}C_k^i(n-1)^i\\ \vdots\\ 累加得到\\ \sum_{i=1}^n((i+1)^k-i^k)=(n">
+<meta name="keywords" content="数论,拉格朗日插值">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HDU-6265">
-<meta property="og:url" content="https://gerayking.github.io/2019/10/20/HDU-6265/index.html">
+<meta property="og:title" content="codeforces-622F">
+<meta property="og:url" content="https://gerayking.github.io/2020/03/20/codeforces-622F/index.html">
 <meta property="og:site_name" content="一方通行">
-<meta property="og:description" content="题目链接HDU-6265 思路因为$\phi$函数是积性函数，所以他的和函数也是积性函数，所以我们分别算出每一个质数对它的贡献然后相乘即可。  f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{p^q}{d} =\sum_{i=0}^{q}\phi(p^i)\frac{p^q}{p^i} =\sum_{i=0}^{q}(p-1)*p^{i-1}*p^{q-i} =\sum_">
+<meta property="og:description" content="题目链接622f思路 Ans=\sum_{i=1}^n i^k直接求肯定会超时，然后自然数幂和可以表达为k+1项的多项式。自然数幂和展开多项式 (n+1)^k-(n^k)=\sum_{i=0}^{k-1}C_k^in^i\\ n^k-(n-1)^k=\sum_{i=0}^{k-1}C_k^i(n-1)^i\\ \vdots\\ 累加得到\\ \sum_{i=1}^n((i+1)^k-i^k)=(n">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-20T04:56:18.862Z">
+<meta property="og:updated_time" content="2020-03-20T03:39:40.061Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HDU-6265">
-<meta name="twitter:description" content="题目链接HDU-6265 思路因为$\phi$函数是积性函数，所以他的和函数也是积性函数，所以我们分别算出每一个质数对它的贡献然后相乘即可。  f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{p^q}{d} =\sum_{i=0}^{q}\phi(p^i)\frac{p^q}{p^i} =\sum_{i=0}^{q}(p-1)*p^{i-1}*p^{q-i} =\sum_">
-  <link rel="canonical" href="https://gerayking.github.io/2019/10/20/HDU-6265/">
+<meta name="twitter:title" content="codeforces-622F">
+<meta name="twitter:description" content="题目链接622f思路 Ans=\sum_{i=1}^n i^k直接求肯定会超时，然后自然数幂和可以表达为k+1项的多项式。自然数幂和展开多项式 (n+1)^k-(n^k)=\sum_{i=0}^{k-1}C_k^in^i\\ n^k-(n-1)^k=\sum_{i=0}^{k-1}C_k^i(n-1)^i\\ \vdots\\ 累加得到\\ \sum_{i=1}^n((i+1)^k-i^k)=(n">
+  <link rel="canonical" href="https://gerayking.github.io/2020/03/20/codeforces-622F/">
 
 
 <script id="page-configurations">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>HDU-6265 | 一方通行</title>
+  <title>codeforces-622F | 一方通行</title>
   
 
 
@@ -226,7 +226,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/10/20/HDU-6265/">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/20/codeforces-622F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gerayking">
@@ -240,7 +240,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            HDU-6265
+            codeforces-622F
             
 
           
@@ -257,7 +257,7 @@
                 
               
 
-              <time title="创建时间：2019-10-20 12:37:00 / 修改时间：12:56:18" itemprop="dateCreated datePublished" datetime="2019-10-20T12:37:00+08:00">2019-10-20</time>
+              <time title="创建时间：2020-03-20 10:59:04 / 修改时间：11:39:40" itemprop="dateCreated datePublished" datetime="2020-03-20T10:59:04+08:00">2020-03-20</time>
             </span>
           
             
@@ -276,8 +276,8 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/10/20/HDU-6265/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/20/HDU-6265/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/03/20/codeforces-622F/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/20/codeforces-622F/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -292,14 +292,42 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/contest/336234" target="_blank" rel="noopener">HDU-6265</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>因为$\phi$函数是积性函数，所以他的和函数也是积性函数，所以我们分别算出每一个质数对它的贡献然后相乘即可。</p>
+        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://codeforces.com/problemset/problem/622/F" target="_blank" rel="noopener">622f</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><script type="math/tex; mode=display">
+Ans=\sum_{i=1}^n i^k</script><p>直接求肯定会超时，然后自然数幂和可以表达为k+1项的多项式。</p><h4 id="自然数幂和展开多项式"><a href="#自然数幂和展开多项式" class="headerlink" title="自然数幂和展开多项式"></a>自然数幂和展开多项式</h4><script type="math/tex; mode=display">
+(n+1)^k-(n^k)=\sum_{i=0}^{k-1}C_k^in^i\\
+n^k-(n-1)^k=\sum_{i=0}^{k-1}C_k^i(n-1)^i\\
+\vdots\\
+累加得到\\
+\sum_{i=1}^n((i+1)^k-i^k)=(n+1)^k-1\\
+=\sum_{i=1}^n\sum_{j=1}^{k-1}C_k^ji^j\\
+=\sum_{i=0}^{k-1}C_k^j\sum_{j=1}^nj^i\\
+设f(j)=\sum_{i=1}^ni^j\\
+=\sum_{i=1}^{k-1}C_k^jf(j)\\
+=\sum_{i=0}^{k-2}C_k^jf(j)+k*f(k-1)\\</script><a id="more"></a>
+
+<p>取出方程</p>
+<script type="math/tex; mode=display">\begin{aligned}
+(n+1)^k-(n^k)&=\sum_{i=0}^{k-2}C_k^jf(j)+k*f(k-1)\\
+移项\\
+f(k-1)&=\frac{(n+1)^k-n^k-\sum_{i=0}^{k-2}C_k^jf(j)}{k}\\
+f(k)&=\frac{(n+1)^{k+1}-n^{k+1}-\sum_{i=0}^{k-1}C_(k+1)^jf(j)}{k+1}\\
+\end{aligned}</script><p>最后得到</p>
 <script type="math/tex; mode=display">
-f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{p^q}{d}
-=\sum_{i=0}^{q}\phi(p^i)\frac{p^q}{p^i}
-=\sum_{i=0}^{q}(p-1)*p^{i-1}*p^{q-i}
-=\sum_{i=0}^{q}(p-1)*p^{q-1}</script><p>这样就能对每一个进行计算答案了，注意当i=0的时候的答案需要另外算。<br><a id="more"></a></p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> md = <span class="number">998244353</span>;</span><br><span class="line"><span class="function">ll <span class="title">quick_pow</span><span class="params">(ll a,ll b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll res=<span class="number">1</span>;</span><br><span class="line">	a%=md;</span><br><span class="line">	<span class="keyword">while</span>(b)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)res=(res*a)%md;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">		a=(a*a)%md;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line"> &#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> m;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;m);</span><br><span class="line">		ll ans = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(m--)</span><br><span class="line">		&#123;</span><br><span class="line">			ll p,q;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%lld %lld"</span>,&amp;p,&amp;q);</span><br><span class="line">			ll res=<span class="number">1</span>;</span><br><span class="line">			res=(((q*(p<span class="number">-1</span>))%md*quick_pow(p,q<span class="number">-1</span>)%md)%md+quick_pow(p,q))%md;</span><br><span class="line">			ans=(ans*res)%md;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	 &#125; </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+\sum_{i=1}^ni^k=\frac{(n+1)^{k+1}-n^{k+1}-\sum_{i=0}^{k-1}C_(k+1)^jf(k)}{k+1}</script><p>得到自然数幂和的形式肯定是一个k+1项的多项式，这样就能够使用拉格朗日插值了</p>
+<h4 id="拉格朗日插值"><a href="#拉格朗日插值" class="headerlink" title="拉格朗日插值"></a>拉格朗日插值</h4><p>对应某个多项式函数，已知的有k+1个取值点，即在二维平面上存在k+1个点,$(x_0,y_0),\cdots,(x_k,y_k)$<br>假设任意两个$x_i!=x_j$，然后就可以应用拉格朗日插值多项式表达为</p>
+<script type="math/tex; mode=display">
+L(x)=\sum_{j=0}^ky_j\ell_j(x)</script><p>此处$\ell_j(x)$就是拉格朗日基本多项式（插值基函数），表达式为</p>
+<script type="math/tex; mode=display">
+\ell_j(x) = \prod_{i=0,i!=j}^k\frac{x-x_i}{x_j-x_i}</script><p>$\ell_j(x)的特点就是仅仅在x_j上取值为1，其他店x_i,i!=j上取值为0$，这样如果我们能够求出来$y_j和\ell_j(x)$就可以求出整个多项式的值</p>
+<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>根据第一个差分表示法，我们直到自然数幂和$\sum_{i=1}^ni^k$可以表达成k+1次幂的和，然后我们就用拉格朗日插值法，插1,2,3,4…k+2即可,然后我们得到多项式的式子为</p>
+<script type="math/tex; mode=display">
+L(n)=\sum_{j=0}^ky_j\ell_j(x)\\
+y_j=\sum_{i=1}^ji^k\\
+\ell_j(n)=\prod_{i=1,i!=j}^k\frac{(n-1)*(n-2)\dotsb(n-k)/(n-i)}{(x_j-1)*(x_j-2)\dotsb(x_j-k)}\\
+y_j可以直接处理出来，然后\ell_j(n)的分资也可以预处理出来，现在考虑分母\\
+发现实际上它也是前缀和，分成两个部分，一个正的一个负的\\
+例如x_j=3时。得到1*2*(-1)*(-2)*(-3)\dotsb(-k+3)，显然这部分也能够预处理出来\\</script><p>然后这题就写完了</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 1000000007</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inv(x) quick_pow(x,mod-2)</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line">ll g[N],f[N],x[N];</span><br><span class="line"><span class="function">ll <span class="title">quick_pow</span><span class="params">(ll x,ll k)</span></span>&#123;</span><br><span class="line">	ll res=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(k)&#123;</span><br><span class="line">		<span class="keyword">if</span>(k&amp;<span class="number">1</span>)res=res*x%mod;</span><br><span class="line">		x=x*x%mod;</span><br><span class="line">		k&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line">ll a[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,k;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;k);</span><br><span class="line">	g[<span class="number">0</span>]=x[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k+<span class="number">2</span>&amp;&amp;i&lt;=n;i++)f[i]=(f[i<span class="number">-1</span>]+quick_pow(i,k))%mod;</span><br><span class="line">	<span class="keyword">if</span>(k+<span class="number">2</span>&gt;=n)</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>*<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,f[n]);</span><br><span class="line">	ll now = <span class="number">1</span>; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k+<span class="number">2</span>;i++)&#123;</span><br><span class="line">		now=(now*(n-i))%mod;</span><br><span class="line">		x[i]=x[i<span class="number">-1</span>]*i%mod;</span><br><span class="line">		g[i]=-g[i<span class="number">-1</span>]*i%mod;</span><br><span class="line">	&#125;</span><br><span class="line">	ll ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k+<span class="number">2</span>;i++)&#123;</span><br><span class="line">		ans=(ans+f[i]*now%mod*inv(n-i)%mod*inv((x[i<span class="number">-1</span>]*g[k+<span class="number">2</span>-i])%mod)%mod)%mod;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,(ans+mod)%mod);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -324,6 +352,8 @@ f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{p^q}{d}
             
               <a href="/tags/数论/" rel="tag"># 数论</a>
             
+              <a href="/tags/拉格朗日插值/" rel="tag"># 拉格朗日插值</a>
+            
           </div>
         
 
@@ -332,8 +362,8 @@ f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{p^q}{d}
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/10/18/java-多线程/" rel="next" title="java-多线程">
-                  <i class="fa fa-chevron-left"></i> java-多线程
+                <a href="/2020/03/20/Global-Round-7/" rel="next" title="Global Round 7">
+                  <i class="fa fa-chevron-left"></i> Global Round 7
                 </a>
               
             </div>
@@ -341,10 +371,6 @@ f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{p^q}{d}
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/21/SSH-Studyline/" rel="prev" title="SSH-Studyline">
-                  SSH-Studyline <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -393,7 +419,7 @@ f(p^q)=\sum_{d \mid p^q}\phi(d)\frac{p^q}{d}
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自然数幂和展开多项式"><span class="nav-number">2.1.</span> <span class="nav-text">自然数幂和展开多项式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拉格朗日插值"><span class="nav-number">2.2.</span> <span class="nav-text">拉格朗日插值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-1"><span class="nav-number">2.3.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
