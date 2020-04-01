@@ -251,11 +251,19 @@
                 
               
 
-              <time title="创建时间：2020-04-01 21:30:24 / 修改时间：21:42:08" itemprop="dateCreated datePublished" datetime="2020-04-01T21:30:24+08:00">2020-04-01</time>
+              <time title="创建时间：2020-04-01 21:30:24" itemprop="dateCreated datePublished" datetime="2020-04-01T21:30:24+08:00">2020-04-01</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-02 00:03:46" itemprop="dateModified" datetime="2020-04-02T00:03:46+08:00">2020-04-02</time>
+              </span>
             
           
 
@@ -286,9 +294,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://codeforc.es/gym/102055/problem/K" target="_blank" rel="noopener">gym102055</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先要明白一个模运算的几个性质</p><blockquote>
-<p>(a + b) % p = (a % p + b % p) % p<br>(a - b) % p = (a % p - b % p) % p<br>(a <em> b) % p = (a % p </em> b % p) % p<br>(a^b) % p = ((a % p)^b) % p  </p>
-</blockquote>
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://codeforc.es/gym/102055/problem/K" target="_blank" rel="noopener">gym102055</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先要明白一个模运算的性质<br>(a ^ b) % p = ((a % p)^b) % p<br>$令e=2^{30}+3,r=(q-1)(p-1)$,$找到e在模n下的逆元d，de=1(mod n)$,然后因为$c=f^{2^{30}+3}(mod n)$,此处用欧拉降幂就得到$c=f^{d^{-1}}(mod n)$,运用上面第四条性质就可以得到$c^d=f(mod n)$因为此处的e与n不一定互质，所以用扩展欧几里得求逆元，然后快速幂求解即可，然后中间用上快速乘就可以过了</p>
           <!--noindex-->
           
             <div class="post-button">
@@ -1349,11 +1355,11 @@ n^k-(n-1)^k=\sum_{i=0}^{k-1}C_k^i(n-1)^i\\
   
     
       
-    
-      
-    
-      
         
+      
+    
+      
+    
       
     
       
