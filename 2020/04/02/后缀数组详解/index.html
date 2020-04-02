@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="后缀数组详解算法的目的首先，明确我们算法的目的  输入=一个字符串str 输出=一个关于str的后缀排序后的数组，如下图  目的就是求出这个sa数组，使得sa[i]=j为第i小的后缀所在的位置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="后缀数组详解">
+<meta property="og:url" content="https://gerayking.github.io/2020/04/02/后缀数组详解/index.html">
+<meta property="og:site_name" content="一方通行">
+<meta property="og:description" content="后缀数组详解算法的目的首先，明确我们算法的目的  输入=一个字符串str 输出=一个关于str的后缀排序后的数组，如下图  目的就是求出这个sa数组，使得sa[i]=j为第i小的后缀所在的位置">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2020/04/02/FLh9armJ8neSz6x.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/02/3E6RSUt4JprXeyI.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/02/GEWHzqk4JNhvTQS.png">
+<meta property="og:updated_time" content="2020-04-02T09:38:12.751Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="后缀数组详解">
+<meta name="twitter:description" content="后缀数组详解算法的目的首先，明确我们算法的目的  输入=一个字符串str 输出=一个关于str的后缀排序后的数组，如下图  目的就是求出这个sa数组，使得sa[i]=j为第i小的后缀所在的位置">
+<meta name="twitter:image" content="https://i.loli.net/2020/04/02/FLh9armJ8neSz6x.png">
+  <link rel="canonical" href="https://gerayking.github.io/2020/04/02/后缀数组详解/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>后缀数组详解 | 一方通行</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一方通行</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">你最愿意做的哪件事，才是你的天赋所在</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+        
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      
+    
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/02/后缀数组详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            后缀数组详解
+            
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-02 17:35:27 / 修改时间：17:38:12" itemprop="dateCreated datePublished" datetime="2020-04-02T17:35:27+08:00">2020-04-02</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/02/后缀数组详解/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/02/后缀数组详解/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="后缀数组详解"><a href="#后缀数组详解" class="headerlink" title="后缀数组详解"></a>后缀数组详解</h3><h4 id="算法的目的"><a href="#算法的目的" class="headerlink" title="算法的目的"></a>算法的目的</h4><p>首先，明确我们算法的目的</p>
+<blockquote>
+<p>输入=一个字符串str</p>
+<p>输出=一个关于str的后缀排序后的数组，如下图</p>
+</blockquote>
+<p><img src="https://i.loli.net/2020/04/02/FLh9armJ8neSz6x.png" alt="20160205125505545.jpg"><br>目的就是求出这个sa数组，使得sa[i]=j为第i小的后缀所在的位置<br><a id="more"></a></p>
+<h3 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h3><h4 id="倍增"><a href="#倍增" class="headerlink" title="倍增"></a>倍增</h4><p>倍增就是每次走倍数次，后面状态的判断可以使用前面判断出的信息来更新，具体的详情百度学习，这里涉及后缀数组的我就给出一张图</p>
+<p><img src="https://i.loli.net/2020/04/02/3E6RSUt4JprXeyI.png" alt="20160205125603928.jpg"><br>生动一点就是因为都是在同一个字符串上操作，我们需要充分利用我们每一次比较的信息，把它存储起来，以后使用。上图生动一点就是这样，也就是说我们只需要logn次就能够完全比较出一个字符串的所有后缀对吧。</p>
+<p>但是还需要排序这样的话每次的复杂度就是O(nlog^2n)，其实已经差不多了，不过仍然有些瑕疵。然后我们考虑到这些数字好像不是很多？因为都是字符，如果我们使用基数排序，就能够将这个复杂度优化到O(nlogn)，所以后缀树组其实就是在字符串上进行倍增+基数排序</p>
+<p><img src="https://i.loli.net/2020/04/02/GEWHzqk4JNhvTQS.png" alt="image-20200402164835881.png"></p>
+<h3 id="算法讲解"><a href="#算法讲解" class="headerlink" title="算法讲解"></a>算法讲解</h3><p>4个数组</p>
+<blockquote>
+<p>sa[i]=j表示第i小的字符串是str第j个位置上的后缀</p>
+<p>rk[i]=j表示第i个位置上的后缀是第j小，其实与sa是互逆的</p>
+<p>tp[i]=j表示第二关键字，基数排序的<strong>第二关键字</strong>，意义是第i小的字符串是str上的第j个位置</p>
+<p>tax[i]表示第i个桶，基数排序所用到的数组</p>
+<p>suf[i]没有在代码中出现，但是我讲解的时候表示第i个位置的后缀</p>
+</blockquote>
+<p>还是那个例子，我们是知道rk初始值，直接对字母进行排序即可，然后tp一开始随便定，这里从小到大，然后根据rk为第一关键字，tp为第二关键字，我们能得到sa</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>a</td>
+<td>a</td>
+<td>b</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>rk</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>tp</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr>
+<td>sa</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>3</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>这里解释一下sa[7]=3,表示第7小的字符串是第3个位置上的也就是baaab,然后sa[8]=8表示第8小的字符串是第8个位置上的也就是b，这里很奇怪为什么不对呢？是因为我们只进行了一次，这一次的目的只是把以a开头的和以b开头的顺序确定了下来，但是因为排序关键字仅有2个，所以无法通过更多的信息确定以b开头的后缀的顺序,让我们开始倍增，从1开始，也就是开始比较那些首字母相同的后续的一个，</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>a</td>
+<td>a</td>
+<td>b</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>第一次</td>
+<td>rk</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>tp</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr>
+<td></td>
+<td>sa</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>3</td>
+<td>8</td>
+</tr>
+<tr>
+<td>第二次</td>
+<td>rk</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>tp</td>
+<td>8</td>
+<td>1</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>2</td>
+<td>7</td>
+</tr>
+<tr>
+<td></td>
+<td>sa</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>2</td>
+<td>7</td>
+<td>8</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>rk还是不变，因为我们才刚开始，第一次相当于初始化tp和sa值，然后我们更新tp，这是我们倍增长度为w=1，</p>
+<pre><code>for(int w=1,p=1,i;p&lt;n;w+=w,m=p){
+    //首先超过后缀不大于w的第二关键字肯定为0 
+    for(p=0,i=n-w+1;i&lt;=n;i++)tp[++p]=i;
+    //然后根据上一轮的排序求出剩下的第二关键字，从小到大，如果它的位置大于w，说明sa[i]-w这个位置的第二关键字大 
+    for(int i=1;i&lt;=n;i++)if(sa[i]&gt;w)tp[++p]=sa[i]-w;
+    Rsort();
+</code></pre><p>也就是把rk第一关键字和tp第二关键字(后缀的第二个字母的大小)，简单解释一下几个tp值，tp[1]=8，是因为第八个位置后面没有字母了，所以显然就是第一小的，然后tp[7]=2,因为suf[2]=abaaaab所以第二个字母是b因此排在第7位，这样tp就能充当我们的第二关键字</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">//第一关键字rk，第二关键字tp进行基数排序复杂度O(n) </span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=m;i++)tax[i]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)tax[rk[tp[i]]]++;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)tax[i]+=tax[i<span class="number">-1</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)sa[tax[rk[tp[i]]]--]=tp[i];</span><br><span class="line">	<span class="comment">//基数排序完毕</span></span><br></pre></td></tr></table></figure>
+<p>我们再次进行基数排序得到sa,这时候发现，那些后缀的前两个字母是aa和ab的顺序已经被确定了，例如sa[4]=6,suf[6]=aa,sa[5]=2,suf[2]=ab顺序已经被确定了。</p>
+<p>得到sa之后，我们更新rk数组，如果再次倍增，我们已经不能使用第一个字母作为第一关键字了，所以考虑更新rk，注意，这时候sa中存储的是从1-8，仅仅比较了后缀长度为2的长度，也就是说还有些后缀的顺序是不确定的，我们就需要找出这一部分，我们先把rk放出来，因为更新它的时候还需要用到它，但是这时候第二关键字tp已经没有用了，所以就把rk放在tp中</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/把rk数组拿出来，需要求出sa数组，rk[sa[<span class="number">1</span>]]=<span class="number">1</span>是因为第一个位置的rk肯定是<span class="number">1</span> </span><br><span class="line">swap(tp,rk),rk[sa[<span class="number">1</span>]]=p=<span class="number">1</span>;</span><br><span class="line"><span class="comment">//判断当前第一关键字与第二关键字的大小关系，使得没有相等的，若有相等则继续倍增即可 </span></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)rk[sa[i]]=comp(tp,sa[i],sa[i<span class="number">-1</span>],w)?p:++p;</span><br></pre></td></tr></table></figure>
+<p>第二句话很好理解，最小的后缀所在的位置肯定是第一的，这个例子中就是rk[1]=1。</p>
+<p>这里解释一个更新rk的例子，此时我们仅考虑长度为2的后缀，当更新sa[2]=4的时候,suf[4]=aa,sa[1]=aa,所以无法判断出在1位置的后缀大还是4后缀大，因此rk[4]=1,再来看一个sa[5]=2,suf[2]=ab,sa[4]=6,suf[6]=aa这样就比较出来，ab&gt;aa的，所以rk[2]=2;实际上，我们从前往后更新，就是前面关键字已经找出来的后缀大小情况，判断是否相等然后得到rank</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>a</td>
+<td>a</td>
+<td>b</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>第一次</td>
+<td>rk</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>tp</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr>
+<td></td>
+<td>sa</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>3</td>
+<td>8</td>
+</tr>
+<tr>
+<td>第二次</td>
+<td>rk</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>tp</td>
+<td>8</td>
+<td>1</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>2</td>
+<td>7</td>
+</tr>
+<tr>
+<td></td>
+<td>sa</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>2</td>
+<td>7</td>
+<td>8</td>
+<td>3</td>
+</tr>
+<tr>
+<td>第三次</td>
+<td>rk</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>tp</td>
+<td>7</td>
+<td>8</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td>sa</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>1</td>
+<td>7</td>
+<td>2</td>
+<td>8</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>接着按照刚刚的说法继续更新tp，sa等！！！</p>
+<p>好了，其实后缀数组算法已经结束了，我们不停的做上述操作，知道什么情况？知道p也就是rk中有n个不重复的元素即可，因为每次都是2的倍数，所以复杂度就是O(nlogn).</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p><a href="https://www.luogu.com.cn/problem/P3809" target="_blank" rel="noopener">洛谷P3809</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">char</span> str[N];</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> rk[N],tp[N],sa[N],tax[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Rsort</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="comment">//第一关键字rk，第二关键字tp进行基数排序复杂度O(n) </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=m;i++)tax[i]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)tax[rk[tp[i]]]++;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)tax[i]+=tax[i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)sa[tax[rk[tp[i]]]--]=tp[i];</span><br><span class="line">		<span class="comment">//基数排序完毕</span></span><br><span class="line">&#125;</span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">comp</span><span class="params">(<span class="keyword">int</span> *f,<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> w)</span></span>&#123;<span class="keyword">return</span> f[x]==f[y]&amp;&amp;f[x+w]==f[y+w];&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">getsa</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)rk[i]=str[i],tp[i]=i;</span><br><span class="line">	m=<span class="number">130</span>;</span><br><span class="line">	Rsort();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> w=<span class="number">1</span>,p=<span class="number">1</span>,i;p&lt;n;w+=w,m=p)&#123;</span><br><span class="line">		<span class="comment">//首先超过后缀不大于w的第二关键字肯定为0 </span></span><br><span class="line">		<span class="keyword">for</span>(p=<span class="number">0</span>,i=n-w+<span class="number">1</span>;i&lt;=n;i++)tp[++p]=i;</span><br><span class="line">		<span class="comment">//然后根据上一轮的排序求出剩下的第二关键字，从小到大，如果它的位置大于w，说明sa[i]-w这个位置的第二关键字大 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="keyword">if</span>(sa[i]&gt;w)tp[++p]=sa[i]-w;</span><br><span class="line">		Rsort();</span><br><span class="line">		<span class="comment">//把rk数组拿出来，需要求出sa数组，rk[sa[1]]=1是因为第一个位置的rk肯定是1 </span></span><br><span class="line">		swap(tp,rk),rk[sa[<span class="number">1</span>]]=p=<span class="number">1</span>;</span><br><span class="line">		<span class="comment">//判断当前第一关键字与第二关键字的大小关系，使得没有相等的，若有相等则继续倍增即可 </span></span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)rk[sa[i]]=comp(tp,sa[i],sa[i<span class="number">-1</span>],w)?p:++p;</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">	n=<span class="built_in">strlen</span>(s);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)str[i+<span class="number">1</span>]=s[i];</span><br><span class="line">	getsa();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	<span class="keyword">if</span>(i==<span class="number">1</span>)<span class="built_in">printf</span>(<span class="string">"%d"</span>,sa[i]);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">" %d"</span>,sa[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+      
+      <div>
+         
+         <div>
+    
+        <div style="text-align:center;color: #1abc9c;font-size:20px;">-------------你最愿意做的哪件事<i class="fa fa-paw"></i>才是你的天赋所在-------------</div>
+    
+</div>
+         
+      </div>
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/04/01/gym-102055-RSA加密-欧拉降幂/" rel="next" title="gym-102055-RSA加密-欧拉降幂">
+                  <i class="fa fa-chevron-left"></i> gym-102055-RSA加密-欧拉降幂
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#后缀数组详解"><span class="nav-number">1.</span> <span class="nav-text">后缀数组详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法的目的"><span class="nav-number">1.1.</span> <span class="nav-text">算法的目的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前置知识"><span class="nav-number">2.</span> <span class="nav-text">前置知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#倍增"><span class="nav-number">2.1.</span> <span class="nav-text">倍增</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法讲解"><span class="nav-number">3.</span> <span class="nav-text">算法讲解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">4.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">gerayking</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gerayking</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">
+      
+    主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+    
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'qNly5FleMfdepiDiaVXsturv-gzGzoHsz',
+    appKey: '5wPliBaYqnLM6iGrQKEnCvRJ',
+    placeholder: "Just go go",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
