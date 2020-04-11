@@ -221,6 +221,727 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/20/HDU4746-莫比乌斯反演/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/09/20/HDU4746-莫比乌斯反演/" class="post-title-link" itemprop="url">HDU4746-莫比乌斯反演</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-20 23:36:31" itemprop="dateCreated datePublished" datetime="2019-09-20T23:36:31+08:00">2019-09-20</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-18 22:16:10" itemprop="dateModified" datetime="2019-10-18T22:16:10+08:00">2019-10-18</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/20/HDU4746-莫比乌斯反演/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/20/HDU4746-莫比乌斯反演/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HDU-4746" target="_blank" rel="noopener">HDU4746</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这套题可以用前缀和的思想优化确实挺好，不过其实就是一个提取公因式的问题<br>首先根据套路莫比乌斯反演我们显然可以O(qnlogn)求出来，但是很明显会超时所以我们需要优化。<br>把答案的式子写出来之后我们可以枚举$\mu(i)$也就是枚举莫比乌斯函数值，然后通过分块优化，可以在O(nq)内求出答案</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/09/20/HDU4746-莫比乌斯反演/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/19/HDU-4675/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/09/19/HDU-4675/" class="post-title-link" itemprop="url">HDU-4675</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-19 21:47:41" itemprop="dateCreated datePublished" datetime="2019-09-19T21:47:41+08:00">2019-09-19</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-20 00:58:15" itemprop="dateModified" datetime="2019-11-20T00:58:15+08:00">2019-11-20</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/19/HDU-4675/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/19/HDU-4675/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HDU-4675" target="_blank" rel="noopener">HDU4675</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先这道题难的地方就是组合数学的地方，另一部分可以用很简单的莫比乌斯反演来写。<br>我们来分析k个a[i]≠b[i]，这个条件<br>假设gcd(b[])=d,那么b中肯定全都是d的倍数，所以我们需要把a[]中所有非d的倍数变成d的倍数，然后如果超过k个，那么肯定无法只有k个不同，所以答案是0<br>如果不超过k个，那么我们还需要从d的倍数中挑选出k-(n-num[d])个。<br>所以最后</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/09/19/HDU-4675/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/19/HYSBZ-2005-莫比乌斯反演/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/09/19/HYSBZ-2005-莫比乌斯反演/" class="post-title-link" itemprop="url">HYSBZ-2005-莫比乌斯反演</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-19 17:58:49" itemprop="dateCreated datePublished" datetime="2019-09-19T17:58:49+08:00">2019-09-19</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-18 22:16:51" itemprop="dateModified" datetime="2019-10-18T22:16:51+08:00">2019-10-18</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/19/HYSBZ-2005-莫比乌斯反演/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/19/HYSBZ-2005-莫比乌斯反演/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HYSBZ-2005" target="_blank" rel="noopener">HYSBZ2005</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>根据题目意思，很明显跟gcd有关，因为路径上若有经过的点则点的个数为gcd(a,b)-1的个数<br>然后这题的答案就是求</p><script type="math/tex; mode=display">Ans=\sum_{i=1}^{N}\sum_{j=1}^{M}2*gcd(i,j)-1</script><p>按照套路来<br>设f(n)为gcd(a,b)=n的个数<br>则F(n)为gcd(a,b)=n及n的倍数的个数<br>答案就变为</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/09/19/HYSBZ-2005-莫比乌斯反演/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/19/HYSBZ-2818-莫比乌斯反演/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/09/19/HYSBZ-2818-莫比乌斯反演/" class="post-title-link" itemprop="url">HYSBZ-2818-莫比乌斯反演</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-19 17:31:26" itemprop="dateCreated datePublished" datetime="2019-09-19T17:31:26+08:00">2019-09-19</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-18 22:17:02" itemprop="dateModified" datetime="2019-10-18T22:17:02+08:00">2019-10-18</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/19/HYSBZ-2818-莫比乌斯反演/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/19/HYSBZ-2818-莫比乌斯反演/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HYSBZ-2818" target="_blank" rel="noopener">HYSBZ-2818</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这道题思路略微复杂，主要是需要交换枚举对象。<br>首先明确我们要求的答案</p><script type="math/tex; mode=display">Ans=\sum_{p \in prime}\sum_{i=1}^{N}\sum_{j=1}^{M}[gcd(i,j)=p]</script><p>按照套路来<br>设f(n)为gcd(a,b)=n的个数<br>则F(n)为gcd(a,b)=n及n的倍数的个数<br>然后可以转化为</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/09/19/HYSBZ-2818-莫比乌斯反演/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/18/HDU1695-莫比乌斯反演/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/09/18/HDU1695-莫比乌斯反演/" class="post-title-link" itemprop="url">HDU1695-莫比乌斯反演</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-18 20:25:02" itemprop="dateCreated datePublished" datetime="2019-09-18T20:25:02+08:00">2019-09-18</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-19 19:39:57" itemprop="dateModified" datetime="2019-11-19T19:39:57+08:00">2019-11-19</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/18/HDU1695-莫比乌斯反演/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/18/HDU1695-莫比乌斯反演/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1695" target="_blank" rel="noopener">HDU1695</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目要求的是下面这个式子</p><script type="math/tex; mode=display">\sum_{i=1}^N\sum_{j=1}^M[gcd(i,j)]=k]</script><p>转化一下变成</p><script type="math/tex; mode=display">\sum_{i=1}^{\frac{N}{k}}\sum_{j=1}^{\frac{M}{k}}[gcd(i,j)]=1]</script><p>然后就可以用莫比乌斯反演来求了<br>设f(n)为gcd(a,b)=n的个数<br>则F(n)为gcd(a,b)=n及n的倍数的个数<br>则有</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/09/18/HDU1695-莫比乌斯反演/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/18/SPOJ-VLATTICE-莫比乌斯反演/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/09/18/SPOJ-VLATTICE-莫比乌斯反演/" class="post-title-link" itemprop="url">SPOJ - VLATTICE-莫比乌斯反演</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-18 19:28:50" itemprop="dateCreated datePublished" datetime="2019-09-18T19:28:50+08:00">2019-09-18</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-18 22:17:10" itemprop="dateModified" datetime="2019-10-18T22:17:10+08:00">2019-10-18</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/18/SPOJ-VLATTICE-莫比乌斯反演/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/18/SPOJ-VLATTICE-莫比乌斯反演/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/SPOJ-VLATTICE" target="_blank" rel="noopener">SPOJ - VLATTICE-莫比乌斯反演</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先这题很容易转成</p><script type="math/tex; mode=display">\sum_{i=1}^N\sum_{j=1}^N\sum_{k=1}^N[gcd(i,j,k)==1]的个数</script><p>因为如果gcd(i,j,k)=g≠1，则必有gcd(i/g,j/g,k/g)=1;<br>然后用莫比乌斯反演套路直接设<br>设f(n)为gcd(a,b,c)=n的个数<br>则F(n)为gcd(a,b,c)=n及n的倍数的个数<br>则有</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/09/18/SPOJ-VLATTICE-莫比乌斯反演/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/18/Poj-3904-莫比乌斯反演/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/09/18/Poj-3904-莫比乌斯反演/" class="post-title-link" itemprop="url">Poj-3904(莫比乌斯反演)</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-18 17:36:21" itemprop="dateCreated datePublished" datetime="2019-09-18T17:36:21+08:00">2019-09-18</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-18 22:17:27" itemprop="dateModified" datetime="2019-10-18T22:17:27+08:00">2019-10-18</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/18/Poj-3904-莫比乌斯反演/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/18/Poj-3904-莫比乌斯反演/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/POJ-3904#author=0" target="_blank" rel="noopener">poj-3904</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>莫比乌斯反演很好的一道入门题。这里运用莫比乌斯倍数反演.<br>设f(n)为gcd(a,b,c,d)=n的个数<br>则F(n)为gcd(a,b,c,d)=n及n的倍数的个数<br>则有</p><script type="math/tex; mode=display">F(n)=\sum_{n\mid d}f(d)</script><p>然后用莫比乌斯倍数反演得到</p><script type="math/tex; mode=display">f(n)=\sum_{n\mid d}\mu(\frac{d}{n})*F(d)</script>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/09/18/Poj-3904-莫比乌斯反演/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/18/SDOI2011-计算器-数论/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -510,685 +1231,6 @@
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/10/二次剩余定理详解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/09/10/二次剩余定理详解/" class="post-title-link" itemprop="url">二次剩余定理详解</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-10 13:09:36" itemprop="dateCreated datePublished" datetime="2019-09-10T13:09:36+08:00">2019-09-10</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-18 22:14:23" itemprop="dateModified" datetime="2019-10-18T22:14:23+08:00">2019-10-18</time>
-              </span>
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/10/二次剩余定理详解/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/10/二次剩余定理详解/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="二次剩余"><a href="#二次剩余" class="headerlink" title="二次剩余"></a>二次剩余</h2><script type="math/tex; mode=display">x^2≡n(mod\ p)</script><p>对于这个方程，求出满足的x。</p><h3 id="引理1"><a href="#引理1" class="headerlink" title="引理1"></a>引理1</h3><p>首先来看一个符号</p><script type="math/tex; mode=display">
-(\frac{n}{p})</script><p>这个符号叫做勒让德符号，这个符号里有两个值，一个是n,一个是p。<font color="#FF0000">假设p为奇素数，且n无法整除p时</font>，他有以下定义</p><script type="math/tex; mode=display">
-(\frac{n}{p})=n^{\frac{p-1}{2}}</script><p>当$(\frac{n}{p})=1$时，存在一个x使得n是p的二次剩余<br>当$(\frac{n}{p})=-1$时，不存在一个x使得n是p的二次剩余<br>例如，当p=11时。$(\frac{1}{11})=1^{\frac{11-1}{2}}=1(mod 11)$所以1是11的二次剩余<br>而，$(\frac{3}{11})=3^{\frac{11-1}{2}}=-1(mod 11)$所以3是11的二次非剩余<br>现在来证明</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/09/10/二次剩余定理详解/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/08/The-2019-Asia-Nanchang-First-Round-Online-Programming-Contest/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/09/08/The-2019-Asia-Nanchang-First-Round-Online-Programming-Contest/" class="post-title-link" itemprop="url">The 2019 Asia Nanchang First Round Online Programming Contest</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-08 22:03:31" itemprop="dateCreated datePublished" datetime="2019-09-08T22:03:31+08:00">2019-09-08</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-11 21:45:30" itemprop="dateModified" datetime="2019-09-11T21:45:30+08:00">2019-09-11</time>
-              </span>
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/08/The-2019-Asia-Nanchang-First-Round-Online-Programming-Contest/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/08/The-2019-Asia-Nanchang-First-Round-Online-Programming-Contest/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h3><p><a href="https://www.jisuanke.com/contest/3870?view=challenges" target="_blank" rel="noopener">The 2019 Asia Nanchang First Round Online Programming Contest</a></p><h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><p>坑点在于，如果用前向星存图的话是会有重边的，所以再dijkstra里面不要用vis标记，用SPFA应该可以轻松跑过<br>初始化dis数组一定要初始化到尽量大的值，不然ui影响结果的</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/09/08/The-2019-Asia-Nanchang-First-Round-Online-Programming-Contest/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/08/2019Xuzhou-pretest-I-二维偏序树状数组/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/09/08/2019Xuzhou-pretest-I-二维偏序树状数组/" class="post-title-link" itemprop="url">2019Xuzhou-pretest-I(二维偏序树状数组)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-08 02:14:08" itemprop="dateCreated datePublished" datetime="2019-09-08T02:14:08+08:00">2019-09-08</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-16 20:40:50" itemprop="dateModified" datetime="2019-09-16T20:40:50+08:00">2019-09-16</time>
-              </span>
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/08/2019Xuzhou-pretest-I-二维偏序树状数组/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/08/2019Xuzhou-pretest-I-二维偏序树状数组/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h3><p><a href="https://nanti.jisuanke.com/t/41391" target="_blank" rel="noopener">2019Xuzhou-pretest-I(二维偏序树状数组)</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>先预处理处第1-第i个满足的集合<br>这个过程中，考虑从后往前删除的过程中何时需要减去，世界上对删除的每个数，判断因子是否已经被删除，<br>若没有，则贡献-1，若已被删除就不用管。<br>然后处理查询，使用二维偏序，对查询从左端点排序，由于删除右边的答案我们已经有了，所以我们考虑删除左边的。<br>这里要用树状数组维护一个前缀和。</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/09/08/2019Xuzhou-pretest-I-二维偏序树状数组/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/07/POJ1177-线段树-扫描线求周长/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/09/07/POJ1177-线段树-扫描线求周长/" class="post-title-link" itemprop="url">POJ1177-线段树(扫描线求周长)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-07 00:42:05 / 修改时间：00:52:03" itemprop="dateCreated datePublished" datetime="2019-09-07T00:42:05+08:00">2019-09-07</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/07/POJ1177-线段树-扫描线求周长/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/07/POJ1177-线段树-扫描线求周长/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="http://poj.org/problem?id=1177" target="_blank" rel="noopener">Poj1177</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>裸的线段树扫描线题目了。<br>首先考虑把单独的一条边独立出来，然后思考周长怎么求?<br>很显然，在加入一条横边时，我们考虑它的贡献，也就是之前的横轴上没有覆盖的区域。<br>考虑竖边，竖边一定由相邻两条横着的边构成，我们取上一条加入的横边与当前考虑加入的横边。<br>他们各自的高也就是一段竖边的高，但是有多少段呢？画一下可以发现，有多少段取决于全部区域内有多少块不连接的区域，例如[2,3],[5,6]，则一共有4条，因为每块区域提供两条，而[1,2][2,4]的话只有两条，因为只有1块区域。<br>注意：这里讨论的竖边并不是长方形的完全竖边，而是我们把它分段了，一段一段的加上去。<br>经过上面分析，我们线段树上需要维护的有<br>1.当前覆盖的区域的长度和val<br>2.区域的块数，也就是不相连接的部分的数量num<br>3.当前区域被覆盖的次数s,如果s为0，则这个点对应的区间已经扫描过了，答案已经加上了。s不可能小于0.</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/09/07/POJ1177-线段树-扫描线求周长/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/06/HDU4553-线段树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/09/06/HDU4553-线段树/" class="post-title-link" itemprop="url">HDU4553-线段树</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-06 01:49:33 / 修改时间：01:54:08" itemprop="dateCreated datePublished" datetime="2019-09-06T01:49:33+08:00">2019-09-06</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/06/HDU4553-线段树/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/06/HDU4553-线段树/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://cn.vjudge.net/problem/HDU-4553" target="_blank" rel="noopener">HDU4553</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>建立两颗线段树，发现NS的可以用DS的，而DS确不可以用女神的，在更新和查询的时候判断一下就好。<br>然后是区间连续和的板子题了。<br>前缀后缀，中间找。<br>以及两个lazy标记的影响要注意就好了<br>查询的时候，先查左，再到中间，最后右边。因为要求起始标号最小。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l,r;</span><br><span class="line">	<span class="keyword">int</span> pre,suf;</span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">	<span class="keyword">bool</span> clear;</span><br><span class="line">	<span class="keyword">bool</span> full;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">len</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> r-l+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;DStree[maxn&lt;&lt;<span class="number">2</span>],NStree[maxn&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PushUp</span><span class="params">(node *tree,<span class="keyword">int</span> rt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tree[rt].pre=tree[rt&lt;&lt;<span class="number">1</span>].pre;</span><br><span class="line">	tree[rt].suf=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].suf;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].pre==tree[rt&lt;&lt;<span class="number">1</span>].len())tree[rt].pre+=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].pre;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].suf==tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].len())tree[rt].suf+=tree[rt&lt;&lt;<span class="number">1</span>].suf;</span><br><span class="line">	tree[rt].val=max(tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val,max(tree[rt&lt;&lt;<span class="number">1</span>].val,tree[rt&lt;&lt;<span class="number">1</span>].suf+tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].pre));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PushDown</span><span class="params">(node *tree,<span class="keyword">int</span> rt)</span></span></span><br><span class="line"><span class="function"></span>&#123;   <span class="keyword">if</span>(tree[rt].len()==<span class="number">1</span>)<span class="keyword">return</span> ;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].clear)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>].pre=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].pre=tree[rt&lt;&lt;<span class="number">1</span>].suf=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].suf=tree[rt&lt;&lt;<span class="number">1</span>].val=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val=<span class="number">0</span>;</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].clear=tree[rt&lt;&lt;<span class="number">1</span>].clear=<span class="literal">true</span>;</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].full=tree[rt&lt;&lt;<span class="number">1</span>].full=<span class="literal">false</span>;</span><br><span class="line">		tree[rt].clear=<span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].full)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>].pre=tree[rt&lt;&lt;<span class="number">1</span>].suf=tree[rt&lt;&lt;<span class="number">1</span>].val=tree[rt&lt;&lt;<span class="number">1</span>].len();</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].pre=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].suf=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].len();</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>].full=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].full=<span class="literal">true</span>;</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].clear=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].clear=<span class="literal">false</span>;</span><br><span class="line">		tree[rt].full=<span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(node *tree,<span class="keyword">int</span> rt,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tree[rt].l=l;</span><br><span class="line">	tree[rt].r=r;</span><br><span class="line">	tree[rt].pre=tree[rt].suf=tree[rt].val=tree[rt].len();</span><br><span class="line">	tree[rt].full=<span class="number">0</span>;</span><br><span class="line">	tree[rt].clear=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(l==r)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[rt].val=tree[rt].suf=tree[rt].pre=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> ; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid = (l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	build(tree,rt&lt;&lt;<span class="number">1</span>,l,mid);</span><br><span class="line">	build(tree,rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r); </span><br><span class="line">	PushUp(tree,rt);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span><span class="params">(node *tree,<span class="keyword">int</span> rt,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].l&gt;r||tree[rt].r&lt;l)<span class="keyword">return</span> ;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].l&gt;=l&amp;&amp;tree[rt].r&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(c==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			tree[rt].full=<span class="number">1</span>;</span><br><span class="line">			tree[rt].clear=<span class="number">0</span>;</span><br><span class="line">			tree[rt].pre=tree[rt].suf=tree[rt].val=tree[rt].len();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			tree[rt].full=<span class="number">0</span>;</span><br><span class="line">			tree[rt].clear=<span class="number">1</span>;</span><br><span class="line">			tree[rt].pre=tree[rt].suf=tree[rt].val=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	PushDown(tree,rt);</span><br><span class="line">	Update(tree,rt&lt;&lt;<span class="number">1</span>,l,r,c);</span><br><span class="line">	Update(tree,rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,l,r,c);</span><br><span class="line">	PushUp(tree,rt);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(node *tree,<span class="keyword">int</span> rt,<span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;   <span class="keyword">if</span>(tree[rt].val&lt;len)<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].l==tree[rt].r)<span class="keyword">return</span> tree[rt].l;</span><br><span class="line">	PushDown(tree,rt);</span><br><span class="line">	<span class="keyword">int</span> mid = (tree[rt].r+tree[rt].l)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt&lt;&lt;<span class="number">1</span>].val&gt;=len)</span><br><span class="line">	<span class="keyword">return</span> query(tree,rt&lt;&lt;<span class="number">1</span>,len);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(tree[rt&lt;&lt;<span class="number">1</span>].suf+tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].pre&gt;=len)<span class="keyword">return</span> mid-tree[rt&lt;&lt;<span class="number">1</span>].suf+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span> query(tree,rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,len);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">char</span> s[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> cas=<span class="number">1</span>;cas&lt;=t;cas++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Case %d:\n"</span>,cas);</span><br><span class="line">		<span class="keyword">int</span> n,m;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">		build(DStree,<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">		build(NStree,<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">		<span class="keyword">while</span>(m--)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">			<span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'D'</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> x;</span><br><span class="line">				<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">				<span class="keyword">if</span>(DStree[<span class="number">1</span>].val&lt;x)<span class="built_in">printf</span>(<span class="string">"fly with yourself\n"</span>);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">int</span> ans = query(DStree,<span class="number">1</span>,x);</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"%d,let's fly\n"</span>,ans);</span><br><span class="line">					Update(DStree,<span class="number">1</span>,ans,ans+x<span class="number">-1</span>,<span class="number">0</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'N'</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> x;</span><br><span class="line">				<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">				<span class="keyword">if</span>(DStree[<span class="number">1</span>].val&lt;x)</span><br><span class="line">				&#123;</span><br><span class="line">				<span class="keyword">if</span>(NStree[<span class="number">1</span>].val&lt;x) <span class="built_in">printf</span>(<span class="string">"wait for me\n"</span>);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">int</span> ans = query(NStree,<span class="number">1</span>,x);</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"%d,don't put my gezi\n"</span>,ans);</span><br><span class="line">					Update(DStree,<span class="number">1</span>,ans,ans+x<span class="number">-1</span>,<span class="number">0</span>);</span><br><span class="line">					Update(NStree,<span class="number">1</span>,ans,ans+x<span class="number">-1</span>,<span class="number">0</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			    &#125;</span><br><span class="line">			    <span class="keyword">else</span></span><br><span class="line">			    &#123;</span><br><span class="line">			    	<span class="keyword">int</span> ans = query(DStree,<span class="number">1</span>,x);</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"%d,don't put my gezi\n"</span>,ans);</span><br><span class="line">					Update(DStree,<span class="number">1</span>,ans,ans+x<span class="number">-1</span>,<span class="number">0</span>);</span><br><span class="line">					Update(NStree,<span class="number">1</span>,ans,ans+x<span class="number">-1</span>,<span class="number">0</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'S'</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> x,y;</span><br><span class="line">				<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;x,&amp;y);</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"I am the hope of chinese chengxuyuan!!\n"</span>);</span><br><span class="line">				Update(DStree,<span class="number">1</span>,x,y,<span class="number">1</span>);</span><br><span class="line">				Update(NStree,<span class="number">1</span>,x,y,<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/05/java学习之路4-反射机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/09/05/java学习之路4-反射机制/" class="post-title-link" itemprop="url">java学习之路4-反射机制</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-05 21:28:27 / 修改时间：21:36:20" itemprop="dateCreated datePublished" datetime="2019-09-05T21:28:27+08:00">2019-09-05</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/05/java学习之路4-反射机制/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/05/java学习之路4-反射机制/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="java反射机制"><a href="#java反射机制" class="headerlink" title="java反射机制"></a>java反射机制</h3><p>这是一点与c++不同的地方，java有一个所有类的超类，也就是Object，不论是系统自带类，或者你自己写的，都是这个类的子类。<br>还有一个类Class，这个类跟反射机制息息相关。</p><h4 id="反射机制作用"><a href="#反射机制作用" class="headerlink" title="反射机制作用"></a>反射机制作用</h4><p>1.在运行时判断任意一个对象所属的类；<br>2.在运行时构造任意一个类的对象；<br>3.在运行时判断任意一个类所具有的成员变量和方法；<br>4.在运行时调用任意一个对象的方法；生成动态代理。<br>第一点，可以获得当前对象是什么类<br>第二点，既然知道是什么类了，那么我就可以自己构造一个实例对象<br>第三点，我知道你是什么类了，就可以找到你的成员以及方法。<br>第四点，我不仅知道你的方法，我还能够用你的方法</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/09/05/java学习之路4-反射机制/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/05/HDU4614-线段树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/09/05/HDU4614-线段树/" class="post-title-link" itemprop="url">HDU4614-线段树</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-05 01:29:01 / 修改时间：01:31:36" itemprop="dateCreated datePublished" datetime="2019-09-05T01:29:01+08:00">2019-09-05</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/05/HDU4614-线段树/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/05/HDU4614-线段树/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://cn.vjudge.net/problem/HDU-4614#author=2013551629" target="_blank" rel="noopener">HDU4614</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先建好线段树，功能是删除连续的1，查询区间和，插入1.就够了<br>然后二分找出起点，再二分找出终点即可。<br>注意的是，线段树lazy标记一定要注意两者之间的逻辑关系。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N =<span class="number">5e4</span>+<span class="number">10</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lson l,mid,rt&lt;&lt;1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rson mid+1,r,rt&lt;&lt;1|1</span></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l,r;</span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">	<span class="keyword">bool</span> put;</span><br><span class="line">	<span class="keyword">bool</span> in;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">len</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> r-l+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;tree[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PushUp</span><span class="params">(<span class="keyword">int</span> rt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tree[rt].val=(tree[rt&lt;&lt;<span class="number">1</span>].val+tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PushDown</span><span class="params">(<span class="keyword">int</span> rt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].put)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>].put=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].put=tree[rt].put;</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>].in=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].in=<span class="literal">false</span>;</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val=tree[rt&lt;&lt;<span class="number">1</span>].val=<span class="number">0</span>;</span><br><span class="line">		tree[rt].put=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].in)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>].in=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].in=tree[rt].in;</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>].put=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].put=<span class="literal">false</span>;</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>].val=tree[rt&lt;&lt;<span class="number">1</span>].len();</span><br><span class="line">		tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val=tree[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].len();</span><br><span class="line">		tree[rt].in=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> rt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tree[rt].l=l;</span><br><span class="line">	tree[rt].r=r;</span><br><span class="line">	tree[rt].val=<span class="number">0</span>;</span><br><span class="line">	tree[rt].put=tree[rt].in=<span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">if</span>(l==r)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[rt].val=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">int</span> mid = (l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	build(lson);</span><br><span class="line">	build(rson);</span><br><span class="line">	PushUp(rt);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span><span class="params">(<span class="keyword">int</span> rt,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].r&lt;l||tree[rt].l&gt;r)<span class="keyword">return</span> ;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].l&gt;=l&amp;&amp;tree[rt].r&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[rt].put=<span class="number">0</span>;</span><br><span class="line">		tree[rt].in=<span class="number">1</span>;</span><br><span class="line">		tree[rt].val=tree[rt].len();</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	PushDown(rt);</span><br><span class="line">	Update(rt&lt;&lt;<span class="number">1</span>,l,r);</span><br><span class="line">	Update(rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,l,r);</span><br><span class="line">    PushUp(rt);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">(<span class="keyword">int</span> rt,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].r&lt;l||tree[rt].l&gt;r)<span class="keyword">return</span> ;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].l&gt;=l&amp;&amp;tree[rt].r&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[rt].put=<span class="number">1</span>;</span><br><span class="line">		tree[rt].in=<span class="number">0</span>;</span><br><span class="line">		tree[rt].val=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	PushDown(rt);</span><br><span class="line">	clear(rt&lt;&lt;<span class="number">1</span>,l,r);</span><br><span class="line">	clear(rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,l,r);</span><br><span class="line">	PushUp(rt);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> rt,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].r&lt;l||tree[rt].l&gt;r)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(tree[rt].l&gt;=l&amp;&amp;tree[rt].r&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> tree[rt].val;</span><br><span class="line">	&#125;</span><br><span class="line">	PushDown(rt);</span><br><span class="line">	ans+=query(rt&lt;&lt;<span class="number">1</span>,l,r);</span><br><span class="line">	ans+=query(rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,l,r);</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bin</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> rank)</span><span class="comment">//rank:需要插入的花的数目</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = s;</span><br><span class="line">    <span class="keyword">int</span> r = n;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid;</span><br><span class="line">    <span class="keyword">while</span>(l &lt;= r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> tmp = query(<span class="number">1</span>,s,mid);</span><br><span class="line">        <span class="keyword">if</span>(tmp + rank == mid - s + <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ans = mid;</span><br><span class="line">            r = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(tmp + rank &lt; mid - s + <span class="number">1</span>)</span><br><span class="line">                r = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                l = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">		build(<span class="number">1</span>,n,<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">while</span>(m--)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> k,a,b;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;k,&amp;a,&amp;b);</span><br><span class="line">			<span class="keyword">if</span>(k==<span class="number">1</span>&amp;&amp;a==<span class="number">2</span>&amp;&amp;b==<span class="number">3</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				k=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(k==<span class="number">1</span>)</span><br><span class="line">			&#123;   a++;</span><br><span class="line">			    a=bin(a,<span class="number">1</span>);</span><br><span class="line">			    <span class="keyword">if</span>(a==<span class="number">-1</span>)<span class="built_in">printf</span>(<span class="string">"Can not put any one.\n"</span>);</span><br><span class="line">			    <span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">int</span> tem = query(<span class="number">1</span>,a,n);</span><br><span class="line">				tem = n-a+<span class="number">1</span>-tem;</span><br><span class="line">				<span class="keyword">if</span>(b&gt;=tem)</span><br><span class="line">				b=tem;</span><br><span class="line">				<span class="keyword">int</span> res = bin(a,b); </span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,a<span class="number">-1</span>,res<span class="number">-1</span>);</span><br><span class="line">				Update(<span class="number">1</span>,a,res);</span><br><span class="line">			    &#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				a++,b++;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,query(<span class="number">1</span>,a,b));</span><br><span class="line">				clear(<span class="number">1</span>,a,b);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1238,7 +1280,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">120</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
