@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="一方通行">
 <meta property="og:description" content="题目链接Yokohama 2018C - Emergency Evacuation思路先计算出每个人到出口的时间，肯定会有同步的，例如下列情况   10s 1015s 10 就是10s 的时候有10个人到达出口，15s的时候有10个人到达出口，就需要排队，10s+10s+10s=30s可以全部走完，模拟一下上述过程，算出来就是答案。坑点就是数据很小，在误导你暴力QaQ">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-11T13:40:19.564Z">
+<meta property="og:updated_time" content="2020-04-11T13:43:23.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yokohama 2018">
 <meta name="twitter:description" content="题目链接Yokohama 2018C - Emergency Evacuation思路先计算出每个人到出口的时间，肯定会有同步的，例如下列情况   10s 1015s 10 就是10s 的时候有10个人到达出口，15s的时候有10个人到达出口，就需要排队，10s+10s+10s=30s可以全部走完，模拟一下上述过程，算出来就是答案。坑点就是数据很小，在误导你暴力QaQ">
@@ -257,7 +257,7 @@
                 
               
 
-              <time title="创建时间：2020-04-11 21:20:02 / 修改时间：21:40:19" itemprop="dateCreated datePublished" datetime="2020-04-11T21:20:02+08:00">2020-04-11</time>
+              <time title="创建时间：2020-04-11 21:20:02 / 修改时间：21:43:23" itemprop="dateCreated datePublished" datetime="2020-04-11T21:20:02+08:00">2020-04-11</time>
             </span>
           
             
@@ -532,6 +532,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
