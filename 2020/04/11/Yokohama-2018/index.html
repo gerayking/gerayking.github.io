@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="题目链接Yokohama 2018C - Emergency Evacuation思路先计算出每个人到出口的时间，肯定会有同步的，例如下列情况   10s 1015s 10 就是10s 的时候有10个人到达出口，15s的时候有10个人到达出口，就需要排队，10s+10s+10s=30s可以全部走完，模拟一下上述过程，算出来就是答案。坑点就是数据很小，在误导你暴力QaQ">
+  <meta name="description" content="题目链接Yokohama 2018 C - Emergency Evacuation">
 <meta name="keywords" content="思维">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Yokohama 2018">
 <meta property="og:url" content="https://gerayking.github.io/2020/04/11/Yokohama-2018/index.html">
 <meta property="og:site_name" content="一方通行">
-<meta property="og:description" content="题目链接Yokohama 2018C - Emergency Evacuation思路先计算出每个人到出口的时间，肯定会有同步的，例如下列情况   10s 1015s 10 就是10s 的时候有10个人到达出口，15s的时候有10个人到达出口，就需要排队，10s+10s+10s=30s可以全部走完，模拟一下上述过程，算出来就是答案。坑点就是数据很小，在误导你暴力QaQ">
+<meta property="og:description" content="题目链接Yokohama 2018 C - Emergency Evacuation">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-11T13:43:23.251Z">
+<meta property="og:updated_time" content="2020-04-15T04:48:09.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yokohama 2018">
-<meta name="twitter:description" content="题目链接Yokohama 2018C - Emergency Evacuation思路先计算出每个人到出口的时间，肯定会有同步的，例如下列情况   10s 1015s 10 就是10s 的时候有10个人到达出口，15s的时候有10个人到达出口，就需要排队，10s+10s+10s=30s可以全部走完，模拟一下上述过程，算出来就是答案。坑点就是数据很小，在误导你暴力QaQ">
+<meta name="twitter:description" content="题目链接Yokohama 2018 C - Emergency Evacuation">
   <link rel="canonical" href="https://gerayking.github.io/2020/04/11/Yokohama-2018/">
 
 
@@ -257,11 +257,19 @@
                 
               
 
-              <time title="创建时间：2020-04-11 21:20:02 / 修改时间：21:43:23" itemprop="dateCreated datePublished" datetime="2020-04-11T21:20:02+08:00">2020-04-11</time>
+              <time title="创建时间：2020-04-11 21:20:02" itemprop="dateCreated datePublished" datetime="2020-04-11T21:20:02+08:00">2020-04-11</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-15 12:48:09" itemprop="dateModified" datetime="2020-04-15T12:48:09+08:00">2020-04-15</time>
+              </span>
             
           
 
@@ -292,12 +300,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://codeforces.com/gym/102082/attachments" target="_blank" rel="noopener">Yokohama 2018</a></p><h3 id="C-Emergency-Evacuation"><a href="#C-Emergency-Evacuation" class="headerlink" title="C - Emergency Evacuation"></a>C - Emergency Evacuation</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>先计算出每个人到出口的时间，肯定会有同步的，例如下列情况  </p><blockquote>
+        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://codeforces.com/gym/102082/attachments" target="_blank" rel="noopener">Yokohama 2018</a></p>
+<h3 id="C-Emergency-Evacuation"><a href="#C-Emergency-Evacuation" class="headerlink" title="C - Emergency Evacuation"></a>C - Emergency Evacuation</h3><a id="more"></a>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>先计算出每个人到出口的时间，肯定会有同步的，例如下列情况  </p>
+<blockquote>
 <p>10s 10<br>15s 10</p>
-</blockquote><p>就是10s 的时候有10个人到达出口，15s的时候有10个人到达出口，就需要排队，10s+10s+10s=30s可以全部走完，模拟一下上述过程，算出来就是答案。坑点就是数据很小，在误导你暴力QaQ</p><a id="more"></a>
-
-
-
+</blockquote>
+<p>就是10s 的时候有10个人到达出口，15s的时候有10个人到达出口，就需要排队，10s+10s+10s=30s可以全部走完，模拟一下上述过程，算出来就是答案。坑点就是数据很小，在误导你暴力QaQ</p>
 <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ld long double</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">isprime</span><span class="params">(ll num)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="keyword">if</span>(num==<span class="number">2</span>||num==<span class="number">3</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span>(num%<span class="number">6</span>!=<span class="number">1</span>&amp;&amp;num%<span class="number">6</span>!=<span class="number">5</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">5</span>;<span class="number">1l</span>l*i*i&lt;=num;i+=<span class="number">6</span>)&#123;<span class="keyword">if</span>(num%i==<span class="number">0</span>||num%(i+<span class="number">2</span>)==<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">true</span>;&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">mul</span><span class="params">(ll a,ll b,ll c)</span></span>&#123;<span class="keyword">return</span> (a*b-(ll)((ld)a*b/c)*c+c)%c;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">exgcd</span><span class="params">(ll a,ll b,ll &amp;x,ll &amp;y)</span></span>&#123;<span class="keyword">if</span>(!b)&#123;x=<span class="number">1</span>;y=<span class="number">0</span>;<span class="keyword">return</span> a;&#125;ll g = exgcd(b,a%b,y,x);y-=a/b*x;<span class="keyword">return</span> g;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">quick_pow</span><span class="params">(ll a,ll b,ll mod)</span></span>&#123;ll res=<span class="number">1</span>;<span class="keyword">while</span>(b)&#123;<span class="keyword">if</span>(b&amp;<span class="number">1</span>)res=mul(res,a,mod);a=mul(a,a,mod);b&gt;&gt;=<span class="number">1</span>;&#125;<span class="keyword">return</span> res;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">quick_pow</span><span class="params">(ll a,ll b)</span></span>&#123;ll res=<span class="number">1</span>;<span class="keyword">while</span>(b)&#123;<span class="keyword">if</span>(b&amp;<span class="number">1</span>)res=mul(res,a,mod);a=mul(a,a,mod);b&gt;&gt;=<span class="number">1</span>;&#125;<span class="keyword">return</span> res;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">inv</span><span class="params">(ll x)</span></span>&#123;<span class="keyword">return</span> quick_pow(x,mod<span class="number">-2</span>);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">inv</span><span class="params">(ll x,ll mod)</span></span>&#123;<span class="keyword">return</span> quick_pow(x,mod<span class="number">-2</span>,mod);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">gcd</span><span class="params">(ll a,ll b)</span></span>&#123;<span class="keyword">return</span> b?gcd(b,a%b):a;&#125;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;mp; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> r,s,p;</span><br><span class="line">	<span class="keyword">int</span> mx=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;r,&amp;s,&amp;p);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;p;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;x,&amp;y);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> step;</span><br><span class="line">		<span class="keyword">if</span>(y&gt;s)&#123;</span><br><span class="line">			 step = r+<span class="number">1</span>-x+y-s;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			step = r+<span class="number">1</span>-x+s-y+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		mp[step]++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> k:mp)&#123;</span><br><span class="line">		mx=max(k.first+k.second<span class="number">-1</span>,mx+k.second);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,mx);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="G-What-Goes-Up-Must-Come-Down"><a href="#G-What-Goes-Up-Must-Come-Down" class="headerlink" title="G     What Goes Up Must Come Down"></a>G     What Goes Up Must Come Down</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>可以从最大的那个数分成两个区间，我们考虑一个数应该在做区间还是在右区间，显然，在左区间的贡献相当于左边比它大的数的个数，在右区间的贡献相当与右边比它大的个数，然后用树状数组维护一波，就可以了</p>
 <h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> arr[N];</span><br><span class="line"><span class="keyword">int</span> mx[N],mi[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x&amp;(-x);</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">int</span> a[N],c[N]; <span class="comment">//对应原数组和树状数组</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">updata</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> k)</span></span>&#123;    <span class="comment">//在i位置加上k</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt; N)&#123;</span><br><span class="line">        c[i] += k;</span><br><span class="line">        i += lowbit(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;        <span class="comment">//求A[1 - i]的和</span></span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        res += c[i];</span><br><span class="line">        i -= lowbit(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;arr[i]);</span><br><span class="line">		updata(arr[i],<span class="number">1</span>);</span><br><span class="line">		mi[i]=getsum(<span class="number">10001</span>)-getsum(arr[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(a));</span><br><span class="line">	<span class="built_in">memset</span>(c,<span class="number">0</span>,<span class="keyword">sizeof</span>(c));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">		updata(arr[i],<span class="number">1</span>);</span><br><span class="line">		mx[i]=getsum(<span class="number">10001</span>)-getsum(arr[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	ll ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)ans+=min(mi[i],mx[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -345,6 +354,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/04/12/easypoi-export-excel/" rel="prev" title="easypoi export excel">
+                  easypoi export excel <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -409,7 +422,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">120</span>
+          <span class="site-state-item-count">121</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -435,7 +448,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
