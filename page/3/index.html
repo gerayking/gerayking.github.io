@@ -221,6 +221,500 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/30/AC自动机/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/03/30/AC自动机/" class="post-title-link" itemprop="url">AC自动机详解</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-30 12:21:31" itemprop="dateCreated datePublished" datetime="2020-03-30T12:21:31+08:00">2020-03-30</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-02 17:36:37" itemprop="dateModified" datetime="2020-04-02T17:36:37+08:00">2020-04-02</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/30/AC自动机/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/30/AC自动机/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="巨巨博客连接"><a href="#巨巨博客连接" class="headerlink" title="巨巨博客连接"></a>巨巨博客连接</h3><p><a href="https://oi-wiki.org/string/ac-automaton/" target="_blank" rel="noopener">Wiki-AC自动机</a><br><a href="https://www.bilibili.com/video/BV1gs411t767?p=2" target="_blank" rel="noopener">B站视频详解</a><br>不知道B站视频会不会变换地址，搜”UESTCACM 每周算法讲堂 AC自动机”就有了<br>因为学过形式语言与自动机，把书上的每个店看成一个状态，每个fail指针看成一个转移函数就可以了</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_N 1000006</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_Tot 500005</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Aho</span>&#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">state</span>&#123;</span></span><br><span class="line">		<span class="keyword">int</span> next[<span class="number">26</span>];</span><br><span class="line">		<span class="keyword">int</span> fail,cnt;</span><br><span class="line">	&#125;st[MAX_Tot];</span><br><span class="line">	<span class="keyword">int</span> size;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(!q.empty())q.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;MAX_Tot;i++)&#123;</span><br><span class="line">			<span class="built_in">memset</span>(st[i].next,<span class="number">0</span>,<span class="keyword">sizeof</span>(st[i].next));</span><br><span class="line">			st[i].fail=st[i].cnt=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		size=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span> *S)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> n=<span class="built_in">strlen</span>(S);</span><br><span class="line">		<span class="keyword">int</span> now=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> c=S[i]-<span class="string">'a'</span>;</span><br><span class="line">			<span class="keyword">if</span>(!st[now].next[c])st[now].next[c]=size++;</span><br><span class="line">			now=st[now].next[c];</span><br><span class="line">		&#125;</span><br><span class="line">		st[now].cnt++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">()</span></span>&#123;</span><br><span class="line">		st[<span class="number">0</span>].fail=<span class="number">-1</span>;</span><br><span class="line">		<span class="comment">//根节点的fail指针已经找到，进入队伍中 </span></span><br><span class="line">		q.push(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">			<span class="keyword">int</span> u=q.front();q.pop();</span><br><span class="line">			<span class="comment">//遍历与根节点的边，其实再想能不能优化这里 </span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)&#123;</span><br><span class="line">				<span class="comment">//如果存在这条边 </span></span><br><span class="line">				<span class="keyword">if</span>(st[u].next[i])&#123;</span><br><span class="line">					<span class="keyword">if</span>(u==<span class="number">0</span>)st[st[u].next[i]].fail=<span class="number">0</span>;<span class="comment">//这里就是位于与根节点连接的状态，他们的fail指针都指向0 </span></span><br><span class="line">					<span class="keyword">else</span>&#123;</span><br><span class="line">						<span class="keyword">int</span> v= st[u].fail;<span class="comment">//令当前节点遍历的为父亲节点，不停的往上找他的祖先 </span></span><br><span class="line">						<span class="keyword">while</span>(v!=<span class="number">-1</span>)&#123;</span><br><span class="line">							<span class="keyword">if</span>(st[v].next[i])<span class="comment">//如果存在一条与u-i-对应的v-i-边，则找到了 </span></span><br><span class="line">							&#123;</span><br><span class="line">								st[st[u].next[i]].fail=st[v].next[i];</span><br><span class="line">								<span class="keyword">break</span>;<span class="comment">//保证找的是最长的，也就是离u最近的节点 </span></span><br><span class="line">							&#125;</span><br><span class="line">							v=st[v].fail;</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">if</span>(v==<span class="number">-1</span>)st[st[u].next[i]].fail=<span class="number">0</span>;<span class="comment">//如果最后没找到，那么就直接等于根节点 </span></span><br><span class="line">					&#125;</span><br><span class="line">					q.push(st[u].next[i]);<span class="comment">//统计完fail之后，直接就入队等待遍历 </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">Get</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(u&amp;&amp;st[u].cnt!=<span class="number">-1</span>)&#123;</span><br><span class="line">			res=res+st[u].cnt;</span><br><span class="line">			st[u].cnt=<span class="number">-1</span>;</span><br><span class="line">			u=st[u].fail;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">match</span><span class="params">(<span class="keyword">char</span> *S)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> n=<span class="built_in">strlen</span>(S);</span><br><span class="line">		<span class="keyword">int</span> res=<span class="number">0</span>,now=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> c = S[i]-<span class="string">'a'</span>;</span><br><span class="line">			<span class="keyword">if</span>(st[now].next[c])&#123;</span><br><span class="line">				now = st[now].next[c];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">int</span> p = st[now].fail;</span><br><span class="line">				<span class="keyword">while</span>(p!=<span class="number">-1</span>&amp;&amp;st[p].next[c]==<span class="number">0</span>)&#123;</span><br><span class="line">					p=st[p].fail;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(p==<span class="number">-1</span>)now=<span class="number">0</span>;</span><br><span class="line">				<span class="keyword">else</span> now = st[p].next[c];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(st[now].cnt)&#123;</span><br><span class="line">				res=res+Get(now);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;aho;</span><br><span class="line"><span class="keyword">char</span> S[MAX_N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)&#123;</span><br><span class="line">		aho.init();</span><br><span class="line">		<span class="keyword">int</span> m;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;m);</span><br><span class="line">		<span class="keyword">while</span>(m--)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>,S);</span><br><span class="line">			aho.insert(S);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,S);</span><br><span class="line">		aho.build();</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,aho.match(S));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/28/3-28训练总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/03/28/3-28训练总结/" class="post-title-link" itemprop="url">3.28训练总结</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-28 23:28:26" itemprop="dateCreated datePublished" datetime="2020-03-28T23:28:26+08:00">2020-03-28</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-29 18:59:30" itemprop="dateModified" datetime="2020-03-29T18:59:30+08:00">2020-03-29</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/28/3-28训练总结/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/28/3-28训练总结/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/contest/364978#overview" target="_blank" rel="noopener">莫干山网络赛</a></p><h3 id="D-Find-Integer"><a href="#D-Find-Integer" class="headerlink" title="D - Find Integer"></a>D - Find Integer</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>根据费马大定理(虽然没有证明，但是这个数据是肯定成立的)，n&gt;2的时候无无解，然后就找n=2的时候，发现是勾股数。<br>然后这里提供一种勾股数的求法<br>1.a=2<em>n+1的奇数且a&gt;1，若$a^2+b^2=c^2 \&amp;\&amp;a&lt;b&lt;c 则b=2</em>n<em>n+2</em>n,c=2<em>n</em>n+2<em>n+1$<br>2.a=2</em>n的偶数且a&gt;2，若$a^2+b^2=c^2\&amp;\&amp;a&lt;b&lt;c 则b=n<em>n-1,c=n</em>n+1$  </p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/03/28/3-28训练总结/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/22/HDU6732/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/03/22/HDU6732/" class="post-title-link" itemprop="url">HDU6732</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-22 11:26:03 / 修改时间：11:37:20" itemprop="dateCreated datePublished" datetime="2020-03-22T11:26:03+08:00">2020-03-22</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/22/HDU6732/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/22/HDU6732/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HDU-6372/origin" target="_blank" rel="noopener">HDU6732</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这道题首先要会卢卡斯定理和一定的离散知识，根据卢卡斯定理，组合数$C(n,m) mod  p$相当于n,m转换为p进制之后每一位的组合数再相乘起来。<br>然后不等于0的情况就是n转换为p进制后大于m转换为p进制后每一位上的数字都比m的大。然后HMBB[i][j]矩阵相当于若有上述情况，则存在一条路径从i-&gt;j,K次方的话，就是i-&gt;j经过k条路的方案数目。相当于对n，m的每一位来说存在这样一个序列$t_0-&gt;t_1-&gt;\dots-&gt;t_k$,并且这个序列是单挑不递减的，这个序列存在的方案数就是这个矩阵的和，这个序列可以用组合数学。相当于p个箱子，k+1个球，箱子可以为空的方案数，然后转换成p个箱子，k+p+1个球，箱子不为空的情况。接下来把球拍成一行，然后想象一下在球与球之间使用隔板，就可以把它分成p个部分，一共为k+p+1个隔板，选p-1个，所以总方案数就是</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/03/22/HDU6732/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/20/codeforces-622F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/03/20/codeforces-622F/" class="post-title-link" itemprop="url">codeforces-622F</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-20 10:59:04 / 修改时间：11:39:40" itemprop="dateCreated datePublished" datetime="2020-03-20T10:59:04+08:00">2020-03-20</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/20/codeforces-622F/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/20/codeforces-622F/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://codeforces.com/problemset/problem/622/F" target="_blank" rel="noopener">622f</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><script type="math/tex; mode=display">
+Ans=\sum_{i=1}^n i^k</script><p>直接求肯定会超时，然后自然数幂和可以表达为k+1项的多项式。</p><h4 id="自然数幂和展开多项式"><a href="#自然数幂和展开多项式" class="headerlink" title="自然数幂和展开多项式"></a>自然数幂和展开多项式</h4><script type="math/tex; mode=display">
+(n+1)^k-(n^k)=\sum_{i=0}^{k-1}C_k^in^i\\
+n^k-(n-1)^k=\sum_{i=0}^{k-1}C_k^i(n-1)^i\\
+\vdots\\
+累加得到\\
+\sum_{i=1}^n((i+1)^k-i^k)=(n+1)^k-1\\
+=\sum_{i=1}^n\sum_{j=1}^{k-1}C_k^ji^j\\
+=\sum_{i=0}^{k-1}C_k^j\sum_{j=1}^nj^i\\
+设f(j)=\sum_{i=1}^ni^j\\
+=\sum_{i=1}^{k-1}C_k^jf(j)\\
+=\sum_{i=0}^{k-2}C_k^jf(j)+k*f(k-1)\\</script>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/03/20/codeforces-622F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/20/Global-Round-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/03/20/Global-Round-7/" class="post-title-link" itemprop="url">Global Round 7</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-20 08:03:50 / 修改时间：08:18:23" itemprop="dateCreated datePublished" datetime="2020-03-20T08:03:50+08:00">2020-03-20</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/20/Global-Round-7/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/20/Global-Round-7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>输出n个数字不含0，且这个数不能整除他所包含的物质，考虑3的性质，输入33334这类的数字即可</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)&#123;</span><br><span class="line">		<span class="keyword">int</span> n;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">1</span>)<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)<span class="built_in">printf</span>(<span class="string">"3"</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"4\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/03/20/Global-Round-7/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/16/Marathon-2-Mathemaitics/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -707,499 +1201,6 @@ Ans&=\sum_{i=1}^n\sum_{j=1}^m\mu(lcm(i,j))\\
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/06/A-B-FFT/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/03/06/A-B-FFT/" class="post-title-link" itemprop="url">HDU1402(FFT)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-06 21:57:05 / 修改时间：21:59:10" itemprop="dateCreated datePublished" datetime="2020-03-06T21:57:05+08:00">2020-03-06</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/06/A-B-FFT/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/06/A-B-FFT/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1402" target="_blank" rel="noopener">HDU1402</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>FFT板子题，注意前置零的判断以及数组大小,<br>不会FFT的戳<br><a href="https://gerayking.github.io/2020/03/03/FFT%E8%AF%A6%E8%A7%A3/">FFT详解</a></p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="built_in">acos</span>(<span class="number">-1</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">3e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">char</span> s1[<span class="number">50010</span>],s2[<span class="number">50010</span>];</span><br><span class="line"><span class="keyword">int</span> a[N],b[N],r[N],res[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cp</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">double</span> r,i;</span><br><span class="line">    cp(<span class="keyword">double</span> _r = <span class="number">0</span>,<span class="keyword">double</span> _i = <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        r = _r; i = _i;</span><br><span class="line">    &#125;</span><br><span class="line">    cp <span class="keyword">operator</span> +(<span class="keyword">const</span> cp &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> cp(r+b.r,i+b.i);</span><br><span class="line">    &#125;</span><br><span class="line">    cp <span class="keyword">operator</span> -(<span class="keyword">const</span> cp &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> cp(r-b.r,i-b.i);</span><br><span class="line">    &#125;</span><br><span class="line">    cp <span class="keyword">operator</span> *(<span class="keyword">const</span> cp &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> cp(r*b.r-i*b.i,r*b.i+i*b.r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;A[N],B[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(cp *s,<span class="keyword">int</span> n,<span class="keyword">int</span> inv)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;r[i])swap(s[i],s[r[i]]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">2</span>;len&lt;=n;len&lt;&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">		cp wn = cp(<span class="built_in">cos</span>(<span class="number">2</span>*pi/len),inv*<span class="built_in">sin</span>(<span class="number">2</span>*pi/len));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> st=<span class="number">0</span>;st&lt;n;st+=len)&#123;</span><br><span class="line">			cp w = cp(<span class="number">1.0</span>,<span class="number">0.0</span>); </span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=st;i&lt;st+len/<span class="number">2</span>;i++,w=w*wn)&#123;</span><br><span class="line">				cp x=s[i];</span><br><span class="line">				cp y=w*s[i+len/<span class="number">2</span>];</span><br><span class="line">				s[i]=x+y;</span><br><span class="line">				s[i+len/<span class="number">2</span>]=x-y;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(inv==<span class="number">-1</span>)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">		s[i].r/=n;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len =<span class="number">1</span>,bit=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> s1len=<span class="built_in">strlen</span>(s1);</span><br><span class="line">	<span class="keyword">int</span> s2len=<span class="built_in">strlen</span>(s2);</span><br><span class="line">	<span class="keyword">int</span> slen = max(s1len,s2len);</span><br><span class="line">	<span class="keyword">while</span>(len&lt;slen*<span class="number">2</span>)len&lt;&lt;=<span class="number">1</span>,bit++;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">		a[i]=b[i]=r[i]=res[i]=<span class="number">0</span>;</span><br><span class="line">		A[i]=B[i]=cp(<span class="number">0.0</span>,<span class="number">0.0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s1len;i++)a[i]=s1[i]-<span class="string">'0'</span>,A[i].r=a[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s2len;i++)b[i]=s2[i]-<span class="string">'0'</span>,B[i].r=b[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)r[i]=(r[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)|((i&amp;<span class="number">1</span>)&lt;&lt;(bit<span class="number">-1</span>));</span><br><span class="line">	FFT(A,len,<span class="number">1</span>);</span><br><span class="line">	FFT(B,len,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">	A[i]=A[i]*B[i];</span><br><span class="line">	FFT(A,len,<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)res[i]=(<span class="keyword">int</span>)(A[i].r+<span class="number">0.5</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=len<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">		<span class="keyword">if</span>(res[i]&gt;=<span class="number">10</span>)res[i<span class="number">-1</span>]+=res[i]/<span class="number">10</span>,res[i]%=<span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(res[<span class="number">0</span>]==<span class="number">0</span>)<span class="built_in">puts</span>(<span class="string">"0"</span>);</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s1len+s2len<span class="number">-1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d"</span>,res[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s %s"</span>,s1,s2)!=EOF)&#123;</span><br><span class="line">		solve();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/06/3-idiots-HDU4609-FFT/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/03/06/3-idiots-HDU4609-FFT/" class="post-title-link" itemprop="url">3-idiots-HDU4609(FFT)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-06 20:36:25 / 修改时间：20:48:27" itemprop="dateCreated datePublished" datetime="2020-03-06T20:36:25+08:00">2020-03-06</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/06/3-idiots-HDU4609-FFT/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/06/3-idiots-HDU4609-FFT/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=4609" target="_blank" rel="noopener">3-idiots-HDU4609</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>从一个数列中随机取3个然后形成三角形的概率，因为边长的范围是1e5之内，所以如果两条边相加最长也就是2e5，于是我们考虑使用FFT处理出任意两条边的和。每一个序列值对应一个多项式的系数+1，例如样例的[1 3 3 4]我们就可以得到</p><script type="math/tex; mode=display">
-F(x)=x+2x^3+x^4</script>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/03/06/3-idiots-HDU4609-FFT/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/06/HYSBZ4916-杜教筛/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/03/06/HYSBZ4916-杜教筛/" class="post-title-link" itemprop="url">HYSBZ4916(杜教筛)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-06 15:37:29 / 修改时间：15:50:28" itemprop="dateCreated datePublished" datetime="2020-03-06T15:37:29+08:00">2020-03-06</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/06/HYSBZ4916-杜教筛/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/06/HYSBZ4916-杜教筛/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HYSBZ-4916" target="_blank" rel="noopener">神犇和蒟蒻</a></p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>很显然，第一个求$\sum_{i=1}^n\mu(i)$的结果肯定是1<br>那么我们来看第二个问题就</p><script type="math/tex; mode=display">
-\begin{aligned}
-    Ans&=\sum_{i=1}^n\phi(i^2)\\
-    &=\sum_{i=1}^ni\phi(i)\\
-\end{aligned}</script><p>设</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/03/06/HYSBZ4916-杜教筛/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/05/求和-莫比乌斯反演-杜教筛/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/03/05/求和-莫比乌斯反演-杜教筛/" class="post-title-link" itemprop="url">求和(莫比乌斯反演+杜教筛)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-05 21:05:38" itemprop="dateCreated datePublished" datetime="2020-03-05T21:05:38+08:00">2020-03-05</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-06 00:07:05" itemprop="dateModified" datetime="2020-03-06T00:07:05+08:00">2020-03-06</time>
-              </span>
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/05/求和-莫比乌斯反演-杜教筛/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/05/求和-莫比乌斯反演-杜教筛/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://ac.nowcoder.com/acm/contest/4114/D" target="_blank" rel="noopener">wannafly-day3-D-求和</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><script type="math/tex; mode=display">
-\begin{aligned}
-f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
-&=\sum_{d|n}d\sum_{i=1}^{n}\sum_{j=1}^{n}[gcd(i,j,n)==1]\\
-&=\sum_{d|n}d\sum_{i=1}^{\frac{n}{d}}\sum_{j=1}^{\frac{n}{d}}[gcd(i,j,\frac{n}{d})==1]\\
-&=\sum_{d|n}d\sum_{i=1}^{\frac{n}{d}}\sum_{j=1}^{\frac{n}{d}}\sum_{k|gcd(i,j,\frac{n}{d})}\mu(k)\\
-&=\sum_{d|n}d\sum_{k|\frac{n}{d}}\mu(k)(\frac{n}{dk})^2\\
-令T=dk\\
-&=\sum_{T|n}(\frac{n}{T})^2\sum_{k|T}\mu(\frac{T}{k})k\\
-&=\sum_{T|n}(\frac{n}{T})^2\phi(T)\\
-&=\sum_{T|n}T^2\phi(\frac{n}{T})
-\end{aligned}</script>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/03/05/求和-莫比乌斯反演-杜教筛/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/03/FFT详解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/03/03/FFT详解/" class="post-title-link" itemprop="url">FFT详解</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-03 21:13:30 / 修改时间：23:36:52" itemprop="dateCreated datePublished" datetime="2020-03-03T21:13:30+08:00">2020-03-03</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/03/FFT详解/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/03/FFT详解/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="FFT-快速傅里叶变换"><a href="#FFT-快速傅里叶变换" class="headerlink" title="FFT(快速傅里叶变换)"></a>FFT(快速傅里叶变换)</h2><h3 id="单位根"><a href="#单位根" class="headerlink" title="单位根"></a>单位根</h3><script type="math/tex; mode=display">w_n = \cos(\frac{2\Pi}{n}) + \sin(\frac{2\Pi}{n})i</script><p>可理解为把复坐标轴上的单位圆分成了n份<br><img src="https://i.loli.net/2020/03/03/JZEk83X6yljtUbO.png" alt></p><h4 id="性质1"><a href="#性质1" class="headerlink" title="性质1"></a>性质1</h4><script type="math/tex; mode=display">w_n^k = w_{2n}^{2k}</script><p>证明</p><script type="math/tex; mode=display">w_{2n}^{2k} = \cos(\frac{2\Pi*2k}{2n}) + \sin(\frac{2\Pi*2k}{2n})i = \cos(\frac{2\Pi*k}{n}) + \sin(\frac{2\Pi*k}{n})i = w_n^k</script>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/03/03/FFT详解/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1249,7 +1250,7 @@ f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">121</span>
+          <span class="site-state-item-count">126</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
