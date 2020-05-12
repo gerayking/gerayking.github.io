@@ -208,6 +208,191 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/31/Codeforces-Round-582-Div-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/08/31/Codeforces-Round-582-Div-3/" class="post-title-link" itemprop="url">Codeforces Round #582 (Div. 3)</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-31 01:37:32 / 修改时间：01:50:42" itemprop="dateCreated datePublished" datetime="2019-08-31T01:37:32+08:00">2019-08-31</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/08/31/Codeforces-Round-582-Div-3/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/31/Codeforces-Round-582-Div-3/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="http://codeforces.com/contest/1213" target="_blank" rel="noopener">Codeforces Round #582 (Div. 3)</a></p><h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>注意到每个的贡献都是一个循环，打个表后，直接取贡献。</p><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span>  <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="keyword">int</span> all[<span class="number">11</span>];</span><br><span class="line"><span class="keyword">int</span> num[<span class="number">11</span>];</span><br><span class="line"><span class="keyword">int</span> pre[<span class="number">10</span>][<span class="number">11</span>];</span><br><span class="line"><span class="keyword">int</span> presum[<span class="number">10</span>][<span class="number">11</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">9</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> cnt = i;</span><br><span class="line">		<span class="keyword">int</span> ccnt = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(cnt)</span><br><span class="line">		&#123;</span><br><span class="line">			pre[i][ccnt++]=cnt;</span><br><span class="line">			cnt+=i;</span><br><span class="line">			cnt%=<span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		num[i]=ccnt;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">9</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;<span class="number">11</span>;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			pre[i][j]+=pre[i][j<span class="number">-1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		all[i]=pre[i][<span class="number">10</span>];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> q;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">while</span>(q--)</span><br><span class="line">	&#123;</span><br><span class="line">		ll l,r;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;l&gt;&gt;r;</span><br><span class="line">		<span class="keyword">int</span> num1=r%<span class="number">10</span>;</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> a = l/r;</span><br><span class="line">		<span class="keyword">if</span>(a==<span class="number">0</span>||num1==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"0\n"</span>);</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		a/=num[num1];</span><br><span class="line">		ans+=(a*all[num1]);</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> b =(l/r)%num[num1];</span><br><span class="line">		ans+=(pre[num1][b]);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/08/31/Codeforces-Round-582-Div-3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/23/Educational-Codeforces-Round-71-Rated-for-Div-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/08/23/Educational-Codeforces-Round-71-Rated-for-Div-2/" class="post-title-link" itemprop="url">Educational Codeforces Round 71 (Rated for Div. 2)</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-23 01:03:56 / 修改时间：01:06:52" itemprop="dateCreated datePublished" datetime="2019-08-23T01:03:56+08:00">2019-08-23</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/08/23/Educational-Codeforces-Round-71-Rated-for-Div-2/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/23/Educational-Codeforces-Round-71-Rated-for-Div-2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这场确实被教育了，自己的缺点暴露无遗，菜也暴露无遗，给我敲响了一个警钟。</p>
+<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="http://codeforces.com/contest/1207" target="_blank" rel="noopener">Educational Codeforces Round 71 (Rated for Div. 2)</a></p>
+<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>DP，dp[0][i]表示第i个位置高度为1的最低花费，dp[1][i]表示第i个位置高度为2的最低花费</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line">ll dp[maxn][<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> n,a,b;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;n,&amp;a,&amp;b);</span><br><span class="line">		<span class="built_in">string</span> s;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">2</span>;j++)</span><br><span class="line">		dp[i][j]=<span class="number">1e18</span>;</span><br><span class="line">		dp[<span class="number">0</span>][<span class="number">0</span>]=b;</span><br><span class="line">		dp[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">1e18</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(s[i<span class="number">-1</span>]==<span class="string">'1'</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][<span class="number">1</span>]=b+b+dp[i<span class="number">-1</span>][<span class="number">1</span>]+a;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][<span class="number">1</span>]=min(dp[i<span class="number">-1</span>][<span class="number">1</span>]+b+b+a,dp[i<span class="number">-1</span>][<span class="number">0</span>]+a+a+b+b);</span><br><span class="line">				dp[i][<span class="number">0</span>]=min(dp[i<span class="number">-1</span>][<span class="number">1</span>]+a+b+a,dp[i<span class="number">-1</span>][<span class="number">0</span>]+a+b);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;dp[n][<span class="number">0</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/22/HDU1540-线段树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1000,210 +1185,6 @@
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/17/中国剩余定理详解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/08/17/中国剩余定理详解/" class="post-title-link" itemprop="url">中国剩余定理详解</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-17 18:49:14" itemprop="dateCreated datePublished" datetime="2019-08-17T18:49:14+08:00">2019-08-17</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-18 22:17:55" itemprop="dateModified" datetime="2019-10-18T22:17:55+08:00">2019-10-18</time>
-              </span>
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/08/17/中国剩余定理详解/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/17/中国剩余定理详解/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="中国剩余定理与扩展中国剩余定理"><a href="#中国剩余定理与扩展中国剩余定理" class="headerlink" title="中国剩余定理与扩展中国剩余定理"></a>中国剩余定理与扩展中国剩余定理</h2><p>首先来看这个方程</p><script type="math/tex; mode=display">\begin{cases}
-x≡a_{1}(mod\ b_1)\\
-x≡a_{2}(mod\ b_2)\\
-x≡a_{3}(mod\ b_3)\\
-\cdots\\
-x≡a_{n}(mod\ b_n)
-\end{cases}</script><p>求出上述x的最小正整数解，即为中国剩余定理。<br>有两种情况，第一种为$b_1$,$b_2$,$b_3$之间两两互质。<br>第二种情况为不互质时，也就是扩展中国剩余定理</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/08/17/中国剩余定理详解/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/17/HDU4507-数位DP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2019/08/17/HDU4507-数位DP/" class="post-title-link" itemprop="url">HDU4507-数位DP</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-17 00:52:41 / 修改时间：00:58:41" itemprop="dateCreated datePublished" datetime="2019-08-17T00:52:41+08:00">2019-08-17</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/08/17/HDU4507-数位DP/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/17/HDU4507-数位DP/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://cn.vjudge.net/problem/HDU-4507" target="_blank" rel="noopener">HDU-4507</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>数位DP，但是需要加上一些数学方法，如何统计平方和呢？<br>比如abcd是一个满足情况的数，我们拆分成a<em>10^3+b</em>10^2+c<em>10+d;<br>为了方便就把a=a</em>10^3,b=b<em>10^2类推。<br>然后这个数就变成了(a+b+c+d)^2,也就是a^2+b^2+c^2+2a(b+c+d)+2b(c+d)+2(c</em>d).<br>这时候我们发现，是不是可以为何一个sum来统计，用数位DP也正好是递归的思想。<br>但是，数位DP，我们是针对位数来统计的，如果把abcd中的d换成另一个数e，要怎么统计呢？<br>这时候我们记录下来满足条件的个数就好了，回溯的时候在乘上个数，sum里面已经包含了e的贡献了。<br>这样，这题就解决了。</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/08/17/HDU4507-数位DP/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1253,7 +1234,7 @@ x≡a_{n}(mod\ b_n)
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">128</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1398,60 +1379,8 @@ x≡a_{n}(mod\ b_n)
       
     
       
-        
-      
     
       
-    
-  
-    
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
     
   
 
@@ -1486,5 +1415,5 @@ NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min
 }, window.Valine);
 </script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"live2d-widget-model-haruto"},"display":{"position":"left","width":150,"height":500},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
