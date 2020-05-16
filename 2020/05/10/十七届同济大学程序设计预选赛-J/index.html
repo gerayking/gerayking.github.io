@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="一方通行">
 <meta property="og:description" content="题目链接十七届同济大学程序设计预选赛-J思路我们从这个开始考虑\begin{aligned} F&apos;_k(n)&amp;=\sum_{i=1}^n(n-i)^kFib(i)\\ F&apos;_k(n+1)&amp;=\sum_{i=1}^n(n-i+1)^kFib(i)\\ \end{aligned}上面两个式子做差得到\begin{aligned} &amp;F&apos;_k(n+1)-F&apos;_k(n)\\ &amp;=\sum_{i=1}^{n">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-10T17:59:37.382Z">
+<meta property="og:updated_time" content="2020-05-16T04:52:15.269Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="十七届同济大学程序设计预选赛-J">
 <meta name="twitter:description" content="题目链接十七届同济大学程序设计预选赛-J思路我们从这个开始考虑\begin{aligned} F&apos;_k(n)&amp;=\sum_{i=1}^n(n-i)^kFib(i)\\ F&apos;_k(n+1)&amp;=\sum_{i=1}^n(n-i+1)^kFib(i)\\ \end{aligned}上面两个式子做差得到\begin{aligned} &amp;F&apos;_k(n+1)-F&apos;_k(n)\\ &amp;=\sum_{i=1}^{n">
@@ -255,7 +255,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-11 01:59:37" itemprop="dateModified" datetime="2020-05-11T01:59:37+08:00">2020-05-11</time>
+                <time title="修改时间：2020-05-16 12:52:15" itemprop="dateModified" datetime="2020-05-16T12:52:15+08:00">2020-05-16</time>
               </span>
             
           
@@ -544,6 +544,56 @@ F'_k(n+1)&=\sum_{i=1}^n(n-i+1)^kFib(i)\\
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
