@@ -208,6 +208,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/16/Marathon-2-Mathemaitics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/03/16/Marathon-2-Mathemaitics/" class="post-title-link" itemprop="url">Marathon#2-Mathemaitics</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-16 21:47:11 / 修改时间：22:15:34" itemprop="dateCreated datePublished" datetime="2020-03-16T21:47:11+08:00">2020-03-16</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/16/Marathon-2-Mathemaitics/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/16/Marathon-2-Mathemaitics/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/contest/361461#overview" target="_blank" rel="noopener">点这里</a></p><h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>就是求gcd(a,m)=gcd(a+x,m)的个数，把区间对称一下之后，就发现求得是phi(b/g);</p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="function">ll <span class="title">p</span><span class="params">(ll x,<span class="keyword">int</span> cnt)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(cnt&lt;<span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(cnt==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=cnt;i++)&#123;</span><br><span class="line">		x*=x;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">getphi</span><span class="params">(ll x)</span></span>&#123;</span><br><span class="line">	ll ans = x;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;<span class="number">1l</span>l*i*i&lt;=x;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%i==<span class="number">0</span>)&#123;</span><br><span class="line">			ans-=ans/i;</span><br><span class="line">			<span class="keyword">while</span>(x%i==<span class="number">0</span>)x/=i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x!=<span class="number">1</span>)ans-=ans/x;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">gcd</span><span class="params">(ll a,ll b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> b?gcd(b,a%b):a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)&#123;</span><br><span class="line">		ll a,b;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld %lld"</span>,&amp;a,&amp;b);</span><br><span class="line">		ll g = gcd(a,b);</span><br><span class="line">		b/=g;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,getphi(b));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/03/16/Marathon-2-Mathemaitics/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/13/ural1996-FFT-KMP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1092,106 +1187,11 @@ f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/01/叁佰爱抠的序列-二分-欧拉回路/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/03/01/叁佰爱抠的序列-二分-欧拉回路/" class="post-title-link" itemprop="url">叁佰爱抠的序列(二分+欧拉回路)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-01 20:29:35 / 修改时间：20:40:19" itemprop="dateCreated datePublished" datetime="2020-03-01T20:29:35+08:00">2020-03-01</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/01/叁佰爱抠的序列-二分-欧拉回路/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/01/叁佰爱抠的序列-二分-欧拉回路/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h3><p><a href="https://ac.nowcoder.com/acm/contest/4010/H" target="_blank" rel="noopener">叁佰爱抠的序列</a></p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>在2e6范围内，需要输出答案，大于2e6的时候则不用，因为答案单调，所以考虑二分答案。<br>为奇数时，奇数点的完全图的度全为偶数，则存在欧拉路径所以$res=mid<em>(mid-1)/2 + 1$加1是因为序列第一位和最后一位不算相邻。<br>为偶数的时候不难发现为$res=mid</em>mid/2$<br>二分出m之后，打印答案也需要考虑，如果完全图不能够画出欧拉路径，那么考虑加边，一开始考虑剪边，如果这样的话会导致一些情况下需要的序列长度增加，考虑加边的情况，在中间选取相邻的两个点加边，头和尾不用加，例如1,2,3,4,5,6那么就选择(2,3)(4,5)这样之后，1，6的度就为奇数，其他的为偶数，存在欧拉路径。然后跑欧拉路径即可</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/03/01/叁佰爱抠的序列-二分-欧拉回路/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1236,7 +1236,7 @@ f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">130</span>
+          <span class="site-state-item-count">131</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1262,7 +1262,7 @@ f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1365,9 +1365,9 @@ f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
   
     
       
-    
-      
         
+      
+    
       
     
       
