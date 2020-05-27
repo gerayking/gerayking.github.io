@@ -208,6 +208,291 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/27/Educational-Codeforces-Round-86-Rated-for-Div-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/04/27/Educational-Codeforces-Round-86-Rated-for-Div-2/" class="post-title-link" itemprop="url">Educational Codeforces Round 86 [Rated for Div. 2]</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-27 17:09:46 / 修改时间：21:35:25" itemprop="dateCreated datePublished" datetime="2020-04-27T17:09:46+08:00">2020-04-27</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/27/Educational-Codeforces-Round-86-Rated-for-Div-2/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/27/Educational-Codeforces-Round-86-Rated-for-Div-2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://codeforces.com/contest/1342" target="_blank" rel="noopener">‘Educational Codeforces Round 86 [Rated for Div. 2]’</a></p><h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>水题，分三种情况就可以了</p><h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> vi vector<span class="meta-string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> vll vector<span class="meta-string">&lt;vll&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pii pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pll pair<span class="meta-string">&lt;ll,ll&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">isprime</span><span class="params">(ll num)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="keyword">if</span>(num==<span class="number">2</span>||num==<span class="number">3</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span>(num%<span class="number">6</span>!=<span class="number">1</span>&amp;&amp;num%<span class="number">6</span>!=<span class="number">5</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">5</span>;<span class="number">1l</span>l*i*i&lt;=num;i+=<span class="number">6</span>)&#123;<span class="keyword">if</span>(num%i==<span class="number">0</span>||num%(i+<span class="number">2</span>)==<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">true</span>;&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">mul</span><span class="params">(ll a,ll b,ll c)</span></span>&#123;<span class="keyword">return</span> (a*b-(ll)((ld)a*b/c)*c+c)%c;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">exgcd</span><span class="params">(ll a,ll b,ll &amp;x,ll &amp;y)</span></span>&#123;<span class="keyword">if</span>(!b)&#123;x=<span class="number">1</span>;y=<span class="number">0</span>;<span class="keyword">return</span> a;&#125;ll g = exgcd(b,a%b,y,x);y-=a/b*x;<span class="keyword">return</span> g;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">quick_pow</span><span class="params">(ll a,ll b,ll mod)</span></span>&#123;ll res=<span class="number">1</span>;<span class="keyword">while</span>(b)&#123;<span class="keyword">if</span>(b&amp;<span class="number">1</span>)res=mul(res,a,mod);a=mul(a,a,mod);b&gt;&gt;=<span class="number">1</span>;&#125;<span class="keyword">return</span> res;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">quick_pow</span><span class="params">(ll a,ll b)</span></span>&#123;ll res=<span class="number">1</span>;<span class="keyword">while</span>(b)&#123;<span class="keyword">if</span>(b&amp;<span class="number">1</span>)res=mul(res,a,mod);a=mul(a,a,mod);b&gt;&gt;=<span class="number">1</span>;&#125;<span class="keyword">return</span> res;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">inv</span><span class="params">(ll x)</span></span>&#123;<span class="keyword">return</span> quick_pow(x,mod<span class="number">-2</span>);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">inv</span><span class="params">(ll x,ll mod)</span></span>&#123;<span class="keyword">return</span> quick_pow(x,mod<span class="number">-2</span>,mod);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">gcd</span><span class="params">(ll a,ll b)</span></span>&#123;<span class="keyword">return</span> b?gcd(b,a%b):a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;x,&amp;y);</span><br><span class="line">		<span class="keyword">int</span> a,b;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;a,&amp;b);</span><br><span class="line">		ll ans = <span class="number">1l</span>l*(x+y)*a;</span><br><span class="line">		<span class="keyword">if</span>(x&lt;y)swap(x,y);</span><br><span class="line">		ans=min(ans,<span class="number">1l</span>l*a*(x-y)+<span class="number">1l</span>l*y*b);</span><br><span class="line">		ans=min(ans,<span class="number">1l</span>l*a*(x-y)+<span class="number">1l</span>l*x*b);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/04/27/Educational-Codeforces-Round-86-Rated-for-Div-2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/26/Gym-102392B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/04/26/Gym-102392B/" class="post-title-link" itemprop="url">Gym-102392B</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-26 09:02:10 / 修改时间：09:08:00" itemprop="dateCreated datePublished" datetime="2020-04-26T09:02:10+08:00">2020-04-26</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/26/Gym-102392B/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/26/Gym-102392B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="http://codeforces.com/gym/102392/problem/B" target="_blank" rel="noopener">Gym-102392B</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>对于每个任务要么选择level 1要么level 2或者不选，不选的话就会由上上个状态转移到，我们定义DP状态为dp[i][j]表示前n个物品中第一阶段经验为i，第二阶段经验为j的最小分钟数，需要给任务排序，因为会有溢出，防止出现{90,30,30,30}而应该选取{30,30,30,90}的情况。而第一阶段存在溢出的情况，所以只有在i &lt; s1的时候进行转移。具体看代码实现</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/04/26/Gym-102392B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/15/luogu-P2863-tarjan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/04/15/luogu-P2863-tarjan/" class="post-title-link" itemprop="url">luogu-P2863-tarjan</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-15 12:39:21 / 修改时间：12:47:30" itemprop="dateCreated datePublished" datetime="2020-04-15T12:39:21+08:00">2020-04-15</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/15/luogu-P2863-tarjan/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/15/luogu-P2863-tarjan/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://www.luogu.com.cn/problem/P2863" target="_blank" rel="noopener">luogu-P2863-tarjan</a><br>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/04/15/luogu-P2863-tarjan/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/12/easypoi-export-excel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -903,300 +1188,11 @@ dp[i][j]=\sum_{k=0}^{min(j,num[i])}dp[i-1][j-k]</script><p>但是这样算的话
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/04/Codeforces-Round-631-Div-2-D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/04/04/Codeforces-Round-631-Div-2-D/" class="post-title-link" itemprop="url">Codeforces Round #631 (Div. 2)-E</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-04-04 02:07:30 / 修改时间：02:24:07" itemprop="dateCreated datePublished" datetime="2020-04-04T02:07:30+08:00">2020-04-04</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/04/04/Codeforces-Round-631-Div-2-D/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/04/Codeforces-Round-631-Div-2-D/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先要明白b数组，其实就是a数组的异或前缀和，那么要怎么保证异或递增？选的数拆成二进制之后肯定需要位数递增才行，所以我们考虑把d拆成2进制，分成很多块儿，就是这样  </p><blockquote>
-<p>[1],[10,11],[100,101,110,111],[1000,….],….</p>
-</blockquote><p>分成上面这样的块，然后从这里面找序列就可以了，然后发现这些块的大小是1 2 4 8 16这样的，然后问题就变成了从x个块中分别取1,2,3,4,5~x个数，然后得到的sum，发现这些数都是2的次幂对吧，我们就找它的系数。它的系数应该怎么找的？考虑当$2^k$为最高的位置时，例如$2^2$在第三位的时候，前面可以有$[2^0,2^1,2^2]$这样如果在第二位就有$[2^0,2^2]与[2^1,2^2]$，然后它的系数就是在它前面的和。接下来这样还是不太好求它的系数，但是我们发现如果从低到高的求系数的话，就可以使用前面的信息，例如当我求出$2^1$的系数为2,也就是$[2^0,2^1]以及[2^1]$本身，还有$2^0$的系数为1，也就是[2^0]自身，那么$2^2$的系数就相当于在它前面出现过的序列相加啊，也就是$[2^0,2^1],[2^1],[2^0]$的后面加上$[2^2]$，也就变成$[2^0,2^1,2^2],[2^1,2^2],[2^0,2^2]$所以我们可以直接递增的求出系数6来。当然它可能不一定是整块，最后剩余的部分怎么考虑？前面有x-1块，处理完后，我们就在这些序列的后面直接加上yu的话，也就是多了这些序列*yu的序列，然后还有后面一部分自成序列的情况，也就是再+yu即可。</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/04/04/Codeforces-Round-631-Div-2-D/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/03/poj-3450-后缀数组/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/04/03/poj-3450-后缀数组/" class="post-title-link" itemprop="url">poj-3450-后缀数组</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-04-03 20:22:45 / 修改时间：20:58:13" itemprop="dateCreated datePublished" datetime="2020-04-03T20:22:45+08:00">2020-04-03</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/04/03/poj-3450-后缀数组/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/03/poj-3450-后缀数组/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h3><p><a href="http://poj.org/problem?id=3450" target="_blank" rel="noopener">POJ 3450 Corporate Identity</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>先用后缀数组处理出height数组，然后我们二分最长公共子串的长度，然后再height中找大于这个长度并且不在一个字符串的个数，如果等于n则返回true否则返回false即可。<br>前期一直TLE不知道为何，换了个板子就过了，也许是我的板子的问题。</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/04/03/poj-3450-后缀数组/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/03/poj-2774-后缀数组/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/04/03/poj-2774-后缀数组/" class="post-title-link" itemprop="url">poj-2774-后缀数组</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-04-03 16:12:37 / 修改时间：16:26:14" itemprop="dateCreated datePublished" datetime="2020-04-03T16:12:37+08:00">2020-04-03</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/04/03/poj-2774-后缀数组/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/03/poj-2774-后缀数组/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h3><p><a href="https://vjudge.net/problem/POJ-2774/origin" target="_blank" rel="noopener">poj</a></p><h3 id="Height数组"><a href="#Height数组" class="headerlink" title="Height数组"></a>Height数组</h3><p>在之前的<a href="https://gerayking.github.io/2020/04/02/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84%E8%AF%A6%E8%A7%A3/">博客</a>中已经说了后缀数组的具体算法以及如何求出sa数组，但是求出sa之后我们需要学习如何运用sa数组。<br>第一个运用当然就是height数组了，他表示的意思是</p><blockquote>
-<p>height[i]表示第i小的后缀串与第i-1小的后缀串的最长公共前缀（如图）</p>
-</blockquote><p><img src="https://i.loli.net/2020/04/03/rNkE1qZ3UnQCa9v.png" alt="20160205125636006.jpg"><br>如果能够求出这个数组我们就能够在O(n)时间内求出最长公共子串了。<br>观察上面那个图，我们发现height有一个规律，它的数是3 2 1 0 3 2 1这样的数，然后我们思考，为什么会这样？我们看第一个3的地方是aabaaaab与aab的最长公共前缀，然后如果我们把它去掉第一个字母，哎就变成abaaaab和ab，是不是有些规律？我们就可以用这个规律来求出我们的height数组。<br>定义一个数组H[i]=height[rk[i]],也就是从i位置的后缀与在sa数组中排名比他小一名的字符串的最长公共前缀，如果我们从1-n的往后求H[i]，就很惊讶的发现，竟然就是我们刚刚模拟的过程，所以这样我们就可以得到height数组了<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">	<span class="keyword">if</span>(j)j--;</span><br><span class="line">	<span class="keyword">while</span>(s[i+j]==s[sa[rk[i]<span class="number">-1</span>]+j])j++;找出最长的，然后再递减的过程</span><br><span class="line">	h[rk[i]]=j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/04/03/poj-2774-后缀数组/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1241,7 +1237,7 @@ dp[i][j]=\sum_{k=0}^{min(j,num[i])}dp[i-1][j-k]</script><p>但是这样算的话
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">140</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1267,7 +1263,7 @@ dp[i][j]=\sum_{k=0}^{min(j,num[i])}dp[i-1][j-k]</script><p>但是这样算的话
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1372,13 +1368,13 @@ dp[i][j]=\sum_{k=0}^{min(j,num[i])}dp[i-1][j-k]</script><p>但是这样算的话
       
     
       
+    
+      
+    
+      
+    
+      
         
-      
-    
-      
-    
-      
-    
       
     
       

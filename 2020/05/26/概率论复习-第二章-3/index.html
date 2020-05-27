@@ -74,7 +74,7 @@
 <meta property="og:image" content="https://gerayking.oss-cn-beijing.aliyuncs.com/images/image-20200520142147493.png">
 <meta property="og:image" content="https://gerayking.oss-cn-beijing.aliyuncs.com/images/image-20200520142154296.png">
 <meta property="og:image" content="https://gerayking.oss-cn-beijing.aliyuncs.com/images/image-20200520142202222.png">
-<meta property="og:updated_time" content="2020-05-26T13:43:20.530Z">
+<meta property="og:updated_time" content="2020-05-27T12:34:54.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概率论复习-第二章(3)">
 <meta name="twitter:description" content="2.4 随机变量的函数的分布">
@@ -256,11 +256,19 @@
                 
               
 
-              <time title="创建时间：2020-05-26 21:42:18 / 修改时间：21:43:20" itemprop="dateCreated datePublished" datetime="2020-05-26T21:42:18+08:00">2020-05-26</time>
+              <time title="创建时间：2020-05-26 21:42:18" itemprop="dateCreated datePublished" datetime="2020-05-26T21:42:18+08:00">2020-05-26</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-27 20:34:54" itemprop="dateModified" datetime="2020-05-27T20:34:54+08:00">2020-05-27</time>
+              </span>
             
           
 
@@ -409,7 +417,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">140</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -435,7 +443,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -535,6 +543,56 @@
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
