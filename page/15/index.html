@@ -208,6 +208,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/12/Governing-sand-权值线段树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2019/08/12/Governing-sand-权值线段树/" class="post-title-link" itemprop="url">Governing-sand(权值线段树)</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-12 13:34:51 / 修改时间：13:43:22" itemprop="dateCreated datePublished" datetime="2019-08-12T13:34:51+08:00">2019-08-12</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/08/12/Governing-sand-权值线段树/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/12/Governing-sand-权值线段树/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://ac.nowcoder.com/acm/contest/887/C" target="_blank" rel="noopener">Governing sand </a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这道题用线段树的数据结构来优化，总体思想就是枚举最高的树，然后统计当前的答案。<br>但是统计答案的时候我们的cost值：<br>设当前高度为h，那么需要把全部大于h的树砍掉，以及小于h的树需要剩下num[h]-1。<br>前半部分的消费我们可以用前缀和来维护，因为我们从高枚举到低。<br>而后半部分我们则用线段树来维护。<br>线段树维护：<br>每个节点维护两个值，花费以及数量。<br>每次查询即可查询到砍到剩下num[h]-1需要的花费，加上前缀和，就是我们需要的答案了。<br>这题如果不用快读可能会T，如果T了试试快读</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/08/12/Governing-sand-权值线段树/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/08/12/codeforces-div2-579/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -755,7 +850,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">145</span>
+          <span class="site-state-item-count">146</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -882,6 +977,8 @@
   
 
   
+    
+      
     
       
     
