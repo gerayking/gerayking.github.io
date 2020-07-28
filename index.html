@@ -208,6 +208,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/07/28/异或最小生成树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/07/28/异或最小生成树/" class="post-title-link" itemprop="url">异或最小生成树</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-07-28 21:21:48 / 修改时间：22:23:07" itemprop="dateCreated datePublished" datetime="2020-07-28T21:21:48+08:00">2020-07-28</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/07/28/异或最小生成树/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/28/异或最小生成树/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="异或最小生成树"><a href="#异或最小生成树" class="headerlink" title="异或最小生成树"></a>异或最小生成树</h3><p>异或最小生成树就是每个点都有一个权值，而两个点之间连接的边的权值是两个点的异或值，求这个点集合的最小生成树</p><p><a href="http://codeforces.com/problemset/problem/888/G" target="_blank" rel="noopener">CF888G</a></p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>我们会用到Boruvka算法，用上了分治的思想来求最小生成树，但是异或最小生成树呢，则还需要一颗trie树，因为它能够log的查询异或的最小值。</p><p>简单解释一下异或最小生成树的步骤</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/07/28/异或最小生成树/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/07/13/2020牛客暑期多校训练营（第二场）补题记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -249,7 +344,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-14 01:29:35" itemprop="dateModified" datetime="2020-07-14T01:29:35+08:00">2020-07-14</time>
+                <time title="修改时间：2020-07-14 13:12:50" itemprop="dateModified" datetime="2020-07-14T13:12:50+08:00">2020-07-14</time>
               </span>
             
           
@@ -281,7 +376,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目"><a href="#题目" class="headerlink" title="### 题目"></a>### 题目</h3><h4 id="E"><a href="#E" class="headerlink" title="E"></a>E</h4><h5 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h5><p>就是给长度为1e5的大小为[0,$2^{18}$)的一个序列，要你求任意1~n个数异或的最大值，首先很容易发现当i=18的时候肯定已经是最大了，就是任意18个数异或已经是最大了，因为范围是[0,2^18)很显然，我1~18个数肯定会异或出尽量多的1，然后之后就是$a[i+2]=a[i]$即可，但是前18个我们怎么求呢，我们可以用卷积，只不过这里是异或卷积。暴力求卷积的话复杂度是$O(n^2logn)$的，所以用FWT<a href="https://zhuanlan.zhihu.com/p/65998145" target="_blank" rel="noopener">快速沃尔什变换</a>来写，与FFT的思想是差不多的，都是分治。不过重新定义了运算，这样就能$O(nlog^2n)$的复杂度解决了，总复杂度就是$O(n+wlog^2w)$</p>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h4 id="E"><a href="#E" class="headerlink" title="E"></a>E</h4><h5 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h5><p>就是给长度为1e5的大小为[0,$2^{18}$)的一个序列，要你求任意1~n个数异或的最大值，首先很容易发现当i=18的时候肯定已经是最大了，就是任意18个数异或已经是最大了，因为范围是[0,2^18)很显然，我1~18个数肯定会异或出尽量多的1，然后之后就是$a[i+2]=a[i]$即可，但是前18个我们怎么求呢，我们可以用卷积，只不过这里是异或卷积。暴力求卷积的话复杂度是$O(n^2logn)$的，所以用FWT<a href="https://zhuanlan.zhihu.com/p/65998145" target="_blank" rel="noopener">快速沃尔什变换</a>来写，与FFT的思想是差不多的，都是分治。不过重新定义了运算，这样就能$O(nlog^2n)$的复杂度解决了，总复杂度就是$O(n+wlog^2w)$</p>
           <!--noindex-->
           
             <div class="post-button">
@@ -975,7 +1070,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/26/概率论复习-第四章-2/">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/24/动态规划-洛谷P1880/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gerayking">
@@ -990,7 +1085,7 @@
         <h1 class="post-title" itemprop="name headline">
           
             
-            <a href="/2020/05/26/概率论复习-第四章-2/" class="post-title-link" itemprop="url">概率论复习-第四章(2)</a>
+            <a href="/2020/05/24/动态规划-洛谷P1880/" class="post-title-link" itemprop="url">动态规划-洛谷P1880</a>
           
         </h1>
 
@@ -1005,7 +1100,7 @@
                 
               
 
-              <time title="创建时间：2020-05-26 21:46:59 / 修改时间：21:48:17" itemprop="dateCreated datePublished" datetime="2020-05-26T21:46:59+08:00">2020-05-26</time>
+              <time title="创建时间：2020-05-24 01:04:41 / 修改时间：01:17:10" itemprop="dateCreated datePublished" datetime="2020-05-24T01:04:41+08:00">2020-05-24</time>
             </span>
           
             
@@ -1024,8 +1119,8 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/05/26/概率论复习-第四章-2/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/26/概率论复习-第四章-2/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/05/24/动态规划-洛谷P1880/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/24/动态规划-洛谷P1880/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1040,106 +1135,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="4-3-几个重要分布的数学期望和方差"><a href="#4-3-几个重要分布的数学期望和方差" class="headerlink" title="4.3 几个重要分布的数学期望和方差"></a>4.3 几个重要分布的数学期望和方差</h3>
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://www.luogu.com.cn/problem/P1880" target="_blank" rel="noopener">落谷P1880</a></p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>dp[i][j]表示第i~j个石子合并的最小花费得到转移方程</p><script type="math/tex; mode=display">
+dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j]+sum[j]-sum[i-1]);</script><p>因为i~j需要从i~(j-1)的所有状态推出，所以先枚举i，在枚举j,最后枚举k，保证所有状态都转移到，然后成环就让数列*2就好了</p>
           <!--noindex-->
           
             <div class="post-button">
-              <a class="btn" href="/2020/05/26/概率论复习-第四章-2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/26/概率论复习-第四章-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/05/26/概率论复习-第四章-1/" class="post-title-link" itemprop="url">概率论复习-第四章(1)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-05-26 21:45:21 / 修改时间：21:48:16" itemprop="dateCreated datePublished" datetime="2020-05-26T21:45:21+08:00">2020-05-26</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/05/26/概率论复习-第四章-1/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/26/概率论复习-第四章-1/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="第四章-随机变量的数字特征"><a href="#第四章-随机变量的数字特征" class="headerlink" title="第四章 随机变量的数字特征"></a>第四章 随机变量的数字特征</h2>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/05/26/概率论复习-第四章-1/#more" rel="contents">
+              <a class="btn" href="/2020/05/24/动态规划-洛谷P1880/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1165,7 +1166,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1210,7 +1211,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">148</span>
+          <span class="site-state-item-count">140</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1339,9 +1340,9 @@
   
     
       
-        
-      
     
+      
+        
       
     
       
