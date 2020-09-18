@@ -1,164 +1,556 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>叁佰爱抠的序列(二分+欧拉回路) | 一方通行</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="gerayking">
-  <meta name="keywords" content>
-  <meta name="description" content>
-  <script id="hexo-configurations">
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    theme: 'lx',
-    version: '1.4.5',
-    localsearch:{
-      "enable": false,
-      "trigger": "auto",
-      "top_n_per_article": 1,
-      "unescape": false,
-      "preload": false
-      },
-    path: '-'
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/main.css">
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/jquery.jside.menu.js"></script>
-	<script>
-	$(document).ready(function(){
-	$(".menu-container").jSideMenu({
-	    jSidePosition: "position-right",
-	    jSideSticky: true,
-	    jSideSkin: "endless-river",
-	     });
-	}); 
-	</script>
+  <meta name="description" content="题目连接叁佰爱抠的序列题解在2e6范围内，需要输出答案，大于2e6的时候则不用，因为答案单调，所以考虑二分答案。为奇数时，奇数点的完全图的度全为偶数，则存在欧拉路径所以$res=mid(mid-1)/2 + 1$加1是因为序列第一位和最后一位不算相邻。为偶数的时候不难发现为$res=midmid/2$二分出m之后，打印答案也需要考虑，如果完全图不能够画出欧拉路径，那么考虑加边，一开始考虑剪边，如果">
+<meta name="keywords" content="图论,二分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="叁佰爱抠的序列(二分+欧拉回路)">
+<meta property="og:url" content="https://gerayking.github.io/2020/03/01/叁佰爱抠的序列-二分-欧拉回路/index.html">
+<meta property="og:site_name" content="一方通行">
+<meta property="og:description" content="题目连接叁佰爱抠的序列题解在2e6范围内，需要输出答案，大于2e6的时候则不用，因为答案单调，所以考虑二分答案。为奇数时，奇数点的完全图的度全为偶数，则存在欧拉路径所以$res=mid(mid-1)/2 + 1$加1是因为序列第一位和最后一位不算相邻。为偶数的时候不难发现为$res=midmid/2$二分出m之后，打印答案也需要考虑，如果完全图不能够画出欧拉路径，那么考虑加边，一开始考虑剪边，如果">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-01T12:40:19.153Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="叁佰爱抠的序列(二分+欧拉回路)">
+<meta name="twitter:description" content="题目连接叁佰爱抠的序列题解在2e6范围内，需要输出答案，大于2e6的时候则不用，因为答案单调，所以考虑二分答案。为奇数时，奇数点的完全图的度全为偶数，则存在欧拉路径所以$res=mid(mid-1)/2 + 1$加1是因为序列第一位和最后一位不算相邻。为偶数的时候不难发现为$res=midmid/2$二分出m之后，打印答案也需要考虑，如果完全图不能够画出欧拉路径，那么考虑加边，一开始考虑剪边，如果">
+  <link rel="canonical" href="https://gerayking.github.io/2020/03/01/叁佰爱抠的序列-二分-欧拉回路/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>叁佰爱抠的序列(二分+欧拉回路) | 一方通行</title>
   
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
-<body>
-<div class="single">
-<div id="page">
-<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
-  <div class="overlay">
-  <div class="page-title">
-    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
-    <span>2020-03-01</span>
-    <h2>叁佰爱抠的序列(二分+欧拉回路)</h2>
-    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/二分/">二分</a> <i class="fa fa-tag"></i><a class="tag-link" href="/tags/图论/">图论</a></div>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一方通行</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-</div>
-</div>
-<div id="lx-main-content">
-  <div class="lx-post">
-    <div class="lx-entry padding">
-      <div>
-        <h3 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h3><p><a href="https://ac.nowcoder.com/acm/contest/4010/H" target="_blank" rel="noopener">叁佰爱抠的序列</a></p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>在2e6范围内，需要输出答案，大于2e6的时候则不用，因为答案单调，所以考虑二分答案。<br>为奇数时，奇数点的完全图的度全为偶数，则存在欧拉路径所以$res=mid<em>(mid-1)/2 + 1$加1是因为序列第一位和最后一位不算相邻。<br>为偶数的时候不难发现为$res=mid</em>mid/2$<br>二分出m之后，打印答案也需要考虑，如果完全图不能够画出欧拉路径，那么考虑加边，一开始考虑剪边，如果这样的话会导致一些情况下需要的序列长度增加，考虑加边的情况，在中间选取相邻的两个点加边，头和尾不用加，例如1,2,3,4,5,6那么就选择(2,3)(4,5)这样之后，1，6的度就为奇数，其他的为偶数，存在欧拉路径。然后跑欧拉路径即可</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">3e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"><span class="keyword">int</span> ip;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> to,next,id;</span><br><span class="line">&#125;grp[N*N];</span><br><span class="line"><span class="keyword">bool</span> vis[N*N];</span><br><span class="line"><span class="keyword">int</span> head[N*N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;S;</span><br><span class="line"><span class="function">ll <span class="title">getm</span><span class="params">(ll n)</span></span>&#123;</span><br><span class="line">    ll l=<span class="number">1</span>,r=<span class="number">2e9</span>+<span class="number">10</span>;</span><br><span class="line">    <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">        ll mid = (l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        ll res =  mid&amp;<span class="number">1</span>? mid*(mid<span class="number">-1</span>)/<span class="number">2</span>+<span class="number">1</span>:mid*mid/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(n&lt;res)r=mid;</span><br><span class="line">        <span class="keyword">else</span> l=mid+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">       grp[cnt].to=v;</span><br><span class="line">       grp[cnt].next=head[u];</span><br><span class="line">       grp[cnt].id=id;</span><br><span class="line">       head[u]=cnt++;</span><br><span class="line">        </span><br><span class="line">       grp[cnt].to=u;</span><br><span class="line">       grp[cnt].next=head[v];</span><br><span class="line">       grp[cnt].id=id;</span><br><span class="line">       head[v]=cnt++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=head[u])&#123;</span><br><span class="line">        head[u]=grp[i].next;</span><br><span class="line">        <span class="keyword">if</span>(vis[grp[i].id])<span class="keyword">continue</span>;</span><br><span class="line">        vis[grp[i].id]=<span class="number">1</span>;</span><br><span class="line">        dfs(grp[i].to);</span><br><span class="line">    &#125;</span><br><span class="line">    S.push_back(u);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(head,<span class="number">-1</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">    ll n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">if</span>(n&gt;<span class="number">2e6</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,getm(n));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        ll x = getm(n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=x;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=x;j++)&#123;</span><br><span class="line">                add(i,j,++ip);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,x);</span><br><span class="line">        <span class="keyword">if</span>(x%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i+<span class="number">1</span>&lt;=x<span class="number">-1</span>;i+=<span class="number">2</span>)&#123;</span><br><span class="line">                add(i,i+<span class="number">1</span>,++ip);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;S.size();i++)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;S[i];</span><br><span class="line">            <span class="keyword">if</span>(i!=n<span class="number">-1</span>)<span class="built_in">cout</span>&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">           <span class="comment">//   printf("%s%d",i==S.size()-1? "" : " ",S[i]);</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = S.size(); i &lt; n; i++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">" 1"</span>);</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      </div>
+        <p class="site-subtitle">你最愿意做的哪件事，才是你的天赋所在</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
-</div>
-<div class="lx-navigation">
-	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
-		<div class="overlay"></div>
-		<a class="copy" href="/2020/03/03/FFT详解/">
-			<div class="display-t">
-				<div class="display-tc">
-					<div>
-						<span>Next</span>
-						<h3>FFT详解</h3>
-					</div>
-				</div>
-			</div>
-		</a>
-	</div>
-        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
-		<div class="overlay"></div>
-		<a class="copy" href="/2020/01/11/Codeforces-Round-613-div2/">
-			<div class="display-t">
-				<div class="display-tc">
-					<div>
-						<span>Prev</span>
-						<h3>Codeforces Round #613(div2)</h3>
-					</div>
-				</div>
-			</div>
-		</a>
-	</div>
-</div>
 </div>
 
-<footer>
-  <div>
-  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
-  </div>
-</footer>
-</div>
 
-<button class="menu-trigger"></button>
-<div class="menu">
-  <div class="menu-head">
-    <span class="layer">
-      <div class="col">
-        <div class="row for-pic">
-          <div class="profile-pic">
-            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
-          </div>
-        </div>
-        <div class="row for-name">
-          <p>gerayking</p>
-          <span class="tagline">Hello, World!</span>
-        </div>
-      </div>
-    </span>
-  </div>
-  <nav class="menu-container">
-  <ul class="menu-items">
-    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
-    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
-    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
-    <span class="dropdown-heading">页面</span><ul>
-      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
-    </li>
-    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
-    <span class="dropdown-heading">友链</span><ul>
-      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
-    </li>
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+        
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      
+    
   </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/01/叁佰爱抠的序列-二分-欧拉回路/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            叁佰爱抠的序列(二分+欧拉回路)
+            
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-01 20:29:35 / 修改时间：20:40:19" itemprop="dateCreated datePublished" datetime="2020-03-01T20:29:35+08:00">2020-03-01</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/01/叁佰爱抠的序列-二分-欧拉回路/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/01/叁佰爱抠的序列-二分-欧拉回路/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h3><p><a href="https://ac.nowcoder.com/acm/contest/4010/H" target="_blank" rel="noopener">叁佰爱抠的序列</a></p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>在2e6范围内，需要输出答案，大于2e6的时候则不用，因为答案单调，所以考虑二分答案。<br>为奇数时，奇数点的完全图的度全为偶数，则存在欧拉路径所以$res=mid<em>(mid-1)/2 + 1$加1是因为序列第一位和最后一位不算相邻。<br>为偶数的时候不难发现为$res=mid</em>mid/2$<br>二分出m之后，打印答案也需要考虑，如果完全图不能够画出欧拉路径，那么考虑加边，一开始考虑剪边，如果这样的话会导致一些情况下需要的序列长度增加，考虑加边的情况，在中间选取相邻的两个点加边，头和尾不用加，例如1,2,3,4,5,6那么就选择(2,3)(4,5)这样之后，1，6的度就为奇数，其他的为偶数，存在欧拉路径。然后跑欧拉路径即可</p><a id="more"></a>
+
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">3e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"><span class="keyword">int</span> ip;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> to,next,id;</span><br><span class="line">&#125;grp[N*N];</span><br><span class="line"><span class="keyword">bool</span> vis[N*N];</span><br><span class="line"><span class="keyword">int</span> head[N*N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;S;</span><br><span class="line"><span class="function">ll <span class="title">getm</span><span class="params">(ll n)</span></span>&#123;</span><br><span class="line">    ll l=<span class="number">1</span>,r=<span class="number">2e9</span>+<span class="number">10</span>;</span><br><span class="line">    <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">        ll mid = (l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        ll res =  mid&amp;<span class="number">1</span>? mid*(mid<span class="number">-1</span>)/<span class="number">2</span>+<span class="number">1</span>:mid*mid/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(n&lt;res)r=mid;</span><br><span class="line">        <span class="keyword">else</span> l=mid+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">       grp[cnt].to=v;</span><br><span class="line">       grp[cnt].next=head[u];</span><br><span class="line">       grp[cnt].id=id;</span><br><span class="line">       head[u]=cnt++;</span><br><span class="line">        </span><br><span class="line">       grp[cnt].to=u;</span><br><span class="line">       grp[cnt].next=head[v];</span><br><span class="line">       grp[cnt].id=id;</span><br><span class="line">       head[v]=cnt++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=head[u])&#123;</span><br><span class="line">        head[u]=grp[i].next;</span><br><span class="line">        <span class="keyword">if</span>(vis[grp[i].id])<span class="keyword">continue</span>;</span><br><span class="line">        vis[grp[i].id]=<span class="number">1</span>;</span><br><span class="line">        dfs(grp[i].to);</span><br><span class="line">    &#125;</span><br><span class="line">    S.push_back(u);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(head,<span class="number">-1</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">    ll n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">if</span>(n&gt;<span class="number">2e6</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,getm(n));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        ll x = getm(n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=x;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=x;j++)&#123;</span><br><span class="line">                add(i,j,++ip);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,x);</span><br><span class="line">        <span class="keyword">if</span>(x%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i+<span class="number">1</span>&lt;=x<span class="number">-1</span>;i+=<span class="number">2</span>)&#123;</span><br><span class="line">                add(i,i+<span class="number">1</span>,++ip);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;S.size();i++)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;S[i];</span><br><span class="line">            <span class="keyword">if</span>(i!=n<span class="number">-1</span>)<span class="built_in">cout</span>&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">           <span class="comment">//   printf("%s%d",i==S.size()-1? "" : " ",S[i]);</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = S.size(); i &lt; n; i++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">" 1"</span>);</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+      
+      <div>
+         
+         <div>
+    
+        <div style="text-align:center;color: #1abc9c;font-size:20px;">-------------你最愿意做的哪件事<i class="fa fa-paw"></i>才是你的天赋所在-------------</div>
+    
+</div>
+         
+      </div>
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/图论/" rel="tag"># 图论</a>
+            
+              <a href="/tags/二分/" rel="tag"># 二分</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/01/11/Codeforces-Round-613-div2/" rel="next" title="Codeforces Round #613(div2)">
+                  <i class="fa fa-chevron-left"></i> Codeforces Round #613(div2)
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/03/03/FFT详解/" rel="prev" title="FFT详解">
+                  FFT详解 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目连接"><span class="nav-number">1.</span> <span class="nav-text">题目连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">gerayking</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
   </nav>
 </div>
 
-<div class="gototop js-top">
-  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gerayking</span>
 </div>
-<script src="/js/jquery.easing.min.js"></script>
-<script src="/js/jquery.waypoints.min.js"></script>
-<script src="/js/jquery.stellar.min.js"></script>
-<script src="/js/main.js"></script>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">
+      
+    主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1
+  </div>
+<span id="busuanzi_container_site_uv">
+  本站访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+    
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'qNly5FleMfdepiDiaVXsturv-gzGzoHsz',
+    appKey: '5wPliBaYqnLM6iGrQKEnCvRJ',
+    placeholder: "Just go go",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

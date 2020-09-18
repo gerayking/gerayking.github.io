@@ -1,203 +1,1461 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>一方通行</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="gerayking">
-  <meta name="keywords" content>
-  <meta name="description" content>
-  <script id="hexo-configurations">
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    theme: 'lx',
-    version: '1.4.5',
-    localsearch:{
-      "enable": false,
-      "trigger": "auto",
-      "top_n_per_article": 1,
-      "unescape": false,
-      "preload": false
-      },
-    path: '-'
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/main.css">
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/jquery.jside.menu.js"></script>
-	<script>
-	$(document).ready(function(){
-	$(".menu-container").jSideMenu({
-	    jSidePosition: "position-right",
-	    jSideSticky: true,
-	    jSideSkin: "endless-river",
-	     });
-	}); 
-	</script>
+  <meta property="og:type" content="website">
+<meta property="og:title" content="一方通行">
+<meta property="og:url" content="https://gerayking.github.io/index.html">
+<meta property="og:site_name" content="一方通行">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一方通行">
+  <link rel="canonical" href="https://gerayking.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>一方通行</title>
   
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
-<body>
-<div id="page">
-<div id="lx-aside" style="background-image: url(/images/cover.jpg)">
-  <div class="overlay">
-  <div class="featured">
-    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
-    <span>gerayking</span>
-    <h2>一方通行</h2>
-    <span>——你最愿意做的哪件事，才是你的天赋所在</span>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一方通行</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">你最愿意做的哪件事，才是你的天赋所在</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+        
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      
+    
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/09/17/Leetcode-685-冗余链接2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/09/17/Leetcode-685-冗余链接2/" class="post-title-link" itemprop="url">Leetcode-685.冗余链接2</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-17 09:25:32 / 修改时间：09:35:45" itemprop="dateCreated datePublished" datetime="2020-09-17T09:25:32+08:00">2020-09-17</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/09/17/Leetcode-685-冗余链接2/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/17/Leetcode-685-冗余链接2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Leetcode-685-冗余链接2"><a href="#Leetcode-685-冗余链接2" class="headerlink" title="Leetcode-685.冗余链接2"></a>Leetcode-685.冗余链接2</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>1.首先造成冲突有两种方式分别是<code>成环</code>，<code>两个父亲节点</code></p><p>2.如果一个节点有两个父亲节点，那么多余的边肯定在这个节点的两边中出现</p><p>3.还有一种情况就是可能会有即成环又有两个父亲节点，如下</p><blockquote>
+<p>1 2<br>2 3<br>3 4<br>1 4<br>5 2</p>
+</blockquote><p><img src="/home/geray/.config/Typora/typora-user-images/image-20200917093411767.png" alt="image-20200917093411767"></p><p>如果出现这种情况答案肯定是成环的边是多余的边，否则只会单独成环，或者单独冲突</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/09/17/Leetcode-685-冗余链接2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/09/16/DNS 查询报文和响应报文/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/09/16/DNS 查询报文和响应报文/" class="post-title-link" itemprop="url">WireShark 分析网站请求流程</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-16 16:58:21 / 修改时间：16:59:19" itemprop="dateCreated datePublished" datetime="2020-09-16T16:58:21+08:00">2020-09-16</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/09/16/DNS 查询报文和响应报文/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/16/DNS 查询报文和响应报文/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="DNS-查询报文和响应报文"><a href="#DNS-查询报文和响应报文" class="headerlink" title="DNS 查询报文和响应报文"></a>DNS 查询报文和响应报文</h3><ul>
+<li>当在浏览器中输入网站回车后，浏览器将向本机的DNS模块发送请求。</li>
+<li>DNS模块是有缓存的，若缓存中有，则直接取ip地址，若没有则向下将DNS发送给UDP</li>
+<li>UDP协议单元将该数据封装成IP数据包，传递给IP协议单元</li>
+<li>IP协议单元再进行一层封装，加入<strong>DNS服务器</strong>的地址</li>
+<li>封装好的IP数据包将传递给链路层进行发送</li>
+<li>数据链路层发送到DNS服务器，若数据链路层的缓冲区中没有dns服务器的MAC，那么就发送ARP的广播请求等待回应</li>
+<li>得到回应之后将ip地址和对应的MAC地址写入APR缓存中，之后进行转发</li>
+<li>DNS请求被发送到DNS服务器的数据链路层的协议单元</li>
+<li>DNS服务器的数据链路层的协议单元会解析接收到的关键帧，并讲内部的IP数据包传送给网络层的IP协议单元</li>
+<li>DNS服务器的IP协议单元解析收到的数据包，然后再向上剥壳，讲UDP数据传递给UDP协议单元</li>
+<li>UDP将其内部的DNS报文传递给DNS服务单元，然后DNS服务单元解析域名对应IP地址，产生DNS回应报文，再发送给请求地址</li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/09/16/DNS 查询报文和响应报文/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/07/28/异或最小生成树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/07/28/异或最小生成树/" class="post-title-link" itemprop="url">异或最小生成树</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-07-28 21:21:48 / 修改时间：22:23:07" itemprop="dateCreated datePublished" datetime="2020-07-28T21:21:48+08:00">2020-07-28</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/07/28/异或最小生成树/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/28/异或最小生成树/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="异或最小生成树"><a href="#异或最小生成树" class="headerlink" title="异或最小生成树"></a>异或最小生成树</h3><p>异或最小生成树就是每个点都有一个权值，而两个点之间连接的边的权值是两个点的异或值，求这个点集合的最小生成树</p><p><a href="http://codeforces.com/problemset/problem/888/G" target="_blank" rel="noopener">CF888G</a></p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>我们会用到Boruvka算法，用上了分治的思想来求最小生成树，但是异或最小生成树呢，则还需要一颗trie树，因为它能够log的查询异或的最小值。</p><p>简单解释一下异或最小生成树的步骤</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/07/28/异或最小生成树/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/07/13/2020牛客暑期多校训练营（第二场）补题记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/07/13/2020牛客暑期多校训练营（第二场）补题记录/" class="post-title-link" itemprop="url">2020牛客暑期多校训练营（第二场）补题记录</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-07-13 23:58:11" itemprop="dateCreated datePublished" datetime="2020-07-13T23:58:11+08:00">2020-07-13</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-14 13:12:50" itemprop="dateModified" datetime="2020-07-14T13:12:50+08:00">2020-07-14</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/07/13/2020牛客暑期多校训练营（第二场）补题记录/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/13/2020牛客暑期多校训练营（第二场）补题记录/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h4 id="E"><a href="#E" class="headerlink" title="E"></a>E</h4><h5 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h5><p>就是给长度为1e5的大小为[0,$2^{18}$)的一个序列，要你求任意1~n个数异或的最大值，首先很容易发现当i=18的时候肯定已经是最大了，就是任意18个数异或已经是最大了，因为范围是[0,2^18)很显然，我1~18个数肯定会异或出尽量多的1，然后之后就是$a[i+2]=a[i]$即可，但是前18个我们怎么求呢，我们可以用卷积，只不过这里是异或卷积。暴力求卷积的话复杂度是$O(n^2logn)$的，所以用FWT<a href="https://zhuanlan.zhihu.com/p/65998145" target="_blank" rel="noopener">快速沃尔什变换</a>来写，与FFT的思想是差不多的，都是分治。不过重新定义了运算，这样就能$O(nlog^2n)$的复杂度解决了，总复杂度就是$O(n+wlog^2w)$</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/07/13/2020牛客暑期多校训练营（第二场）补题记录/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/07/12/2020牛客暑期多校训练营（第一场）补题记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/07/12/2020牛客暑期多校训练营（第一场）补题记录/" class="post-title-link" itemprop="url">2020牛客暑期多校训练营（第一场）补题记录</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-07-12 23:08:23 / 修改时间：23:50:55" itemprop="dateCreated datePublished" datetime="2020-07-12T23:08:23+08:00">2020-07-12</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/07/12/2020牛客暑期多校训练营（第一场）补题记录/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/12/2020牛客暑期多校训练营（第一场）补题记录/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="I"><a href="#I" class="headerlink" title="I"></a>I</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>题目给出了一个图，然后还有n个点，还有每个点的度，求判断图中是否存在一个子图满足每个点的度等于给出的度，度为[1,2]。</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>首先，如果每个点的度都为1，那么很显然，直接求这个图是否存在完全匹配就可以了。但是度数的范围是[1,2]，于是我们就想到拆点，如果是简单的把度为2的点直接拆成两个点的话，就会有下面这种情况</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/07/12/2020牛客暑期多校训练营（第一场）补题记录/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/29/点分治-FFT-CodeChef-PRIMEDST/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/05/29/点分治-FFT-CodeChef-PRIMEDST/" class="post-title-link" itemprop="url">点分治+FFT-CodeChef-PRIMEDST</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-29 11:07:39" itemprop="dateCreated datePublished" datetime="2020-05-29T11:07:39+08:00">2020-05-29</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-04 18:48:12" itemprop="dateModified" datetime="2020-06-04T18:48:12+08:00">2020-06-04</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/05/29/点分治-FFT-CodeChef-PRIMEDST/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/29/点分治-FFT-CodeChef-PRIMEDST/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/CodeChef-PRIMEDST" target="_blank" rel="noopener">CodeChef-PRIMEDST</a></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>采用点分治统计所有的路径，但是如果是朴素的路径相乘复杂度是O(n^2)，所以采用FFT加速多项式乘法达到(nlogn)的复杂度，总体复杂度就是(nlognlogn)的复杂度。<br>做题步骤:</p>
+<ol>
+<li>点分治处理</li>
+<li>统计当前子树的路径</li>
+<li>进行FFT</li>
+<li>累加路径，放进桶里</li>
+<li>重复重心的所有子树重复2，3，4步骤</li>
+<li>清空桶，继续点分治</li>
+<li>统计答案<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pi acos(-1)</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> head[N],tot;</span><br><span class="line">ll sum,rt,dis[N],tmp[N&lt;&lt;<span class="number">4</span>],maxp[N],siz[N],len,d[N],up,dn;</span><br><span class="line"><span class="keyword">int</span> f[N&lt;&lt;<span class="number">2</span>],g[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> prime[N];</span><br><span class="line"><span class="keyword">bool</span> isprime[N],pcnt;</span><br><span class="line">ll ans[N];</span><br><span class="line"><span class="keyword">int</span> cnt,n;</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="keyword">int</span> r[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    isprime[<span class="number">0</span>]=isprime[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;N;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!isprime[i])&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+i;j&lt;N;j+=i)&#123;</span><br><span class="line">                isprime[j]=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cp</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">double</span> r,i;</span><br><span class="line">    cp(<span class="keyword">double</span> _r = <span class="number">0</span>,<span class="keyword">double</span> _i = <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        r = _r; i = _i;</span><br><span class="line">    &#125;</span><br><span class="line">    cp <span class="keyword">operator</span> +(<span class="keyword">const</span> cp &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> cp(r+b.r,i+b.i);</span><br><span class="line">    &#125;</span><br><span class="line">    cp <span class="keyword">operator</span> -(<span class="keyword">const</span> cp &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> cp(r-b.r,i-b.i);</span><br><span class="line">    &#125;</span><br><span class="line">    cp <span class="keyword">operator</span> *(<span class="keyword">const</span> cp &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> cp(r*b.r-i*b.i,r*b.i+i*b.r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;F[N&lt;&lt;<span class="number">2</span>],G[N&lt;&lt;<span class="number">2</span>],H[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(cp *s,<span class="keyword">int</span> n,<span class="keyword">int</span> inv)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> bit=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ((<span class="number">1</span>&lt;&lt;bit)&lt;n)bit++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)r[i]=i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)r[i]=(r[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)|((i&amp;<span class="number">1</span>)&lt;&lt;(bit<span class="number">-1</span>));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;r[i])swap(s[i],s[r[i]]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">2</span>;len&lt;=n;len*=<span class="number">2</span>)&#123;</span><br><span class="line">        cp wn = cp(<span class="built_in">cos</span>(pi*<span class="number">2.0</span>/len),inv*<span class="built_in">sin</span>(pi*<span class="number">2.0</span>/len));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> st=<span class="number">0</span>;st&lt;n;st+=len)&#123;</span><br><span class="line">            cp w = cp(<span class="number">1.0</span>,<span class="number">0.0</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=st;i&lt;st+len/<span class="number">2</span>;i++,w=w*wn)&#123;</span><br><span class="line">                cp x=s[i];<span class="comment">//偶次幂</span></span><br><span class="line">                cp y=w*s[i+len/<span class="number">2</span>];<span class="comment">//奇次幂</span></span><br><span class="line">                s[i]=x+y;</span><br><span class="line">                s[i+len/<span class="number">2</span>]=x-y;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v,w,nex;</span><br><span class="line">    edge() &#123;&#125;</span><br><span class="line">    edge(<span class="keyword">int</span> v, <span class="keyword">int</span> w, <span class="keyword">int</span> nex) : v(v), w(w), nex(nex) &#123;&#125;</span><br><span class="line">&#125;edges[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    edges[tot]=edge(v,w,head[u]);</span><br><span class="line">    head[u]=tot++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getrt</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    maxp[u]=<span class="number">0</span>,siz[u]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]||v==fa)<span class="keyword">continue</span>;</span><br><span class="line">        getrt(v,u);</span><br><span class="line">        siz[u]+=siz[v];</span><br><span class="line">        <span class="keyword">if</span>(maxp[u]&lt;siz[v])maxp[u]=siz[v];</span><br><span class="line">    &#125;</span><br><span class="line">    maxp[u]=max(maxp[u],sum-siz[u]);</span><br><span class="line">    <span class="keyword">if</span>(maxp[u]&lt;maxp[rt])rt=u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getdis</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    tmp[cnt++]=dis[u];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="keyword">int</span> v =edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]||v==fa)<span class="keyword">continue</span>;</span><br><span class="line">        dis[v]=dis[u]+edges[i].w;</span><br><span class="line">        getdis(v,u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getdeep</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa,<span class="keyword">int</span> deep,<span class="keyword">int</span> &amp;mx)</span></span>&#123;</span><br><span class="line">    mx = max(mx,deep);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]||v==fa)<span class="keyword">continue</span>;</span><br><span class="line">        getdeep(v,u,deep+<span class="number">1</span>,mx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mx = <span class="number">-1</span>;</span><br><span class="line">    getdeep(u,<span class="number">0</span>,<span class="number">0</span>,mx);</span><br><span class="line">    len = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(len&lt;=<span class="number">2</span>*mx)len&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        dis[v]=edges[i].w;</span><br><span class="line">        cnt = <span class="number">0</span>;</span><br><span class="line">        getdis(v,u);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)&#123;</span><br><span class="line">            g[tmp[j]]++;</span><br><span class="line">            <span class="keyword">if</span>(!isprime[tmp[j]])up++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> bit=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> ((<span class="number">1</span>&lt;&lt;bit)&lt;len)bit++;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;len;j++)&#123;</span><br><span class="line">            G[j].r=g[j],G[j].i=<span class="number">0</span>;</span><br><span class="line">            F[j].r=f[j],F[j].i=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        FFT(F,len,<span class="number">1</span>);</span><br><span class="line">        FFT(G,len,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;len;j++)H[j]=F[j]*G[j];</span><br><span class="line">        FFT(H,len,<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;len;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!isprime[j])</span><br><span class="line">                up+=(ll)(H[j].r/len+<span class="number">0.5</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)f[tmp[j]]++,g[tmp[j]]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)f[i]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    vis[u]=<span class="number">1</span>;</span><br><span class="line">    solve(u);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        maxp[rt=<span class="number">0</span>]=sum=siz[v];</span><br><span class="line">        getrt(v,<span class="number">0</span>);</span><br><span class="line">        getrt(rt,<span class="number">0</span>);</span><br><span class="line">        divide(rt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="built_in">memset</span>(head,<span class="number">-1</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> u,v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;u,&amp;v);</span><br><span class="line">        add(u,v,<span class="number">1</span>);</span><br><span class="line">        add(v,u,<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    maxp[<span class="number">0</span>]=sum=n;</span><br><span class="line">    getrt(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    getrt(rt,<span class="number">0</span>);</span><br><span class="line">    divide(rt);</span><br><span class="line">    dn = <span class="number">1l</span>l*n*(n<span class="number">-1</span>)/<span class="number">2</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.6lf\n"</span>,(<span class="keyword">double</span>)up/(<span class="keyword">double</span>)dn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/28/点分治-CF161D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/05/28/点分治-CF161D/" class="post-title-link" itemprop="url">点分治-CF161D</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-28 14:34:47 / 修改时间：14:37:32" itemprop="dateCreated datePublished" datetime="2020-05-28T14:34:47+08:00">2020-05-28</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/05/28/点分治-CF161D/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/28/点分治-CF161D/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://www.luogu.com.cn/problem/CF161D" target="_blank" rel="noopener">CF161D-luogu</a></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>套用点分治的思想</p>
+<ol>
+<li>先处理出每个节点的距离</li>
+<li>记录桶中的个数</li>
+<li>更新答案</li>
+<li>更新桶</li>
+<li>下一轮分治清空桶</li>
+</ol>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>  N = <span class="number">5e4</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> head[N],tot;</span><br><span class="line"><span class="keyword">int</span> maxp[N],siz[N],rt,sum,dis[N],cnt;</span><br><span class="line"><span class="keyword">int</span> tmp[N],rec[N],ans,n,k;</span><br><span class="line"><span class="keyword">bool</span> judge[N];</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v,w,next;</span><br><span class="line">    edge()&#123;&#125;</span><br><span class="line">    edge(<span class="keyword">int</span> v, <span class="keyword">int</span> w, <span class="keyword">int</span> next) : v(v), w(w), next(next) &#123;&#125;</span><br><span class="line">&#125;edges[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    edges[tot]=edge(v,w,head[u]);</span><br><span class="line">    head[u]=tot++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getrt</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    maxp[u]=<span class="number">0</span>,siz[u]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].next)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]||v==fa)<span class="keyword">continue</span>;</span><br><span class="line">        getrt(v,u);</span><br><span class="line">        siz[u]+=siz[v];</span><br><span class="line">        <span class="keyword">if</span>(maxp[u]&lt;siz[v])maxp[u]=siz[v];</span><br><span class="line">    &#125;</span><br><span class="line">    maxp[u]=max(maxp[u],sum-siz[u]);</span><br><span class="line">    <span class="keyword">if</span>(maxp[rt]&gt;maxp[u])rt=u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getdis</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    tmp[cnt++]=dis[u];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].next)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]||v==fa)<span class="keyword">continue</span>;</span><br><span class="line">        dis[v]=dis[u]+edges[i].w;</span><br><span class="line">        getdis(v,u);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;que;</span><br><span class="line">    rec[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].next)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        cnt = <span class="number">0</span>;</span><br><span class="line">        dis[v]=edges[i].w;</span><br><span class="line">        getdis(v,u);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(k-tmp[j]&gt;=<span class="number">0</span>)ans+=rec[k-tmp[j]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)rec[tmp[j]]++,que.push(tmp[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">        rec[que.front()]=<span class="number">0</span>;</span><br><span class="line">        que.pop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    vis[u]=<span class="number">1</span>;</span><br><span class="line">    solve(u);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].next)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        maxp[rt=<span class="number">0</span>]=sum=siz[v];</span><br><span class="line">        getrt(v,<span class="number">0</span>);</span><br><span class="line">        getrt(rt,<span class="number">0</span>);</span><br><span class="line">        divide(rt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(head,<span class="number">-1</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;k);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">      <span class="keyword">int</span> u,v,w;</span><br><span class="line">      <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;u,&amp;v);</span><br><span class="line">      add(u,v,<span class="number">1</span>);</span><br><span class="line">      add(v,u,<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  maxp[<span class="number">0</span>]=sum=n;</span><br><span class="line">  getrt(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">  getrt(rt,<span class="number">0</span>);</span><br><span class="line">  divide(rt);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/28/点分治-luogu4149/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/05/28/点分治-luogu4149/" class="post-title-link" itemprop="url">点分治-luogu4149</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-28 14:08:54 / 修改时间：14:12:27" itemprop="dateCreated datePublished" datetime="2020-05-28T14:08:54+08:00">2020-05-28</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/05/28/点分治-luogu4149/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/28/点分治-luogu4149/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://www.luogu.com.cn/problem/P4149" target="_blank" rel="noopener">luogu4149</a></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>点分治的裸题，每次计算距离的时候带入一个深度，开一个judge数组开记录距离为k的最小步数时多少，每次更新即可，具体看代码。</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> head[N],tot;</span><br><span class="line"><span class="keyword">int</span> maxp[N],siz[N],tmp[N*<span class="number">10</span>],cnt,d[N];</span><br><span class="line"><span class="keyword">int</span> sum,rt;</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="keyword">int</span> judge[N*<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> dis[N];</span><br><span class="line"><span class="keyword">int</span> n,k,ans=INT_MAX;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v,w,nex;</span><br><span class="line">    edge()&#123;&#125;</span><br><span class="line">    edge(<span class="keyword">int</span> v, <span class="keyword">int</span> w, <span class="keyword">int</span> nex) : v(v), w(w), nex(nex) &#123;&#125;</span><br><span class="line">&#125;edges[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    edges[tot]=edge(v,w,head[u]);</span><br><span class="line">    head[u]=tot++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getrt</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    maxp[u]=<span class="number">0</span>,siz[u]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="keyword">int</span> v=edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]||v==fa)<span class="keyword">continue</span>;</span><br><span class="line">        getrt(v,u);</span><br><span class="line">        siz[u]+=siz[v];</span><br><span class="line">        <span class="keyword">if</span>(maxp[u]&lt;siz[v])maxp[u]=siz[v];</span><br><span class="line">    &#125;</span><br><span class="line">    maxp[u]=max(maxp[u],sum-siz[u]);</span><br><span class="line">    <span class="keyword">if</span>(maxp[u]&lt;maxp[rt])rt=u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getdis</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa,<span class="keyword">int</span> deep)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(dis[u]&gt;k)<span class="keyword">return</span> ;</span><br><span class="line">    tmp[cnt]=dis[u];</span><br><span class="line">    d[cnt++]=deep;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(v==fa||vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        dis[v]=dis[u]+edges[i].w;</span><br><span class="line">        getdis(v,u,deep+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    judge[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;que;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        cnt = <span class="number">0</span>;</span><br><span class="line">        dis[v]=edges[i].w;</span><br><span class="line">        getdis(v,u,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)ans=min(ans,judge[k-tmp[j]]+d[j]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)judge[tmp[j]]=min(judge[tmp[j]],d[j]),que.push(tmp[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">        judge[que.front()]=<span class="number">1e9</span>+<span class="number">10</span>;</span><br><span class="line">        que.pop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    vis[u]=<span class="number">1</span>;</span><br><span class="line">    solve(u);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        maxp[rt=<span class="number">0</span>]=sum=siz[v];</span><br><span class="line">        getrt(v,<span class="number">0</span>);</span><br><span class="line">        getrt(rt,<span class="number">0</span>);</span><br><span class="line">        divide(rt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(head,<span class="number">-1</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> u,v,w;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;u,&amp;v,&amp;w);</span><br><span class="line">        u++;v++;</span><br><span class="line">        add(u,v,w);</span><br><span class="line">        add(v,u,w);</span><br><span class="line">    &#125;</span><br><span class="line">    maxp[<span class="number">0</span>]=sum=n;</span><br><span class="line">    <span class="built_in">memset</span>(judge,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(judge));</span><br><span class="line">    getrt(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    getrt(rt,<span class="number">0</span>);</span><br><span class="line">    divide(rt);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans&gt;=n?<span class="number">-1</span>:ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/27/点分治-luogu2664/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/05/27/点分治-luogu2664/" class="post-title-link" itemprop="url">点分治-luogu2664</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-27 23:41:58 / 修改时间：23:50:51" itemprop="dateCreated datePublished" datetime="2020-05-27T23:41:58+08:00">2020-05-27</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/05/27/点分治-luogu2664/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/27/点分治-luogu2664/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这题是个很好的点分治题目。<br>首先明确我们的目的，既然使用了点分治，那么就需要O(n)的时间内处理出重心rt以及“rt的儿子”的答案。<br>考虑重心的一个子树的根节点，如果这个点v的颜色是第一次出现，那么它对其他不在该子树的点的答案的贡献(包括rt)就是size[v]<br>然后我们再考虑这个子树，注意刚刚我们考虑的是子树的根节点，现在考虑的是整个子树对其他“rt儿子”的贡献。假设该子树的根节点是v，从v~rt上有num种颜色，那么对其他节点的贡献就是num*(size[rt]-size[v])<br>整体的步骤：</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/05/27/点分治-luogu2664/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/27/点分治-luogu3806/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/05/27/点分治-luogu3806/" class="post-title-link" itemprop="url">点分治-luogu3806</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-27 23:38:36 / 修改时间：23:41:39" itemprop="dateCreated datePublished" datetime="2020-05-27T23:38:36+08:00">2020-05-27</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/05/27/点分治-luogu3806/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/27/点分治-luogu3806/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://www.luogu.com.cn/problem/P3806" target="_blank" rel="noopener">luogu3806</a></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这题是点分治的模板题目，点分治就是一棵树上的分治。<br>详细的教程上B站看AgOH的直播，很感谢大佬的分享<br><a href="https://www.bilibili.com/video/BV1PE41197md" target="_blank" rel="noopener">点分治教程-作者:AgOH</a></p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e4</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> NN = <span class="number">1e7</span>+<span class="number">10</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v,dis,nex;</span><br><span class="line">&#125;edges[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> head[N&lt;&lt;<span class="number">1</span>],edgenum,sum,rt,n,m,cnt;</span><br><span class="line"><span class="keyword">int</span> maxp[N],siz[N],dis[N],q[N/<span class="number">10</span>],tmp[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">bool</span> ans[NN],judge[NN],vis[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> dis)</span></span>&#123;</span><br><span class="line">    edges[edgenum].nex=head[u];</span><br><span class="line">    edges[edgenum].v=v;</span><br><span class="line">    edges[edgenum].dis=dis;</span><br><span class="line">    head[u]=edgenum++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getrt</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    siz[u]=<span class="number">1</span>,maxp[u]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]||v==fa)<span class="keyword">continue</span>;</span><br><span class="line">        getrt(v,u);</span><br><span class="line">        siz[u]+=siz[v];</span><br><span class="line">        <span class="keyword">if</span>(maxp[u]&lt;siz[v])maxp[u]=siz[v];</span><br><span class="line">    &#125;</span><br><span class="line">    maxp[u]=max(maxp[u],sum-siz[u]);</span><br><span class="line">    <span class="keyword">if</span>(maxp[u]&lt;maxp[rt])rt=u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getdis</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    tmp[cnt++]=dis[u];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(v==f||vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        dis[v]=dis[u]+edges[i].dis;</span><br><span class="line">        getdis(v,u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;que;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        cnt = <span class="number">0</span>;</span><br><span class="line">        dis[v]=edges[i].dis;</span><br><span class="line">        getdis(v,u);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;m;k++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(q[k]&gt;=tmp[j])&#123;</span><br><span class="line">                    ans[k]|=judge[q[k]-tmp[j]];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)&#123;</span><br><span class="line">            que.push(tmp[j]);</span><br><span class="line">            judge[tmp[j]]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (!que.empty())&#123;</span><br><span class="line">        judge[que.front()]=<span class="literal">false</span>;</span><br><span class="line">        que.pop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    vis[u]=judge[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    solve(u);<span class="comment">//计算经过根节点的路径</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        maxp[rt=<span class="number">0</span>]=sum=siz[v];</span><br><span class="line">        getrt(v,<span class="number">0</span>);</span><br><span class="line"><span class="comment">//        这里第二次做获重心是为了得到正确的size数组，防止下次操作的时候错误</span></span><br><span class="line">        getrt(rt,<span class="number">0</span>);</span><br><span class="line">        divide(rt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(head,<span class="number">-1</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> u,v,w;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;u,&amp;v,&amp;w);</span><br><span class="line">        add(u,v,w);</span><br><span class="line">        add(v,u,w);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q[i]);</span><br><span class="line">    maxp[<span class="number">0</span>]=sum=n;</span><br><span class="line">    getrt(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    getrt(rt,<span class="number">0</span>);</span><br><span class="line">    divide(rt);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(ans[i])<span class="built_in">printf</span>(<span class="string">"AYE\n"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"NAY\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
     
   </div>
-  </div>
-</div>
-<div id="lx-main-content">
-  <div class="lx-post"> 
 
-  <div class="lx-entry padding">
-    <div>
-      <h2><a href="/2020/09/17/Leetcode-685-冗余链接2/">Leetcode-685.冗余链接2</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-09-17</span>
-      <p></p>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2><a href="/2020/09/16/DNS 查询报文和响应报文/">WireShark 分析网站请求流程</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-09-16</span>
-      <p></p>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2><a href="/2020/07/28/异或最小生成树/">异或最小生成树</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-07-28</span>
-      <p></p>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2><a href="/2020/07/13/2020牛客暑期多校训练营（第二场）补题记录/">2020牛客暑期多校训练营（第二场）补题记录</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-07-13</span>
-      <p></p>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2><a href="/2020/07/12/2020牛客暑期多校训练营（第一场）补题记录/">2020牛客暑期多校训练营（第一场）补题记录</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-07-12</span>
-      <p></p>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2><a href="/2020/05/29/点分治-FFT-CodeChef-PRIMEDST/">点分治+FFT-CodeChef-PRIMEDST</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-29</span>
-      <p></p>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2><a href="/2020/05/28/点分治-CF161D/">点分治-CF161D</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-28</span>
-      <p></p>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2><a href="/2020/05/28/点分治-luogu4149/">点分治-luogu4149</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-28</span>
-      <p></p>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2><a href="/2020/05/27/点分治-luogu2664/">点分治-luogu2664</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-27</span>
-      <p></p>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2><a href="/2020/05/27/点分治-luogu3806/">点分治-luogu3806</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-27</span>
-      <p></p>
-    </div>
-  </div>
- 
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
-<div id="pagination">
-  <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-chevron-right" aria-label="accessibility.next_page"></i></a>
-</div>
-<footer>
-  <div>
-  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
-  </div>
-</footer>
-  </div>
-</div>
-</div>
 
-<button class="menu-trigger"></button>
-<div class="menu">
-  <div class="menu-head">
-    <span class="layer">
-      <div class="col">
-        <div class="row for-pic">
-          <div class="profile-pic">
-            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+
           </div>
+          
+
         </div>
-        <div class="row for-name">
-          <p>gerayking</p>
-          <span class="tagline">Hello, World!</span>
-        </div>
-      </div>
-    </span>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
-  <nav class="menu-container">
-  <ul class="menu-items">
-    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
-    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
-    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
-    <span class="dropdown-heading">页面</span><ul>
-      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
-    </li>
-    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
-    <span class="dropdown-heading">友链</span><ul>
-      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
-    </li>
-  </ul>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">gerayking</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
   </nav>
 </div>
 
-<div class="gototop js-top">
-  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gerayking</span>
 </div>
-<script src="/js/jquery.easing.min.js"></script>
-<script src="/js/jquery.waypoints.min.js"></script>
-<script src="/js/jquery.stellar.min.js"></script>
-<script src="/js/main.js"></script>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">
+      
+    主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1
+  </div>
+<span id="busuanzi_container_site_uv">
+  本站访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
 
 
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+    
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
         }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
     });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'qNly5FleMfdepiDiaVXsturv-gzGzoHsz',
+    appKey: '5wPliBaYqnLM6iGrQKEnCvRJ',
+    placeholder: "Just go go",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

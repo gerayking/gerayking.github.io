@@ -1,66 +1,292 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>FFT详解 | 一方通行</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="gerayking">
-  <meta name="keywords" content>
-  <meta name="description" content>
-  <script id="hexo-configurations">
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    theme: 'lx',
-    version: '1.4.5',
-    localsearch:{
-      "enable": false,
-      "trigger": "auto",
-      "top_n_per_article": 1,
-      "unescape": false,
-      "preload": false
-      },
-    path: '-'
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/main.css">
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/jquery.jside.menu.js"></script>
-	<script>
-	$(document).ready(function(){
-	$(".menu-container").jSideMenu({
-	    jSidePosition: "position-right",
-	    jSideSticky: true,
-	    jSideSkin: "endless-river",
-	     });
-	}); 
-	</script>
+  <meta name="description" content="FFT(快速傅里叶变换)单位根w_n = \cos(\frac{2\Pi}{n}) + \sin(\frac{2\Pi}{n})i可理解为把复坐标轴上的单位圆分成了n份性质1w_n^k = w_{2n}^{2k}证明w_{2n}^{2k} = \cos(\frac{2\Pi*2k}{2n}) + \sin(\frac{2\Pi*2k}{2n})i = \cos(\frac{2\Pi*k}{n})">
+<meta name="keywords" content="数论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FFT详解">
+<meta property="og:url" content="https://gerayking.github.io/2020/03/03/FFT详解/index.html">
+<meta property="og:site_name" content="一方通行">
+<meta property="og:description" content="FFT(快速傅里叶变换)单位根w_n = \cos(\frac{2\Pi}{n}) + \sin(\frac{2\Pi}{n})i可理解为把复坐标轴上的单位圆分成了n份性质1w_n^k = w_{2n}^{2k}证明w_{2n}^{2k} = \cos(\frac{2\Pi*2k}{2n}) + \sin(\frac{2\Pi*2k}{2n})i = \cos(\frac{2\Pi*k}{n})">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2020/03/03/JZEk83X6yljtUbO.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/03/JPgaFLtYx6Zjo8w.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/03/pVboZelOvGaIisQ.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/03/iWG1D8IuaLCPQZp.png">
+<meta property="og:updated_time" content="2020-03-03T15:36:52.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FFT详解">
+<meta name="twitter:description" content="FFT(快速傅里叶变换)单位根w_n = \cos(\frac{2\Pi}{n}) + \sin(\frac{2\Pi}{n})i可理解为把复坐标轴上的单位圆分成了n份性质1w_n^k = w_{2n}^{2k}证明w_{2n}^{2k} = \cos(\frac{2\Pi*2k}{2n}) + \sin(\frac{2\Pi*2k}{2n})i = \cos(\frac{2\Pi*k}{n})">
+<meta name="twitter:image" content="https://i.loli.net/2020/03/03/JZEk83X6yljtUbO.png">
+  <link rel="canonical" href="https://gerayking.github.io/2020/03/03/FFT详解/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>FFT详解 | 一方通行</title>
   
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
-<body>
-<div class="single">
-<div id="page">
-<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
-  <div class="overlay">
-  <div class="page-title">
-    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
-    <span>2020-03-03</span>
-    <h2>FFT详解</h2>
-    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/数论/">数论</a></div>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一方通行</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+        <p class="site-subtitle">你最愿意做的哪件事，才是你的天赋所在</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
 </div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+        
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      
+    
+  </ul>
+
+</nav>
 </div>
-<div id="lx-main-content">
-  <div class="lx-post">
-    <div class="lx-entry padding">
-      <div>
-        <h2 id="FFT-快速傅里叶变换"><a href="#FFT-快速傅里叶变换" class="headerlink" title="FFT(快速傅里叶变换)"></a>FFT(快速傅里叶变换)</h2><h3 id="单位根"><a href="#单位根" class="headerlink" title="单位根"></a>单位根</h3><script type="math/tex; mode=display">w_n = \cos(\frac{2\Pi}{n}) + \sin(\frac{2\Pi}{n})i</script><p>可理解为把复坐标轴上的单位圆分成了n份<br><img src="https://i.loli.net/2020/03/03/JZEk83X6yljtUbO.png" alt></p>
-<h4 id="性质1"><a href="#性质1" class="headerlink" title="性质1"></a>性质1</h4><script type="math/tex; mode=display">w_n^k = w_{2n}^{2k}</script><p>证明</p>
-<script type="math/tex; mode=display">w_{2n}^{2k} = \cos(\frac{2\Pi*2k}{2n}) + \sin(\frac{2\Pi*2k}{2n})i = \cos(\frac{2\Pi*k}{n}) + \sin(\frac{2\Pi*k}{n})i = w_n^k</script><p>这里用到了复数相乘的性质，即模长相乘，夹角相加，因为模长都为1，所以不变，夹角相加。</p>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/03/FFT详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            FFT详解
+            
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-03 21:13:30 / 修改时间：23:36:52" itemprop="dateCreated datePublished" datetime="2020-03-03T21:13:30+08:00">2020-03-03</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/03/FFT详解/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/03/FFT详解/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="FFT-快速傅里叶变换"><a href="#FFT-快速傅里叶变换" class="headerlink" title="FFT(快速傅里叶变换)"></a>FFT(快速傅里叶变换)</h2><h3 id="单位根"><a href="#单位根" class="headerlink" title="单位根"></a>单位根</h3><script type="math/tex; mode=display">w_n = \cos(\frac{2\Pi}{n}) + \sin(\frac{2\Pi}{n})i</script><p>可理解为把复坐标轴上的单位圆分成了n份<br><img src="https://i.loli.net/2020/03/03/JZEk83X6yljtUbO.png" alt></p><h4 id="性质1"><a href="#性质1" class="headerlink" title="性质1"></a>性质1</h4><script type="math/tex; mode=display">w_n^k = w_{2n}^{2k}</script><p>证明</p><script type="math/tex; mode=display">w_{2n}^{2k} = \cos(\frac{2\Pi*2k}{2n}) + \sin(\frac{2\Pi*2k}{2n})i = \cos(\frac{2\Pi*k}{n}) + \sin(\frac{2\Pi*k}{n})i = w_n^k</script><a id="more"></a>
+
+<p>这里用到了复数相乘的性质，即模长相乘，夹角相加，因为模长都为1，所以不变，夹角相加。</p>
 <h4 id="性质2"><a href="#性质2" class="headerlink" title="性质2"></a>性质2</h4><script type="math/tex; mode=display">w_n^{k+\frac{n}{2}} = -\ w_n^k</script><p>证明:</p>
 <script type="math/tex; mode=display">w_n^{\frac{n}{2}}=\cos(\pi) + \sin(\pi)i = -1</script><script type="math/tex; mode=display">w_n^{k+\frac{n}{2}} =w_n^{\frac{n}{2}}*w_n^k = -\ w_n^k</script><h4 id="性质3"><a href="#性质3" class="headerlink" title="性质3"></a>性质3</h4><script type="math/tex; mode=display">{(w_n^i)}^2 ={(w_n^{i+\frac{n}{2}})}^2 = w_n^{2i} = w_{\frac{n}{2}}^i</script><h3 id="IFFT-系数转点值"><a href="#IFFT-系数转点值" class="headerlink" title="IFFT(系数转点值)"></a>IFFT(系数转点值)</h3><p>普通的一个多项式方程可以这样表示</p>
 <script type="math/tex; mode=display">\begin{pmatrix}
@@ -152,134 +378,323 @@ x^{n-1}_0&x^{n-1}_1&x^{n-1}_2&\dots&x^n_{n-1}\\
 \end{pmatrix}}^{-1}</script><p>也就是把矩阵变为逆矩阵，在图上的话可以想象一开始是顺时针转，现在逆时针转动,实际上得到的矩阵是<br><img src="https://i.loli.net/2020/03/03/iWG1D8IuaLCPQZp.png" alt="QQ图片20200303231627.png"><br>所以转回来的时候需要乘以1/n</p>
 <h3 id="FFT板子"><a href="#FFT板子" class="headerlink" title="FFT板子"></a>FFT板子</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cp</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">double</span> r,i;</span><br><span class="line">    <span class="keyword">complex</span>(<span class="keyword">double</span> _r = <span class="number">0</span>,<span class="keyword">double</span> _i = <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        r = _r; i = _i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">complex</span> <span class="keyword">operator</span> +(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">complex</span>(r+b.r,i+b.i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">complex</span> <span class="keyword">operator</span> -(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">complex</span>(r-b.r,i-b.i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">complex</span> <span class="keyword">operator</span> *(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">complex</span>(r*b.r-i*b.i,r*b.i+i*b.r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(cp *s,<span class="keyword">int</span> inv)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;r[i])swap(s[i],s[r[i]]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">2</span>;len&lt;=n;len*=<span class="number">2</span>)&#123;</span><br><span class="line">		cp wn = cp(<span class="built_in">cos</span>(pi*<span class="number">2.0</span>/len),inv*<span class="built_in">sin</span>(pi*<span class="number">2.0</span>/len));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> st=<span class="number">0</span>;st&lt;n;st+=len)&#123;</span><br><span class="line">			cp w = cp(<span class="number">1.0</span>,<span class="number">0.0</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=st;i&lt;st+len/<span class="number">2</span>;i++,w*=wn)&#123;</span><br><span class="line">				cp x=s[i];<span class="comment">//偶次幂 </span></span><br><span class="line">				cp y=w*s[i+len/<span class="number">2</span>];<span class="comment">//奇次幂 </span></span><br><span class="line">				s[i]=x+y;</span><br><span class="line">				s[i+len/<span class="number">2</span>]=x-y;</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="洛谷P3803"><a href="#洛谷P3803" class="headerlink" title="洛谷P3803"></a>洛谷P3803</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pi acos(-1)</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> f[N],g[N],r[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cp</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">double</span> r,i;</span><br><span class="line">    cp(<span class="keyword">double</span> _r = <span class="number">0</span>,<span class="keyword">double</span> _i = <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        r = _r; i = _i;</span><br><span class="line">    &#125;</span><br><span class="line">    cp <span class="keyword">operator</span> +(<span class="keyword">const</span> cp &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> cp(r+b.r,i+b.i);</span><br><span class="line">    &#125;</span><br><span class="line">    cp <span class="keyword">operator</span> -(<span class="keyword">const</span> cp &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> cp(r-b.r,i-b.i);</span><br><span class="line">    &#125;</span><br><span class="line">    cp <span class="keyword">operator</span> *(<span class="keyword">const</span> cp &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> cp(r*b.r-i*b.i,r*b.i+i*b.r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;F[N],G[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(cp *s,<span class="keyword">int</span> n,<span class="keyword">int</span> inv)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> bit=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ((<span class="number">1</span>&lt;&lt;bit)&lt;n)bit++;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;r[i])swap(s[i],s[r[i]]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">2</span>;len&lt;=n;len*=<span class="number">2</span>)&#123;</span><br><span class="line">		cp wn = cp(<span class="built_in">cos</span>(pi*<span class="number">2.0</span>/len),inv*<span class="built_in">sin</span>(pi*<span class="number">2.0</span>/len));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> st=<span class="number">0</span>;st&lt;n;st+=len)&#123;</span><br><span class="line">			cp w = cp(<span class="number">1.0</span>,<span class="number">0.0</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=st;i&lt;st+len/<span class="number">2</span>;i++,w=w*wn)&#123;</span><br><span class="line">				cp x=s[i];<span class="comment">//偶次幂 </span></span><br><span class="line">				cp y=w*s[i+len/<span class="number">2</span>];<span class="comment">//奇次幂 </span></span><br><span class="line">				s[i]=x+y;</span><br><span class="line">				s[i+len/<span class="number">2</span>]=x-y;</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;f[i]),F[i].r=f[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=m;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;g[i]),G[i].r=g[i];</span><br><span class="line">	<span class="keyword">int</span> len = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(len&lt;=n+m)len&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> bit=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ((<span class="number">1</span>&lt;&lt;bit)&lt;len)bit++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)r[i]=(r[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)|((i&amp;<span class="number">1</span>)&lt;&lt;(bit<span class="number">-1</span>));</span><br><span class="line">	FFT(F,len,<span class="number">1</span>);</span><br><span class="line">	FFT(G,len,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=len;i++)&#123;</span><br><span class="line">		F[i]=F[i]*G[i];</span><br><span class="line">	&#125;</span><br><span class="line">	FFT(F,len,<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n+m;i++)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,(<span class="keyword">int</span>)(F[i].r/len+<span class="number">0.5</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      </div>
     </div>
-  </div>
-</div>
-<div class="lx-navigation">
-	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
-		<div class="overlay"></div>
-		<a class="copy" href="/2020/03/05/求和-莫比乌斯反演-杜教筛/">
-			<div class="display-t">
-				<div class="display-tc">
-					<div>
-						<span>Next</span>
-						<h3>求和(莫比乌斯反演+杜教筛)</h3>
-					</div>
-				</div>
-			</div>
-		</a>
-	</div>
-        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
-		<div class="overlay"></div>
-		<a class="copy" href="/2020/03/01/叁佰爱抠的序列-二分-欧拉回路/">
-			<div class="display-t">
-				<div class="display-tc">
-					<div>
-						<span>Prev</span>
-						<h3>叁佰爱抠的序列(二分+欧拉回路)</h3>
-					</div>
-				</div>
-			</div>
-		</a>
-	</div>
-</div>
-</div>
 
-<footer>
-  <div>
-  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
-  </div>
-</footer>
+    
+    
+    
+        
+      
+      <div>
+         
+         <div>
+    
+        <div style="text-align:center;color: #1abc9c;font-size:20px;">-------------你最愿意做的哪件事<i class="fa fa-paw"></i>才是你的天赋所在-------------</div>
+    
 </div>
-
-<button class="menu-trigger"></button>
-<div class="menu">
-  <div class="menu-head">
-    <span class="layer">
-      <div class="col">
-        <div class="row for-pic">
-          <div class="profile-pic">
-            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
-          </div>
-        </div>
-        <div class="row for-name">
-          <p>gerayking</p>
-          <span class="tagline">Hello, World!</span>
-        </div>
+         
       </div>
-    </span>
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/数论/" rel="tag"># 数论</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/03/01/叁佰爱抠的序列-二分-欧拉回路/" rel="next" title="叁佰爱抠的序列(二分+欧拉回路)">
+                  <i class="fa fa-chevron-left"></i> 叁佰爱抠的序列(二分+欧拉回路)
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/03/05/求和-莫比乌斯反演-杜教筛/" rel="prev" title="求和(莫比乌斯反演+杜教筛)">
+                  求和(莫比乌斯反演+杜教筛) <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  <nav class="menu-container">
-  <ul class="menu-items">
-    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
-    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
-    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
-    <span class="dropdown-heading">页面</span><ul>
-      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
-    </li>
-    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
-    <span class="dropdown-heading">友链</span><ul>
-      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
-    </li>
-  </ul>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#FFT-快速傅里叶变换"><span class="nav-number">1.</span> <span class="nav-text">FFT(快速傅里叶变换)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单位根"><span class="nav-number">1.1.</span> <span class="nav-text">单位根</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#性质1"><span class="nav-number">1.1.1.</span> <span class="nav-text">性质1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性质2"><span class="nav-number">1.1.2.</span> <span class="nav-text">性质2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性质3"><span class="nav-number">1.1.3.</span> <span class="nav-text">性质3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IFFT-系数转点值"><span class="nav-number">1.2.</span> <span class="nav-text">IFFT(系数转点值)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDFT"><span class="nav-number">1.3.</span> <span class="nav-text">IDFT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FFT板子"><span class="nav-number">1.4.</span> <span class="nav-text">FFT板子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#洛谷P3803"><span class="nav-number">1.5.</span> <span class="nav-text">洛谷P3803</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">gerayking</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
   </nav>
 </div>
 
-<div class="gototop js-top">
-  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gerayking</span>
 </div>
-<script src="/js/jquery.easing.min.js"></script>
-<script src="/js/jquery.waypoints.min.js"></script>
-<script src="/js/jquery.stellar.min.js"></script>
-<script src="/js/main.js"></script>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">
+      
+    主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1
+  </div>
+<span id="busuanzi_container_site_uv">
+  本站访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
 
 
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+    
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
 <script type="text/x-mathjax-config">
+
   MathJax.Hub.Config({
     tex2jax: {
       inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
       processEscapes: true,
       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
     },
-  TeX: {
-          extensions: ["mhchem.js"]
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
     }
   });
+
   MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
     MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
       if (data.display) {
         var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
-        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
       }
     });
   });
-</script>
-<script type="text/x-mathjax-config">
+
   MathJax.Hub.Queue(function() {
     var all = MathJax.Hub.getAllJax(), i;
     for (i = 0; i < all.length; i += 1) {
-      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
     }
   });
 </script>
-<script src="//cdn.bootcss.com/mathjax/2.7.5/latest.js?config=TeX-MML-AM_SVG"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+    
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'qNly5FleMfdepiDiaVXsturv-gzGzoHsz',
+    appKey: '5wPliBaYqnLM6iGrQKEnCvRJ',
+    placeholder: "Just go go",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
