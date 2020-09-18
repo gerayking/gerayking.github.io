@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>中国剩余定理详解 | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2019-08-17</span>
+    <h2>中国剩余定理详解</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/数论/">数论</a></div>
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h2 id="中国剩余定理与扩展中国剩余定理"><a href="#中国剩余定理与扩展中国剩余定理" class="headerlink" title="中国剩余定理与扩展中国剩余定理"></a>中国剩余定理与扩展中国剩余定理</h2><p>首先来看这个方程</p>
+<script type="math/tex; mode=display">\begin{cases}
+x≡a_{1}(mod\ b_1)\\
+x≡a_{2}(mod\ b_2)\\
+x≡a_{3}(mod\ b_3)\\
+\cdots\\
+x≡a_{n}(mod\ b_n)
+\end{cases}</script><p>求出上述x的最小正整数解，即为中国剩余定理。<br>有两种情况，第一种为$b_1$,$b_2$,$b_3$之间两两互质。<br>第二种情况为不互质时，也就是扩展中国剩余定理</p>
+<h3 id="中国剩余定理"><a href="#中国剩余定理" class="headerlink" title="中国剩余定理"></a>中国剩余定理</h3><p>设<script type="math/tex">M=b_1*b_2*\cdots*b_n</script><br>因为$b_i$之间两两互质，所以M即为他们的最小公倍数。<br>再设<script type="math/tex">M_i=\frac{M}{b_i}</script><strong>这里的$M_i$与上面的M没有关系</strong>。<br>此时我们得到</p>
+<script type="math/tex; mode=display">M^{-1}_iM_i≡1(mod\ b_i)</script><p>这里，$M^{-1}_i$,我们可以用扩展欧几里得求出，也就是$M_i$的数论逆元<br>左右两边同时乘上$a_i$,得到</p>
+<script type="math/tex; mode=display">a_i*M^{-1}_i*M_i≡a_i(mod\ b_i)</script><p>参考原方程<script type="math/tex">x≡a_i(mod\ b_i)</script><br>得到<script type="math/tex">x=a_i*M_i*M^{-1}_{i}</script><br>然后得到通解<script type="math/tex">x=\sum_{i=1}^n{a_i*M_i*M^{-1}_i}</script></p>
+<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://www.luogu.org/problemnew/show/P3868" target="_blank" rel="noopener">模板</a></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fin(a,n) for(int i=a;i&lt;=n;i++)</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">20</span>;</span><br><span class="line">ll a1[<span class="number">20</span>],b1[<span class="number">20</span>];</span><br><span class="line"><span class="function">ll <span class="title">mul</span><span class="params">(ll a,ll b,ll mod)</span><span class="comment">//求（a*b）%mod ，防止a*b炸ll </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> ll ans=<span class="number">0</span>;</span><br><span class="line"> <span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="keyword">if</span>(b&amp;<span class="number">1</span>)ans=(ans+a)%mod;<span class="comment">//如果b对答案有贡献 </span></span><br><span class="line"> a=(a+a)%mod;</span><br><span class="line"> b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">exgcd</span><span class="params">(ll a,ll b,ll &amp;x,ll &amp;y)</span><span class="comment">//扩展欧几里得 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> <span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line"> &#123;</span><br><span class="line">  x=<span class="number">1</span>;</span><br><span class="line">  y=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> a;</span><br><span class="line"> &#125;</span><br><span class="line"> ll ans=exgcd(b,a%b,x,y);</span><br><span class="line"> ll temp=x;</span><br><span class="line"> x=y;</span><br><span class="line"> y=temp-(a/b)*y;</span><br><span class="line"> <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">china</span><span class="params">(<span class="keyword">int</span> n)</span><span class="comment">//中国剩余定理 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> ll M=<span class="number">1</span>,ans=<span class="number">0</span>,x,y;</span><br><span class="line"> fin(<span class="number">1</span>,n)M*=b1[i]; </span><br><span class="line"> fin(<span class="number">1</span>,n)</span><br><span class="line"> &#123;</span><br><span class="line">  ll a,b;</span><br><span class="line">  a=M/b1[i];<span class="comment">//此处的按照ax+by=1的形式，因为互素所以等号右边恒为1.</span></span><br><span class="line">  b=b1[i];</span><br><span class="line">  exgcd(a,b,x,y);</span><br><span class="line">  x=(x%b+b)%b;<span class="comment">//求出最小的x </span></span><br><span class="line">     ans=(ans+mul(mul(a,x,M),a1[i],M))%M;<span class="comment">//此处对应求和即ai*xi*mi </span></span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> (ans+M)%M;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> <span class="keyword">int</span> n;</span><br><span class="line"> <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line"> fin(<span class="number">1</span>,n)<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a1[i]);</span><br><span class="line"> fin(<span class="number">1</span>,n)<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;b1[i]);</span><br><span class="line"> fin(<span class="number">1</span>,n)a1[i]=(a1[i]%b1[i]+b1[i])%b1[i];<span class="comment">//预处理数据 </span></span><br><span class="line"> ll tans=china(n);</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"%lld"</span>,tans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="扩展中国剩余定理"><a href="#扩展中国剩余定理" class="headerlink" title="扩展中国剩余定理"></a>扩展中国剩余定理</h2><p>扩展中国剩余定理就是上述的$b_i$不互质的时候。<br>我们看原方程</p>
+<script type="math/tex; mode=display">\begin{cases}
+x≡a_{1}(mod\ b_1)\\
+x≡a_{2}(mod\ b_2)\\
+x≡a_{3}(mod\ b_3)\\
+\cdots\\
+x≡a_{n}(mod\ b_n)
+\end{cases}</script><p>设第n个方程的解为x,$M=\prod_{i=1}^n$<br>那么前k个方程的通解为x+k*m.<br>把通解带入k+1个方程得到</p>
+<script type="math/tex; mode=display">x+k*m≡a_k(mod\ b_n)</script><p>化简得到<script type="math/tex">k*m≡a_k-x(mod\ b_n)</script><br>x我们已经求出来的，所以只有一个未知数。<br>我们需要求的时最小解，所以我们用扩展欧几里得求出k。即可救出下一个方程的x。<br>若这个方程无解，则整个方程无解。<br><strong>这就是全部的中国剩余定理</strong></p>
+<h3 id="题目链接-1"><a href="#题目链接-1" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://www.luogu.org/problem/P4777" target="_blank" rel="noopener">模板</a></p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fin(a,n) for(int i=a;i&lt;=n;i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long int</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2e6</span>+<span class="number">10</span>;</span><br><span class="line">ll a1[maxn],b1[maxn];</span><br><span class="line"><span class="function">ll <span class="title">exgcd</span><span class="params">(ll a,ll b,ll &amp;x,ll &amp;y)</span><span class="comment">//扩展欧几里得求数论逆元</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">	x=<span class="number">1</span>;</span><br><span class="line">	y=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	ll gcd=exgcd(b,a%b,x,y);</span><br><span class="line">	ll temp=x;</span><br><span class="line">	x=y;</span><br><span class="line">	y=temp-a/b*y;</span><br><span class="line">	<span class="keyword">return</span> gcd;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">mul</span><span class="params">(ll a,ll b,ll mod)</span></span></span><br><span class="line"><span class="function"></span>&#123;   ll res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(b&gt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">	<span class="keyword">if</span>(b&amp;<span class="number">1</span>)res=(res+a)%mod;</span><br><span class="line">	a=(a+a)%mod;</span><br><span class="line">	b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">exchi</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;   ll a,b;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld %lld"</span>,&amp;a,&amp;b);</span><br><span class="line">	ll x,y;<span class="comment">//x就是我们需要求出来的k，也就是最小正整数解</span></span><br><span class="line">	ll M=a,ans=b;<span class="comment">//M代表累乘，ans代表当前的x值 </span></span><br><span class="line">	fin(<span class="number">2</span>,k)</span><br><span class="line">	&#123;   ll a1,b1;</span><br><span class="line">	    <span class="built_in">scanf</span>(<span class="string">"%lld %lld"</span>,&amp;a1,&amp;b1);</span><br><span class="line">		ll a=M;</span><br><span class="line">		ll b=a1;<span class="comment">//ax+by=c; </span></span><br><span class="line">		ll c=(b1-ans%b+b)%b;</span><br><span class="line">		ll gcd=exgcd(a,b,x,y),bg=b/gcd;</span><br><span class="line">		<span class="keyword">if</span>(c%gcd!=<span class="number">0</span>)<span class="keyword">return</span> <span class="number">-1</span>;<span class="comment">//无解情况</span></span><br><span class="line">		x=mul(x,c/gcd,bg);<span class="comment">//把x变为最小解，(x*c/gcd)% bg </span></span><br><span class="line">		ans=ans+x*M;</span><br><span class="line">		M*=bg;<span class="comment">//最小公倍数 </span></span><br><span class="line">		ans=(ans%M+M)%M;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> (ans%M+M)%M;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	ll tans=exchi(n);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,tans);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码已被一组数据hack，有时候会炸long long</p>
+<blockquote>
+<p>5<br>998244353 469904850<br>998244389 856550978<br>998244391 656199240<br>998244407 51629743<br>998244431 642142204</p>
+</blockquote>
+<p>下面记录sumijie大佬的代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> __int128 ll;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(ll a,ll b,ll &amp;g,ll &amp;x,ll &amp;y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (b == <span class="number">0</span>) &#123;</span><br><span class="line">        g = a;</span><br><span class="line">        x = <span class="number">1</span>;</span><br><span class="line">        y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    exgcd(b,a%b,g,y,x);</span><br><span class="line">    y-=(a/b)*x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">ll a1,a2,n1,n2;</span><br><span class="line"><span class="function">ll <span class="title">abs</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x&gt;<span class="number">0</span>?x:-x;</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">china</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll d = a2 - a1;</span><br><span class="line">    ll g,x,y;</span><br><span class="line">    exgcd(n1,n2,g,x,y);</span><br><span class="line">    <span class="keyword">if</span> (d % g == <span class="number">0</span>) &#123;</span><br><span class="line">        x = ((x*d/g)%(n2/g)+(n2/g))%(n2/g);</span><br><span class="line">        a1 = x*n1 + a1;</span><br><span class="line">        n1 = (n1*n2)/g;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        flag = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> as[<span class="number">100001</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ns[<span class="number">100001</span>];</span><br><span class="line"><span class="function">ll <span class="title">realchina</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    a1 = as[<span class="number">0</span>];</span><br><span class="line">    n1 = ns[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">1</span>;i&lt;n;i++) &#123;</span><br><span class="line">        a2 = as[i];</span><br><span class="line">        n2 = ns[i];</span><br><span class="line">        china();</span><br><span class="line">        <span class="keyword">if</span> (flag)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123; </span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    flag = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;ns[i]&gt;&gt;as[i];</span><br><span class="line">   ll tans = realchina();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/08/17/牛客多校10题解报告/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>牛客多校10题解报告</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/08/17/HDU4507-数位DP/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>HDU4507-数位DP</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.5/latest.js?config=TeX-MML-AM_SVG"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>OS-调度方法 | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2019-10-23</span>
+    <h2>OS-调度方法</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/Operating-System/">Operating System</a></div>
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h3 id="调度方式"><a href="#调度方式" class="headerlink" title="调度方式"></a>调度方式</h3><h4 id="FIFO-first-in-first-out"><a href="#FIFO-first-in-first-out" class="headerlink" title="FIFO(first in first out)"></a>FIFO(first in first out)</h4><p>Nonpreemptive(不可剥夺):进程一直在CPU上run，直到阻塞或者进程结束</p>
+<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><p>1.代码编写简单，利于理解</p>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><p>1.平均等待时间长<br>2.短作业有可能在长作业之后，导致等待的时间变长。</p>
+<h4 id="Round-robin-分时调度"><a href="#Round-robin-分时调度" class="headerlink" title="Round robin(分时调度)"></a>Round robin(分时调度)</h4><h5 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h5><p>1.对于短期作业，很快就能运行完</p>
+<h5 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h5><p>时间片太短:<br>1.代价大<br>2.长期作业的上下文切换时间大大增加</p>
+<h4 id="SJF-Shortest-job-first"><a href="#SJF-Shortest-job-first" class="headerlink" title="SJF(Shortest job first)"></a>SJF(Shortest job first)</h4><h5 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h5><p>1.Provably optimal<br>2.Great for short jobs<br>3.Small degradation for long jobs</p>
+<h5 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h5><p>1.可能会有很长的作业让后面的作业等待</p>
+<h4 id="SRTF-Shortest-remainning-time-first"><a href="#SRTF-Shortest-remainning-time-first" class="headerlink" title="SRTF(Shortest remainning time first)"></a>SRTF(Shortest remainning time first)</h4><h5 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h5><h5 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h5><p>  Starvation: constant arrivals of short jobs<br>can keep long ones from running<br>  There is no way to know the completion time<br>of jobs (most of the time)<br>Some solutions<br>◼ Ask the user, who may not know any better<br>◼ If a user cheats, the job is killed</p>
+<h4 id="优先级调度-Priority-scheduling"><a href="#优先级调度-Priority-scheduling" class="headerlink" title="(优先级调度)Priority scheduling"></a>(优先级调度)Priority scheduling</h4><h5 id="优点-4"><a href="#优点-4" class="headerlink" title="优点"></a>优点</h5><h5 id="缺点-4"><a href="#缺点-4" class="headerlink" title="缺点"></a>缺点</h5><h4 id="多级反馈队列-Multilevel-feedback-queues"><a href="#多级反馈队列-Multilevel-feedback-queues" class="headerlink" title="多级反馈队列(Multilevel feedback queues)"></a>多级反馈队列(Multilevel feedback queues)</h4><p>use multiple queues with different priorities<br>❑ Round robin at each priority level<br>❑ Run highest priority jobs first<br>❑ Once those finish, run next highest priority, etc<br>❑ Jobs start in the highest priority queue<br>❑ If time slice expires, drop the job by one level<br>❑ If time slice does not expire, push the job up by<br>one level</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/10/27/java学习之路4-Socket/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>java学习之路4-Socket</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/10/21/SSH-Studyline/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>SSH-Studyline</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

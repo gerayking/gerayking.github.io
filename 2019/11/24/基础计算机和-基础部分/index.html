@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>基础计算机和-基础部分 | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2019-11-24</span>
+    <h2>基础计算机和-基础部分</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/基础计算几何/">基础计算几何</a></div>
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h3 id="两直线交点"><a href="#两直线交点" class="headerlink" title="两直线交点"></a>两直线交点</h3><p>首先我们知道两点能够确定一条直线，能够得到直线的方程</p>
+<script type="math/tex; mode=display">F(x)=ax+by+c</script><p>假设现在有两条直线</p>
+<script type="math/tex; mode=display">F(x)_1=a_1x+b_1y+c_1</script><script type="math/tex; mode=display">F(x)_2=a_2x+b_2y+c_2</script><p>联立两个方程就可以得到一个简答的答案</p>
+<script type="math/tex; mode=display">y_0=\frac{a_2c_1-a_1c_2}{D}</script><script type="math/tex; mode=display">x_0=\frac{b_1c_2-b_2c_1}{D}</script><script type="math/tex; mode=display">D=a_1b_2-a_2b_1</script><p>实际上就是联立了方程组</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+F(x)_1=a_1x+b_1y+c_1\\
+F(x)_2=a_2x+b_2y+c_2
+\end{cases}</script><p>利用线性代数的解法转换为行列式就是</p>
+<script type="math/tex; mode=display">\begin{vmatrix}
+  i&j&k\\
+  a_1&b_1&c_1\\
+  a_2&b_2&c_2\\
+\end{vmatrix}</script><p>解出的i,j,k对应x,y,d;</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">	<span class="keyword">double</span> x,y;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">line</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">double</span> a,b,c;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">line <span class="title">getline</span><span class="params">(Point p1,Point p2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> line&#123;<span class="number">1</span>/(p2.x-p1.x),<span class="number">-1</span>/(p2.y-p1.y),(p1.y/(p2.y-p1.y)-p1.x/(p2.x-p1.x))&#125;;<span class="comment">//取得方程</span></span><br><span class="line"> &#125; </span><br><span class="line"><span class="function">Point <span class="title">solve</span><span class="params">(line l1,line l2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> D = l1.a*l2.b-l2.a*l1.b;</span><br><span class="line">	<span class="keyword">if</span>(D==<span class="number">0</span>)<span class="keyword">return</span> Point&#123;<span class="number">1e18</span>,<span class="number">1e18</span>&#125;;<span class="comment">//平行或者重合</span></span><br><span class="line">	<span class="keyword">return</span> Point&#123;l1.b*l2.c-l2.b*l1.c/D,l2.a*l1.c-l1.a*l2.c/D&#125;;<span class="comment">//返回点的坐标 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	solve(l1,l2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="求任意多边形的面积"><a href="#求任意多边形的面积" class="headerlink" title="求任意多边形的面积"></a>求任意多边形的面积</h3><h4 id="叉乘"><a href="#叉乘" class="headerlink" title="叉乘"></a>叉乘</h4><p>假设向量$\vec{a}=(x_1,y_1),\vec{b}=(x_2,y_2)$<br>那么向量的叉乘定义为</p>
+<script type="math/tex; mode=display">a×b=\begin{vmatrix}
+    x_1&y_1\\
+    x_2&y_2\\
+\end{vmatrix}=x_1y_2-y_1x_2= \vert a\vert \vert b \vert \sin(\Theta)</script><p>结果也就是两个向量构成三角形面积的两倍，使用这个方法开求多边形的面积<br>,假设多边形的点为$p_1,p_2\cdots,p_n;v_i为辅助点O与p_i的向量$。</p>
+<script type="math/tex; mode=display">S=\frac{1}{2}\sum_{i=1}^n\vert v_i×v_{i\%(n+1)}\vert</script><h3 id="圆与直线的关系"><a href="#圆与直线的关系" class="headerlink" title="圆与直线的关系"></a>圆与直线的关系</h3><h4 id="直线与圆的交点"><a href="#直线与圆的交点" class="headerlink" title="直线与圆的交点"></a>直线与圆的交点</h4><p>相离，相交，相切，可以通过圆心与直线的距离和半径的大小比较来判断</p>
+<h4 id="圆与圆的交点"><a href="#圆与圆的交点" class="headerlink" title="圆与圆的交点"></a>圆与圆的交点</h4><p>通过圆心得距离与两个圆得半径和来判断圆与圆之间的关系，有外离，内含，相交，相切</p>
+<h5 id="外离"><a href="#外离" class="headerlink" title="外离"></a>外离</h5><p>当$r1+r2&lt;d$时，两个圆无交点，为外离</p>
+<h5 id="内含"><a href="#内含" class="headerlink" title="内含"></a>内含</h5><p>当$r1&gt;d||r2&gt;d$时为内含</p>
+<h5 id="相切"><a href="#相切" class="headerlink" title="相切"></a>相切</h5><p>当$r1+r2==d$时，为相切，相切的情况下，就可以转化为直线与圆的关系求出切点。</p>
+<h5 id="相交"><a href="#相交" class="headerlink" title="相交"></a>相交</h5><p>当$r1+r2&lt;d$时，相交，相交求交点的做法联立两个方程带入即可</p>
+<h3 id="极角排序"><a href="#极角排序" class="headerlink" title="极角排序"></a>极角排序</h3><p>叉积排序，atan2排序与象限排序<br>叉积排序速度慢，精度高，但是可能会炸范围，atan2精度低，单是速度块。</p>
+<h4 id="叉积排序"><a href="#叉积排序" class="headerlink" title="叉积排序"></a>叉积排序</h4><p>选定基准点$O(x，y)$<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Cross</span><span class="params">(Point p1,Cross p2)</span><span class="comment">//叉积</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> p1.x*p2.y-p2.x-p1.y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Point p1,Point p2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Cross(p1,p2)==<span class="number">0</span>)<span class="keyword">return</span> p1.x&lt;p2.x;若极角相同返回x小的</span><br><span class="line">    reutrn Cross(p1,p2)&gt;0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="atan2排序"><a href="#atan2排序" class="headerlink" title="atan2排序"></a>atan2排序</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">atan2</span>(<span class="keyword">double</span> y,<span class="keyword">double</span> x);<span class="comment">//返回(x,y)与(0,0)与x正轴之间的夹角弧度</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">com</span><span class="params">(Point p1,Point p2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">atan2</span>(p1.y,p1.x)-<span class="built_in">atan2</span>(p2.y,p2.x)!=<span class="number">0</span>)<span class="keyword">return</span> <span class="built_in">atan2</span>(p1.y,p1.x)&lt;<span class="built_in">atan2</span>(p2.y,p2.x);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> p1.x&lt;p2.x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="象限排序"><a href="#象限排序" class="headerlink" title="象限排序"></a>象限排序</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Quadrant</span><span class="params">(Point A)</span></span>&#123;<span class="comment">//返回所在象限</span></span><br><span class="line">   <span class="keyword">if</span>(A.x&gt;<span class="number">0</span>&amp;&amp;A.y&gt;=<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">if</span>(A.x&lt;=<span class="number">0</span>&amp;&amp;A.y&gt;<span class="number">0</span>)<span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">   <span class="keyword">if</span>(A.x&lt;<span class="number">0</span>&amp;&amp;A.y&lt;=<span class="number">0</span>)<span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">   <span class="keyword">if</span>(A.x&gt;=<span class="number">0</span>&amp;&amp;A.y&lt;<span class="number">0</span>)<span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp2</span><span class="params">(Point A,Point B)</span></span>&#123;<span class="comment">//以原点为极点，先按照象限排序</span></span><br><span class="line">   <span class="keyword">if</span>(Quadrant(A)==Quadrant(B))</span><br><span class="line">        <span class="keyword">return</span> cmp1(A,B);<span class="comment">//象限相同时，按照极角排序</span></span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">return</span> Quadrant(A)&lt;Quadrant(B);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><a href="http://poj.org/problem?id=1696" target="_blank" rel="noopener">Poj1696</a></p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> eps </span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">	<span class="keyword">double</span> x,y;</span><br><span class="line">	<span class="keyword">int</span> id;</span><br><span class="line">&#125;Pole,p[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Vector</span>&#123;</span></span><br><span class="line">	<span class="keyword">double</span> x,y;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">syn</span><span class="params">(<span class="keyword">double</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">fabs</span>(x)&lt;<span class="number">1e-8</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(x&gt;<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Cross</span><span class="params">(Vector a,Vector b)</span></span>&#123;<span class="keyword">return</span> a.x*b.y-a.y*b.x;&#125;</span><br><span class="line">Vector <span class="keyword">operator</span> - (Point a,Point b)&#123;<span class="keyword">return</span> &#123;a.x-b.x,a.y-b.y&#125;;&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Point a,Point b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(syn(Cross(a-Pole,b-Pole))==<span class="number">0</span>)<span class="keyword">return</span> a.x&lt;b.x;</span><br><span class="line">	<span class="keyword">return</span> Cross(a-Pole,b-Pole)&gt;<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">int</span> index = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%lf%lf"</span>,&amp;p[i].id,&amp;p[i].x,&amp;p[i].y);</span><br><span class="line">		<span class="keyword">if</span>(i!=<span class="number">1</span>&amp;&amp;p[index].y&gt;p[i].y)index=i;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(i!=<span class="number">1</span>&amp;&amp;p[index].y==p[i].y&amp;&amp;p[i].x&lt;p[index].x)index=i;</span><br><span class="line">	&#125;</span><br><span class="line">	swap(p[<span class="number">1</span>],p[index]);</span><br><span class="line">	Pole = p[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		sort(p+i,p+<span class="number">1</span>+n,cmp);</span><br><span class="line">		Pole=p[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">" %d"</span>,p[i].id);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)solve();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/11/25/基础计算机和-基础部分2/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>基础计算机和-基础部分2</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/11/23/HDU-6242-基础计算几何/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>HDU-6242(基础计算几何)</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.5/latest.js?config=TeX-MML-AM_SVG"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

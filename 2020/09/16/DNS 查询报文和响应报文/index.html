@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WireShark 分析网站请求流程 | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2020-09-16</span>
+    <h2>WireShark 分析网站请求流程</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/计算机网络/">计算机网络</a></div>
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h3 id="DNS-查询报文和响应报文"><a href="#DNS-查询报文和响应报文" class="headerlink" title="DNS 查询报文和响应报文"></a>DNS 查询报文和响应报文</h3><ul>
+<li>当在浏览器中输入网站回车后，浏览器将向本机的DNS模块发送请求。</li>
+<li>DNS模块是有缓存的，若缓存中有，则直接取ip地址，若没有则向下将DNS发送给UDP</li>
+<li>UDP协议单元将该数据封装成IP数据包，传递给IP协议单元</li>
+<li>IP协议单元再进行一层封装，加入<strong>DNS服务器</strong>的地址</li>
+<li>封装好的IP数据包将传递给链路层进行发送</li>
+<li>数据链路层发送到DNS服务器，若数据链路层的缓冲区中没有dns服务器的MAC，那么就发送ARP的广播请求等待回应</li>
+<li>得到回应之后将ip地址和对应的MAC地址写入APR缓存中，之后进行转发</li>
+<li>DNS请求被发送到DNS服务器的数据链路层的协议单元</li>
+<li>DNS服务器的数据链路层的协议单元会解析接收到的关键帧，并讲内部的IP数据包传送给网络层的IP协议单元</li>
+<li>DNS服务器的IP协议单元解析收到的数据包，然后再向上剥壳，讲UDP数据传递给UDP协议单元</li>
+<li>UDP将其内部的DNS报文传递给DNS服务单元，然后DNS服务单元解析域名对应IP地址，产生DNS回应报文，再发送给请求地址</li>
+</ul>
+<p><img src="https://i.loli.net/2020/09/16/I3Wd4yO2ThE6ezs.png" alt="image-20200916143737324"></p>
+<h3 id="TCP-第一次握手和第二次握手"><a href="#TCP-第一次握手和第二次握手" class="headerlink" title="TCP 第一次握手和第二次握手"></a>TCP 第一次握手和第二次握手</h3><p>相关资料</p>
+<blockquote>
+<p>TCP(Transmission Control Protocol)传输控制协议</p>
+<p>TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接：</p>
+<p>位码即tcp标志位，有6种标示：SYN(synchronous建立联机) ACK(acknowledgement 确认) PSH(push传送) FIN(finish结束) RST(reset重置) URG(urgent紧急)Sequence number(顺序号码) Acknowledge number(确认号码)</p>
+<p>第一次握手：主机A发送位码为syn＝1，随机产生seq number=1234567的数据包到服务器，主机B由SYN=1知道，A要求建立联机；</p>
+<p>第二次握手：主机B收到请求后要确认联机信息，向A发送ack number=(主机A的seq+1)，syn=1，ack=1，随机产生seq=7654321的包；</p>
+<p>第三次握手：主机A收到后检查ack number是否正确，即第一次发送的seq number+1，以及位码ack是否为1，若正确，主机A会再发送ack number=(主机B的seq+1)，ack=1，主机B收到后确认seq值与ack=1则连接建立成功。</p>
+</blockquote>
+<h4 id="第一次握手"><a href="#第一次握手" class="headerlink" title="第一次握手"></a>第一次握手</h4><p><img src="https://i.loli.net/2020/09/16/kQvqBZKewD78UjS.png" alt="image-20200916150842218"></p>
+<h4 id="第二次握手"><a href="#第二次握手" class="headerlink" title="第二次握手"></a>第二次握手</h4><p><img src="https://i.loli.net/2020/09/16/9GYgKomUQIH1lVr.png" alt="image-20200916150909276"></p>
+<h4 id="第三次握手"><a href="#第三次握手" class="headerlink" title="第三次握手"></a>第三次握手</h4><p><img src="https://i.loli.net/2020/09/16/RkKIguN2BPyhfab.png" alt="image-20200916150946763"></p>
+<p>成功建立联系</p>
+<h3 id="HTTP-协议过程"><a href="#HTTP-协议过程" class="headerlink" title="HTTP 协议过程"></a>HTTP 协议过程</h3><h4 id="在上面已经建立起来了TCP连接，主机向目标发送请求"><a href="#在上面已经建立起来了TCP连接，主机向目标发送请求" class="headerlink" title="在上面已经建立起来了TCP连接，主机向目标发送请求"></a>在上面已经建立起来了TCP连接，主机向目标发送请求</h4><p>以bupt.edu.cn为例子</p>
+<p>第一个发送的是测试网络状态的请求，web服务器会返回一个版本号和协议状态码，http 200 表示请求成功</p>
+<p><img src="https://i.loli.net/2020/09/16/lpDzfWB2mVNYCJE.png" alt="image-20200916160813578"></p>
+<p><img src="https://i.loli.net/2020/09/16/8vKOUkyu3YRhgBZ.png" alt="image-20200916161408536"></p>
+<p>若请求头中<code>Connection: keep-alive</code>则 TCP连接不会断开，否则一次http请求结束后TCP连接断开</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/09/17/Leetcode-685-冗余链接2/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Leetcode-685.冗余链接2</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/07/28/异或最小生成树/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>异或最小生成树</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>easypoi export excel | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2020-04-12</span>
+    <h2>easypoi export excel</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/easypoi/">easypoi</a></div>
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h3 id="导出exceldemo"><a href="#导出exceldemo" class="headerlink" title="导出exceldemo"></a>导出exceldemo</h3><a id="more"></a>
+<h4 id="SmartlampDTO"><a href="#SmartlampDTO" class="headerlink" title="SmartlampDTO"></a>SmartlampDTO</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.afterturn.easypoi.excel.annotation.Excel;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.EqualsAndHashCode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@EqualsAndHashCode</span>(callSuper = <span class="keyword">false</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SmartlampDTO</span> <span class="keyword">implements</span>  <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">    <span class="meta">@Excel</span>(name=<span class="string">"日期"</span>,orderNum = <span class="string">"0"</span>,width = <span class="number">20</span>,databaseFormat = <span class="string">"yyyyMMddHHmmss"</span>, format = <span class="string">"yyyy-MM-dd-HH:00"</span>)</span><br><span class="line">    <span class="keyword">private</span> Date date;</span><br><span class="line">    <span class="meta">@Excel</span>(name = <span class="string">"路灯开关"</span>,orderNum = <span class="string">"2"</span>,width = <span class="number">15</span>)</span><br><span class="line">    <span class="keyword">private</span> String LED_OnOff;</span><br><span class="line">    <span class="meta">@Excel</span>(name = <span class="string">"空气质量"</span>,orderNum = <span class="string">"3"</span>,width = <span class="number">15</span>)</span><br><span class="line">    <span class="keyword">private</span> String air;</span><br><span class="line">    <span class="meta">@Excel</span>(name = <span class="string">"路灯亮度"</span>,orderNum = <span class="string">"4"</span>,width = <span class="number">15</span>)</span><br><span class="line">    <span class="keyword">private</span> Integer LED_Value;</span><br><span class="line">    <span class="meta">@Excel</span>(name = <span class="string">"光线强度（%）"</span>,orderNum = <span class="string">"5"</span>,width = <span class="number">15</span>)</span><br><span class="line">    <span class="keyword">private</span> Integer sunValue;</span><br><span class="line">    <span class="meta">@Excel</span>(name = <span class="string">"报警器开关"</span>,orderNum = <span class="string">"6"</span>,width = <span class="number">15</span>)</span><br><span class="line">    <span class="keyword">private</span> String alarm_OnOff;</span><br><span class="line">    <span class="meta">@Excel</span>(name = <span class="string">"湿度（%）"</span>,orderNum = <span class="string">"7"</span>,width = <span class="number">15</span>)</span><br><span class="line">    <span class="keyword">private</span> Float hum;</span><br><span class="line">    <span class="meta">@Excel</span>(name = <span class="string">"温度（°C）"</span>,orderNum = <span class="string">"8"</span>,width = <span class="number">15</span>)</span><br><span class="line">    <span class="keyword">private</span> Float tem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="searchdataController"><a href="#searchdataController" class="headerlink" title="searchdataController"></a>searchdataController</h4><p>控制器<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lab.wisdom.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.afterturn.easypoi.excel.ExcelExportUtil;</span><br><span class="line"><span class="keyword">import</span> cn.afterturn.easypoi.excel.entity.ExportParams;</span><br><span class="line"><span class="keyword">import</span> com.lab.wisdom.DTO.ProductDTO;</span><br><span class="line"><span class="keyword">import</span> com.lab.wisdom.ExcelDTO.PersonExportVo;</span><br><span class="line"><span class="keyword">import</span> com.lab.wisdom.ExcelDTO.Smartlamp;</span><br><span class="line"><span class="keyword">import</span> com.lab.wisdom.mapper.WisdomLampMapper;</span><br><span class="line"><span class="keyword">import</span> com.lab.wisdom.model.wisdomLamp;</span><br><span class="line"><span class="keyword">import</span> com.lab.wisdom.model.wisdomLampExample;</span><br><span class="line"><span class="keyword">import</span> org.apache.poi.ss.usermodel.Workbook;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMethod;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.net.ssl.HttpsURLConnection;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.UnsupportedEncodingException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">searchdataController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    WisdomLampMapper wisdomLampMapper;</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/searchDate"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span>  String <span class="title">callback</span><span class="params">(Model model, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        request.getSession().setAttribute(<span class="string">"section"</span>,<span class="string">"searchData"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"searchData"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/ExportExcel"</span>,method = &#123;RequestMethod.POST,RequestMethod.GET&#125;)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ExportExcel</span><span class="params">(HttpServletResponse response)</span></span>&#123;</span><br><span class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line">        <span class="comment">//这里调用mybatis查找数据</span></span><br><span class="line">        List&lt;wisdomLamp&gt; wisdomLampList = wisdomLampMapper.selectByExample(<span class="keyword">new</span> wisdomLampExample());</span><br><span class="line">        List&lt;Smartlamp&gt; smartlampList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">//把数据放进list中</span></span><br><span class="line">        <span class="keyword">for</span> (wisdomLamp lamp : wisdomLampList) &#123;</span><br><span class="line">            Smartlamp smartlamp = <span class="keyword">new</span> Smartlamp();</span><br><span class="line">            smartlamp.setLED_Value(lamp.getLedValue());</span><br><span class="line">            smartlamp.setTem(lamp.getTem());</span><br><span class="line">            smartlamp.setHum(lamp.getHum());</span><br><span class="line">            smartlamp.setSunValue(lamp.getSunvalue());</span><br><span class="line">            smartlamp.setLED_OnOff(lamp.getLedOnoff());</span><br><span class="line">            smartlamp.setAlarm_OnOff(lamp.getBuzzerOnoff());</span><br><span class="line">            smartlamp.setAir(lamp.getAir());</span><br><span class="line">            smartlamp.setDate(<span class="keyword">new</span> Date());</span><br><span class="line">            System.out.println(smartlamp.toString());</span><br><span class="line">            smartlampList.add(smartlamp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//调用easypoi来写成excel</span></span><br><span class="line">        Workbook workbook = ExcelExportUtil.exportExcel(<span class="keyword">new</span> ExportParams(<span class="string">"智慧灯杆"</span>, <span class="string">"智慧灯杆"</span>), Smartlamp.class, smartlampList);</span><br><span class="line">        <span class="comment">//设置头准备回传给用户端</span></span><br><span class="line">        response.setHeader(<span class="string">"content-Type"</span>, <span class="string">"application/vnd.ms-excel"</span>);</span><br><span class="line">        response.setHeader(<span class="string">"Content-Disposition"</span>, <span class="string">"attachment;filename="</span> + System.currentTimeMillis() + <span class="string">".xls"</span>);</span><br><span class="line">        response.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//返回用户端</span></span><br><span class="line">            workbook.write(response.getOutputStream());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这个地方有坑点，不知为什么我把DTO中的对象名称大写开头后就不能成功的运行，而会报错<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2020</span>-<span class="number">04</span>-<span class="number">12</span> <span class="number">17</span>:<span class="number">41</span>:<span class="number">47.526</span> ERROR <span class="number">3788</span> --- [nio-<span class="number">8889</span>-exec-<span class="number">1</span>] c.a.e.e.export.base.ExportCommonServer   : There is no getter <span class="keyword">for</span> property named <span class="string">'Tem'</span> in <span class="string">'null'</span></span><br><span class="line"></span><br><span class="line">java.lang.RuntimeException: There is no getter <span class="keyword">for</span> property named <span class="string">'Tem'</span> in <span class="string">'null'</span></span><br></pre></td></tr></table></figure></p>
+<p>解决方法是把变量名开头变成小写即可，注意类型一定要是包装的而不能用原生的。</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/15/luogu-P2863-tarjan/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>luogu-P2863-tarjan</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/11/Yokohama-2018/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Yokohama 2018</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>11-9训练赛 | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2019-11-09</span>
+    <h2>11-9训练赛</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h2 id="Palindromes"><a href="#Palindromes" class="headerlink" title="Palindromes"></a>Palindromes</h2><h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HihoCoder-1878" target="_blank" rel="noopener">Palindromes</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>要求就是求第k大的回文数，k很大，我们考虑二分。<br>首先二分出位数，然后减去后再减去一，然后把第一位加上1再反转过来就是答案。细节很多，值得注意。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">dezero</span><span class="params">(<span class="built_in">string</span> a)</span><span class="comment">//用来去掉正数前面的0，也就是说可以输入000001类似这样的数字</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;a.length();i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(a.at(i)&gt;<span class="number">48</span>) <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(i==a.length()) <span class="keyword">return</span> <span class="string">"0"</span>;</span><br><span class="line">	a.erase(<span class="number">0</span>,i);</span><br><span class="line">	<span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">judge</span><span class="params">(<span class="built_in">string</span> a,<span class="built_in">string</span> b)</span><span class="comment">//判断两个正数的大小</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a.length()&gt;b.length()) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(a.length()&lt;b.length()) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;a.length();i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(a.at(i)&gt;b.at(i)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(a.at(i)&lt;b.at(i)) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">sub</span><span class="params">(<span class="built_in">string</span> a,<span class="built_in">string</span> b)</span><span class="comment">//自然数减法</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	a=dezero(a);</span><br><span class="line">	b=dezero(b);</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">int</span> i,j=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">string</span> c=<span class="string">"0"</span>;</span><br><span class="line">	<span class="built_in">string</span> c1,c2;</span><br><span class="line">	<span class="built_in">string</span> d=<span class="string">"-"</span>;</span><br><span class="line">	<span class="keyword">if</span>(judge(a,b)==<span class="number">0</span>) <span class="keyword">return</span> c;</span><br><span class="line">	<span class="keyword">if</span>(judge(a,b)==<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		c1=a;</span><br><span class="line">		c2=b;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(judge(a,b)==<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		c1=b;</span><br><span class="line">		c2=a;</span><br><span class="line">		j=<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	reverse(c1.begin(),c1.end());</span><br><span class="line">	reverse(c2.begin(),c2.end());</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;c2.length();i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(c2.at(i)&gt;=<span class="number">48</span>&amp;&amp;c2.at(i)&lt;=<span class="number">57</span>) c2.at(i)-=<span class="number">48</span>;</span><br><span class="line">		<span class="keyword">if</span>(c2.at(i)&gt;=<span class="number">97</span>&amp;&amp;c2.at(i)&lt;=<span class="number">122</span>) c2.at(i)-=<span class="number">87</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;c1.length();i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(c1.at(i)&gt;=<span class="number">48</span>&amp;&amp;c1.at(i)&lt;=<span class="number">57</span>) c1.at(i)-=<span class="number">48</span>;</span><br><span class="line">		<span class="keyword">if</span>(c1.at(i)&gt;=<span class="number">97</span>&amp;&amp;c1.at(i)&lt;=<span class="number">122</span>) c1.at(i)-=<span class="number">87</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;c2.length();i++)</span><br><span class="line">	&#123;</span><br><span class="line">		c1.at(i)=c1.at(i)-c2.at(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;c1.length()<span class="number">-1</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(c1.at(i)&lt;<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			c1.at(i)+=<span class="number">10</span>;</span><br><span class="line">			c1.at(i+<span class="number">1</span>)--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=c1.length()<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(c1.at(i)&gt;<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	c1.erase(i+<span class="number">1</span>,c1.length());</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;c1.length();i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(c1.at(i)&gt;=<span class="number">10</span>) c1.at(i)+=<span class="number">87</span>;</span><br><span class="line">		<span class="keyword">if</span>(c1.at(i)&lt;<span class="number">10</span>) c1.at(i)+=<span class="number">48</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	reverse(c1.begin(),c1.end());</span><br><span class="line">	<span class="keyword">if</span>(j==<span class="number">-1</span>) c1.insert(<span class="number">0</span>,d);</span><br><span class="line">	<span class="keyword">return</span> c1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">	<span class="keyword">while</span>(t--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">string</span> k;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;k;</span><br><span class="line">		<span class="keyword">if</span>(judge(k,<span class="string">"1"</span>)==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;<span class="string">"0"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> l=<span class="number">0</span>,r=<span class="number">10000000</span>;</span><br><span class="line">		<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(l&lt;r<span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">string</span> s;</span><br><span class="line">			<span class="keyword">int</span> mid = (l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">			s=<span class="built_in">string</span>((mid+<span class="number">1</span>)/<span class="number">2</span>+<span class="number">1</span>,<span class="string">'9'</span>);</span><br><span class="line">			<span class="keyword">if</span>(mid%<span class="number">2</span>==<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				s[<span class="number">1</span>]=<span class="string">'0'</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			s[<span class="number">0</span>]=<span class="string">'1'</span>;</span><br><span class="line">			<span class="keyword">if</span>(mid==<span class="number">0</span>)s=<span class="string">"0"</span>;</span><br><span class="line">			<span class="keyword">if</span>(judge(k,s)==<span class="number">1</span>)l=mid;</span><br><span class="line">			<span class="keyword">else</span> r=mid;</span><br><span class="line">		&#125;</span><br><span class="line">		ans=l;</span><br><span class="line">		<span class="built_in">string</span> s=<span class="built_in">string</span>((ans+<span class="number">1</span>)/<span class="number">2</span>+<span class="number">1</span>,<span class="string">'9'</span>);</span><br><span class="line">		<span class="keyword">if</span>(ans%<span class="number">2</span>==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">				s[<span class="number">1</span>]=<span class="string">'0'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		s[<span class="number">0</span>]=<span class="string">'1'</span>;</span><br><span class="line">		k=sub(k,s);</span><br><span class="line">		k=sub(k,<span class="string">"1"</span>);</span><br><span class="line">		<span class="keyword">int</span> tans =ans+<span class="number">1</span>;</span><br><span class="line">		ans=(ans+<span class="number">2</span>)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">while</span>(k.size()&lt;ans)</span><br><span class="line">		&#123;</span><br><span class="line">			k.insert(k.begin(),<span class="string">'0'</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		k[<span class="number">0</span>]+=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">string</span> k1 = k;</span><br><span class="line">		reverse(k.begin(),k.end());</span><br><span class="line">		ans++;</span><br><span class="line">		<span class="keyword">if</span>(tans&lt;=<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;k&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(tans%<span class="number">2</span>==<span class="number">0</span>)k1+=k;</span><br><span class="line">		<span class="keyword">else</span> </span><br><span class="line">		&#123;</span><br><span class="line">			k.erase(k.begin());</span><br><span class="line">			k1+=k;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;k1&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Frog-and-Portal"><a href="#Frog-and-Portal" class="headerlink" title="Frog and Portal"></a>Frog and Portal</h2><h3 id="题目链接-1"><a href="#题目链接-1" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HihoCoder-1873" target="_blank" rel="noopener">Frog and Protal</a></p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>因为M范围在2的32次方内，所以大概在50位就超过了。<br>因为前面回影响到后面，我们考虑拆分斐波那契数列，把它拆成一个个相加。然后我们控制前面奇数位置上放通道的起点，偶数位置上不放，这样就能保证想进入通道就只有一种方法，然后通道通向后面的200-i，i就是我们找到的位置，因为后面的位置之间不会有影响，所以直接加起来就好。最后记得建一堵墙。</p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;pos;</span><br><span class="line">ll f[<span class="number">205</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	f[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	f[<span class="number">2</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;=<span class="number">55</span>;i++)f[i]=f[i<span class="number">-1</span>]+f[i<span class="number">-2</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">55</span>;i++)f[i]=f[i+<span class="number">1</span>];</span><br><span class="line">	f[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	ll m;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;m)</span><br><span class="line">	&#123;</span><br><span class="line">	pos.clear();</span><br><span class="line">	<span class="keyword">if</span>(m==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"2\n1 1\n2 1\n"</span>);</span><br><span class="line">		<span class="keyword">continue</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(m)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> num = upper_bound(f,f+<span class="number">52</span>,m)-f;</span><br><span class="line">			 pos.push_back(num<span class="number">-1</span>);</span><br><span class="line">			 m-=f[num<span class="number">-1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,pos.size()+<span class="number">1</span>);</span><br><span class="line">	<span class="comment">//sort(pos.begin(),pos.end());</span></span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;pos.size();i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,cnt,<span class="number">200</span>-pos[i]);</span><br><span class="line">		cnt+=<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,cnt<span class="number">-1</span>,cnt<span class="number">-1</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/11/18/训练-11-17/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>11-17训练赛</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/11/07/HDU-1024-DP/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>HDU-1024(DP)</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

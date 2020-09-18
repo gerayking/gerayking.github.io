@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>gym-102392E | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2020-04-28</span>
+    <h2>gym-102392E</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/思维/">思维</a></div>
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://codeforces.com/gym/102392/problem/C" target="_blank" rel="noopener">gym-102392E</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先按照年龄把这些人排好序。读题后发现答案为car<em>pc+m</em>pm+t*(需要变化的年龄),显然我们枚举车的数量后就可以知道m的大小，然后再求出最小的变化年龄就可以了。<br>处理四个数组<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> mned[N],msum[N],cned[N],csum[N];</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">mned表示前i个全都乘坐单车需要多少变化的年龄</span></span><br><span class="line"><span class="comment">msum表示前i个全都乘坐单车多出多少年龄</span></span><br><span class="line"><span class="comment">cned表示前i个全部乘坐小车需要多少变化的年龄</span></span><br><span class="line"><span class="comment">csum表示前i个全部乘坐小车多出多少年龄</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></p>
+<p>然后车上的人的年龄我们可以任意取min(d,a[j]-1)，再加上多出的年龄判断是否大于需要的年龄，大于的话就更新答案，不大于则不管。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line">ll mned[N],msum[N],cned[N],csum[N];</span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"><span class="function">ll <span class="title">query</span><span class="params">(ll presum[],<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> presum[l]-presum[r+<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,k,lc,lm,pm,pc,t,d;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;lc&gt;&gt;pc&gt;&gt;lm&gt;&gt;pm;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;t&gt;&gt;d;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">	sort(a,a+n);</span><br><span class="line">	mned[n]=msum[n]=cned[n]=csum[n]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">		mned[i]=mned[i+<span class="number">1</span>]+max(lm-a[i],<span class="number">0</span>);</span><br><span class="line">		msum[i]=msum[i+<span class="number">1</span>]+max(a[i]-lm,<span class="number">0</span>);</span><br><span class="line">		cned[i]=cned[i+<span class="number">1</span>]+max(lc-a[i],<span class="number">0</span>);</span><br><span class="line">		csum[i]=csum[i+<span class="number">1</span>]+max(a[i]-lc,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	ll sum = <span class="number">0</span>;</span><br><span class="line">	ll ans = __LONG_LONG_MAX__;</span><br><span class="line">	<span class="comment">//枚举car的数量 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> c=<span class="number">0</span>;c*k&lt;n;c++)&#123;</span><br><span class="line">		<span class="keyword">int</span> m = n-c*k;<span class="comment">//骑单车的还需要几人</span></span><br><span class="line">		<span class="comment">//求出被小汽车载的人多出来的年龄，每次多一辆车就多出来很多年龄 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=max(<span class="number">0</span>,(c<span class="number">-1</span>)*(k<span class="number">-1</span>));j&lt;c*(k<span class="number">-1</span>);j++)&#123;</span><br><span class="line">			sum+=min(d,a[j]<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(sum+query(msum,n-m-c,n-c<span class="number">-1</span>)+query(csum,n-c,n<span class="number">-1</span>)&gt;=query(mned,n-m-c,n-c<span class="number">-1</span>)+query(cned,n-c,n<span class="number">-1</span>))&#123;</span><br><span class="line">			ll price = <span class="number">1l</span>l*(query(mned,n-m-c,n-c<span class="number">-1</span>)+query(cned,n-c,n<span class="number">-1</span>))*t+<span class="number">1l</span>l*pc*c+<span class="number">1l</span>l*pm*m;</span><br><span class="line">			ans=min(ans,price);</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> c=(n+k<span class="number">-1</span>)/k;</span><br><span class="line">	sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n-c;i++)sum+=min(d,a[i]<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">if</span>(sum+query(csum,n-c,n<span class="number">-1</span>)&gt;=query(cned,n-c,n<span class="number">-1</span>))&#123;</span><br><span class="line">		ll price = <span class="number">1l</span>l*query(cned,n-c,n<span class="number">-1</span>)*t+<span class="number">1l</span>l*pc*c;</span><br><span class="line">		ans=min(ans,price);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans==__LONG_LONG_MAX__)<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/05/08/Gym-102091/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Gym-102091</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/27/每日一题-NC17137-DP/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>每日一题-NC17137-DP</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

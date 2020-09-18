@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>OS-review1 | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2019-10-31</span>
+    <h2>OS-review1</h2>
+    
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h3 id="操作系统的四种技术"><a href="#操作系统的四种技术" class="headerlink" title="操作系统的四种技术"></a>操作系统的四种技术</h3><h4 id="手工操作阶段"><a href="#手工操作阶段" class="headerlink" title="手工操作阶段"></a>手工操作阶段</h4><p>操作人员将纸带(或卡片)装入输入及，然后启动输入及将程序和数据送入计算机，最后得出结果，每次只能一个用户使用。<br>1.资源利用率低<br>2.用户独占计算机资源</p>
+<h4 id="脱机输入-输出技术"><a href="#脱机输入-输出技术" class="headerlink" title="脱机输入/输出技术"></a>脱机输入/输出技术</h4><p>为了减少CPU的空闲等待I/O时间，预先将数据和程序在一台外围机的控制下先低速传入磁带中，当需要的首，再从磁带告诉输入，得出的输出结果高速输出到磁带上，然后再低速送至外围机。<br>1.若输入/输出操作再主机控制下进行则称之为联机输入/输出</p>
+<h4 id="批处理技术"><a href="#批处理技术" class="headerlink" title="批处理技术"></a>批处理技术</h4><p>批处理技术是指计算机系统对一批作业自动进行处理的一种技术。<br>把一批作业以脱机输入方式输入再到自带上，通过监督程序控制作业的运行。</p>
+<h4 id="多道程序设计技术"><a href="#多道程序设计技术" class="headerlink" title="多道程序设计技术"></a>多道程序设计技术</h4><p>同时把多个作业放入内存并允许它交替执行，共享系统中的资源，在操作系统中引入多道程序设计技术，会使系统具有多道，宏观上的并行，微观上的串行。</p>
+<h3 id="操作系统的基本类型"><a href="#操作系统的基本类型" class="headerlink" title="操作系统的基本类型"></a>操作系统的基本类型</h3><h4 id="批处理操作系统"><a href="#批处理操作系统" class="headerlink" title="批处理操作系统"></a>批处理操作系统</h4><p>优点<br>1.用户脱机使用计算机<br>2.成批处理<br>3.多道程序运行<br>缺点<br>1.无交互性</p>
+<h4 id="分时操作系统"><a href="#分时操作系统" class="headerlink" title="分时操作系统"></a>分时操作系统</h4><p>把处理机运行时间分成很短的时间片，按时间片轮流把处理机非陪给各终端作业使用，若某个作业无法在一个时间片内结束工作，则暂停该作业。<br>特征<br>1.多路性<br>2.交互性<br>3.独占性<br>4.及时性</p>
+<h4 id="实时操作系统"><a href="#实时操作系统" class="headerlink" title="实时操作系统"></a>实时操作系统</h4><p>实时操作系统是随着计算机应用于实时控制和实时信息处理领域而发展起来的另一种<br>操作系统。实时操作系统能及时响应外部事件的请求，在规定的时间内完成对该事件的处理，并控制所有实时设备和实时任务协调一致地工作。实时操作系统对响应时间的要求比<br>分时操作系统更高，一般要求秒级、毫秒级甚至微秒级的响应时间。<br>主要特点<br>1.响应及时<br>2.可靠性高</p>
+<h3 id="操作系统的特征和功能"><a href="#操作系统的特征和功能" class="headerlink" title="操作系统的特征和功能"></a>操作系统的特征和功能</h3><h4 id="操作系统的特征"><a href="#操作系统的特征" class="headerlink" title="操作系统的特征"></a>操作系统的特征</h4><p>1.并发性<br>2.共享性<br>3.虚拟性<br>4.不确定性</p>
+<h3 id="操作系统的功能"><a href="#操作系统的功能" class="headerlink" title="操作系统的功能"></a>操作系统的功能</h3><p>1.处理机管理<br>2.存储器管理<br>3.设备管理<br>4.文件管理</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/11/02/OS-review2/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>OS-review2</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/10/27/java学习之路4-Socket/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>java学习之路4-Socket</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>FFT详解 | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2020-03-03</span>
+    <h2>FFT详解</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/数论/">数论</a></div>
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h2 id="FFT-快速傅里叶变换"><a href="#FFT-快速傅里叶变换" class="headerlink" title="FFT(快速傅里叶变换)"></a>FFT(快速傅里叶变换)</h2><h3 id="单位根"><a href="#单位根" class="headerlink" title="单位根"></a>单位根</h3><script type="math/tex; mode=display">w_n = \cos(\frac{2\Pi}{n}) + \sin(\frac{2\Pi}{n})i</script><p>可理解为把复坐标轴上的单位圆分成了n份<br><img src="https://i.loli.net/2020/03/03/JZEk83X6yljtUbO.png" alt></p>
+<h4 id="性质1"><a href="#性质1" class="headerlink" title="性质1"></a>性质1</h4><script type="math/tex; mode=display">w_n^k = w_{2n}^{2k}</script><p>证明</p>
+<script type="math/tex; mode=display">w_{2n}^{2k} = \cos(\frac{2\Pi*2k}{2n}) + \sin(\frac{2\Pi*2k}{2n})i = \cos(\frac{2\Pi*k}{n}) + \sin(\frac{2\Pi*k}{n})i = w_n^k</script><p>这里用到了复数相乘的性质，即模长相乘，夹角相加，因为模长都为1，所以不变，夹角相加。</p>
+<h4 id="性质2"><a href="#性质2" class="headerlink" title="性质2"></a>性质2</h4><script type="math/tex; mode=display">w_n^{k+\frac{n}{2}} = -\ w_n^k</script><p>证明:</p>
+<script type="math/tex; mode=display">w_n^{\frac{n}{2}}=\cos(\pi) + \sin(\pi)i = -1</script><script type="math/tex; mode=display">w_n^{k+\frac{n}{2}} =w_n^{\frac{n}{2}}*w_n^k = -\ w_n^k</script><h4 id="性质3"><a href="#性质3" class="headerlink" title="性质3"></a>性质3</h4><script type="math/tex; mode=display">{(w_n^i)}^2 ={(w_n^{i+\frac{n}{2}})}^2 = w_n^{2i} = w_{\frac{n}{2}}^i</script><h3 id="IFFT-系数转点值"><a href="#IFFT-系数转点值" class="headerlink" title="IFFT(系数转点值)"></a>IFFT(系数转点值)</h3><p>普通的一个多项式方程可以这样表示</p>
+<script type="math/tex; mode=display">\begin{pmatrix}
+x_0&x_1&x_2&\dots&x_{n-1}
+\end{pmatrix}
+\begin{pmatrix}
+a_1\\ 
+a_2\\ 
+a_3\\ 
+\dots\\ 
+a_{n-1}
+\end{pmatrix}
+=0</script><p>我们希望转换成点值，就需要在平面上寻找n个x，然后得到n个y。<br>就得到这个矩阵</p>
+<script type="math/tex; mode=display">\begin{pmatrix}
+x^1_0&x^1_1&x^1_2&\dots&x^1_{n-1}\\
+x^2_0&x^2_1&x^2_2&\dots&x^2_{n-1}\\
+x^3_0&x^3_1&x^3_2&\dots&x^3_{n-1}\\
+\dots&\dots&\dots&\dots&\dots\\
+x^{n-1}_0&x^{n-1}_1&x^{n-1}_2&\dots&x^n_{n-1}\\
+\end{pmatrix}
+\begin{pmatrix}
+a_1\\ 
+a_2\\ 
+a_3\\ 
+\dots\\ 
+a_{n-1}
+\end{pmatrix}
+=
+\begin{pmatrix}
+y_1\\ 
+y_2\\ 
+y_3\\ 
+\dots\\ 
+y_{n-1}
+\end{pmatrix}</script><p>如图<br><img src="https://i.loli.net/2020/03/03/JPgaFLtYx6Zjo8w.png" alt><br>现在我们需要通过n个蓝色框的x来求出红色框中的y，然后得到n个$(x_i,y_i)$的点，然后进行O(n)点乘即可。<br>现在就要用到刚刚所说的单位根，把$w_0 - w_{n-1}$代入函数中作为参数$x_0 - x_{n-1}$得到如下的方程组</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{matrix}
+\begin{aligned}
+&f(w_n^0) =a_0+a_1*w_n^0+a_2*w_n^0+\dots+a_{n-1}*w_n^0 \\ 
+&f(w_n^1) =a_0+a_1*w_n^1+a_2*w_n^1+\dots+a_{n-1}*w_n^1 \\
+&f(w_n^2) =a_0+a_1*w_n^2+a_2*w_n^2+\dots+a_{n-1}*w_n^2 \\
+&\vdots\\
+&f(w_n^{n-1}) =a_0+a_1*w_n^{n-1}+a_2*w_n^{n-1}+\dots+a_{n-1}*w_n^{n-1} \\
+\end{aligned}
+\end{matrix}
+\right.</script><p>然后我们对其中一个进行求解得到</p>
+<script type="math/tex; mode=display">\left\{
+\begin{matrix}
+\begin{aligned}
+f(w_n^i)&=a_0+a_1w_n^i+a_2{(w_n^i)}^2+a_3{(w_n^i)}^3+\cdots++a_{n-1}{(w_n^i)}^{n-1}\\
+&=a_0+a_2{(w_n^i)}^2+a_4{(w_n^i)}^4+\cdots+a_{n-2}{(w_n^i)}^{n-2}\\
+&\qquad+w_n^i(a_1+a_3{(w_n^i)}^2 + a_5{(w_n^i)}^4 + a_{n-1}{(w_n^i)}^{n-2})\\
+&=a_0+a_2(w_{\frac{n}{2}}^i)+a_4{(w_{\frac{n}{2}}^i)}^2+\cdots+a_{n-2}{(w_{\frac{n}{2}}^i)}^{\frac{n-2}{2}}\\
+&\qquad+w_n^i(a_1+a_3{(w_{\frac{n}{2}}^i)} + a_5{(w_{\frac{n}{2}}^i)}^2 + a_{n-1}{(w_{\frac{n}{2}}^i)}^{\frac{n-2}{2}})
+\end{aligned}
+\end{matrix}
+\right.</script><p>得到这个式子之后，我们就可以利用递归，一层层的求下去，然后log的复杂度求出我们想要的点值的y。<br>但如果是常规的递归的话我们需要每次传下去一个数组，类似归并的思想，空间上有所限制，然后就有了蝴蝶变换这个东西，观察下面这个图</p>
+<p><img src="https://i.loli.net/2020/03/03/pVboZelOvGaIisQ.png" alt></p>
+<p>这个图就是在递归的过程中的位置变换，我们发现，后序列相当于原序列的二进制反转后排序，然后根据这个规律就可以提前得知它应该在的位置，这样就不需要递归了。</p>
+<blockquote>
+<p>rev[i]=(rev[i&gt;&gt;1]&gt;&gt;1)|((i&amp;1)&lt;&lt;(bit-1));</p>
+</blockquote>
+<p>这个用了动态规划,i代表位置，然后对照上图即可理解<br>然后就可以使用点进行乘法了</p>
+<h3 id="IDFT"><a href="#IDFT" class="headerlink" title="IDFT"></a>IDFT</h3><p>我们得到点值后需要转化为多项式的系数值，其实过程是一样的</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+a_1\\ 
+a_2\\ 
+a_3\\ 
+\dots\\ 
+a_{n-1}
+\end{pmatrix}
+=
+\begin{pmatrix}
+y_1\\ 
+y_2\\ 
+y_3\\ 
+\dots\\ 
+y_{n-1}
+\end{pmatrix}
+
+{\begin{pmatrix}
+x^1_0&x^1_1&x^1_2&\dots&x^1_{n-1}\\
+x^2_0&x^2_1&x^2_2&\dots&x^2_{n-1}\\
+x^3_0&x^3_1&x^3_2&\dots&x^3_{n-1}\\
+\dots&\dots&\dots&\dots&\dots\\
+x^{n-1}_0&x^{n-1}_1&x^{n-1}_2&\dots&x^n_{n-1}\\
+\end{pmatrix}}^{-1}</script><p>也就是把矩阵变为逆矩阵，在图上的话可以想象一开始是顺时针转，现在逆时针转动,实际上得到的矩阵是<br><img src="https://i.loli.net/2020/03/03/iWG1D8IuaLCPQZp.png" alt="QQ图片20200303231627.png"><br>所以转回来的时候需要乘以1/n</p>
+<h3 id="FFT板子"><a href="#FFT板子" class="headerlink" title="FFT板子"></a>FFT板子</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cp</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">double</span> r,i;</span><br><span class="line">    <span class="keyword">complex</span>(<span class="keyword">double</span> _r = <span class="number">0</span>,<span class="keyword">double</span> _i = <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        r = _r; i = _i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">complex</span> <span class="keyword">operator</span> +(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">complex</span>(r+b.r,i+b.i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">complex</span> <span class="keyword">operator</span> -(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">complex</span>(r-b.r,i-b.i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">complex</span> <span class="keyword">operator</span> *(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">complex</span>(r*b.r-i*b.i,r*b.i+i*b.r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(cp *s,<span class="keyword">int</span> inv)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;r[i])swap(s[i],s[r[i]]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">2</span>;len&lt;=n;len*=<span class="number">2</span>)&#123;</span><br><span class="line">		cp wn = cp(<span class="built_in">cos</span>(pi*<span class="number">2.0</span>/len),inv*<span class="built_in">sin</span>(pi*<span class="number">2.0</span>/len));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> st=<span class="number">0</span>;st&lt;n;st+=len)&#123;</span><br><span class="line">			cp w = cp(<span class="number">1.0</span>,<span class="number">0.0</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=st;i&lt;st+len/<span class="number">2</span>;i++,w*=wn)&#123;</span><br><span class="line">				cp x=s[i];<span class="comment">//偶次幂 </span></span><br><span class="line">				cp y=w*s[i+len/<span class="number">2</span>];<span class="comment">//奇次幂 </span></span><br><span class="line">				s[i]=x+y;</span><br><span class="line">				s[i+len/<span class="number">2</span>]=x-y;</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="洛谷P3803"><a href="#洛谷P3803" class="headerlink" title="洛谷P3803"></a>洛谷P3803</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pi acos(-1)</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> f[N],g[N],r[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cp</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">double</span> r,i;</span><br><span class="line">    cp(<span class="keyword">double</span> _r = <span class="number">0</span>,<span class="keyword">double</span> _i = <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        r = _r; i = _i;</span><br><span class="line">    &#125;</span><br><span class="line">    cp <span class="keyword">operator</span> +(<span class="keyword">const</span> cp &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> cp(r+b.r,i+b.i);</span><br><span class="line">    &#125;</span><br><span class="line">    cp <span class="keyword">operator</span> -(<span class="keyword">const</span> cp &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> cp(r-b.r,i-b.i);</span><br><span class="line">    &#125;</span><br><span class="line">    cp <span class="keyword">operator</span> *(<span class="keyword">const</span> cp &amp;b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> cp(r*b.r-i*b.i,r*b.i+i*b.r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;F[N],G[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(cp *s,<span class="keyword">int</span> n,<span class="keyword">int</span> inv)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> bit=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ((<span class="number">1</span>&lt;&lt;bit)&lt;n)bit++;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;r[i])swap(s[i],s[r[i]]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">2</span>;len&lt;=n;len*=<span class="number">2</span>)&#123;</span><br><span class="line">		cp wn = cp(<span class="built_in">cos</span>(pi*<span class="number">2.0</span>/len),inv*<span class="built_in">sin</span>(pi*<span class="number">2.0</span>/len));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> st=<span class="number">0</span>;st&lt;n;st+=len)&#123;</span><br><span class="line">			cp w = cp(<span class="number">1.0</span>,<span class="number">0.0</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=st;i&lt;st+len/<span class="number">2</span>;i++,w=w*wn)&#123;</span><br><span class="line">				cp x=s[i];<span class="comment">//偶次幂 </span></span><br><span class="line">				cp y=w*s[i+len/<span class="number">2</span>];<span class="comment">//奇次幂 </span></span><br><span class="line">				s[i]=x+y;</span><br><span class="line">				s[i+len/<span class="number">2</span>]=x-y;</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;f[i]),F[i].r=f[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=m;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;g[i]),G[i].r=g[i];</span><br><span class="line">	<span class="keyword">int</span> len = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(len&lt;=n+m)len&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> bit=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ((<span class="number">1</span>&lt;&lt;bit)&lt;len)bit++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)r[i]=(r[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)|((i&amp;<span class="number">1</span>)&lt;&lt;(bit<span class="number">-1</span>));</span><br><span class="line">	FFT(F,len,<span class="number">1</span>);</span><br><span class="line">	FFT(G,len,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=len;i++)&#123;</span><br><span class="line">		F[i]=F[i]*G[i];</span><br><span class="line">	&#125;</span><br><span class="line">	FFT(F,len,<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n+m;i++)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,(<span class="keyword">int</span>)(F[i].r/len+<span class="number">0.5</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/03/05/求和-莫比乌斯反演-杜教筛/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>求和(莫比乌斯反演+杜教筛)</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/03/01/叁佰爱抠的序列-二分-欧拉回路/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>叁佰爱抠的序列(二分+欧拉回路)</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.5/latest.js?config=TeX-MML-AM_SVG"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>二次剩余定理详解 | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2019-09-10</span>
+    <h2>二次剩余定理详解</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/数论/">数论</a></div>
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h2 id="二次剩余"><a href="#二次剩余" class="headerlink" title="二次剩余"></a>二次剩余</h2><script type="math/tex; mode=display">x^2≡n(mod\ p)</script><p>对于这个方程，求出满足的x。</p>
+<h3 id="引理1"><a href="#引理1" class="headerlink" title="引理1"></a>引理1</h3><p>首先来看一个符号</p>
+<script type="math/tex; mode=display">
+(\frac{n}{p})</script><p>这个符号叫做勒让德符号，这个符号里有两个值，一个是n,一个是p。<font color="#FF0000">假设p为奇素数，且n无法整除p时</font>，他有以下定义</p>
+<script type="math/tex; mode=display">
+(\frac{n}{p})=n^{\frac{p-1}{2}}</script><p>当$(\frac{n}{p})=1$时，存在一个x使得n是p的二次剩余<br>当$(\frac{n}{p})=-1$时，不存在一个x使得n是p的二次剩余<br>例如，当p=11时。$(\frac{1}{11})=1^{\frac{11-1}{2}}=1(mod 11)$所以1是11的二次剩余<br>而，$(\frac{3}{11})=3^{\frac{11-1}{2}}=-1(mod 11)$所以3是11的二次非剩余<br>现在来证明</p>
+<script type="math/tex; mode=display">
+(\frac{n}{p})=n^{\frac{p-1}{2}}</script><p>这个等式</p>
+<h4 id="证明1"><a href="#证明1" class="headerlink" title="证明1"></a>证明1</h4><blockquote>
+<p>假设$(\frac{n}{p})=1$即n为p的二次剩余时，设解为x</p>
+</blockquote>
+<p>根据费马小定理，我们知道$x^{p-1}≡1(mod p)$x显然存在</p>
+<blockquote>
+<p>假设$(\frac{n}{p})=1$即n为p的二次剩余时</p>
+</blockquote>
+<p>此时$x^2≡n(mod p)$无解<br>此时插入一个引理</p>
+<blockquote>
+<p>若gcd(i,p)=1,且j为整数，则线性同余方程ix≡j(mod p)的有模p的唯一解(这里就不证明了，具体百度线性同余方程)</p>
+</blockquote>
+<p>因此对于i在1~p-1中，对于每个gcd(1,i)=1都存在整数j使得ij≡n(mod p);<br>因此我们可以把1~p-1中的数分成(p-1)/2对，每对两两相乘=n(根据上面的定理可以自己推)<br>然后累乘起来得到</p>
+<script type="math/tex; mode=display">(p-1)!≡n^{\frac{p-1}{2}}(mod\ p)</script><p>由威尔逊定理得到$(p-1)!=-1(mod p)$(自行百度搜索威尔逊定理)<br>综上有</p>
+<script type="math/tex; mode=display">(\frac{a}{p})≡a^{\frac{p-1}{2}}(mod\ p)</script><h3 id="引理2"><a href="#引理2" class="headerlink" title="引理2"></a>引理2</h3><p>有了上面的引理，我们来看看如何解这个方程。</p>
+<blockquote>
+<p>首先我们在1~p-1上随机出一个a,然后设<script type="math/tex">w=a^2-n</script>，若w是p的二次非剩余，则解为<script type="math/tex">x=(a+\sqrt{w})^{\frac{p+1}{2}}</script></p>
+</blockquote>
+<p>为什么是这样？从末尾出发证明较为简单</p>
+<h4 id="证明2"><a href="#证明2" class="headerlink" title="证明2"></a>证明2</h4><script type="math/tex; mode=display">\begin{align}
+&x^2\\
+&=(a+\sqrt{w})^{p+1}\\
+&=(a+\sqrt{w})^p*(a+\sqrt{w})\\
+&=(a^p+{\sqrt{w}}^p)*(a+\sqrt{w})\\
+&=(a-\sqrt{w})*(a+\sqrt{w})\\
+&=a^2-w\\
+&=a^2-(a^2-n)\\
+&=n(mod\ p)\\
+\end{align}</script><p>上述之中全都是在模p的意义下的运算，有一步骤可能有点蒙，现在我解释一下这一步<br>&gt;</p>
+<script type="math/tex; mode=display">\begin{align}
+&=(a+\sqrt{w})^p*(a+\sqrt{w})\\
+&=(a^p+{\sqrt{w}}^p)*(a+\sqrt{w})\\
+&=(a-\sqrt{w})*(a+\sqrt{w})\\
+\end{align}</script><p>先解释后两个等式，根据费马小定理，$a^{p-1}≡1(mod p)$，所以<script type="math/tex">a^p≡a(mod\ p)</script>。<br>因为w是p的二次非剩余，所以有<script type="math/tex">w^{\frac{p-1}{2}}≡-1(mod\ p)</script>,所以<script type="math/tex">w^{\frac{p}{2}}≡-\sqrt{w}(mod\ p)</script></p>
+<p>然后解释前两个等式</p>
+<h3 id="引理3"><a href="#引理3" class="headerlink" title="引理3"></a>引理3</h3><script type="math/tex; mode=display">(a+b)^p = a^p+b^p(mod\ p)</script><h4 id="证明3"><a href="#证明3" class="headerlink" title="证明3"></a>证明3</h4><p>首先，根据二项式定理展开，除了第一项和最后一项之外，都会有一个组合数<script type="math/tex">\frac{p}{i}</script>是无法除掉的，所以对p取模都等于0，因此只剩下最后两项。</p>
+<p>证毕</p>
+<font face="仿宋" color="purple" size="5">你最愿意做的哪件事，才是你的天赋所在</font>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/09/15/Honk-s-pool-思维/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>Honk's-pool(思维)</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/09/08/The-2019-Asia-Nanchang-First-Round-Online-Programming-Contest/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>The 2019 Asia Nanchang First Round Online Programming Contest</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.5/latest.js?config=TeX-MML-AM_SVG"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

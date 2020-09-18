@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>异或最小生成树 | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2020-07-28</span>
+    <h2>异或最小生成树</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/2020牛客多校/">2020牛客多校</a></div>
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h3 id="异或最小生成树"><a href="#异或最小生成树" class="headerlink" title="异或最小生成树"></a>异或最小生成树</h3><p>异或最小生成树就是每个点都有一个权值，而两个点之间连接的边的权值是两个点的异或值，求这个点集合的最小生成树</p>
+<p><a href="http://codeforces.com/problemset/problem/888/G" target="_blank" rel="noopener">CF888G</a></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>我们会用到Boruvka算法，用上了分治的思想来求最小生成树，但是异或最小生成树呢，则还需要一颗trie树，因为它能够log的查询异或的最小值。</p>
+<p>简单解释一下异或最小生成树的步骤</p>
+<ol>
+<li>对给定的点值排序</li>
+<li>递归进入子树，从小的子树向大的树合并点集合</li>
+<li>左子树即当前层为1(或0也可以)的点值插入trie树中</li>
+<li>在trie树种查询右子树中异或左子树的最小值</li>
+<li>清空trie树</li>
+<li>向上递归</li>
+</ol>
+<h4 id="例子详解"><a href="#例子详解" class="headerlink" title="例子详解"></a>例子详解</h4><p>样例1</p>
+<blockquote>
+<p>5</p>
+<p>1 2 3 4 5</p>
+</blockquote>
+<p>1.拆成二进制看</p>
+<p><img src="https://i.loli.net/2020/07/28/O1EBrSDjuwUTGMp.png" alt="image-20200728220715024"></p>
+<p>分为了区间[1,3] , [4,5] ,[1,3] 又根据第二位分为[1] , [2,3]。</p>
+<p>2.[1]区间的贡献为0，因为不需要连边，[2,3]区间的边的最小贡献为2^3=1。ans+=1,</p>
+<p>3.合并[1,3]区间，选择[2,3]之中的一个数去与1异或找到最小值(此处需要trie树，加入答案,ans+=1^3</p>
+<p>4.合并[4,5]区间，ans+=4^5</p>
+<p>5.合并[1,3],[4,5]区间，这里跟3操作一样，把[1,2,3]插入trie树中，然后枚举[4,5]查询异或最小值即可。ans+=1^5</p>
+<p>答案为ans=8</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line">ll ans;</span><br><span class="line"><span class="keyword">int</span> trie[N*<span class="number">30</span>][<span class="number">2</span>],tot,n,a[N];</span><br><span class="line"><span class="comment">//在trie中插入值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> rt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">29</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">int</span> now = (x&gt;&gt;i)&amp;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(!trie[rt][now])trie[rt][now]=++tot;</span><br><span class="line">        rt=trie[rt][now];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Search</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>,rt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">29</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">int</span> now = (x&gt;&gt;i)&amp;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(trie[rt][now])&#123;</span><br><span class="line">            rt = trie[rt][now];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            rt = trie[rt][now^<span class="number">1</span>];</span><br><span class="line">            ans|=(<span class="number">1</span>&lt;&lt;i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> dep)</span></span>&#123;</span><br><span class="line"><span class="comment">//    printf("%d %d %d\n",l,r,dep);</span></span><br><span class="line">    <span class="keyword">if</span>(dep==<span class="number">-1</span>||l&gt;=r)<span class="keyword">return</span> ;</span><br><span class="line">    <span class="keyword">int</span> mid = l<span class="number">-1</span>;</span><br><span class="line">    <span class="comment">//找到左边集合的边界位置</span></span><br><span class="line">    <span class="keyword">while</span>(mid&lt;r&amp;&amp;((a[mid+<span class="number">1</span>]&gt;&gt;dep)&amp;<span class="number">1</span>)==<span class="number">0</span>)mid++;</span><br><span class="line">    dfs(l,mid,dep<span class="number">-1</span>);</span><br><span class="line">    dfs(mid+<span class="number">1</span>,r,dep<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">if</span>(mid==l<span class="number">-1</span>||mid==r)<span class="keyword">return</span> ;</span><br><span class="line">    <span class="comment">//在字典树中插入左边集合</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=mid;i++)&#123;</span><br><span class="line">        insert(a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//枚举右边的数字，寻找最小的异或值</span></span><br><span class="line">    <span class="keyword">int</span> tmp = INT_MAX;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=mid+<span class="number">1</span>;i&lt;=r;i++)&#123;</span><br><span class="line">        tmp = min(tmp,Search(a[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    ans+=(ll)tmp;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>,l,r,tmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=tot;i++)&#123;</span><br><span class="line">        trie[i][<span class="number">0</span>]=trie[i][<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    tot=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n);</span><br><span class="line">    dfs(<span class="number">1</span>,n,<span class="number">29</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5670B"><a href="#5670B" class="headerlink" title="5670B"></a><a href="https://ac.nowcoder.com/acm/contest/5670/B" target="_blank" rel="noopener">5670B</a></h3><p><img src="https://i.loli.net/2020/07/28/TLjhrUlkg2sHbq1.png" alt="image-20200728221301079"></p>
+<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>先dfs给每个点赋上一个权值，然后跑一遍异或最小生成树即可</p>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mk make_pair</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>;</span><br><span class="line">ll ans;</span><br><span class="line"><span class="keyword">int</span> trie[N*<span class="number">30</span>][<span class="number">2</span>],tot,n;</span><br><span class="line"><span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;&gt;g[N];</span><br><span class="line"><span class="keyword">int</span> val[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    g[u].push_back(mk(v,w));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> rt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">29</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">int</span> now = (x&gt;&gt;i)&amp;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(!trie[rt][now])trie[rt][now]=++tot;</span><br><span class="line">        rt=trie[rt][now];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>,rt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">29</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">int</span> now = (x&gt;&gt;i)&amp;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(trie[rt][now])&#123;</span><br><span class="line">            rt = trie[rt][now];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            rt=trie[rt][now^<span class="number">1</span>];</span><br><span class="line">            res|=(<span class="number">1</span>&lt;&lt;i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> dep)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(dep==<span class="number">-1</span>||l&gt;=r)<span class="keyword">return</span> ;</span><br><span class="line">    <span class="keyword">int</span> mid = l<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(mid&lt;r&amp;&amp;((val[mid+<span class="number">1</span>]&gt;&gt;dep)&amp;<span class="number">1</span>)==<span class="number">0</span>)mid++;</span><br><span class="line">    solve(l,mid,dep<span class="number">-1</span>);</span><br><span class="line">    solve(mid+<span class="number">1</span>,r,dep<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">if</span>(mid==l<span class="number">-1</span>||mid==r)<span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=mid;i++)&#123;</span><br><span class="line">        insert(val[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> tmp = INT_MAX;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=mid+<span class="number">1</span>;i&lt;=r;i++)&#123;</span><br><span class="line">        tmp = min(tmp,search(val[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    ans+=(ll)tmp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=tot;i++)&#123;</span><br><span class="line">        trie[i][<span class="number">0</span>]=trie[i][<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    tot=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> rt,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> tmp : g[rt])&#123;</span><br><span class="line">        <span class="keyword">if</span>(tmp.first==fa)<span class="keyword">continue</span>;</span><br><span class="line">        val[tmp.first]=val[rt]^tmp.second;</span><br><span class="line">        dfs(tmp.first,rt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> s,t,v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;s,&amp;t,&amp;v);</span><br><span class="line">        s++;</span><br><span class="line">        t++;</span><br><span class="line">        add(s,t,v);</span><br><span class="line">        add(t,s,v);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>,<span class="number">-1</span>);</span><br><span class="line">    sort(val+<span class="number">1</span>,val+n+<span class="number">1</span>);</span><br><span class="line">    solve(<span class="number">1</span>,n,<span class="number">29</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/09/16/DNS 查询报文和响应报文/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>WireShark 分析网站请求流程</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/07/13/2020牛客暑期多校训练营（第二场）补题记录/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>2020牛客暑期多校训练营（第二场）补题记录</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

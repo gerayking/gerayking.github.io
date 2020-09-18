@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>java学习之路4-反射机制 | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2019-09-05</span>
+    <h2>java学习之路4-反射机制</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/java/">java</a></div>
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h3 id="java反射机制"><a href="#java反射机制" class="headerlink" title="java反射机制"></a>java反射机制</h3><p>这是一点与c++不同的地方，java有一个所有类的超类，也就是Object，不论是系统自带类，或者你自己写的，都是这个类的子类。<br>还有一个类Class，这个类跟反射机制息息相关。</p>
+<h4 id="反射机制作用"><a href="#反射机制作用" class="headerlink" title="反射机制作用"></a>反射机制作用</h4><p>1.在运行时判断任意一个对象所属的类；<br>2.在运行时构造任意一个类的对象；<br>3.在运行时判断任意一个类所具有的成员变量和方法；<br>4.在运行时调用任意一个对象的方法；生成动态代理。<br>第一点，可以获得当前对象是什么类<br>第二点，既然知道是什么类了，那么我就可以自己构造一个实例对象<br>第三点，我知道你是什么类了，就可以找到你的成员以及方法。<br>第四点，我不仅知道你的方法，我还能够用你的方法</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> reflect;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">reflectTest</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">	  Employee q = <span class="keyword">new</span> Employee(<span class="string">"111"</span>,<span class="number">15</span>);</span><br><span class="line">	  Class c1 = q.getClass();</span><br><span class="line">	  <span class="comment">//获取类名</span></span><br><span class="line">	  System.out.println(c1.getName());</span><br><span class="line">	  <span class="comment">//获取所有公共构造方法</span></span><br><span class="line">	  Constructor[] s =c1.getConstructors();</span><br><span class="line">	  <span class="keyword">for</span>(Constructor k:s)</span><br><span class="line">	  &#123;</span><br><span class="line">		  System.out.println(k);</span><br><span class="line">	  &#125;</span><br><span class="line">	  Method square = reflectTest.class.getMethod(<span class="string">"square"</span>, <span class="keyword">double</span>.class);</span><br><span class="line">	  <span class="comment">//获取自定义函数的方法</span></span><br><span class="line">      Method sqrt = Math.class.getMethod(<span class="string">"sqrt"</span>, <span class="keyword">double</span>.class);</span><br><span class="line">	  <span class="comment">//获取Math的方法</span></span><br><span class="line">	  printTable(<span class="number">1</span>,<span class="number">10</span>,<span class="number">10</span>,square);</span><br><span class="line">	  <span class="comment">//使用方法</span></span><br><span class="line">	  printTable(<span class="number">1</span>,<span class="number">10</span>,<span class="number">10</span>,sqrt);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printTable</span><span class="params">(<span class="keyword">double</span> from,<span class="keyword">double</span> to,<span class="keyword">int</span> n,Method f)</span></span></span><br><span class="line"><span class="function"> </span>&#123;   System.out.println(f);</span><br><span class="line">	 <span class="keyword">double</span> dx = (to-from)/(n-<span class="number">1</span>);</span><br><span class="line">	 <span class="keyword">for</span>(<span class="keyword">double</span> x=from;x&lt;=to;x+=dx)</span><br><span class="line">	 &#123;</span><br><span class="line">		 <span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">double</span> y =(Double)f.invoke(<span class="keyword">null</span>, x);</span><br><span class="line">			<span class="comment">//使用时，若不符合该方法的操作则会发出异常</span></span><br><span class="line">			System.out.printf(<span class="string">"%10.4f | %10.4f\n"</span>,x,y);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="comment">//这句话的意思时打印异常错误的情况</span></span><br><span class="line">		&#125;</span><br><span class="line">	 &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">public</span>  <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">square</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x*x;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<blockquote>
+<p>reflect.Employee<br>public reflect.Employee(java.lang.String,int)<br>public reflect.Employee()<br>public static double reflect.reflectTest.square(double)<br>    1.0000 |     1.0000<br>    2.0000 |     4.0000<br>    3.0000 |     9.0000<br>    4.0000 |    16.0000<br>    5.0000 |    25.0000<br>    6.0000 |    36.0000<br>    7.0000 |    49.0000<br>    8.0000 |    64.0000<br>    9.0000 |    81.0000<br>   10.0000 |   100.0000<br>public static double java.lang.Math.sqrt(double)<br>    1.0000 |     1.0000<br>    2.0000 |     1.4142<br>    3.0000 |     1.7321<br>    4.0000 |     2.0000<br>    5.0000 |     2.2361<br>    6.0000 |     2.4495<br>    7.0000 |     2.6458<br>    8.0000 |     2.8284<br>    9.0000 |     3.0000<br>   10.0000 |     3.1623</p>
+</blockquote>
+   <font face="仿宋" color="cyan">你最愿意做的哪件事，才是你的天赋所在</font>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/09/06/HDU4553-线段树/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>HDU4553-线段树</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/09/05/HDU4614-线段树/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>HDU4614-线段树</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

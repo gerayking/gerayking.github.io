@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>欧拉降幂证明及应用 | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2019-09-02</span>
+    <h2>欧拉降幂证明及应用</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/数论/">数论</a></div>
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>内容</p>
+<blockquote>
+<p>若<strong>正整数</strong> $a,n$互质，则$a^{\phi(n)}≡1(mod n)$其中$\phi(n)$是1-n中与n互质的数的个数</p>
+</blockquote>
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>不妨设$X_1,X_2,{\cdots},X_n$为1~n中与n两两互质的数<br>那么对一些数进行讨论$aX_1,aX_2,{\cdots},aX_n$</p>
+<h4 id="引理1"><a href="#引理1" class="headerlink" title="引理1"></a>引理1</h4><p>$aX_1,aX_2,{\cdots},aX_n$中，任意两个数模n的余数一定不同。</p>
+<h4 id="证明-1"><a href="#证明-1" class="headerlink" title="证明"></a>证明</h4><p>设$aX_1≡aX_2(mod n)$<br>则 $a(X_1-X_2)≡0(mod n)$<br>因为a与n互质，并且$X_1-X_2≠n$<br>所以不存在$aX_1≡aX_2(mod n)$<br>因此$aX_1,aX_2,{\cdots},aX_n$中，任意两个数模n的余数一定不同。<br>证毕</p>
+<h4 id="引理2"><a href="#引理2" class="headerlink" title="引理2"></a>引理2</h4><p>$aX_1,aX_2,{\cdots},aX_n$中，任意的$aX_i≡1(mod n)$</p>
+<h4 id="证明-2"><a href="#证明-2" class="headerlink" title="证明"></a>证明</h4><p>因为a与n互质，$X_i$与n互质，所以$aX_i$与n互质，即$gcd(aX_i,n)==gcd(n,aX_i\%n)==1$;<br>因此$aX_i(mod n)≡1(mod n)$<br>证毕</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>把$aX_1,aX_2,{\cdots},aX_n$都模n看成一个集合，根据引理1，这个集合具有互异性，引理2，我们发现集合中的元素与$X_1,X_2,{\cdots},X_n$中的元素是一致的。那么就有</p>
+<script type="math/tex; mode=display">aX_1(mod\ n)*aX_2(mod\ n)*{\cdots}*aX_{\phi(n)}==X_1*X_2*{\cdots}*X_{\phi(n)}</script><p>就可以得出</p>
+<script type="math/tex; mode=display">a^{\phi(n)}*X_1*X_2*{\cdots}*X_{\phi(n)}(mod\ n)==X_1*X_2*{\cdots}*X_{\phi(n)}</script><p>因为<script type="math/tex">X_1*X_2*{\cdots}*X_{\phi(n)}</script>与n互质，所以得到</p>
+<script type="math/tex; mode=display">a^{\phi(n)}*X_1*X_2*{\cdots}*X_{\phi(n)}==1(mod\ n)</script><script type="math/tex; mode=display">a^{\phi(n)}≡1(mod\ n)</script><h2 id="欧拉降幂"><a href="#欧拉降幂" class="headerlink" title="欧拉降幂"></a>欧拉降幂</h2><p>欧拉降幂其实就是下面这个式子</p>
+<script type="math/tex; mode=display">a^b≡\begin{cases}
+a^{b\%\phi(p)}\quad \quad \quad \ \   gcd(a,p) = 1\\
+a^b\quad \quad \quad \quad \ \ \ \ \ gcd(a,p)≠1,b<\phi(p) \\
+a^{b\%\phi(p)+\phi(p)}\ \ \ gcd(a,p)≠1,b ≥ \phi(p)\\
+\end{cases}
+\quad \quad (mod\ p)</script><h3 id="证明-3"><a href="#证明-3" class="headerlink" title="证明"></a>证明</h3><h4 id="证一"><a href="#证一" class="headerlink" title="证一"></a>证一</h4><script type="math/tex; mode=display">a^b≡a^{b\%\phi(p)}\quad \quad  gcd(a,p) = 1\quad (mod\ p)</script><p>这个证明用到上面讲的欧拉定理<br>∵<script type="math/tex">b=b\%\phi(p)+k*\phi(p)</script><br>∴<script type="math/tex">a^b=a^{b\%\phi(p)+k*\phi(p)}\quad (mod\ p)</script><br>∵<script type="math/tex">a^{\phi(p)}≡1\quad (mod\ p)</script><br>∴<script type="math/tex">a^{b\%\phi(p)+k*\phi(p)}=a^{b\%\phi(p)}\quad (mod\ p)</script><br>即<script type="math/tex">a^b≡a^{b\%\phi(p)}\quad \quad gcd(a,p) = 1\quad (mod\ p)</script><br>证毕</p>
+<h4 id="证二"><a href="#证二" class="headerlink" title="证二"></a>证二</h4><script type="math/tex; mode=display">a^b \ \  gcd(a,p)≠1,b<\phi(p)</script><p>直接得此结论</p>
+<h4 id="证三"><a href="#证三" class="headerlink" title="证三"></a>证三</h4><script type="math/tex; mode=display">a^{b\%\phi(p)+\phi(p)}\ \ \ gcd(a,p)≠1,b ≥ \phi(p)</script><p>不妨设<script type="math/tex">b=k*\phi(p)+c\quad (a≥1,c≥0)</script><br>要证<script type="math/tex">a^{b\%\phi(p)+phi(p)}\ \ \ gcd(a,p)≠1,b > \phi(p)</script><br>则证<script type="math/tex">a^{ k*\phi(p)+c }≡a^{ \phi(p)+c } \ (mod\ p)</script><br>即  <script type="math/tex">a^{k*\phi(p)}≡a^{\phi(p)}\ (mod\ p)</script><br>即  <script type="math/tex">a^{2*\phi(p)}≡a^{\phi(p)}\ (mod\ p)</script><br>即证 <font color="#FF0000"><script type="math/tex">a^{\phi(p)}*(a^{\phi(p)}-1)≡ 0 (mod\ p)</script></font></p>
+<p>接下来假设</p>
+<script type="math/tex; mode=display">N=\frac{p}{gcd(p,a^{\phi(p)})}</script><p><font color="#FF0000">假设</font><script type="math/tex">gcd(\frac{p}{gcd(p,a^{\phi(p)})},A)≡ 1 (mod\ p)\quad \quad (1)</script><br>因为欧拉函数为积性函数，所以有</p>
+<script type="math/tex; mode=display">\phi(p)=\phi(gcd(p,a^{\phi(p)})*\phi(\frac{p}{gcd(p,a^{\phi(p)})})\quad \quad (2)</script><p>假设<script type="math/tex">k=gcd(p,a^{\phi(p)})\quad \quad (3)</script><br>根据(1)(2)(3)以及欧拉定理，有</p>
+<script type="math/tex; mode=display">a^{\phi(p)}≡(a^{\frac{p}{gcd(p,a^{\phi(p)})}})^k ≡ 1\quad (mod\  \frac{p}{gcd(p,a^{\phi(p)})})</script><p>得到</p>
+<script type="math/tex; mode=display">a^{\phi(p)}≡ 1 \quad (mod\  \frac{p}{gcd(p,a^{\phi(p)})})</script><script type="math/tex; mode=display">\frac{p}{gcd(p,a^{\phi(p)})} \mid (a^{\phi(p)}-1)</script><p>移项</p>
+<script type="math/tex; mode=display">p \mid (a^{\phi(p)}-1)*gcd(p,a^{\phi(p)})</script><p>因为<script type="math/tex">gcd(\frac{p}{gcd(p,a^{\phi(p)})},A)≡ 1 (mod\ p)\quad \quad (1)</script><br>所以</p>
+<p><font color="#FF0000"><script type="math/tex">p \mid (a^{\phi(p)}-1)*a^{\phi(p)}</script></font><br>与上述需证明的一致，于是证明完毕。<br>但是，我们是基于<font color="#FF0000">假设</font>上的，也就是</p>
+<p><font color="#FF0000"><script type="math/tex">gcd(\frac{p}{gcd(p,a^{\phi(p)})},A)≡ 1 (mod\ p)\quad \quad</script></font><br>所以，我们现在需要证明我们的假设<br>对a进行素因子分解</p>
+<script type="math/tex; mode=display">a=q_1^{k_1}*q_2^{k_2}*{\cdots}*q_t^{k_t}*p_1^{l_1}*p_2^{l_2}*{\cdots}*p_t^{l_{t1}}</script><script type="math/tex; mode=display">p=q_1^{u_1}*q_2^{u_2}*{\cdots}*q_t^{u_t}*w_1^{v_1}*w_2^{v_2}*{\cdots}*w_t^{v_{t1}}</script><p>前面是相同的部分，后面是不同的部分。</p>
+<script type="math/tex; mode=display">gcd(a,p)=q_1^{min(k_1,u_1)}*q_2^{min(k_2,u_2)}*{\cdots}*q_t^{min(k_t,u_t)}</script><script type="math/tex; mode=display">gcd(a^{\phi(p)},p)=q_1^{min(k_1*\phi(p),u_1)}*q_2^{min(k_2*\phi(p),u_2)}*{\cdots}*q_t^{min(k_t*\phi(p),u_t)}</script><p>根据欧拉函数的性质</p>
+<script type="math/tex; mode=display">\phi(p)=q_1^{u_1-1}*q_2^{u_2-1}*{\cdots}*q_t^{u_t-1}*(q_1-1)*(q_2-1)*(q_t-1)*{\cdots}(不相同部分不管)</script><p>∴</p>
+<script type="math/tex; mode=display">k_i*\phi(p)≥k_i*q_i^{u_i-1}*(q_i-1)≥q_i^{u_i-1}</script><p>现在需证明</p>
+<script type="math/tex; mode=display">q_i^{u_i-1}≥u_i</script><p>这个证明可以化成函数<script type="math/tex">x^{a-1}-a</script>求导后判断单调性和最小值可以证明<br>得出这个结果之后<br>即可得到</p>
+<script type="math/tex; mode=display">k_1*\phi(p)≥u_1</script><script type="math/tex; mode=display">gcd(a^{\phi(p)},p)=q_1^{u_1}*q_2^{u_2}*{\cdots}*q_t^{u_t}</script><p>回到原式子以及进行质因数分解的出来的a,p；</p>
+<script type="math/tex; mode=display">gcd(\frac{p}{gcd(p,a^{\phi(p)})},a)≡ 1 (mod\ p)\quad \quad</script><script type="math/tex; mode=display">p=q_1^{u_1}*q_2^{u_2}*{\cdots}*q_t^{u_t}*w_1^{v_1}*w_2^{v_2}*{\cdots}*w_t^{v_{t1}}</script><script type="math/tex; mode=display">a=q_1^{k_1}*q_2^{k_2}*{\cdots}*q_t^{k_t}*p_1^{l_1}*p_2^{l_2}*{\cdots}*p_t^{l_{t1}}</script><script type="math/tex; mode=display">\frac{p}{gcd(p,a^{\phi(p)})}=w_1^{v_1}*w_2^{v_2}*{\cdots}*w_t^{v_{t1}}</script><p>因为他们相同的素因子已经被除去了因此。</p>
+<script type="math/tex; mode=display">gcd(\frac{p}{gcd(p,a^{\phi(p)})},a)≡ 1 (mod\ p)\quad \quad</script><p>到这里全部的欧拉降幂就证明完成了。</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/09/04/HDU4578-线段树/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>HDU4578-线段树</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2019/09/02/Atcoder-9-1ABC/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Atcoder-9-1ABC</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.bootcss.com/mathjax/2.7.5/latest.js?config=TeX-MML-AM_SVG"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>poj-2774-后缀数组 | 一方通行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="gerayking">
+  <meta name="keywords" content>
+  <meta name="description" content>
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '1.4.5',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: '-'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "endless-river",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Noto+Serif+SC&amp;display=swap">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+</head>
+<body>
+<div class="single">
+<div id="page">
+<div id="lx-aside" style="background-image: url(/images/page-cover.jpg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/person_1.jpg"></a></div>
+    <span>2020-04-03</span>
+    <h2>poj-2774-后缀数组</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-link" href="/tags/后缀数组/">后缀数组</a> <i class="fa fa-tag"></i><a class="tag-link" href="/tags/字符串/">字符串</a></div>
+    </div>
+</div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h3 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h3><p><a href="https://vjudge.net/problem/POJ-2774/origin" target="_blank" rel="noopener">poj</a></p>
+<h3 id="Height数组"><a href="#Height数组" class="headerlink" title="Height数组"></a>Height数组</h3><p>在之前的<a href="https://gerayking.github.io/2020/04/02/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84%E8%AF%A6%E8%A7%A3/">博客</a>中已经说了后缀数组的具体算法以及如何求出sa数组，但是求出sa之后我们需要学习如何运用sa数组。<br>第一个运用当然就是height数组了，他表示的意思是</p>
+<blockquote>
+<p>height[i]表示第i小的后缀串与第i-1小的后缀串的最长公共前缀（如图）</p>
+</blockquote>
+<p><img src="https://i.loli.net/2020/04/03/rNkE1qZ3UnQCa9v.png" alt="20160205125636006.jpg"><br>如果能够求出这个数组我们就能够在O(n)时间内求出最长公共子串了。<br>观察上面那个图，我们发现height有一个规律，它的数是3 2 1 0 3 2 1这样的数，然后我们思考，为什么会这样？我们看第一个3的地方是aabaaaab与aab的最长公共前缀，然后如果我们把它去掉第一个字母，哎就变成abaaaab和ab，是不是有些规律？我们就可以用这个规律来求出我们的height数组。<br>定义一个数组H[i]=height[rk[i]],也就是从i位置的后缀与在sa数组中排名比他小一名的字符串的最长公共前缀，如果我们从1-n的往后求H[i]，就很惊讶的发现，竟然就是我们刚刚模拟的过程，所以这样我们就可以得到height数组了<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">	<span class="keyword">if</span>(j)j--;</span><br><span class="line">	<span class="keyword">while</span>(s[i+j]==s[sa[rk[i]<span class="number">-1</span>]+j])j++;找出最长的，然后再递减的过程</span><br><span class="line">	h[rk[i]]=j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>得到height数组后，如何求两个串的最长公共子串？把第二个串连接起来，然后遍历height的，当sa[i]与sa[i-1]记录的位置分别在两个串的时候，就记录答案，这就是最长公共子串</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">char</span> str[N];</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="keyword">char</span> s1[N];</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> rk[N],tp[N],sa[N],tax[N];</span><br><span class="line"><span class="keyword">int</span> h[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Rsort</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="comment">//第一关键字rk，第二关键字tp进行基数排序复杂度O(n) </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=m;i++)tax[i]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)tax[rk[tp[i]]]++;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)tax[i]+=tax[i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)sa[tax[rk[tp[i]]]--]=tp[i];</span><br><span class="line">		<span class="comment">//基数排序完毕</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">comp</span><span class="params">(<span class="keyword">int</span> *f,<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> w)</span></span>&#123;<span class="keyword">return</span> f[x]==f[y]&amp;&amp;f[x+w]==f[y+w];&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getsa</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)rk[i]=s[i],tp[i]=i;</span><br><span class="line">	m=<span class="number">130</span>;</span><br><span class="line">	Rsort();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> w=<span class="number">1</span>,p=<span class="number">1</span>;p&lt;n;w+=w,m=p)&#123;</span><br><span class="line">		<span class="comment">//首先超过后缀不大于w的第二关键字肯定为0 </span></span><br><span class="line">		p=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=w;i++)tp[++p]=n-w+i;</span><br><span class="line">		<span class="comment">//然后根据上一轮的排序求出剩下的第二关键字，从小到大，如果它的位置大于w，说明sa[i]-w这个位置的第二关键字大 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="keyword">if</span>(sa[i]&gt;w)tp[++p]=sa[i]-w;</span><br><span class="line">		Rsort();</span><br><span class="line">		<span class="comment">//把rk数组拿出来，需要求出sa数组，rk[sa[1]]=1是因为第一个位置的rk肯定是1 </span></span><br><span class="line">		swap(tp,rk);</span><br><span class="line">		rk[sa[<span class="number">1</span>]]=p=<span class="number">1</span>;</span><br><span class="line">		<span class="comment">//判断当前第一关键字与第二关键字的大小关系，使得没有相等的，若有相等则继续倍增即可 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">		rk[sa[i]]=comp(tp,sa[i],sa[i<span class="number">-1</span>],w)?p:++p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(j)j--;</span><br><span class="line">		<span class="keyword">while</span>(s[i+j]==s[sa[rk[i]<span class="number">-1</span>]+j])j++;</span><br><span class="line">		h[rk[i]]=j;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s %s"</span>,s1,str);</span><br><span class="line">	<span class="keyword">int</span> len1=<span class="built_in">strlen</span>(s1);</span><br><span class="line">	<span class="keyword">int</span> len2=<span class="built_in">strlen</span>(str);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len1;i++)&#123;s[i]=s1[i<span class="number">-1</span>];&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=len1+<span class="number">1</span>;i&lt;=len2+len1;i++)&#123;s[i]=str[i-len1<span class="number">-1</span>];&#125;</span><br><span class="line">	n=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">	getsa();</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>((sa[i]&gt;len1&amp;&amp;sa[i<span class="number">-1</span>]&lt;=len1)||(sa[i]&lt;=len1&amp;&amp;sa[i<span class="number">-1</span>]&gt;len1))ans=max(h[i],ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer_1.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/03/poj-3450-后缀数组/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>poj-3450-后缀数组</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer_2.jpg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/03/coderforces-Round-630-Div-2-E/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>coderforces-Round-630-Div-2-E</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2019.<a href="/">一方通行</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.blleng.cn" target="_blank">Lx</a><br>
+  </div>
+</footer>
+</div>
+
+<button class="menu-trigger"></button>
+<div class="menu">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/person_1.jpg" alt="gerayking"></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>gerayking</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><span class="item-icon"><i class="fa fa-home fa-fw"></i></span><a href="/">首页</a></li>
+    <li><span class="item-icon"><i class="fa fa-archive fa-fw"></i></span><a href="/archives/">归档</a></li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-bookmark fa-fw"></i></span>
+    <span class="dropdown-heading">页面</span><ul>
+      <li><a href="/guestbook">留言</a></li><li><a href="/about">关于</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="item-icon"><i class="fa fa-link fa-fw"></i></span>
+    <span class="dropdown-heading">友链</span><ul>
+      <li> <a href="https://lx.blleng.cn" target="_blank">Theme-Lx</a></li></ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
