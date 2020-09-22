@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="一方通行">
 <meta property="og:description" content="题目链接622f思路 Ans=\sum_{i=1}^n i^k直接求肯定会超时，然后自然数幂和可以表达为k+1项的多项式。自然数幂和展开多项式 (n+1)^k-(n^k)=\sum_{i=0}^{k-1}C_k^in^i\\ n^k-(n-1)^k=\sum_{i=0}^{k-1}C_k^i(n-1)^i\\ \vdots\\ 累加得到\\ \sum_{i=1}^n((i+1)^k-i^k)=(n">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-20T03:39:40.061Z">
+<meta property="og:updated_time" content="2020-09-18T21:20:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="codeforces-622F">
 <meta name="twitter:description" content="题目链接622f思路 Ans=\sum_{i=1}^n i^k直接求肯定会超时，然后自然数幂和可以表达为k+1项的多项式。自然数幂和展开多项式 (n+1)^k-(n^k)=\sum_{i=0}^{k-1}C_k^in^i\\ n^k-(n-1)^k=\sum_{i=0}^{k-1}C_k^i(n-1)^i\\ \vdots\\ 累加得到\\ \sum_{i=1}^n((i+1)^k-i^k)=(n">
@@ -244,11 +244,19 @@
                 
               
 
-              <time title="创建时间：2020-03-20 10:59:04 / 修改时间：11:39:40" itemprop="dateCreated datePublished" datetime="2020-03-20T10:59:04+08:00">2020-03-20</time>
+              <time title="创建时间：2020-03-20 10:59:04" itemprop="dateCreated datePublished" datetime="2020-03-20T10:59:04+08:00">2020-03-20</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-19 05:20:53" itemprop="dateModified" datetime="2020-09-19T05:20:53+08:00">2020-09-19</time>
+              </span>
             
           
 
@@ -298,19 +306,18 @@ n^k-(n-1)^k=\sum_{i=0}^{k-1}C_k^i(n-1)^i\\
 移项\\
 f(k-1)&=\frac{(n+1)^k-n^k-\sum_{i=0}^{k-2}C_k^jf(j)}{k}\\
 f(k)&=\frac{(n+1)^{k+1}-n^{k+1}-\sum_{i=0}^{k-1}C_(k+1)^jf(j)}{k+1}\\
-\end{aligned}</script><p>最后得到</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^ni^k=\frac{(n+1)^{k+1}-n^{k+1}-\sum_{i=0}^{k-1}C_(k+1)^jf(k)}{k+1}</script><p>得到自然数幂和的形式肯定是一个k+1项的多项式，这样就能够使用拉格朗日插值了</p>
-<h4 id="拉格朗日插值"><a href="#拉格朗日插值" class="headerlink" title="拉格朗日插值"></a>拉格朗日插值</h4><p>对应某个多项式函数，已知的有k+1个取值点，即在二维平面上存在k+1个点,$(x_0,y_0),\cdots,(x_k,y_k)$<br>假设任意两个$x_i!=x_j$，然后就可以应用拉格朗日插值多项式表达为</p>
-<script type="math/tex; mode=display">
-L(x)=\sum_{j=0}^ky_j\ell_j(x)</script><p>此处$\ell_j(x)$就是拉格朗日基本多项式（插值基函数），表达式为</p>
-<script type="math/tex; mode=display">
-\ell_j(x) = \prod_{i=0,i!=j}^k\frac{x-x_i}{x_j-x_i}</script><p>$\ell_j(x)的特点就是仅仅在x_j上取值为1，其他店x_i,i!=j上取值为0$，这样如果我们能够求出来$y_j和\ell_j(x)$就可以求出整个多项式的值</p>
+\end{aligned}</script><script type="math/tex; mode=display">
+最后得到</script><script type="math/tex; mode=display">\sum_{i=1}^ni^k=\frac{(n+1)^{k+1}-n^{k+1}-\sum_{i=0}^{k-1}C_(k+1)^jf(k)}{k+1}</script><p>得到自然数幂和的形式肯定是一个k+1项的多项式，这样就能够使用拉格朗日插值了</p>
+<h4 id="拉格朗日插值"><a href="#拉格朗日插值" class="headerlink" title="拉格朗日插值"></a>拉格朗日插值</h4><p>对应某个多项式函数，已知的有k+1个取值点，即在二维平面上存在k+1个点,$(x_0,y_0),\cdots,(x_k,y_k)$<br>假设任意两个$x_i!=x_j$，然后就可以应用拉格朗日插值多项式表达为$L(x)=\sum_{j=0}^ky_j\ell_j(x)$</p>
+<p>此处$\ell_j(x)$就是拉格朗日基本多项式（插值基函数），表达式为</p>
+<p>$\ell_j(x) = \prod_{i=0,i!=j}^k\frac{x-x_i}{x_j-x_i}$</p>
+<p>$\ell_j(x)的特点就是仅仅在x_j上取值为1，其他店x_i,i!=j上取值为0$，这样如果我们能够求出来$y_j和\ell_j(x)$就可以求出整个多项式的值</p>
 <h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>根据第一个差分表示法，我们直到自然数幂和$\sum_{i=1}^ni^k$可以表达成k+1次幂的和，然后我们就用拉格朗日插值法，插1,2,3,4…k+2即可,然后我们得到多项式的式子为</p>
 <script type="math/tex; mode=display">
 L(n)=\sum_{j=0}^ky_j\ell_j(x)\\
 y_j=\sum_{i=1}^ji^k\\
-\ell_j(n)=\prod_{i=1,i!=j}^k\frac{(n-1)*(n-2)\dotsb(n-k)/(n-i)}{(x_j-1)*(x_j-2)\dotsb(x_j-k)}\\
+\ell_j(n)=\prod_{i=1,i!=j}^k\frac{(n-1)*(n-2)\dotsb(n-k)/(n-i)}{(x_j-1)*(x_j-2)\dotsb(x_j-k)}\
+
 y_j可以直接处理出来，然后\ell_j(n)的分资也可以预处理出来，现在考虑分母\\
 发现实际上它也是前缀和，分成两个部分，一个正的一个负的\\
 例如x_j=3时。得到1*2*(-1)*(-2)*(-3)\dotsb(-k+3)，显然这部分也能够预处理出来\\</script><p>然后这题就写完了</p>
@@ -426,7 +433,7 @@ y_j可以直接处理出来，然后\ell_j(n)的分资也可以预处理出来�
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

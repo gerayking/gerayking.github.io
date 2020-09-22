@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="题目链接Codeforces #588-div2-D思路这道题看清楚了思路很简单，我们对一个人单独考虑，假设现在我全部人都选择进队，然后对每个人单独考虑，如果队中有比我更强的，那么我就不用出队，否则，我就需要出队。所以每次用取和符号判断队伍中是否存在比我更强的人代码实现12345678910111213141516171819202122232425262728293031323334353637">
-<meta name="keywords" content="思维,贪心">
+  <meta name="description" content="思路类似一个树形DP，考虑如何从左右儿子更新父亲的状态即可，一共有三个状态 0 ： 没被覆盖 1： 放置摄像机 2： 没放置摄像机被覆盖 然后每个节点有八个状态自己总结就可以了 代码实现12345678910111213141516171819202122232425262728class Solution &amp;#123;private:    int result;    int travers">
+<meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Coderforces #588-div2-D">
-<meta property="og:url" content="https://gerayking.github.io/2019/09/24/Coderforces-588-div2-D/index.html">
+<meta property="og:title" content="Leetcode-968.监控二叉树">
+<meta property="og:url" content="https://gerayking.github.io/2020/09/22/Leetcode-968-监控二叉树/index.html">
 <meta property="og:site_name" content="一方通行">
-<meta property="og:description" content="题目链接Codeforces #588-div2-D思路这道题看清楚了思路很简单，我们对一个人单独考虑，假设现在我全部人都选择进队，然后对每个人单独考虑，如果队中有比我更强的，那么我就不用出队，否则，我就需要出队。所以每次用取和符号判断队伍中是否存在比我更强的人代码实现12345678910111213141516171819202122232425262728293031323334353637">
+<meta property="og:description" content="思路类似一个树形DP，考虑如何从左右儿子更新父亲的状态即可，一共有三个状态 0 ： 没被覆盖 1： 放置摄像机 2： 没放置摄像机被覆盖 然后每个节点有八个状态自己总结就可以了 代码实现12345678910111213141516171819202122232425262728class Solution &amp;#123;private:    int result;    int travers">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-23T23:08:25.000Z">
+<meta property="og:updated_time" content="2020-09-22T09:49:11.714Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Coderforces #588-div2-D">
-<meta name="twitter:description" content="题目链接Codeforces #588-div2-D思路这道题看清楚了思路很简单，我们对一个人单独考虑，假设现在我全部人都选择进队，然后对每个人单独考虑，如果队中有比我更强的，那么我就不用出队，否则，我就需要出队。所以每次用取和符号判断队伍中是否存在比我更强的人代码实现12345678910111213141516171819202122232425262728293031323334353637">
-  <link rel="canonical" href="https://gerayking.github.io/2019/09/24/Coderforces-588-div2-D/">
+<meta name="twitter:title" content="Leetcode-968.监控二叉树">
+<meta name="twitter:description" content="思路类似一个树形DP，考虑如何从左右儿子更新父亲的状态即可，一共有三个状态 0 ： 没被覆盖 1： 放置摄像机 2： 没放置摄像机被覆盖 然后每个节点有八个状态自己总结就可以了 代码实现12345678910111213141516171819202122232425262728class Solution &amp;#123;private:    int result;    int travers">
+  <link rel="canonical" href="https://gerayking.github.io/2020/09/22/Leetcode-968-监控二叉树/">
 
 
 <script id="page-configurations">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>Coderforces #588-div2-D | 一方通行</title>
+  <title>Leetcode-968.监控二叉树 | 一方通行</title>
   
 
 
@@ -213,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2019/09/24/Coderforces-588-div2-D/">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/09/22/Leetcode-968-监控二叉树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gerayking">
@@ -227,7 +227,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            Coderforces #588-div2-D
+            Leetcode-968.监控二叉树
             
 
           
@@ -244,7 +244,7 @@
                 
               
 
-              <time title="创建时间：2019-09-24 15:04:26 / 修改时间：07:08:25" itemprop="dateCreated datePublished" datetime="2019-09-24T15:04:26+08:00">2019-09-24</time>
+              <time title="创建时间：2020-09-22 16:56:00 / 修改时间：17:49:11" itemprop="dateCreated datePublished" datetime="2020-09-22T16:56:00+08:00">2020-09-22</time>
             </span>
           
             
@@ -263,8 +263,8 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/09/24/Coderforces-588-div2-D/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/24/Coderforces-588-div2-D/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/09/22/Leetcode-968-监控二叉树/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/22/Leetcode-968-监控二叉树/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -279,10 +279,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="http://codeforces.com/contest/1230/problem/D" target="_blank" rel="noopener">Codeforces #588-div2-D</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这道题看清楚了思路很简单，我们对一个人单独考虑，假设现在我全部人都选择进队，然后对每个人单独考虑，如果队中有比我更强的，那么我就不用出队，否则，我就需要出队。<br>所以每次用取和符号判断队伍中是否存在比我更强的人</p><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">7e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">bool</span> vis[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	ll a,b;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node s)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> a&gt;s.a;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;arr[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="built_in">scanf</span>(<span class="string">"%I64d"</span>,&amp;arr[i].a);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="built_in">scanf</span>(<span class="string">"%I64d"</span>,&amp;arr[i].b);</span><br><span class="line">	ll ans = <span class="number">0</span>;</span><br><span class="line">	ll tans = <span class="number">0</span>;</span><br><span class="line">	sort(arr,arr+n);<span class="comment">//从大到小排序，因为有前置0会影响取和运算 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n&amp;&amp;n&gt;<span class="number">1</span>;i++)<span class="comment">//枚举第i个人是否出队 </span></span><br><span class="line">	&#123;</span><br><span class="line">		vis[i]=<span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!vis[j]&amp;&amp;(arr[j].a&amp;arr[i].a)==arr[i].a)</span><br><span class="line">			&#123;</span><br><span class="line">				vis[i]=<span class="literal">false</span>;</span><br><span class="line">				ans+=arr[i].b;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a>
-
-
-<font face="仿宋" color="cyan">你最愿意做的哪件事，才是你的天赋所在</font>
+        <h3 id><a href="#" class="headerlink" title=" "></a> </h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>类似一个树形DP，考虑如何从左右儿子更新父亲的状态即可，一共有三个状态</p>
+<p>0 ： 没被覆盖</p>
+<p>1： 放置摄像机</p>
+<p>2： 没放置摄像机被覆盖</p>
+<p>然后每个节点有八个状态自己总结就可以了</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> result;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">traversal</span><span class="params">(TreeNode* cur)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cur==<span class="literal">NULL</span>)<span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> left = traversal(cur-&gt;left);</span><br><span class="line">        <span class="keyword">int</span> right = traversal(cur-&gt;right);</span><br><span class="line">        <span class="keyword">if</span>(left == <span class="number">2</span> &amp;&amp; right == <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(left == <span class="number">0</span> || right == <span class="number">0</span>)&#123;</span><br><span class="line">            result++;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(left == <span class="number">1</span> || right == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minCameraCover</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (traversal(root) == <span class="number">0</span>) &#123; <span class="comment">// root 无覆盖</span></span><br><span class="line">            result++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -306,9 +308,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/思维/" rel="tag"># 思维</a>
-            
-              <a href="/tags/贪心/" rel="tag"># 贪心</a>
+              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
             
           </div>
         
@@ -318,8 +318,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/21/第二次周训练/" rel="next" title="第二次周训练">
-                  <i class="fa fa-chevron-left"></i> 第二次周训练
+                <a href="/2020/09/17/Leetcode-685-冗余链接2/" rel="next" title="Leetcode-685.冗余链接2">
+                  <i class="fa fa-chevron-left"></i> Leetcode-685.冗余链接2
                 </a>
               
             </div>
@@ -327,10 +327,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/25/区间素数个数-min-25筛/" rel="prev" title="区间素数个数-min_25筛">
-                  区间素数个数-min_25筛 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -379,7 +375,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">2.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->

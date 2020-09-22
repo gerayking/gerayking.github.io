@@ -208,6 +208,120 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/20/codeforces-622F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/03/20/codeforces-622F/" class="post-title-link" itemprop="url">codeforces-622F</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-20 10:59:04" itemprop="dateCreated datePublished" datetime="2020-03-20T10:59:04+08:00">2020-03-20</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-19 05:20:53" itemprop="dateModified" datetime="2020-09-19T05:20:53+08:00">2020-09-19</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/20/codeforces-622F/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/20/codeforces-622F/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://codeforces.com/problemset/problem/622/F" target="_blank" rel="noopener">622f</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><script type="math/tex; mode=display">
+Ans=\sum_{i=1}^n i^k</script><p>直接求肯定会超时，然后自然数幂和可以表达为k+1项的多项式。</p><h4 id="自然数幂和展开多项式"><a href="#自然数幂和展开多项式" class="headerlink" title="自然数幂和展开多项式"></a>自然数幂和展开多项式</h4><script type="math/tex; mode=display">
+(n+1)^k-(n^k)=\sum_{i=0}^{k-1}C_k^in^i\\
+n^k-(n-1)^k=\sum_{i=0}^{k-1}C_k^i(n-1)^i\\
+\vdots\\
+累加得到\\
+\sum_{i=1}^n((i+1)^k-i^k)=(n+1)^k-1\\
+=\sum_{i=1}^n\sum_{j=1}^{k-1}C_k^ji^j\\
+=\sum_{i=0}^{k-1}C_k^j\sum_{j=1}^nj^i\\
+设f(j)=\sum_{i=1}^ni^j\\
+=\sum_{i=1}^{k-1}C_k^jf(j)\\
+=\sum_{i=0}^{k-2}C_k^jf(j)+k*f(k-1)\\</script>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/03/20/codeforces-622F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/20/Global-Round-7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -238,7 +352,7 @@
                 
               
 
-              <time title="创建时间：2020-03-20 08:03:50 / 修改时间：08:18:23" itemprop="dateCreated datePublished" datetime="2020-03-20T08:03:50+08:00">2020-03-20</time>
+              <time title="创建时间：2020-03-20 08:03:50 / 修改时间：00:18:23" itemprop="dateCreated datePublished" datetime="2020-03-20T08:03:50+08:00">2020-03-20</time>
             </span>
           
             
@@ -333,7 +447,7 @@
                 
               
 
-              <time title="创建时间：2020-03-16 21:47:11 / 修改时间：22:15:34" itemprop="dateCreated datePublished" datetime="2020-03-16T21:47:11+08:00">2020-03-16</time>
+              <time title="创建时间：2020-03-16 21:47:11 / 修改时间：14:15:34" itemprop="dateCreated datePublished" datetime="2020-03-16T21:47:11+08:00">2020-03-16</time>
             </span>
           
             
@@ -428,11 +542,19 @@
                 
               
 
-              <time title="创建时间：2020-03-13 03:09:20 / 修改时间：03:15:52" itemprop="dateCreated datePublished" datetime="2020-03-13T03:09:20+08:00">2020-03-13</time>
+              <time title="创建时间：2020-03-13 03:09:20" itemprop="dateCreated datePublished" datetime="2020-03-13T03:09:20+08:00">2020-03-13</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-12 19:15:52" itemprop="dateModified" datetime="2020-03-12T19:15:52+08:00">2020-03-12</time>
+              </span>
             
           
 
@@ -523,11 +645,19 @@
                 
               
 
-              <time title="创建时间：2020-03-12 01:35:51 / 修改时间：01:44:24" itemprop="dateCreated datePublished" datetime="2020-03-12T01:35:51+08:00">2020-03-12</time>
+              <time title="创建时间：2020-03-12 01:35:51" itemprop="dateCreated datePublished" datetime="2020-03-12T01:35:51+08:00">2020-03-12</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-11 17:44:24" itemprop="dateModified" datetime="2020-03-11T17:44:24+08:00">2020-03-11</time>
+              </span>
             
           
 
@@ -618,11 +748,19 @@
                 
               
 
-              <time title="创建时间：2020-03-12 00:45:26 / 修改时间：01:44:25" itemprop="dateCreated datePublished" datetime="2020-03-12T00:45:26+08:00">2020-03-12</time>
+              <time title="创建时间：2020-03-12 00:45:26" itemprop="dateCreated datePublished" datetime="2020-03-12T00:45:26+08:00">2020-03-12</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-11 17:44:25" itemprop="dateModified" datetime="2020-03-11T17:44:25+08:00">2020-03-11</time>
+              </span>
             
           
 
@@ -728,7 +866,7 @@ Ans&=\sum_{i=1}^n\sum_{j=1}^m\mu(lcm(i,j))\\
                 
               
 
-              <time title="创建时间：2020-03-07 17:45:27 / 修改时间：17:50:32" itemprop="dateCreated datePublished" datetime="2020-03-07T17:45:27+08:00">2020-03-07</time>
+              <time title="创建时间：2020-03-07 17:45:27 / 修改时间：09:50:32" itemprop="dateCreated datePublished" datetime="2020-03-07T17:45:27+08:00">2020-03-07</time>
             </span>
           
             
@@ -823,7 +961,7 @@ Ans&=\sum_{i=1}^n\sum_{j=1}^m\mu(lcm(i,j))\\
                 
               
 
-              <time title="创建时间：2020-03-06 21:57:05 / 修改时间：21:59:10" itemprop="dateCreated datePublished" datetime="2020-03-06T21:57:05+08:00">2020-03-06</time>
+              <time title="创建时间：2020-03-06 21:57:05 / 修改时间：13:59:10" itemprop="dateCreated datePublished" datetime="2020-03-06T21:57:05+08:00">2020-03-06</time>
             </span>
           
             
@@ -912,7 +1050,7 @@ Ans&=\sum_{i=1}^n\sum_{j=1}^m\mu(lcm(i,j))\\
                 
               
 
-              <time title="创建时间：2020-03-06 20:36:25 / 修改时间：20:48:27" itemprop="dateCreated datePublished" datetime="2020-03-06T20:36:25+08:00">2020-03-06</time>
+              <time title="创建时间：2020-03-06 20:36:25 / 修改时间：12:48:27" itemprop="dateCreated datePublished" datetime="2020-03-06T20:36:25+08:00">2020-03-06</time>
             </span>
           
             
@@ -1008,7 +1146,7 @@ F(x)=x+2x^3+x^4</script>
                 
               
 
-              <time title="创建时间：2020-03-06 15:37:29 / 修改时间：15:50:28" itemprop="dateCreated datePublished" datetime="2020-03-06T15:37:29+08:00">2020-03-06</time>
+              <time title="创建时间：2020-03-06 15:37:29 / 修改时间：07:50:28" itemprop="dateCreated datePublished" datetime="2020-03-06T15:37:29+08:00">2020-03-06</time>
             </span>
           
             
@@ -1052,120 +1190,6 @@ F(x)=x+2x^3+x^4</script>
           
             <div class="post-button">
               <a class="btn" href="/2020/03/06/HYSBZ4916-杜教筛/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/05/求和-莫比乌斯反演-杜教筛/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/03/05/求和-莫比乌斯反演-杜教筛/" class="post-title-link" itemprop="url">求和(莫比乌斯反演+杜教筛)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-05 21:05:38" itemprop="dateCreated datePublished" datetime="2020-03-05T21:05:38+08:00">2020-03-05</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-06 00:07:05" itemprop="dateModified" datetime="2020-03-06T00:07:05+08:00">2020-03-06</time>
-              </span>
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/05/求和-莫比乌斯反演-杜教筛/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/05/求和-莫比乌斯反演-杜教筛/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://ac.nowcoder.com/acm/contest/4114/D" target="_blank" rel="noopener">wannafly-day3-D-求和</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><script type="math/tex; mode=display">
-\begin{aligned}
-f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
-&=\sum_{d|n}d\sum_{i=1}^{n}\sum_{j=1}^{n}[gcd(i,j,n)==1]\\
-&=\sum_{d|n}d\sum_{i=1}^{\frac{n}{d}}\sum_{j=1}^{\frac{n}{d}}[gcd(i,j,\frac{n}{d})==1]\\
-&=\sum_{d|n}d\sum_{i=1}^{\frac{n}{d}}\sum_{j=1}^{\frac{n}{d}}\sum_{k|gcd(i,j,\frac{n}{d})}\mu(k)\\
-&=\sum_{d|n}d\sum_{k|\frac{n}{d}}\mu(k)(\frac{n}{dk})^2\\
-令T=dk\\
-&=\sum_{T|n}(\frac{n}{T})^2\sum_{k|T}\mu(\frac{T}{k})k\\
-&=\sum_{T|n}(\frac{n}{T})^2\phi(T)\\
-&=\sum_{T|n}T^2\phi(\frac{n}{T})
-\end{aligned}</script>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/03/05/求和-莫比乌斯反演-杜教筛/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1236,7 +1260,7 @@ f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1365,9 +1389,9 @@ f(n)&=\sum_{i=1}^{n}\sum_{j=1}^{n}gcd(i,j,n)\\
   
     
       
-    
-      
         
+      
+    
       
     
       

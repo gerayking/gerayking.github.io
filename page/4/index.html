@@ -208,6 +208,111 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/04/Codeforces-Round-631-Div-2-D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/04/04/Codeforces-Round-631-Div-2-D/" class="post-title-link" itemprop="url">Codeforces Round #631 (Div. 2)-E</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-04 02:07:30" itemprop="dateCreated datePublished" datetime="2020-04-04T02:07:30+08:00">2020-04-04</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-03 18:24:07" itemprop="dateModified" datetime="2020-04-03T18:24:07+08:00">2020-04-03</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/04/Codeforces-Round-631-Div-2-D/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/04/Codeforces-Round-631-Div-2-D/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先要明白b数组，其实就是a数组的异或前缀和，那么要怎么保证异或递增？选的数拆成二进制之后肯定需要位数递增才行，所以我们考虑把d拆成2进制，分成很多块儿，就是这样  </p><blockquote>
+<p>[1],[10,11],[100,101,110,111],[1000,….],….</p>
+</blockquote><p>分成上面这样的块，然后从这里面找序列就可以了，然后发现这些块的大小是1 2 4 8 16这样的，然后问题就变成了从x个块中分别取1,2,3,4,5~x个数，然后得到的sum，发现这些数都是2的次幂对吧，我们就找它的系数。它的系数应该怎么找的？考虑当$2^k$为最高的位置时，例如$2^2$在第三位的时候，前面可以有$[2^0,2^1,2^2]$这样如果在第二位就有$[2^0,2^2]与[2^1,2^2]$，然后它的系数就是在它前面的和。接下来这样还是不太好求它的系数，但是我们发现如果从低到高的求系数的话，就可以使用前面的信息，例如当我求出$2^1$的系数为2,也就是$[2^0,2^1]以及[2^1]$本身，还有$2^0$的系数为1，也就是[2^0]自身，那么$2^2$的系数就相当于在它前面出现过的序列相加啊，也就是$[2^0,2^1],[2^1],[2^0]$的后面加上$[2^2]$，也就变成$[2^0,2^1,2^2],[2^1,2^2],[2^0,2^2]$所以我们可以直接递增的求出系数6来。当然它可能不一定是整块，最后剩余的部分怎么考虑？前面有x-1块，处理完后，我们就在这些序列的后面直接加上yu的话，也就是多了这些序列*yu的序列，然后还有后面一部分自成序列的情况，也就是再+yu即可。</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/04/04/Codeforces-Round-631-Div-2-D/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/03/poj-3450-后缀数组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -238,7 +343,7 @@
                 
               
 
-              <time title="创建时间：2020-04-03 20:22:45 / 修改时间：20:58:13" itemprop="dateCreated datePublished" datetime="2020-04-03T20:22:45+08:00">2020-04-03</time>
+              <time title="创建时间：2020-04-03 20:22:45 / 修改时间：12:58:13" itemprop="dateCreated datePublished" datetime="2020-04-03T20:22:45+08:00">2020-04-03</time>
             </span>
           
             
@@ -333,7 +438,7 @@
                 
               
 
-              <time title="创建时间：2020-04-03 16:12:37 / 修改时间：16:26:14" itemprop="dateCreated datePublished" datetime="2020-04-03T16:12:37+08:00">2020-04-03</time>
+              <time title="创建时间：2020-04-03 16:12:37 / 修改时间：08:26:14" itemprop="dateCreated datePublished" datetime="2020-04-03T16:12:37+08:00">2020-04-03</time>
             </span>
           
             
@@ -430,7 +535,7 @@
                 
               
 
-              <time title="创建时间：2020-04-03 15:55:40 / 修改时间：16:11:57" itemprop="dateCreated datePublished" datetime="2020-04-03T15:55:40+08:00">2020-04-03</time>
+              <time title="创建时间：2020-04-03 15:55:40 / 修改时间：08:11:57" itemprop="dateCreated datePublished" datetime="2020-04-03T15:55:40+08:00">2020-04-03</time>
             </span>
           
             
@@ -525,7 +630,7 @@
                 
               
 
-              <time title="创建时间：2020-04-02 17:35:27 / 修改时间：17:38:12" itemprop="dateCreated datePublished" datetime="2020-04-02T17:35:27+08:00">2020-04-02</time>
+              <time title="创建时间：2020-04-02 17:35:27 / 修改时间：09:38:12" itemprop="dateCreated datePublished" datetime="2020-04-02T17:35:27+08:00">2020-04-02</time>
             </span>
           
             
@@ -625,19 +730,11 @@
                 
               
 
-              <time title="创建时间：2020-04-01 21:30:24" itemprop="dateCreated datePublished" datetime="2020-04-01T21:30:24+08:00">2020-04-01</time>
+              <time title="创建时间：2020-04-01 21:30:24 / 修改时间：16:03:46" itemprop="dateCreated datePublished" datetime="2020-04-01T21:30:24+08:00">2020-04-01</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-02 00:03:46" itemprop="dateModified" datetime="2020-04-02T00:03:46+08:00">2020-04-02</time>
-              </span>
             
           
 
@@ -728,7 +825,7 @@
                 
               
 
-              <time title="创建时间：2020-03-31 09:52:46 / 修改时间：09:54:26" itemprop="dateCreated datePublished" datetime="2020-03-31T09:52:46+08:00">2020-03-31</time>
+              <time title="创建时间：2020-03-31 09:52:46 / 修改时间：01:54:26" itemprop="dateCreated datePublished" datetime="2020-03-31T09:52:46+08:00">2020-03-31</time>
             </span>
           
             
@@ -828,7 +925,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-02 17:36:37" itemprop="dateModified" datetime="2020-04-02T17:36:37+08:00">2020-04-02</time>
+                <time title="修改时间：2020-04-02 09:36:37" itemprop="dateModified" datetime="2020-04-02T09:36:37+08:00">2020-04-02</time>
               </span>
             
           
@@ -923,7 +1020,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-29 18:59:30" itemprop="dateModified" datetime="2020-03-29T18:59:30+08:00">2020-03-29</time>
+                <time title="修改时间：2020-03-29 10:59:30" itemprop="dateModified" datetime="2020-03-29T10:59:30+08:00">2020-03-29</time>
               </span>
             
           
@@ -1015,7 +1112,7 @@
                 
               
 
-              <time title="创建时间：2020-03-22 11:26:03 / 修改时间：11:37:20" itemprop="dateCreated datePublished" datetime="2020-03-22T11:26:03+08:00">2020-03-22</time>
+              <time title="创建时间：2020-03-22 11:26:03 / 修改时间：03:37:20" itemprop="dateCreated datePublished" datetime="2020-03-22T11:26:03+08:00">2020-03-22</time>
             </span>
           
             
@@ -1055,112 +1152,6 @@
           
             <div class="post-button">
               <a class="btn" href="/2020/03/22/HDU6732/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/20/codeforces-622F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/03/20/codeforces-622F/" class="post-title-link" itemprop="url">codeforces-622F</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-20 10:59:04 / 修改时间：11:39:40" itemprop="dateCreated datePublished" datetime="2020-03-20T10:59:04+08:00">2020-03-20</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/20/codeforces-622F/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/20/codeforces-622F/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://codeforces.com/problemset/problem/622/F" target="_blank" rel="noopener">622f</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><script type="math/tex; mode=display">
-Ans=\sum_{i=1}^n i^k</script><p>直接求肯定会超时，然后自然数幂和可以表达为k+1项的多项式。</p><h4 id="自然数幂和展开多项式"><a href="#自然数幂和展开多项式" class="headerlink" title="自然数幂和展开多项式"></a>自然数幂和展开多项式</h4><script type="math/tex; mode=display">
-(n+1)^k-(n^k)=\sum_{i=0}^{k-1}C_k^in^i\\
-n^k-(n-1)^k=\sum_{i=0}^{k-1}C_k^i(n-1)^i\\
-\vdots\\
-累加得到\\
-\sum_{i=1}^n((i+1)^k-i^k)=(n+1)^k-1\\
-=\sum_{i=1}^n\sum_{j=1}^{k-1}C_k^ji^j\\
-=\sum_{i=0}^{k-1}C_k^j\sum_{j=1}^nj^i\\
-设f(j)=\sum_{i=1}^ni^j\\
-=\sum_{i=1}^{k-1}C_k^jf(j)\\
-=\sum_{i=0}^{k-2}C_k^jf(j)+k*f(k-1)\\</script>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/03/20/codeforces-622F/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1231,7 +1222,7 @@ n^k-(n-1)^k=\sum_{i=0}^{k-1}C_k^i(n-1)^i\\
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1360,11 +1351,11 @@ n^k-(n-1)^k=\sum_{i=0}^{k-1}C_k^i(n-1)^i\\
   
     
       
-    
-      
-    
-      
         
+      
+    
+      
+    
       
     
       
