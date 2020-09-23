@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="题目链接NC17137思路DP状态定义为dp[i][j]表示前i个数删除j个后的答案。那么很容易得到递推方程1dp[i][j]=dp[i-1][j-1]+dp[i-1][j];就是删除当前这个和不删除当前这个的情况，然后如果是 1 2 3 5 6 7 8 5 m=4的话，就会出现删除5 6 7 8 和删除6 7 8 5的情况重复的情况，我们需要减去重复的这部分，观察到重复的这部分需要把6 7 8给">
-<meta name="keywords" content="DP">
+  <meta name="description" content="题目大意给n个点，求  x_1  &amp;gt; x_0 \&amp;\&amp; y_1&amp;gt;y_0的最大的链，n方的做法有很多，这里说nlogn的做法 先给x排序，然后如果第一维度相同第二维度倒序排序，然后球LIS即可 代码实现123456789101112131415161718192021222324252627class Solution &amp;#123;    int arr[101001];    vector&amp;lt;">
+<meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="每日一题-NC17137-DP">
-<meta property="og:url" content="https://gerayking.github.io/2020/04/27/每日一题-NC17137-DP/index.html">
+<meta property="og:title" content="LeetCode-354.俄罗斯套娃信封问题">
+<meta property="og:url" content="https://gerayking.github.io/2020/09/23/LeetCode-354-俄罗斯套娃信封问题/index.html">
 <meta property="og:site_name" content="一方通行">
-<meta property="og:description" content="题目链接NC17137思路DP状态定义为dp[i][j]表示前i个数删除j个后的答案。那么很容易得到递推方程1dp[i][j]=dp[i-1][j-1]+dp[i-1][j];就是删除当前这个和不删除当前这个的情况，然后如果是 1 2 3 5 6 7 8 5 m=4的话，就会出现删除5 6 7 8 和删除6 7 8 5的情况重复的情况，我们需要减去重复的这部分，观察到重复的这部分需要把6 7 8给">
+<meta property="og:description" content="题目大意给n个点，求  x_1  &amp;gt; x_0 \&amp;\&amp; y_1&amp;gt;y_0的最大的链，n方的做法有很多，这里说nlogn的做法 先给x排序，然后如果第一维度相同第二维度倒序排序，然后球LIS即可 代码实现123456789101112131415161718192021222324252627class Solution &amp;#123;    int arr[101001];    vector&amp;lt;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-27T06:01:16.000Z">
+<meta property="og:updated_time" content="2020-09-23T14:46:42.180Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="每日一题-NC17137-DP">
-<meta name="twitter:description" content="题目链接NC17137思路DP状态定义为dp[i][j]表示前i个数删除j个后的答案。那么很容易得到递推方程1dp[i][j]=dp[i-1][j-1]+dp[i-1][j];就是删除当前这个和不删除当前这个的情况，然后如果是 1 2 3 5 6 7 8 5 m=4的话，就会出现删除5 6 7 8 和删除6 7 8 5的情况重复的情况，我们需要减去重复的这部分，观察到重复的这部分需要把6 7 8给">
-  <link rel="canonical" href="https://gerayking.github.io/2020/04/27/每日一题-NC17137-DP/">
+<meta name="twitter:title" content="LeetCode-354.俄罗斯套娃信封问题">
+<meta name="twitter:description" content="题目大意给n个点，求  x_1  &amp;gt; x_0 \&amp;\&amp; y_1&amp;gt;y_0的最大的链，n方的做法有很多，这里说nlogn的做法 先给x排序，然后如果第一维度相同第二维度倒序排序，然后球LIS即可 代码实现123456789101112131415161718192021222324252627class Solution &amp;#123;    int arr[101001];    vector&amp;lt;">
+  <link rel="canonical" href="https://gerayking.github.io/2020/09/23/LeetCode-354-俄罗斯套娃信封问题/">
 
 
 <script id="page-configurations">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>每日一题-NC17137-DP | 一方通行</title>
+  <title>LeetCode-354.俄罗斯套娃信封问题 | 一方通行</title>
   
 
 
@@ -213,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/27/每日一题-NC17137-DP/">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/09/23/LeetCode-354-俄罗斯套娃信封问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gerayking">
@@ -227,7 +227,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            每日一题-NC17137-DP
+            LeetCode-354.俄罗斯套娃信封问题
             
 
           
@@ -244,7 +244,7 @@
                 
               
 
-              <time title="创建时间：2020-04-27 21:56:08 / 修改时间：14:01:16" itemprop="dateCreated datePublished" datetime="2020-04-27T21:56:08+08:00">2020-04-27</time>
+              <time title="创建时间：2020-09-23 22:41:57 / 修改时间：22:46:42" itemprop="dateCreated datePublished" datetime="2020-09-23T22:41:57+08:00">2020-09-23</time>
             </span>
           
             
@@ -263,8 +263,8 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/04/27/每日一题-NC17137-DP/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/27/每日一题-NC17137-DP/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/09/23/LeetCode-354-俄罗斯套娃信封问题/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/23/LeetCode-354-俄罗斯套娃信封问题/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -279,10 +279,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://ac.nowcoder.com/acm/problem/17137" target="_blank" rel="noopener">NC17137</a></p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>DP状态定义为dp[i][j]表示前i个数删除j个后的答案。那么很容易得到递推方程<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j]=dp[i<span class="number">-1</span>][j<span class="number">-1</span>]+dp[i<span class="number">-1</span>][j];</span><br></pre></td></tr></table></figure></p><p>就是删除当前这个和不删除当前这个的情况，然后如果是 1 2 3 5 6 7 8 5 m=4的话，就会出现删除5 6 7 8 和删除6 7 8 5的情况重复的情况，我们需要减去重复的这部分，观察到重复的这部分需要把6 7 8给删除，就是把两个5之间的数全给删除了，于是重复的这部分就是dp[pos-1][j-(i-pos)]就代表中间的全部给删除了。</p><a id="more"></a>
+        <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>给n个点，求</p>
+<script type="math/tex; mode=display">
+x_1  > x_0 \&\& y_1>y_0</script><p>的最大的链，n方的做法有很多，这里说nlogn的做法</p>
+<p>先给x排序，然后如果第一维度相同第二维度倒序排序，然后球LIS即可</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> arr[<span class="number">101001</span>];</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getLIS</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">101001</span>;i++)arr[i]=<span class="number">1e9</span>+<span class="number">10</span>;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">        arr[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;v.size();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(v[i]&gt;arr[l])arr[++l]=v[i];</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> pos = lower_bound(arr + <span class="number">1</span>, arr + l + <span class="number">1</span>, v[i]) - arr;</span><br><span class="line">                arr[pos]=v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxEnvelopes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; envelopes)</span> </span>&#123;</span><br><span class="line">        sort(envelopes.begin(),envelopes.end(),[](<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; a,<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; b)&#123;</span><br><span class="line">            <span class="keyword">return</span> a[<span class="number">0</span>]&lt;b[<span class="number">0</span>]||(a[<span class="number">0</span>]==b[<span class="number">0</span>]&amp;&amp;a[<span class="number">1</span>]&gt;b[<span class="number">1</span>]);&#125;);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;envelopes.size();i++)&#123;</span><br><span class="line">            v.push_back(envelopes[i][<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> getLIS();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> dp[N][<span class="number">15</span>],pos[<span class="number">15</span>];</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m,k;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;k)&#123;</span><br><span class="line">		<span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">		<span class="built_in">memset</span>(pos,<span class="number">0</span>,<span class="keyword">sizeof</span>(pos));</span><br><span class="line">		dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> x;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">			dp[i][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=min(m,i);j++)&#123;</span><br><span class="line">				dp[i][j]=(dp[i<span class="number">-1</span>][j<span class="number">-1</span>]+dp[i<span class="number">-1</span>][j])%mod;</span><br><span class="line">				<span class="keyword">if</span>(pos[x]&amp;&amp;j-i+pos[x]&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">					dp[i][j]=(dp[i][j]-dp[pos[x]<span class="number">-1</span>][j-i+pos[x]]+mod)%mod;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			pos[x]=i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,dp[n][m]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -305,7 +307,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/DP/" rel="tag"># DP</a>
+              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
             
           </div>
         
@@ -315,8 +317,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/04/27/Educational-Codeforces-Round-86-Rated-for-Div-2/" rel="next" title="Educational Codeforces Round 86 [Rated for Div. 2]">
-                  <i class="fa fa-chevron-left"></i> Educational Codeforces Round 86 [Rated for Div. 2]
+                <a href="/2020/09/22/Leetcode-968-监控二叉树/" rel="next" title="Leetcode-968.监控二叉树">
+                  <i class="fa fa-chevron-left"></i> Leetcode-968.监控二叉树
                 </a>
               
             </div>
@@ -324,10 +326,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2020/04/28/gym-102392C/" rel="prev" title="gym-102392E">
-                  gym-102392E <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -376,7 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目链接"><span class="nav-number">1.</span> <span class="nav-text">题目链接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">1.2.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目大意"><span class="nav-number">1.</span> <span class="nav-text">题目大意</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">1.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->

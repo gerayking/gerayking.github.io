@@ -208,6 +208,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/22/HDU6732/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/03/22/HDU6732/" class="post-title-link" itemprop="url">HDU6732</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-22 11:26:03 / 修改时间：03:37:20" itemprop="dateCreated datePublished" datetime="2020-03-22T11:26:03+08:00">2020-03-22</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/22/HDU6732/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/22/HDU6732/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HDU-6372/origin" target="_blank" rel="noopener">HDU6732</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这道题首先要会卢卡斯定理和一定的离散知识，根据卢卡斯定理，组合数$C(n,m) mod  p$相当于n,m转换为p进制之后每一位的组合数再相乘起来。<br>然后不等于0的情况就是n转换为p进制后大于m转换为p进制后每一位上的数字都比m的大。然后HMBB[i][j]矩阵相当于若有上述情况，则存在一条路径从i-&gt;j,K次方的话，就是i-&gt;j经过k条路的方案数目。相当于对n，m的每一位来说存在这样一个序列$t_0-&gt;t_1-&gt;\dots-&gt;t_k$,并且这个序列是单挑不递减的，这个序列存在的方案数就是这个矩阵的和，这个序列可以用组合数学。相当于p个箱子，k+1个球，箱子可以为空的方案数，然后转换成p个箱子，k+p+1个球，箱子不为空的情况。接下来把球拍成一行，然后想象一下在球与球之间使用隔板，就可以把它分成p个部分，一共为k+p+1个隔板，选p-1个，所以总方案数就是</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/03/22/HDU6732/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/20/codeforces-622F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1112,105 +1207,6 @@ F(x)=x+2x^3+x^4</script>
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/03/06/HYSBZ4916-杜教筛/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/03/06/HYSBZ4916-杜教筛/" class="post-title-link" itemprop="url">HYSBZ4916(杜教筛)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-06 15:37:29 / 修改时间：07:50:28" itemprop="dateCreated datePublished" datetime="2020-03-06T15:37:29+08:00">2020-03-06</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/06/HYSBZ4916-杜教筛/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/06/HYSBZ4916-杜教筛/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://vjudge.net/problem/HYSBZ-4916" target="_blank" rel="noopener">神犇和蒟蒻</a></p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>很显然，第一个求$\sum_{i=1}^n\mu(i)$的结果肯定是1<br>那么我们来看第二个问题就</p><script type="math/tex; mode=display">
-\begin{aligned}
-    Ans&=\sum_{i=1}^n\phi(i^2)\\
-    &=\sum_{i=1}^ni\phi(i)\\
-\end{aligned}</script><p>设</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/03/06/HYSBZ4916-杜教筛/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1260,7 +1256,7 @@ F(x)=x+2x^3+x^4</script>
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
