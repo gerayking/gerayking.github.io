@@ -208,6 +208,216 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/09/16/DNS 查询报文和响应报文/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/09/16/DNS 查询报文和响应报文/" class="post-title-link" itemprop="url">WireShark 分析网站请求流程</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-16 16:58:21" itemprop="dateCreated datePublished" datetime="2020-09-16T16:58:21+08:00">2020-09-16</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-19 16:18:42" itemprop="dateModified" datetime="2020-10-19T16:18:42+08:00">2020-10-19</time>
+              </span>
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/09/16/DNS 查询报文和响应报文/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/16/DNS 查询报文和响应报文/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="DNS-查询报文和响应报文"><a href="#DNS-查询报文和响应报文" class="headerlink" title="DNS 查询报文和响应报文"></a>DNS 查询报文和响应报文</h3><ul>
+<li>当在浏览器中输入网站回车后，浏览器将向本机的DNS模块发送请求。</li>
+<li>DNS模块是有缓存的，若缓存中有，则直接取ip地址，若没有则向下将DNS发送给UDP</li>
+<li>UDP协议单元将该数据封装成IP数据包，传递给IP协议单元</li>
+<li>IP协议单元再进行一层封装，加入<strong>DNS服务器</strong>的地址</li>
+<li>封装好的IP数据包将传递给链路层进行发送</li>
+<li>数据链路层发送到DNS服务器，若数据链路层的缓冲区中没有dns服务器的MAC，那么就发送ARP的广播请求等待回应</li>
+<li>得到回应之后将ip地址和对应的MAC地址写入APR缓存中，之后进行转发</li>
+<li>DNS请求被发送到DNS服务器的数据链路层的协议单元</li>
+<li>DNS服务器的数据链路层的协议单元会解析接收到的关键帧，并讲内部的IP数据包传送给网络层的IP协议单元</li>
+<li>DNS服务器的IP协议单元解析收到的数据包，然后再向上剥壳，讲UDP数据传递给UDP协议单元</li>
+<li>UDP将其内部的DNS报文传递给DNS服务单元，然后DNS服务单元解析域名对应IP地址，产生DNS回应报文，再发送给请求地址</li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/09/16/DNS 查询报文和响应报文/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/07/28/异或最小生成树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/07/28/异或最小生成树/" class="post-title-link" itemprop="url">异或最小生成树</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-07-28 21:21:48 / 修改时间：14:23:07" itemprop="dateCreated datePublished" datetime="2020-07-28T21:21:48+08:00">2020-07-28</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/07/28/异或最小生成树/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/28/异或最小生成树/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="异或最小生成树"><a href="#异或最小生成树" class="headerlink" title="异或最小生成树"></a>异或最小生成树</h3><p>异或最小生成树就是每个点都有一个权值，而两个点之间连接的边的权值是两个点的异或值，求这个点集合的最小生成树</p><p><a href="http://codeforces.com/problemset/problem/888/G" target="_blank" rel="noopener">CF888G</a></p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>我们会用到Boruvka算法，用上了分治的思想来求最小生成树，但是异或最小生成树呢，则还需要一颗trie树，因为它能够log的查询异或的最小值。</p><p>简单解释一下异或最小生成树的步骤</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/07/28/异或最小生成树/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/07/13/2020牛客暑期多校训练营（第二场）补题记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -971,217 +1181,11 @@
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/24/动态规划-洛谷P1880/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/05/24/动态规划-洛谷P1880/" class="post-title-link" itemprop="url">动态规划-洛谷P1880</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-05-24 01:04:41" itemprop="dateCreated datePublished" datetime="2020-05-24T01:04:41+08:00">2020-05-24</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-23 17:17:10" itemprop="dateModified" datetime="2020-05-23T17:17:10+08:00">2020-05-23</time>
-              </span>
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/05/24/动态规划-洛谷P1880/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/24/动态规划-洛谷P1880/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://www.luogu.com.cn/problem/P1880" target="_blank" rel="noopener">落谷P1880</a></p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>dp[i][j]表示第i~j个石子合并的最小花费得到转移方程</p><script type="math/tex; mode=display">
-dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j]+sum[j]-sum[i-1]);</script><p>因为i~j需要从i~(j-1)的所有状态推出，所以先枚举i，在枚举j,最后枚举k，保证所有状态都转移到，然后成环就让数列*2就好了</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/05/24/动态规划-洛谷P1880/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/23/NWERC2019-H/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/05/23/NWERC2019-H/" class="post-title-link" itemprop="url">NWERC2019-H</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-05-23 20:28:39 / 修改时间：17:17:09" itemprop="dateCreated datePublished" datetime="2020-05-23T20:28:39+08:00">2020-05-23</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/05/23/NWERC2019-H/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/23/NWERC2019-H/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>根据题意可以发现答案肯定有一个在端点上，如果两个都不在端点上，那么可以通过平移得到相同的答案，所以最优的答案肯定有一个在端点上，考虑j在端点上。</p><script type="math/tex; mode=display">\begin{aligned}
-   \frac{y_{i+res}-y_j}{(i+res)-j}&=k\\
-    res&=\frac{(j_i-ik)-(y_j-jk)}{k_i-k}\\
-    k_i&=y_i-y_{i-1}\\
-    k_i-k&=(y_i-ik)-(y_{i-1}-(i-1)k)\\
-    令tmp[i]&=y_i-ik\\
-    res&=\frac{tmp[i]-tmp[j]}{tmp[i]-tmp[i-1]}
-\end{aligned}</script>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/05/23/NWERC2019-H/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1226,7 +1230,7 @@ dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j]+sum[j]-sum[i-1]);</script><p>因为i~j
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">149</span>
+          <span class="site-state-item-count">151</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1252,7 +1256,7 @@ dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j]+sum[j]-sum[i-1]);</script><p>因为i~j
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1355,11 +1359,11 @@ dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j]+sum[j]-sum[i-1]);</script><p>因为i~j
   
     
       
+    
+      
+    
+      
         
-      
-    
-      
-    
       
     
       
