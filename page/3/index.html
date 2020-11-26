@@ -208,6 +208,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/27/点分治-luogu2634/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/05/27/点分治-luogu2634/" class="post-title-link" itemprop="url">点分治-luogu2634</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-27 19:50:24 / 修改时间：15:36:51" itemprop="dateCreated datePublished" datetime="2020-05-27T19:50:24+08:00">2020-05-27</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/05/27/点分治-luogu2634/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/27/点分治-luogu2634/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="https://www.luogu.com.cn/problem/P2634" target="_blank" rel="noopener">luogu2634</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>经典的点分治算法，点分治是logn层，考虑O(n)处理路径问题，<br>核心代码是下面这部分<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    dis[u]=v%<span class="number">3</span>;</span><br><span class="line">    tmp[<span class="number">0</span>]=tmp[<span class="number">1</span>]=tmp[<span class="number">2</span>]=<span class="number">0</span>;</span><br><span class="line">    getdis(u,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> tmp[<span class="number">1</span>]*tmp[<span class="number">2</span>]*<span class="number">2</span>+tmp[<span class="number">0</span>]*tmp[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="comment">//先统计所有答案</span></span><br><span class="line">    ans+=calc(u,<span class="number">0</span>);</span><br><span class="line">    vis[u]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];~i;i=edges[i].nex)&#123;</span><br><span class="line">        <span class="comment">//对每个子树删除多于的答案</span></span><br><span class="line">        <span class="comment">// 实际删除那些不经过根节点的路径的边</span></span><br><span class="line">        <span class="keyword">int</span> v = edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        ans-=calc(v,edges[i].w);</span><br><span class="line">        maxp[rt=<span class="number">0</span>]=sum=siz[v];</span><br><span class="line">        getrt(v,<span class="number">0</span>);</span><br><span class="line">        getrt(rt,<span class="number">0</span>);</span><br><span class="line">        divide(rt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/05/27/点分治-luogu2634/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/24/动态规划-洛谷P1880/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1108,101 +1203,6 @@ F'_k(n+1)&=\sum_{i=1}^n(n-i+1)^kFib(i)\\
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/26/Gym-102392B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/04/26/Gym-102392B/" class="post-title-link" itemprop="url">Gym-102392B</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-04-26 09:02:10 / 修改时间：01:08:00" itemprop="dateCreated datePublished" datetime="2020-04-26T09:02:10+08:00">2020-04-26</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/04/26/Gym-102392B/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/26/Gym-102392B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="http://codeforces.com/gym/102392/problem/B" target="_blank" rel="noopener">Gym-102392B</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>对于每个任务要么选择level 1要么level 2或者不选，不选的话就会由上上个状态转移到，我们定义DP状态为dp[i][j]表示前n个物品中第一阶段经验为i，第二阶段经验为j的最小分钟数，需要给任务排序，因为会有溢出，防止出现{90,30,30,30}而应该选取{30,30,30,90}的情况。而第一阶段存在溢出的情况，所以只有在i &lt; s1的时候进行转移。具体看代码实现</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/04/26/Gym-102392B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1252,7 +1252,7 @@ F'_k(n+1)&=\sum_{i=1}^n(n-i+1)^kFib(i)\\
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">151</span>
+          <span class="site-state-item-count">152</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1381,9 +1381,9 @@ F'_k(n+1)&=\sum_{i=1}^n(n-i+1)^kFib(i)\\
   
     
       
-        
-      
     
+      
+        
       
     
       

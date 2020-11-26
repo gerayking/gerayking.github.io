@@ -208,6 +208,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/26/Gym-102392B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/04/26/Gym-102392B/" class="post-title-link" itemprop="url">Gym-102392B</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-26 09:02:10 / 修改时间：01:08:00" itemprop="dateCreated datePublished" datetime="2020-04-26T09:02:10+08:00">2020-04-26</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/26/Gym-102392B/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/26/Gym-102392B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a href="http://codeforces.com/gym/102392/problem/B" target="_blank" rel="noopener">Gym-102392B</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>对于每个任务要么选择level 1要么level 2或者不选，不选的话就会由上上个状态转移到，我们定义DP状态为dp[i][j]表示前n个物品中第一阶段经验为i，第二阶段经验为j的最小分钟数，需要给任务排序，因为会有溢出，防止出现{90,30,30,30}而应该选取{30,30,30,90}的情况。而第一阶段存在溢出的情况，所以只有在i &lt; s1的时候进行转移。具体看代码实现</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/04/26/Gym-102392B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/15/luogu-P2863-tarjan/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1103,101 +1198,6 @@ dp[i][j]=\sum_{k=0}^{min(j,num[i])}dp[i-1][j-k]</script><p>但是这样算的话
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/03/poj-3450-后缀数组/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/04/03/poj-3450-后缀数组/" class="post-title-link" itemprop="url">poj-3450-后缀数组</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-04-03 20:22:45 / 修改时间：12:58:13" itemprop="dateCreated datePublished" datetime="2020-04-03T20:22:45+08:00">2020-04-03</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/04/03/poj-3450-后缀数组/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/03/poj-3450-后缀数组/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h3><p><a href="http://poj.org/problem?id=3450" target="_blank" rel="noopener">POJ 3450 Corporate Identity</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>先用后缀数组处理出height数组，然后我们二分最长公共子串的长度，然后再height中找大于这个长度并且不在一个字符串的个数，如果等于n则返回true否则返回false即可。<br>前期一直TLE不知道为何，换了个板子就过了，也许是我的板子的问题。</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/04/03/poj-3450-后缀数组/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1247,7 +1247,7 @@ dp[i][j]=\sum_{k=0}^{min(j,num[i])}dp[i-1][j-k]</script><p>但是这样算的话
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">151</span>
+          <span class="site-state-item-count">152</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1380,9 +1380,9 @@ dp[i][j]=\sum_{k=0}^{min(j,num[i])}dp[i-1][j-k]</script><p>但是这样算的话
       
     
       
-        
-      
     
+      
+        
       
     
       
