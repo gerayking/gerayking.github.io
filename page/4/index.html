@@ -208,6 +208,108 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/23/NWERC2019-H/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gerayking">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一方通行">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            
+            <a href="/2020/05/23/NWERC2019-H/" class="post-title-link" itemprop="url">NWERC2019-H</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-23 20:28:39 / 修改时间：17:17:09" itemprop="dateCreated datePublished" datetime="2020-05-23T20:28:39+08:00">2020-05-23</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/05/23/NWERC2019-H/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/23/NWERC2019-H/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>根据题意可以发现答案肯定有一个在端点上，如果两个都不在端点上，那么可以通过平移得到相同的答案，所以最优的答案肯定有一个在端点上，考虑j在端点上。</p><script type="math/tex; mode=display">\begin{aligned}
+   \frac{y_{i+res}-y_j}{(i+res)-j}&=k\\
+    res&=\frac{(j_i-ik)-(y_j-jk)}{k_i-k}\\
+    k_i&=y_i-y_{i-1}\\
+    k_i-k&=(y_i-ik)-(y_{i-1}-(i-1)k)\\
+    令tmp[i]&=y_i-ik\\
+    res&=\frac{tmp[i]-tmp[j]}{tmp[i]-tmp[i-1]}
+\end{aligned}</script>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2020/05/23/NWERC2019-H/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/05/18/DayMath20200518/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1092,109 +1194,6 @@ F'_k(n+1)&=\sum_{i=1}^n(n-i+1)^kFib(i)\\
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gerayking.github.io/2020/04/12/easypoi-export-excel/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gerayking">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一方通行">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            
-            <a href="/2020/04/12/easypoi-export-excel/" class="post-title-link" itemprop="url">easypoi export excel</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-04-12 17:40:18" itemprop="dateCreated datePublished" datetime="2020-04-12T17:40:18+08:00">2020-04-12</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-15 04:47:59" itemprop="dateModified" datetime="2020-04-15T04:47:59+08:00">2020-04-15</time>
-              </span>
-            
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/04/12/easypoi-export-excel/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/12/easypoi-export-excel/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="导出exceldemo"><a href="#导出exceldemo" class="headerlink" title="导出exceldemo"></a>导出exceldemo</h3>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/04/12/easypoi-export-excel/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1244,7 +1243,7 @@ F'_k(n+1)&=\sum_{i=1}^n(n-i+1)^kFib(i)\\
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1373,11 +1372,11 @@ F'_k(n+1)&=\sum_{i=1}^n(n-i+1)^kFib(i)\\
   
     
       
-    
-      
-    
-      
         
+      
+    
+      
+    
       
     
       
